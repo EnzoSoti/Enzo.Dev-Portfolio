@@ -1,0 +1,44 @@
+/* Custom styles for better responsiveness */
+@media (max-width: 768px) {
+    .hero-buttons {
+        flex-direction: column;
+        gap: 10px !important;
+    }
+    .hero-buttons .btn {
+        width: 100%;
+    }
+    .profile-img {
+        max-width: 200px !important;
+    }
+    .section-padding {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Better spacing for sections */
+section {
+    padding: 5rem 0;
+}
+
+/* Card hover effect */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* Footer styling */
+footer a {
+    transition: opacity 0.3s ease;
+}
+footer a:hover {
+    opacity: 0.8;
+}
