@@ -1,65 +1,104 @@
 (function () {
-    // Initialize EmailJS with your public user ID
+    // Initialize EmailJS
     emailjs.init("5xF5tHab9EXUBz8AH");
 
-    // Get references to the contact form and status display element
     const form = document.getElementById('contactForm');
-    const statusDiv = document.getElementById('formStatus');
 
-    // If elements are not found, log an error and stop the script
-    if (!form || !statusDiv) {
-        console.error('Contact form or status div not found in the DOM.');
+    if (!form) {
+        console.error('Contact form not found in the DOM.');
         return;
     }
 
-    // Listen for the form's submit event
+    // variable of the sound
+    const dingSound = "../sound/Ding Sound Effect.mp3";
+
+    // Create audio element for success sound
+    const successSound = new Audio(dingSound);
+    
+    // Preload the sound
+    successSound.load();
+
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent default form submission behavior
+        event.preventDefault();
 
-        // Show a "sending" status message
-        statusDiv.classList.remove('hidden');
-        statusDiv.className = 'mt-4 text-center';
-        statusDiv.innerHTML = '<p class="text-yellow-600">Sending message...</p>';
+        // Show "Sending..." toast
+        Toastify({
+            text: "Sending message...",
+            duration: 3000,
+            gravity: "top",
+            position: "center",
+            style: {
+                background: "#facc15", 
+                color: "#000",
+                borderRadius: "8px",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+                padding: "12px 20px",
+                fontSize: "16px"
+            },
+            stopOnFocus: true
+        }).showToast();
 
-        // Collect form field values
+        // Get form values
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const subject = document.getElementById('subject').value || 'Portfolio Contact Form Submission';
         const message = document.getElementById('message').value;
 
-        // Prepare parameters to send via EmailJS
+        // Prepare template parameters
         const templateParams = {
-            to_email: 'parane.enzo@gmail.com',     // Destination email (can also be set in EmailJS template)
-            from_name: name,                        // Sender's name from the form
-            from_email: email,                      // Sender's email address
-            subject: subject,                       // Email subject (optional, fallback provided)
-            message: message                        // Message content from the user
+            to_email: 'parane.enzo@gmail.com',
+            from_name: name,
+            from_email: email,
+            subject: subject,
+            message: message
         };
 
-        // Send the email using EmailJS
+        // Send email via EmailJS
         emailjs.send('service_7mkmcyo', 'template_aeft8bi', templateParams)
             .then(response => {
-                // On success: show a success message and reset the form
                 console.log('SUCCESS!', response.status, response.text);
-                statusDiv.innerHTML = `
-                    <p class="text-green-600">
-                        Your message has been sent successfully! I’ll get back to you soon.
-                    </p>`;
-                form.reset(); // Clear all form fields
 
-                // Automatically hide the status message after 5 seconds
-                setTimeout(() => {
-                    statusDiv.classList.add('hidden');
-                }, 5000);
+                // Play success sound
+                successSound.play().catch(err => {
+                    console.error('Failed to play success sound:', err);
+                });
+
+                Toastify({
+                    text: "Your message has been sent successfully! Thank you!",
+                    duration: 5000,
+                    gravity: "top",
+                    position: "center",
+                    style: {
+                        background: "#10b981",
+                        color: "#fff",
+                        borderRadius: "8px",
+                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+                        padding: "12px 20px",
+                        fontSize: "16px"
+                    },
+                    stopOnFocus: true
+                }).showToast();
+
+                form.reset(); // Reset the form
             })
             .catch(error => {
-                // On failure: show an error message with a fallback email contact
                 console.error('FAILED...', error);
-                statusDiv.innerHTML = `
-                    <p class="text-red-600">
-                        Failed to send message. Please try again later or contact me directly at 
-                        <a href="mailto:parane.enzo@gmail.com" class="underline">parane.enzo@gmail.com</a>.
-                    </p>`;
+
+                Toastify({
+                    text: "Failed to send message. Try again or email parane.enzo@gmail.com.",
+                    duration: 6000,
+                    gravity: "top",
+                    position: "center",
+                    style: {
+                        background: "#ef4444", 
+                        color: "#fff",
+                        borderRadius: "8px",
+                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+                        padding: "12px 20px",
+                        fontSize: "16px"
+                    },
+                    stopOnFocus: true
+                }).showToast();
             });
     });
 })();
