@@ -1,7 +1,8 @@
 (function () {
-    // Initialize EmailJS
+    // ========== EmailJS Initialization ==========
     emailjs.init("5xF5tHab9EXUBz8AH");
 
+    // ========== Form Element ==========
     const form = document.getElementById('contactForm');
 
     if (!form) {
@@ -9,26 +10,23 @@
         return;
     }
 
-    // variable of the sound
+    // ========== Sound Setup ==========
     const dingSound = "../sound/Ding Sound Effect.mp3";
-
-    // Create audio element for success sound
     const successSound = new Audio(dingSound);
-    
-    // Preload the sound
-    successSound.load();
+    successSound.load(); // Preload sound
 
+    // ========== Form Submission Handler ==========
     form.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        // Show "Sending..." toast
+        // ========== Sending Toast ==========
         Toastify({
             text: "Sending message...",
             duration: 3000,
             gravity: "top",
             position: "center",
             style: {
-                background: "#facc15", 
+                background: "#facc15",
                 color: "#000",
                 borderRadius: "8px",
                 boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
@@ -38,13 +36,13 @@
             stopOnFocus: true
         }).showToast();
 
-        // Get form values
+        // ========== Get Form Values ==========
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const subject = document.getElementById('subject').value || 'Portfolio Contact Form Submission';
         const message = document.getElementById('message').value;
 
-        // Prepare template parameters
+        // ========== Email Template Parameters ==========
         const templateParams = {
             to_email: 'parane.enzo@gmail.com',
             from_name: name,
@@ -53,16 +51,17 @@
             message: message
         };
 
-        // Send email via EmailJS
+        // ========== Send Email ==========
         emailjs.send('service_7mkmcyo', 'template_aeft8bi', templateParams)
             .then(response => {
                 console.log('SUCCESS!', response.status, response.text);
 
-                // Play success sound
+                // ========== Play Success Sound ==========
                 successSound.play().catch(err => {
                     console.error('Failed to play success sound:', err);
                 });
 
+                // ========== Success Toast ==========
                 Toastify({
                     text: "Your message has been sent successfully! Thank you!",
                     duration: 5000,
@@ -84,13 +83,14 @@
             .catch(error => {
                 console.error('FAILED...', error);
 
+                // ========== Error Toast ==========
                 Toastify({
                     text: "Failed to send message. Try again or email parane.enzo@gmail.com.",
                     duration: 6000,
                     gravity: "top",
                     position: "center",
                     style: {
-                        background: "#ef4444", 
+                        background: "#ef4444",
                         color: "#fff",
                         borderRadius: "8px",
                         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
