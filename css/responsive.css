@@ -1,44 +1,60 @@
-/* Custom styles for better responsiveness */
+/* ========== Responsive (for small screens) ========== */
 @media (max-width: 768px) {
+    /* Stack buttons vertically and add space between them */
     .hero-buttons {
         flex-direction: column;
         gap: 10px !important;
     }
+
+    /* Make buttons take full width */
     .hero-buttons .btn {
         width: 100%;
     }
+
+    /* Make profile image smaller */
     .profile-img {
         max-width: 200px !important;
     }
+
+    /* Add top and bottom padding to sections */
     .section-padding {
         padding-top: 3rem;
         padding-bottom: 3rem;
     }
 }
 
-/* Smooth scrolling */
+/* ========== Page behavior ========== */
+
+/* Smooth scrolling when clicking anchor links */
 html {
     scroll-behavior: smooth;
 }
 
-/* Better spacing for sections */
+/* Add space above and below each section */
 section {
     padding: 5rem 0;
 }
 
-/* Card hover effect */
+/* ========== Card hover effect ========== */
+
+/* Add animation when hovering on cards */
 .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* Move card up and add shadow on hover */
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
 }
 
-/* Footer styling */
+/* ========== Footer links ========== */
+
+/* Add fade effect on link hover */
 footer a {
     transition: opacity 0.3s ease;
 }
+
 footer a:hover {
     opacity: 0.8;
 }
