@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    
     <head>
         <!-- Meta Tags -->
         <meta charset="UTF-8"> 
@@ -17,6 +18,7 @@
     
         <!-- Custom Fonts -->
         <link rel="stylesheet" href="./css/font.css"> 
+        <link rel="stylesheet" href="./css/hiddenproject.css">
     
         <!-- Font Awesome Icons  -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -181,8 +183,16 @@
         </div>
     </section>
 
+    <!-- Button to toggle projects -->
+    <div class="text-center mb-4 sm:mb-6 md:mb-8">
+        <button id="toggleProjectsBtn" class="mt-6 sm:mt-8 md:mt-10 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full transition-all duration-300 font-semibold sm:font-bold text-base sm:text-lg shadow-md sm:shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center mx-auto">
+            <span>Show Projects</span>
+            <i class="fas fa-chevron-down ml-1 sm:ml-2 text-sm sm:text-base"></i>
+        </button>
+    </div>
+
     <!-- Projects Section -->
-    <section id="projects" class="py-16 bg-gradient-to-b from-gray-50 to-gray-100">
+    <section id="projects" class="py-16 bg-gradient-to-b from-gray-50 to-gray-100 hidden">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-center mb-2">Featured Projects</h2>
             <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">A collection of my recent work showcasing various technologies and problem-solving approaches</p>
@@ -487,6 +497,7 @@
     <!-- Include EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="./javascript/contact.js"></script>
+    <script src="./javascript/project-button.js"></script>
 
 </body>
 </html>
