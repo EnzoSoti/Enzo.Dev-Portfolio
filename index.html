@@ -33,55 +33,70 @@
 <body class="bg-gray-50">
     
     <!-- Hero Section -->
-    <header class="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white py-16 min-h-screen flex items-center relative overflow-hidden">
-        <!-- Background decoration -->
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent"></div>
+    <header class="bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900 text-white py-16 min-h-screen flex items-center relative overflow-hidden">
+        <!-- Subtle background decoration -->
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/5 to-transparent"></div>
+        <div class="absolute top-10 right-10 w-2 h-2 bg-cyan-400/60 rounded-full animate-pulse" style="animation-duration: 3s;"></div>
+        <div class="absolute bottom-20 left-10 w-1 h-1 bg-blue-400/50 rounded-full animate-pulse" style="animation-duration: 4s;"></div>
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="flex flex-col lg:flex-row items-center">
                 <!-- Content Section -->
                 <div class="lg:w-1/2 mb-12 lg:mb-0">
                     <div class="space-y-6">
+                        <!-- Simple greeting -->
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-8 h-1 bg-cyan-400 rounded-full"></div>
+                            <p class="text-cyan-400 font-medium text-sm uppercase tracking-widest">Welcome</p>
+                        </div>
+                        
                         <!-- Name -->
-                        <h1 class="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight">
-                            Enzo P. Daniela
+                        <h1 class="text-5xl lg:text-7xl font-bold text-white leading-tight">
+                            Enzo P. <span class="text-cyan-400">Daniela</span>
                         </h1>
                         
                         <!-- Title and Status -->
-                        <div class="space-y-3">
-                            <p class="text-xl lg:text-2xl font-semibold text-blue-300">
-                                Junior Web Developer
+                        <div class="space-y-4">
+                            <p class="text-2xl lg:text-3xl font-light text-gray-300">
+                                Junior / Student Web Developer
                             </p>
-                            <p class="text-lg text-gray-300 flex items-center">
-                                <span class="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
-                                3rd Year Student at STI College Fairview
-                            </p>
+                            
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse" style="animation-duration: 2s;"></div>
+                                <p class="text-gray-400">
+                                    3rd Year Student at <span class="text-white font-medium">STI College Fairview</span>
+                                </p>
+                            </div>
                         </div>
                         
                         <!-- Description -->
-                        <p class="text-lg lg:text-xl text-gray-200 leading-relaxed max-w-lg">
-                            Passionate about creating 
-                            <span class="text-blue-300 font-medium">responsive</span>, 
-                            <span class="text-purple-300 font-medium">user-friendly</span> 
-                            web experiences with modern technologies.
-                        </p>
+                        <div class="max-w-lg">
+                            <p class="text-xl text-gray-300 leading-relaxed">
+                                Passionate about creating clean, modern web experiences with attention to 
+                                <span class="text-cyan-400 font-medium">detail</span> and 
+                                <span class="text-cyan-400 font-medium">performance</span>.
+                            </p>
+                        </div>
                         
                         <!-- Buttons -->
-                        <div class="flex flex-wrap gap-4 pt-4">
-                            <a href="#contact" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-blue-500/25">
-                                Hire Me
+                        <div class="flex flex-wrap gap-4 pt-6">
+                            <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-black px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-cyan-500/25">
+                                Get In Touch
                             </a>
-                            <a href="#projects" class="bg-transparent hover:bg-white/10 text-white border-2 border-white/30 hover:border-white/60 px-8 py-3 rounded-lg font-semibold transition-all duration-300 backdrop-blur-sm">
-                                View Projects
+                            <a href="#projects" class="border-2 border-gray-600 hover:border-cyan-400 text-white hover:text-cyan-400 px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
+                                View Work
                             </a>
                         </div>
                         
-                        <!-- Skills Tags -->
-                        <div class="flex flex-wrap gap-3 pt-6">
-                            <span class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm border border-white/20 hover:bg-white/20 transition-colors duration-300">HTML/CSS</span>
-                            <span class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm border border-white/20 hover:bg-white/20 transition-colors duration-300">JavaScript</span>
-                            <span class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm border border-white/20 hover:bg-white/20 transition-colors duration-300">React</span>
-                            <span class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm border border-white/20 hover:bg-white/20 transition-colors duration-300">Node.js</span>
+                        <!-- Skills -->
+                        <div class="pt-8">
+                            <p class="text-gray-500 text-sm font-medium mb-4">TECHNOLOGIES</p>
+                            <div class="flex flex-wrap gap-4">
+                                <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm hover:border-cyan-400 hover:text-cyan-400 transition-colors duration-300">HTML/CSS</span>
+                                <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm hover:border-cyan-400 hover:text-cyan-400 transition-colors duration-300">JavaScript</span>
+                                <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm hover:border-cyan-400 hover:text-cyan-400 transition-colors duration-300">React</span>
+                                <span class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm hover:border-cyan-400 hover:text-cyan-400 transition-colors duration-300">Node.js</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -89,35 +104,35 @@
                 <!-- Image Section -->
                 <div class="lg:w-1/2 text-center">
                     <div class="relative inline-block">
-                        <!-- Glow effect behind image -->
-                        <div class="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-2xl scale-110"></div>
+                        <!-- Subtle glow -->
+                        <div class="absolute inset-0 bg-cyan-400/10 rounded-full blur-3xl scale-110"></div>
                         
-                        <!-- Profile Image -->
-                        <img src="./image/me.jpg" 
-                             alt="Enzo Profile" 
-                             class="relative z-10 rounded-full mx-auto w-72 h-72 lg:w-80 lg:h-80 object-cover border-4 border-white/20 shadow-2xl hover:scale-105 transition-transform duration-500 hover:border-blue-300/40">
-                        
-                        <!-- Status indicator -->
-                        <div class="absolute bottom-6 right-6 bg-green-500 w-6 h-6 rounded-full border-4 border-white shadow-lg"></div>
+                        <!-- Image container -->
+                        <div class="relative z-10">
+                            <img src="./image/me 2.jpg" 
+                                alt="Enzo Profile" 
+                                class="rounded-2xl mx-auto w-80 h-80 lg:w-96 lg:h-96 object-cover border border-gray-700 shadow-2xl hover:scale-105 transition-transform duration-500 hover:border-cyan-400/50">
+                            
+                            <!-- Status dot -->
+                            <div class="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-slate-900 shadow-lg animate-pulse" style="animation-duration: 2s;"></div>
+                        </div>
                     </div>
                     
                     <!-- Status text -->
                     <div class="mt-8">
-                        <p class="text-gray-400 text-sm">Available for freelance work</p>
-                        <div class="flex justify-center space-x-6 mt-4 text-2xl">
-                            <span class="hover:scale-110 transition-transform duration-300 cursor-pointer">💻</span>
-                            <span class="hover:scale-110 transition-transform duration-300 cursor-pointer">🚀</span>
-                            <span class="hover:scale-110 transition-transform duration-300 cursor-pointer">✨</span>
+                        <div class="inline-flex items-center space-x-2 bg-gray-800/50 backdrop-blur-sm rounded-full px-6 py-3 border border-gray-700">
+                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse" style="animation-duration: 2s;"></div>
+                            <p class="text-gray-300 text-sm">Available for projects</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Simple scroll indicator -->
+        <!-- Minimal scroll indicator -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-                <div class="w-1 h-3 bg-white/60 rounded-full mt-2"></div>
+            <div class="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center opacity-60">
+                <div class="w-1 h-3 bg-cyan-400 rounded-full mt-2 animate-pulse" style="animation-duration: 2s;"></div>
             </div>
         </div>
     </header>
@@ -434,9 +449,9 @@
                 <div class="inline-flex items-center space-x-2 bg-white/50 backdrop-blur-sm px-6 py-3 rounded-full border border-white/30 shadow-lg">
                     <span class="text-gray-600">Always learning and growing</span>
                     <div class="flex space-x-1">
-                        <div class="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
-                        <div class="w-2 h-2 bg-purple-500 rounded-full animate-bounce delay-75"></div>
-                        <div class="w-2 h-2 bg-teal-500 rounded-full animate-bounce delay-150"></div>
+                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                        <div class="w-2 h-2 bg-teal-500 rounded-full"></div>
                     </div>
                 </div>
             </div>
