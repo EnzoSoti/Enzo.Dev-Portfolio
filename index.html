@@ -453,9 +453,9 @@
                         </div>
                         <h5 class="font-bold text-gray-800 mb-3 text-lg">Node.js</h5>
                         <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                            <div class="bg-gradient-to-r from-green-400 to-green-600 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 80%"></div>
+                            <div class="bg-gradient-to-r from-green-400 to-green-600 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 65%"></div>
                         </div>
-                        <span class="text-sm font-medium text-gray-600 mt-2">80%</span>
+                        <span class="text-sm font-medium text-gray-600 mt-2">65%</span>
                     </div>
                 </div>
 
@@ -467,9 +467,9 @@
                         </div>
                         <h5 class="font-bold text-gray-800 mb-3 text-lg">REST API</h5>
                         <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                            <div class="bg-gradient-to-r from-indigo-400 to-purple-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 80%"></div>
+                            <div class="bg-gradient-to-r from-indigo-400 to-purple-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 50%"></div>
                         </div>
-                        <span class="text-sm font-medium text-gray-600 mt-2">80%</span>
+                        <span class="text-sm font-medium text-gray-600 mt-2">50%</span>
                     </div>
                 </div>
             </div>
@@ -497,41 +497,51 @@
     </div>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-16 bg-gradient-to-b from-gray-50 to-gray-100 hidden scroll-slide-right">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-2">Featured Projects</h2>
-            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">A collection of my recent work showcasing various technologies and problem-solving approaches</p>
+    <section id="projects" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-white mb-4">Featured Projects</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6"></div>
+                <p class="text-gray-300 text-lg max-w-3xl mx-auto">Explore my latest work showcasing innovative solutions and cutting-edge technologies</p>
+            </div>
             
             <!-- Project Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl scroll-drop-fade">
-                    <div class="relative">
-                        <img src="https://cdn.pixabay.com/photo/2018/05/04/20/01/website-3374825_1280.jpg" alt="Grade Calculator" class="w-full h-64 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                            <h3 class="text-white text-2xl font-bold p-6">Grade Calculator</h3>
+                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-500 hover:scale-105">
+                    <div class="relative overflow-hidden">
+                        <img src="https://cdn.pixabay.com/photo/2018/05/04/20/01/website-3374825_1280.jpg" alt="Grade Calculator" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 left-6 text-white">
+                            <h3 class="text-2xl font-bold">Grade Calculator</h3>
                         </div>
                     </div>
+                    
                     <div class="p-6">
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">HTML5</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">CSS3</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript (ES6+)</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">LocalStorage API</span>
+                            <span class="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">HTML5</span>
+                            <span class="bg-gradient-to-r from-green-500 to-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">CSS3</span>
+                            <span class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-gradient-to-r from-purple-500 to-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full">LocalStorage</span>
                         </div>
                         
-                        <p class="text-gray-700 mb-4">A comprehensive grade calculator tailored for the OUU grading system at STI College Fairview. Helps students track academic performance and predict final grades based on assignment weights.</p>
+                        <p class="text-gray-300 mb-6 leading-relaxed">A comprehensive grade calculator tailored for the OUU grading system at STI College Fairview. Helps students track academic performance and predict final grades based on assignment weights.</p>
                         
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Challenges & Solutions</h4>
-                            <p class="text-gray-600 text-sm">Creating an accurate algorithm for the specialized OUU grading system was challenging. Resolved this by implementing custom calculation logic and extensive testing with real student data to ensure accuracy.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-blue-500">
+                            <h4 class="font-semibold text-white mb-2 flex items-center">
+                                <svg class="w-4 h-4 mr-2 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
+                                </svg>
+                                Key Challenge
+                            </h4>
+                            <p class="text-gray-400 text-sm">Creating an accurate algorithm for the specialized OUU grading system. Resolved through custom calculation logic and extensive testing with real student data.</p>
                         </div>
                         
-                        <div class="flex gap-4">
-                            <a href="https://grade-calculator-xi.vercel.app/" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                        <div class="flex gap-3">
+                            <a href="https://grade-calculator-xi.vercel.app/" class="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
                                 Live Demo
                             </a>
-                            <a href="https://github.com/EnzoSoti/somethingnew" class="border border-gray-300 text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-lg transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/EnzoSoti/somethingnew" class="flex-1 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300" target="_blank" rel="noopener noreferrer">
                                 GitHub
                             </a>
                         </div>
@@ -539,33 +549,40 @@
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl scroll-drop-fade">
-                    <div class="relative">
-                        <img src="https://cdn.pixabay.com/photo/2018/01/28/10/59/web-3113279_1280.jpg" alt="Dashboard Template" class="w-full h-64 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                            <h3 class="text-white text-2xl font-bold p-6">Dashboard Template</h3>
+                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-purple-500 transition-all duration-500 hover:scale-105">
+                    <div class="relative overflow-hidden">
+                        <img src="https://cdn.pixabay.com/photo/2018/01/28/10/59/web-3113279_1280.jpg" alt="Dashboard Template" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 left-6 text-white">
+                            <h3 class="text-2xl font-bold">Dashboard Template</h3>
                         </div>
                     </div>
+                    
                     <div class="p-6">
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">HTML5</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Tailwind CSS</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Chart.js</span>
+                            <span class="bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs font-semibold px-3 py-1 rounded-full">HTML5</span>
+                            <span class="bg-gradient-to-r from-cyan-500 to-cyan-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Tailwind</span>
+                            <span class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-gradient-to-r from-pink-500 to-pink-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Chart.js</span>
                         </div>
                         
-                        <p class="text-gray-700 mb-4">A responsive admin dashboard template with collapsible sidebar, dark/light mode toggle, and interactive components. Created as a reusable foundation for web applications requiring admin functionality.</p>
+                        <p class="text-gray-300 mb-6 leading-relaxed">A responsive admin dashboard template with collapsible sidebar, dark/light mode toggle, and interactive components. Created as a reusable foundation for web applications requiring admin functionality.</p>
                         
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Challenges & Solutions</h4>
-                            <p class="text-gray-600 text-sm">Ensuring responsive design across all device sizes while maintaining functionality was difficult. Implemented a mobile-first approach with Tailwind's responsive classes and created custom JavaScript for component interactivity.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-purple-500">
+                            <h4 class="font-semibold text-white mb-2 flex items-center">
+                                <svg class="w-4 h-4 mr-2 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
+                                </svg>
+                                Key Challenge
+                            </h4>
+                            <p class="text-gray-400 text-sm">Ensuring responsive design across all device sizes. Implemented mobile-first approach with Tailwind's responsive classes and custom JavaScript for component interactivity.</p>
                         </div>
                         
-                        <div class="flex gap-4">
-                            <a href="https://tailwindcss4-iota.vercel.app/" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                        <div class="flex gap-3">
+                            <a href="https://tailwindcss4-iota.vercel.app/" class="flex-1 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
                                 Live Demo
                             </a>
-                            <a href="https://github.com/EnzoSoti/tailwindcss4" class="border border-gray-300 text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-lg transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/EnzoSoti/tailwindcss4" class="flex-1 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300" target="_blank" rel="noopener noreferrer">
                                 GitHub
                             </a>
                         </div>
@@ -573,34 +590,40 @@
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl scroll-drop-fade">
-                    <div class="relative">
-                        <img src="./image/best-chat-apps-to-know.avif" alt="Chat Application" class="w-full h-64 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                            <h3 class="text-white text-2xl font-bold p-6">Chat Application</h3>
+                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-green-500 transition-all duration-500 hover:scale-105">
+                    <div class="relative overflow-hidden">
+                        <img src="./image/best-chat-apps-to-know.avif" alt="Chat Application" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 left-6 text-white">
+                            <h3 class="text-2xl font-bold">Chat Application</h3>
                         </div>
                     </div>
+                    
                     <div class="p-6">
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Node.js</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Socket.io</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Firebase</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Express</span>
+                            <span class="bg-gradient-to-r from-green-500 to-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Node.js</span>
+                            <span class="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Socket.io</span>
+                            <span class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Firebase</span>
+                            <span class="bg-gradient-to-r from-purple-500 to-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Express</span>
                         </div>
                         
-                        <p class="text-gray-700 mb-4">A real-time chat application featuring instant messaging, user authentication, and message persistence. Supports both group and private conversations with read receipts and typing indicators.</p>
+                        <p class="text-gray-300 mb-6 leading-relaxed">A real-time chat application featuring instant messaging, user authentication, and message persistence. Supports both group and private conversations with read receipts and typing indicators.</p>
                         
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Challenges & Solutions</h4>
-                            <p class="text-gray-600 text-sm">Implementing real-time communication with minimal latency was complex. Utilized Socket.io with optimized event handlers and Firebase for efficient data synchronization. Added offline message queuing to handle connectivity issues.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-green-500">
+                            <h4 class="font-semibold text-white mb-2 flex items-center">
+                                <svg class="w-4 h-4 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
+                                </svg>
+                                Key Challenge
+                            </h4>
+                            <p class="text-gray-400 text-sm">Implementing real-time communication with minimal latency. Utilized Socket.io with optimized event handlers and Firebase for efficient data synchronization with offline message queuing.</p>
                         </div>
                         
-                        <div class="flex gap-4">
-                            <a href="https://chat-application-ruby-mu.vercel.app/" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                        <div class="flex gap-3">
+                            <a href="https://chat-application-ruby-mu.vercel.app/" class="flex-1 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
                                 Live Demo
                             </a>
-                            <a href="https://github.com/EnzoSoti/chat-application" class="border border-gray-300 text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-lg transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/EnzoSoti/chat-application" class="flex-1 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300" target="_blank" rel="noopener noreferrer">
                                 GitHub
                             </a>
                         </div>
@@ -608,33 +631,40 @@
                 </div>
                 
                 <!-- Project 4 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl scroll-drop-fade">
-                    <div class="relative">
-                        <img src="./image/maxresdefault.jpg" alt="Capstone Title Generator" class="w-full h-64 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                            <h3 class="text-white text-2xl font-bold p-6">Capstone Title Generator</h3>
+                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-yellow-500 transition-all duration-500 hover:scale-105">
+                    <div class="relative overflow-hidden">
+                        <img src="./image/maxresdefault.jpg" alt="Capstone Title Generator" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 left-6 text-white">
+                            <h3 class="text-2xl font-bold">Capstone Title Generator</h3>
                         </div>
                     </div>
+                    
                     <div class="p-6">
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">OpenAI API</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">HTML/CSS</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">JSON</span>
+                            <span class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white text-xs font-semibold px-3 py-1 rounded-full">OpenAI API</span>
+                            <span class="bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full">HTML/CSS</span>
+                            <span class="bg-gradient-to-r from-teal-500 to-teal-600 text-white text-xs font-semibold px-3 py-1 rounded-full">JSON</span>
                         </div>
                         
-                        <p class="text-gray-700 mb-4">An AI-powered application that helps students generate relevant and innovative capstone project titles based on keywords, areas of interest, and academic discipline.</p>
+                        <p class="text-gray-300 mb-6 leading-relaxed">An AI-powered application that helps students generate relevant and innovative capstone project titles based on keywords, areas of interest, and academic discipline.</p>
                         
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Challenges & Solutions</h4>
-                            <p class="text-gray-600 text-sm">Creating relevant title suggestions across diverse academic fields was challenging. Implemented a domain-specific training dataset and keyword categorization system to improve relevance. Added user feedback loops to continuously improve suggestion quality.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-yellow-500">
+                            <h4 class="font-semibold text-white mb-2 flex items-center">
+                                <svg class="w-4 h-4 mr-2 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
+                                </svg>
+                                Key Challenge
+                            </h4>
+                            <p class="text-gray-400 text-sm">Creating relevant title suggestions across diverse academic fields. Implemented domain-specific training datasets and keyword categorization with user feedback loops.</p>
                         </div>
                         
-                        <div class="flex gap-4">
-                            <a href="https://capstone-title-gen-three.vercel.app/" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                        <div class="flex gap-3">
+                            <a href="https://capstone-title-gen-three.vercel.app/" class="flex-1 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
                                 Live Demo
                             </a>
-                            <a href="https://github.com/EnzoSoti/WebSys" class="border border-gray-300 text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-lg transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/EnzoSoti/WebSys" class="flex-1 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300" target="_blank" rel="noopener noreferrer">
                                 GitHub
                             </a>
                         </div>
@@ -642,33 +672,40 @@
                 </div>
                 
                 <!-- Project 5 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl scroll-drop-fade">
-                    <div class="relative">
-                        <img src="./image/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_bilz9pg5y8l7t9te1818.webp" alt="Firebase CRUD" class="w-full h-64 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                            <h3 class="text-white text-2xl font-bold p-6">Firebase CRUD</h3>
+                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-red-500 transition-all duration-500 hover:scale-105">
+                    <div class="relative overflow-hidden">
+                        <img src="./image/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_bilz9pg5y8l7t9te1818.webp" alt="Firebase CRUD" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 left-6 text-white">
+                            <h3 class="text-2xl font-bold">Firebase CRUD</h3>
                         </div>
                     </div>
+                    
                     <div class="p-6">
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Firebase Firestore</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Firebase Auth</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">HTML/CSS</span>
+                            <span class="bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Firestore</span>
+                            <span class="bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Firebase Auth</span>
+                            <span class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">HTML/CSS</span>
                         </div>
                         
-                        <p class="text-gray-700 mb-4">A demonstration of Firebase integration with complete CRUD (Create, Read, Update, Delete) functionality. Features real-time data synchronization and user authentication.</p>
+                        <p class="text-gray-300 mb-6 leading-relaxed">A demonstration of Firebase integration with complete CRUD (Create, Read, Update, Delete) functionality. Features real-time data synchronization and user authentication.</p>
                         
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Challenges & Solutions</h4>
-                            <p class="text-gray-600 text-sm">Managing data consistency during concurrent operations was difficult. Implemented optimistic UI updates with rollback mechanisms and transaction-based writes to ensure data integrity. Added offline capabilities with proper sync resolution.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-red-500">
+                            <h4 class="font-semibold text-white mb-2 flex items-center">
+                                <svg class="w-4 h-4 mr-2 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
+                                </svg>
+                                Key Challenge
+                            </h4>
+                            <p class="text-gray-400 text-sm">Managing data consistency during concurrent operations. Implemented optimistic UI updates with rollback mechanisms and transaction-based writes with offline capabilities.</p>
                         </div>
                         
-                        <div class="flex gap-4">
-                            <a href="https://firebase-sable-ten.vercel.app/" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                        <div class="flex gap-3">
+                            <a href="https://firebase-sable-ten.vercel.app/" class="flex-1 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
                                 Live Demo
                             </a>
-                            <a href="https://github.com/EnzoSoti/Firebase" class="border border-gray-300 text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-lg transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/EnzoSoti/Firebase" class="flex-1 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300" target="_blank" rel="noopener noreferrer">
                                 GitHub
                             </a>
                         </div>
@@ -676,39 +713,54 @@
                 </div>
                 
                 <!-- Project 6 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl scroll-drop-fade">
-                    <div class="relative">
-                        <img src="./image/Ultimate-guide-header-Weather-app.png" alt="Weather App" class="w-full h-64 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                            <h3 class="text-white text-2xl font-bold p-6">Weather App</h3>
+                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-cyan-500 transition-all duration-500 hover:scale-105">
+                    <div class="relative overflow-hidden">
+                        <img src="./image/Ultimate-guide-header-Weather-app.png" alt="Weather App" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-4 left-6 text-white">
+                            <h3 class="text-2xl font-bold">Weather App</h3>
                         </div>
                     </div>
+                    
                     <div class="p-6">
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">React</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">OpenWeatherMap API</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">CSS Modules</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Geolocation API</span>
+                            <span class="bg-gradient-to-r from-cyan-500 to-cyan-600 text-white text-xs font-semibold px-3 py-1 rounded-full">React</span>
+                            <span class="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Weather API</span>
+                            <span class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-gradient-to-r from-green-500 to-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Geolocation</span>
                         </div>
                         
-                        <p class="text-gray-700 mb-4">A React-based weather application that provides current conditions, 5-day forecasts, and weather alerts. Features location detection and customizable units (Celsius/Fahrenheit).</p>
+                        <p class="text-gray-300 mb-6 leading-relaxed">A React-based weather application that provides current conditions, 5-day forecasts, and weather alerts. Features location detection and customizable units (Celsius/Fahrenheit).</p>
                         
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Challenges & Solutions</h4>
-                            <p class="text-gray-600 text-sm">Handling API rate limits and unreliable responses was problematic. Implemented request caching, exponential backoff for retries, and fallback weather data sources. Added a geolocation service with IP-based fallback for enhanced user experience.</p>
+                        <div class="bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-cyan-500">
+                            <h4 class="font-semibold text-white mb-2 flex items-center">
+                                <svg class="w-4 h-4 mr-2 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
+                                </svg>
+                                Key Challenge
+                            </h4>
+                            <p class="text-gray-400 text-sm">Handling API rate limits and unreliable responses. Implemented request caching, exponential backoff for retries, and fallback weather data sources with IP-based geolocation.</p>
                         </div>
-                        
-                        <div class="flex gap-4">
-                            <a href="https://weather-project-react-iota.vercel.app/" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                                            <div class="flex gap-3">
+                            <a href="https://weather-app-enzosoti.vercel.app/" class="flex-1 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
                                 Live Demo
                             </a>
-                            <a href="https://github.com/EnzoSoti/weather-project-react" class="border border-gray-300 text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-lg transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/EnzoSoti/weather-app" class="flex-1 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300" target="_blank" rel="noopener noreferrer">
                                 GitHub
                             </a>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <!-- View More Button -->
+            <div class="text-center mt-16">
+                <a href="https://github.com/EnzoSoti" class="inline-block border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
+                    View All Projects on GitHub
+                    <svg class="w-4 h-4 inline-block ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
