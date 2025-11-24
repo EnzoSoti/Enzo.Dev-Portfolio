@@ -39,9 +39,6 @@ function initScrollAnimations() {
     });
 }
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', initScrollAnimations);
-
 // Alternative: Initialize immediately if DOM is already loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initScrollAnimations);
