@@ -1,323 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Enzo P. Daniela - Professional IT Student & Web Developer Portfolio">
+    <title>Enzo P. Daniela | Professional Portfolio</title>
     
-    <head>
-        <!-- Meta Tags -->
-        <meta charset="UTF-8"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <meta name="description" content="Enzo Developer's Portfolio - Junior Web Developer and IT Student">
+    <link rel="icon" href="image/My Logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     
-        <!-- Page Title -->
-        <title>Enzo P. Daniela | Portfolio</title>
-    
-        <!-- Favicon -->
-        <link rel="icon" href="image/My Logo.png" type="image/png">
-    
-        <!-- Tailwind CSS CDN -->
-        <script src="https://cdn.tailwindcss.com"></script>
-    
-        <!-- Custom css -->
-        <link rel="stylesheet" href="./css/font.css"> 
-        <link rel="stylesheet" href="./css/hiddenproject.css">
-        <link rel="stylesheet" href="./css/animations.css">
-    
-        <!-- Font Awesome Icons  -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    
-        <!-- Toastify Notifications -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="css/site.css">
 
-        <!-- tailwind config -->
-        <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    animation: {
-                        'fade-in': 'fadeIn 0.8s ease-out forwards',
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                        'fade-in-delay-1': 'fadeInUp 0.8s ease-out 0.2s forwards',
-                        'fade-in-delay-2': 'fadeInUp 0.8s ease-out 0.4s forwards',
-                        'fade-in-delay-3': 'fadeInUp 0.8s ease-out 0.6s forwards',
-                        'fade-in-delay-4': 'fadeInUp 0.8s ease-out 0.8s forwards',
-                        'fade-in-delay-5': 'fadeInUp 0.8s ease-out 1.0s forwards',
-                        'fade-in-delay-6': 'fadeInUp 0.8s ease-out 1.2s forwards',
-                        'slide-in-left': 'slideInLeft 0.8s ease-out 1.4s forwards',
-                        'slide-in-right': 'slideInRight 0.8s ease-out 1.6s forwards',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'scale(0.9)' },
-                            '100%': { opacity: '1', transform: 'scale(1)' }
-                        },
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        },
-                        slideInLeft: {
-                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' }
-                        },
-                        slideInRight: {
-                            '0%': { opacity: '0', transform: 'translateX(20px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' }
-                        }
-                    }
-                }
-            }
-        }
-        </script>
+</head>
 
-    </head>
+<body class="bg-gray-50 text-gray-900">
     
-<body class="bg-white">
-    
-    <!-- Hero Section -->
-    <header class="bg-white text-gray-900 py-20 min-h-screen flex items-center">
-        <div class="container mx-auto px-4">
-            <!-- Centered Layout -->
-            <div class="text-center max-w-4xl mx-auto space-y-12">
-                <!-- Profile Image First -->
-                <div class="mb-8">
-                    <div class="relative inline-block opacity-0 animate-fade-in">
-                        <img src="./image/github.jpg" 
-                            alt="Enzo Profile" 
-                            class="w-48 h-48 rounded-full mx-auto object-cover border-4 border-white shadow-xl hover:scale-105 transition-transform duration-300">
-                        <!-- <div class="absolute bottom-2 right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white animate-pulse"></div> -->
-                    </div>
+    <!-- Navigation -->
+    <nav class="nav-fixed corporate-shadow">
+        <div class="w-full px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <img src="image/My Logo.png" alt="Logo" class="h-10 w-10">
+                    <span class="text-xl font-bold text-blue-900">Enzo P. Daniela</span>
                 </div>
                 
-                <!-- Name and Title -->
-                <div class="space-y-4">
-                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 opacity-0 animate-fade-in-delay-2">
-                        Enzo P. Daniela
-                    </h1>
-                    <h2 class="text-xl md:text-2xl text-gray-600 font-light opacity-0 animate-fade-in-delay-3">
-                        Bachelor of Science in Information Technology (BSIT) | Student
-                    </h2>
-                    <div class="flex justify-center items-center space-x-2 text-gray-500 opacity-0 animate-fade-in-delay-4">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span>STI College Fairview - 4th Year Student</span>
-                    </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-blue-900 font-medium transition-colors relative group">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-900 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#experience" class="text-gray-600 hover:text-blue-900 font-medium transition-colors relative group">
+                        Experience
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-900 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#skills" class="text-gray-600 hover:text-blue-900 font-medium transition-colors relative group">
+                        Skills
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-900 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#projects" class="text-gray-600 hover:text-blue-900 font-medium transition-colors relative group">
+                        Projects
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-900 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#resume" class="text-gray-600 hover:text-blue-900 font-medium transition-colors relative group">
+                        Resume
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-900 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-900 font-medium transition-colors relative group">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-900 transition-all group-hover:w-full"></span>
+                    </a>
                 </div>
                 
-                <!-- Status and Actions -->
-                <div class="space-y-6">
-                    <!-- <div class="inline-flex items-center bg-green-50 border border-green-200 rounded-full px-6 py-3 opacity-0 animate-fade-in-delay-5">
-                        <div class="w-3 h-3 bg-green-500 rounded-full mr-3 animate-ping"></div>
-                        <span class="text-green-700 font-medium">Available for internships and projects</span>
-                    </div> -->
-                    
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg opacity-0 animate-slide-in-left">
-                            Get In Touch
-                        </a>
-                        <a href="#projects" class="bg-white hover:bg-gray-50 text-gray-700 px-8 py-3 rounded-lg font-medium border border-gray-300 transition-all duration-300 hover:scale-105 hover:shadow-lg opacity-0 animate-slide-in-right">
-                            View My Work
-                        </a>
-                    </div>
-                </div>
+                <a href="#contact" class="hidden md:block btn-primary text-white px-6 py-2.5 rounded-lg font-medium">
+                    Get in Touch
+                </a>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 space-y-3">
+                <a href="#about" class="block text-gray-600 hover:text-blue-900 font-medium py-2 transition-colors">About</a>
+                <a href="#experience" class="block text-gray-600 hover:text-blue-900 font-medium py-2 transition-colors">Experience</a>
+                <a href="#skills" class="block text-gray-600 hover:text-blue-900 font-medium py-2 transition-colors">Skills</a>
+                <a href="#projects" class="block text-gray-600 hover:text-blue-900 font-medium py-2 transition-colors">Projects</a>
+                <a href="#resume" class="block text-gray-600 hover:text-blue-900 font-medium py-2 transition-colors">Resume</a>
+                <a href="#contact" class="block text-gray-600 hover:text-blue-900 font-medium py-2 transition-colors">Contact</a>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-white relative overflow-hidden">
-        <!-- Background decoration -->
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/3 to-transparent"></div>
-        <div class="absolute top-10 right-10 w-32 h-32 bg-blue-200/20 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-10 left-10 w-40 h-40 bg-purple-200/20 rounded-full blur-3xl"></div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <!-- Header -->
-            <div class="text-center mb-12">
-                <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-800 to-blue-600 bg-clip-text text-transparent mb-4">
-                    About Me
-                </h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
-            </div>
-            
-            <!-- About Content - Side by Side -->
-            <div class="max-w-6xl mx-auto mb-16">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- Personal Info Card -->
-                    <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-gray-100 hover:shadow-xl transition-all duration-500">
-                        <div class="text-center mb-6">
-                            <div class="relative inline-block">
-                                <div class="w-32 h-32 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-300">
-                                    <img src="./image/github.jpg" alt="My Picture" class="w-full h-full object-cover">
-                                </div>
-                                <div class="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                                    4
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="space-y-4">
-                            <p class="text-lg text-gray-700 leading-relaxed">
-                                I'm a <span class="text-blue-600 font-semibold">4th year student</span> at STI College Fairview pursuing a degree in 
-                                <span class="text-purple-600 font-semibold">Information Technology</span>.
-                            </p>
-                            <p class="text-lg text-gray-700 leading-relaxed">
-                                Motivated and detail‑oriented with a strong foundation in web development and IT concepts. I have knowledge in 
-                                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-medium">Java</span>, 
-                                <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded font-medium">Express.js</span>, 
-                                <span class="bg-green-100 text-green-800 px-2 py-1 rounded font-medium">SQL</span>, and 
-                                <span class="bg-red-100 text-red-800 px-2 py-1 rounded font-medium">Firebase</span>,
-                                with experience building simple but functional applications and contributing to team‑driven projects.
-                            </p>
-                        </div>
+    <!-- Hero Section -->
+    <section class="hero-gradient section-padding">
+        <div class="w-full px-4 md:px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                <div class="space-y-6 scroll-slide-left">
+                    <div class="inline-flex items-center bg-blue-50 text-blue-900 px-4 py-2 rounded-full text-sm font-medium border border-blue-100">
+                        <div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                        Available for Opportunities
                     </div>
-
-                    <!-- Education Card -->
-                    <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100 hover:shadow-xl transition-all duration-500">
-                        <div class="text-center mb-6">
-                            <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:scale-105 transition-transform duration-300 inline-block">
-                                <img src="image/sti-picture.png" alt="STI College Logo" class="w-24 h-auto mx-auto">
-                            </div>
-                            <p class="mt-3 text-blue-600 font-semibold">STI College Fairview</p>
-                        </div>
-                        
-                        <div class="space-y-4">
-                            <div>
-                                <h3 class="text-xl lg:text-2xl font-bold text-gray-800 mb-2">
-                                    Bachelor of Science in Information Technology
-                                </h3>
-                                <p class="text-blue-600 font-medium">STI College Fairview • Expected Graduation: July 2026</p>
-                            </div>
-                            
-                            <p class="text-gray-700 leading-relaxed">
-                                Relevant coursework completed via Udemy online classes alongside comprehensive training in software development, 
-                                network administration, database management, and emerging technologies.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Skills Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Programming Languages Card -->
-                <div class="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl hover:scale-105 transition-all duration-500 text-center">
-                    <div class="relative inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-3xl">💻</span>
-                        <div class="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-500 rounded-2xl blur opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Programming Languages</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        Proficient in Java and Express.js for building robust applications and APIs.
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                        Enzo P. <span class="text-blue-900">Daniela</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl text-gray-600 font-light">
+                        IT Student & Web Developer
+                    </h2>
+                    <p class="text-lg text-gray-600 leading-relaxed max-w-lg">
+                        Fourth-year Bachelor of Science in Information Technology student at STI College Fairview, 
+                        specializing in web development with expertise in Java, Express.js, SQL, and Firebase.
                     </p>
-                    <div class="flex flex-wrap gap-2 justify-center">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full font-medium">Java</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full font-medium">Express.js</span>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#contact" class="btn-primary text-white px-8 py-3.5 rounded-lg font-medium">
+                            Contact Me
+                        </a>
+                        <a href="#projects" class="btn-secondary text-blue-900 px-8 py-3.5 rounded-lg font-medium">
+                            View Projects
+                        </a>
                     </div>
                 </div>
                 
-                <!-- Databases Card -->
-                <div class="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl hover:scale-105 transition-all duration-500 text-center">
-                    <div class="relative inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-3xl">🗄️</span>
-                        <div class="absolute inset-0 bg-gradient-to-br from-green-400 to-green-500 rounded-2xl blur opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Databases</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        Experience with both SQL and NoSQL databases for data management and storage.
-                    </p>
-                    <div class="flex flex-wrap gap-2 justify-center">
-                        <span class="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full font-medium">SQL</span>
-                        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full font-medium">Firebase</span>
-                    </div>
-                </div>
-                
-                <!-- Tools Card -->
-                <div class="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl hover:scale-105 transition-all duration-500 text-center">
-                    <div class="relative inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-3xl">🛠️</span>
-                        <div class="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-500 rounded-2xl blur opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Tools</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        Proficient with development tools for version control and code editing.
-                    </p>
-                    <div class="flex flex-wrap gap-2 justify-center">
-                        <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full font-medium">Git</span>
-                        <span class="px-3 py-1 bg-gray-100 text-gray-800 text-xs rounded-full font-medium">GitHub</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full font-medium">VS Code</span>
+                <div class="flex justify-center scroll-slide-right">
+                    <div class="relative">
+                        <div class="w-80 h-80 rounded-2xl overflow-hidden corporate-shadow-xl relative">
+                            <!-- <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-blue-600/20 z-10"></div> -->
+                            <img src="./image/github.jpg" alt="Enzo P. Daniela" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-xl corporate-shadow-lg">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                                <span class="text-sm font-medium text-gray-700">Open to Work</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Where am i good at -->
-    <section id="goodat" class="py-20 relative overflow-hidden scroll-scale-in bg-white">
-        <div class="container mx-auto px-4 relative z-10">
-            <!-- Enhanced title -->
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-6xl font-extrabold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                    Where Am I Good At?
-                </h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mb-4"></div>
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-                    Discover my core technical skills and expertise areas
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-pattern">
+        <div class="w-full px-4 md:px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center scroll-fade-in">Professional Summary</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto scroll-fade-in">
+                    Dedicated IT student with a passion for creating functional, user-focused applications
                 </p>
+                
+                <div class="bg-white rounded-2xl corporate-shadow-lg p-8 md:p-12 scroll-scale-in">
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        As a dedicated fourth-year Information Technology student at STI College Fairview, I bring a strong foundation 
+                        in web development technologies and a passion for creating functional, user-focused applications. My academic 
+                        journey and hands-on project experience have equipped me with practical skills in full-stack development.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                        I specialize in backend development with Express.js and Node.js, database management with SQL and Firebase, 
+                        and building scalable applications using modern web technologies. My collaborative approach and attention to 
+                        detail enable me to contribute effectively to team-driven projects.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 pt-6 border-t border-gray-200">
+                        <div class="flex items-start space-x-4 p-4 bg-blue-50 rounded-xl">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-graduation-cap text-blue-900 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Education</h4>
+                                <p class="text-gray-600">Bachelor of Science in Information Technology</p>
+                                <p class="text-sm text-gray-500">STI College Fairview • Expected 2026</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 p-4 bg-blue-50 rounded-xl">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-blue-900 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Location</h4>
+                                <p class="text-gray-600">Caloocan City</p>
+                                <p class="text-sm text-gray-500">Metro Manila, Philippines</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <!-- Enhanced skill cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Java Card -->
-                <div class="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-white/20 hover:scale-105">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-xl flex items-center justify-center text-white text-2xl font-bold mr-4 group-hover:scale-110 transition-transform duration-300">
-                            ☕
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Java</h3>
-                    </div>
-                    <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300 mb-6">
-                        Proficient in Java programming with experience in building applications using object-oriented principles and modern Java features.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">OOP</span>
-                        <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">Collections</span>
-                        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium">APIs</span>
-                    </div>
-                </div>
+        </div>
+    </section>
 
-                <!-- Express.js Card -->
-                <div class="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-white/20 hover:scale-105">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold mr-4 group-hover:scale-110 transition-transform duration-300">
-                            🚀
+    <!-- Experience Section -->
+    <section id="experience" class="section-padding bg-white">
+        <div class="w-full px-4 md:px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center scroll-fade-in">Experience & Education</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto scroll-fade-in">
+                    My academic journey and hands-on project experience
+                </p>
+                
+                <div class="w-full space-y-8">
+                    <!-- Education Experience -->
+                    <div class="bg-white border-l-4 border-blue-900 p-6 md:p-8 corporate-shadow-lg rounded-r-2xl card-hover scroll-slide-left">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-university text-blue-900 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900">Bachelor of Science in Information Technology</h3>
+                                    <p class="text-gray-600 font-medium">STI College Fairview</p>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 mt-2 md:mt-0">2022 - 2026</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 group-hover:text-green-600 transition-colors duration-300">Express.js</h3>
+                        <p class="text-gray-700 leading-relaxed ml-16">
+                            Comprehensive training in software development, database management, network administration, and emerging 
+                            technologies. Complemented with specialized coursework through Udemy online classes focusing on modern 
+                            web development frameworks and best practices.
+                        </p>
                     </div>
-                    <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300 mb-6">
-                        Experienced in building server-side applications and RESTful APIs using Express.js framework with Node.js.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">REST APIs</span>
-                        <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-medium">Middleware</span>
-                        <span class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">Routing</span>
-                    </div>
-                </div>
 
-                <!-- SQL Card -->
-                <div class="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-white/20 hover:scale-105">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl flex items-center justify-center text-white text-2xl font-bold mr-4 group-hover:scale-110 transition-transform duration-300">
-                            🗃️
+                    <!-- Capstone Project -->
+                    <div class="bg-white border-l-4 border-blue-900 p-6 md:p-8 corporate-shadow-lg rounded-r-2xl card-hover scroll-slide-right">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-project-diagram text-blue-900 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900">Backend Developer - OGFMSI Project</h3>
+                                    <p class="text-gray-600 font-medium">Capstone Project (Thesis)</p>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 mt-2 md:mt-0">2024 - 2025</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">SQL</h3>
-                    </div>
-                    <p class="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300 mb-6">
-                        Skilled in database design, querying, and management using SQL for relational database systems.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Queries</span>
-                        <span class="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium">Joins</span>
-                        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">Normalization</span>
+                        <p class="text-gray-700 leading-relaxed ml-16 mb-4">
+                            Developed a comprehensive gym management system for Fitworx Gym, replacing manual operations with 
+                            digital solutions. Contributed to backend development, API implementation, and database architecture.
+                        </p>
+                        <div class="ml-16 flex flex-wrap gap-2">
+                            <span class="bg-blue-50 text-blue-900 px-3 py-1 rounded-full text-sm font-medium">Express.js</span>
+                            <span class="bg-blue-50 text-blue-900 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
+                            <span class="bg-blue-50 text-blue-900 px-3 py-1 rounded-full text-sm font-medium">MySQL</span>
+                            <span class="bg-blue-50 text-blue-900 px-3 py-1 rounded-full text-sm font-medium">Firebase</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -325,790 +231,517 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-16 bg-white scroll-scale-in relative overflow-hidden">
-        <!-- Background decoration -->
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute top-10 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-            <div class="absolute top-40 right-10 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
-            <div class="absolute bottom-10 left-1/2 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000"></div>
-        </div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <!-- Section Header -->
-            <div class="text-center mb-16">
-                <div class="inline-block">
-                    <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 bg-clip-text text-transparent mb-4">
-                        Skills & Technologies
-                    </h2>
-                    <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
-                </div>
-                <p class="text-gray-600 mt-6 text-lg max-w-2xl mx-auto">
-                    Crafting digital experiences with modern tools and technologies
+    <section id="skills" class="section-padding bg-pattern">
+        <div class="w-full px-4 md:px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center scroll-fade-in">Technical Skills</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto scroll-fade-in">
+                    Proficient in modern web technologies with hands-on experience in full-stack development
                 </p>
-            </div>
-
-            <!-- Soft Skills Section -->
-            <!-- <div class="max-w-4xl mx-auto mb-16">
-                <div class="text-center mb-8">
-                    <h3 class="text-3xl font-bold text-gray-800 mb-4">Soft Skills</h3>
-                    <p class="text-gray-600">Essential interpersonal skills that enhance teamwork and productivity</p>
-                </div>
                 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <div class="bg-white/70 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-100 text-center">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-comments text-blue-600 text-xl"></i>
+                <div class="w-full grid md:grid-cols-3 gap-8">
+                    <!-- Programming & Frameworks -->
+                    <div class="bg-white rounded-2xl corporate-shadow-lg p-8 scroll-scale-in card-hover">
+                        <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-code text-blue-900 text-2xl"></i>
                         </div>
-                        <h4 class="font-semibold text-gray-800">Communication</h4>
-                    </div>
-                    
-                    <div class="bg-white/70 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-100 text-center">
-                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-clock text-green-600 text-xl"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Programming & Frameworks</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-gray-700">Java</span>
+                                    <span class="text-gray-600">75%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3 skill-container">
+                                    <div class="skill-fill" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-gray-700">Express.js / Node.js</span>
+                                    <span class="text-gray-600">70%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3 skill-container">
+                                    <div class="skill-fill" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-gray-700">JavaScript</span>
+                                    <span class="text-gray-600">80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3 skill-container">
+                                    <div class="skill-fill" style="width: 80%"></div>
+                                </div>
+                            </div>
                         </div>
-                        <h4 class="font-semibold text-gray-800">Time Management</h4>
                     </div>
-                    
-                    <div class="bg-white/70 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-100 text-center">
-                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-users text-purple-600 text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-gray-800">Teamwork</h4>
-                    </div>
-                    
-                    <div class="bg-white/70 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-100 text-center">
-                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-lightbulb text-yellow-600 text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-gray-800">Problem-Solving</h4>
-                    </div>
-                    
-                    <div class="bg-white/70 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-100 text-center">
-                        <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-sync-alt text-indigo-600 text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-gray-800">Adaptability</h4>
-                    </div>
-                    
-                    <div class="bg-white/70 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-100 text-center">
-                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-search text-red-600 text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-gray-800">Attention to Detail</h4>
-                    </div>
-                </div>
-            </div> -->
 
-            <!-- Technical Skills Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                <!-- Java Skill -->
-                <div class="group bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-white/20 scroll-stagger">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                            <span class="text-white text-2xl font-bold">☕</span>
+                    <!-- Database Management -->
+                    <div class="bg-white rounded-2xl corporate-shadow-lg p-8 scroll-scale-in card-hover">
+                        <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-database text-blue-900 text-2xl"></i>
                         </div>
-                        <h5 class="font-bold text-gray-800 mb-3 text-lg">Java</h5>
-                        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                            <div class="bg-gradient-to-r from-orange-400 to-red-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 75%"></div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Database Management</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-gray-700">SQL / MySQL</span>
+                                    <span class="text-gray-600">80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3 skill-container">
+                                    <div class="skill-fill" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-gray-700">Firebase / Firestore</span>
+                                    <span class="text-gray-600">65%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3 skill-container">
+                                    <div class="skill-fill" style="width: 65%"></div>
+                                </div>
+                            </div>
                         </div>
-                        <span class="text-sm font-medium text-gray-600 mt-2">75%</span>
                     </div>
-                </div>
 
-                <!-- Express.js Skill -->
-                <div class="group bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-white/20 scroll-stagger">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                            <span class="text-white text-2xl font-bold">🚀</span>
+                    <!-- Tools & Technologies -->
+                    <div class="bg-white rounded-2xl corporate-shadow-lg p-8 scroll-scale-in card-hover">
+                        <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-tools text-blue-900 text-2xl"></i>
                         </div>
-                        <h5 class="font-bold text-gray-800 mb-3 text-lg">Express.js</h5>
-                        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                            <div class="bg-gradient-to-r from-green-400 to-green-600 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 70%"></div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Development Tools</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex flex-col items-center p-4 bg-gray-50 rounded-xl">
+                                <i class="fab fa-git-alt text-2xl text-blue-900 mb-2"></i>
+                                <span class="font-medium text-gray-700 text-sm text-center">Git</span>
+                            </div>
+                            <div class="flex flex-col items-center p-4 bg-gray-50 rounded-xl">
+                                <i class="fab fa-github text-2xl text-blue-900 mb-2"></i>
+                                <span class="font-medium text-gray-700 text-sm text-center">GitHub</span>
+                            </div>
+                            <div class="flex flex-col items-center p-4 bg-gray-50 rounded-xl">
+                                <i class="fas fa-code text-2xl text-blue-900 mb-2"></i>
+                                <span class="font-medium text-gray-700 text-sm text-center">VS Code</span>
+                            </div>
+                            <div class="flex flex-col items-center p-4 bg-gray-50 rounded-xl">
+                                <i class="fas fa-terminal text-2xl text-blue-900 mb-2"></i>
+                                <span class="font-medium text-gray-700 text-sm text-center">Terminal</span>
+                            </div>
                         </div>
-                        <span class="text-sm font-medium text-gray-600 mt-2">70%</span>
-                    </div>
-                </div>
-
-                <!-- SQL Skill -->
-                <div class="group bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-white/20 scroll-stagger">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                            <span class="text-white text-2xl font-bold">🗃️</span>
-                        </div>
-                        <h5 class="font-bold text-gray-800 mb-3 text-lg">SQL</h5>
-                        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                            <div class="bg-gradient-to-r from-blue-400 to-cyan-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 80%"></div>
-                        </div>
-                        <span class="text-sm font-medium text-gray-600 mt-2">80%</span>
-                    </div>
-                </div>
-
-                <!-- Firebase Skill -->
-                <div class="group bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-white/20 scroll-stagger">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                            <span class="text-white text-2xl font-bold">🔥</span>
-                        </div>
-                        <h5 class="font-bold text-gray-800 mb-3 text-lg">Firebase</h5>
-                        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                            <div class="bg-gradient-to-r from-yellow-400 to-orange-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 65%"></div>
-                        </div>
-                        <span class="text-sm font-medium text-gray-600 mt-2">65%</span>
-                    </div>
-                </div>
-
-                <!-- Git Skill -->
-                <div class="group bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-white/20 scroll-stagger">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                            <i class="fab fa-git-alt text-white text-2xl"></i>
-                        </div>
-                        <h5 class="font-bold text-gray-800 mb-3 text-lg">Git</h5>
-                        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                            <div class="bg-gradient-to-r from-red-400 to-red-600 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 75%"></div>
-                        </div>
-                        <span class="text-sm font-medium text-gray-600 mt-2">75%</span>
-                    </div>
-                </div>
-
-                <!-- GitHub Skill -->
-                <div class="group bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-white/20 scroll-stagger">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                            <i class="fab fa-github text-white text-2xl"></i>
-                        </div>
-                        <h5 class="font-bold text-gray-800 mb-3 text-lg">GitHub</h5>
-                        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                            <div class="bg-gradient-to-r from-gray-700 to-gray-900 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 80%"></div>
-                        </div>
-                        <span class="text-sm font-medium text-gray-600 mt-2">80%</span>
-                    </div>
-                </div>
-
-                <!-- VS Code Skill -->
-                <div class="group bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-white/20 scroll-stagger">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                            <i class="fas fa-code text-white text-2xl"></i>
-                        </div>
-                        <h5 class="font-bold text-gray-800 mb-3 text-lg">VS Code</h5>
-                        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                            <div class="bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 85%"></div>
-                        </div>
-                        <span class="text-sm font-medium text-gray-600 mt-2">85%</span>
-                    </div>
-                </div>
-
-                <!-- REST API Skill -->
-                <!-- <div class="group bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border border-white/20 scroll-stagger">
-                    <div class="flex flex-col items-center text-center">
-                        <div class="w-16 h-16 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                            <i class="fas fa-server text-white text-2xl"></i>
-                        </div>
-                        <h5 class="font-bold text-gray-800 mb-3 text-lg">REST API</h5>
-                        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                            <div class="bg-gradient-to-r from-indigo-400 to-purple-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 70%"></div>
-                        </div>
-                        <span class="text-sm font-medium text-gray-600 mt-2">70%</span>
-                    </div>
-                </div> -->
-            </div>
-
-            <!-- Call to Action -->
-            <div class="text-center mt-16">
-                <div class="inline-flex items-center space-x-2 bg-white/50 backdrop-blur-sm px-6 py-3 rounded-full border border-white/30 shadow-lg">
-                    <span class="text-gray-600">Always learning and growing</span>
-                    <div class="flex space-x-1">
-                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
-                        <div class="w-2 h-2 bg-teal-500 rounded-full"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Button to toggle projects -->
-    <div class="text-center mb-4 sm:mb-6 md:mb-8 scroll-pulse">
-        <button id="toggleProjectsBtn" class="mt-6 sm:mt-8 md:mt-10 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full transition-all duration-300 font-semibold sm:font-bold text-base sm:text-lg shadow-md sm:shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center mx-auto" aria-controls="projects" aria-expanded="false" type="button">
-            <span id="toggleLabel">Show Projects</span>
-            <i class="fas fa-chevron-down ml-1 sm:ml-2 text-sm sm:text-base" aria-hidden="true"></i>
-        </button>
-    </div>
-
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold text-white mb-4">Featured Projects</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6"></div>
-                <p class="text-gray-300 text-lg max-w-3xl mx-auto">Explore my latest work showcasing innovative solutions and cutting-edge technologies</p>
-            </div>
-            
-            <!-- Project Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-500 hover:scale-105">
-                    <div class="relative overflow-hidden">
-                        <img src="https://cdn.pixabay.com/photo/2018/05/04/20/01/website-3374825_1280.jpg" alt="Grade Calculator" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                        <div class="absolute bottom-4 left-6 text-white">
-                            <h3 class="text-2xl font-bold">Grade Calculator</h3>
-                        </div>
-                    </div>
-                    
-                    <div class="p-6">
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">HTML5</span>
-                            <span class="bg-gradient-to-r from-green-500 to-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">CSS3</span>
-                            <span class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
-                            <span class="bg-gradient-to-r from-purple-500 to-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full">LocalStorage</span>
-                        </div>
-                        
-                        <p class="text-gray-300 mb-6 leading-relaxed">A comprehensive grade calculator tailored for the OUU grading system at STI College Fairview. Helps students track academic performance and predict final grades based on assignment weights.</p>
-                        
-                        <div class="bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-blue-500">
-                            <h4 class="font-semibold text-white mb-2 flex items-center">
-                                <svg class="w-4 h-4 mr-2 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
-                                </svg>
-                                Key Challenge
-                            </h4>
-                            <p class="text-gray-400 text-sm">Creating an accurate algorithm for the specialized OUU grading system. Resolved through custom calculation logic and extensive testing with real student data.</p>
-                        </div>
-                        
-                        <div class="flex gap-3">
-                            <a href="https://grade-calculator-xi.vercel.app/" class="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
-                                Live Demo
-                            </a>
-                            <a href="https://github.com/EnzoSoti/somethingnew" class="flex-1 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300" target="_blank" rel="noopener noreferrer">
-                                GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    <section id="projects" class="section-padding bg-white">
+        <div class="w-full px-4 md:px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center scroll-fade-in">Featured Projects</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto scroll-fade-in">
+                    Selected works showcasing practical application of technical skills
+                </p>
                 
-                <!-- Project 2 -->
-                <!-- <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-purple-500 transition-all duration-500 hover:scale-105">
-                    <div class="relative overflow-hidden">
-                        <img src="https://cdn.pixabay.com/photo/2018/01/28/10/59/web-3113279_1280.jpg" alt="Dashboard Template" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                        <div class="absolute bottom-4 left-6 text-white">
-                            <h3 class="text-2xl font-bold">Dashboard Template</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                    <!-- Project 1: OGFMSI -->
+                    <div class="bg-white rounded-2xl overflow-hidden corporate-shadow-lg card-hover scroll-scale-in">
+                        <div class="h-48 overflow-hidden">
+                            <img src="image/landing.png" alt="OGFMSI System" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-1">OGFMSI - Gym Management</h3>
+                                    <p class="text-gray-600 text-sm">Capstone Project</p>
+                                </div>
+                                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">2024-2025</span>
+                            </div>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-4">
+                                Full-stack gym management system with POS, inventory tracking, and member management capabilities.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">Express.js</span>
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">MySQL</span>
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">Firebase</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="https://fitworxgymph.web.app/" class="flex-1 text-center btn-primary text-white px-4 py-2 rounded-lg text-sm font-medium" target="_blank">
+                                    View Demo
+                                </a>
+                                <a href="https://github.com/deloyxd/ogfmsi" class="flex-1 text-center btn-secondary text-blue-900 px-4 py-2 rounded-lg text-sm font-medium" target="_blank">
+                                    GitHub
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="p-6">
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs font-semibold px-3 py-1 rounded-full">HTML5</span>
-                            <span class="bg-gradient-to-r from-cyan-500 to-cyan-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Tailwind</span>
-                            <span class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
-                            <span class="bg-gradient-to-r from-pink-500 to-pink-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Chart.js</span>
+
+                    <!-- Project 2: Grade Calculator -->
+                    <div class="bg-white rounded-2xl overflow-hidden corporate-shadow-lg card-hover scroll-scale-in">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2018/05/04/20/01/website-3374825_1280.jpg" alt="Grade Calculator" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                         </div>
-                        
-                        <p class="text-gray-300 mb-6 leading-relaxed">A responsive admin dashboard template with collapsible sidebar, dark/light mode toggle, and interactive components. Created as a reusable foundation for web applications requiring admin functionality.</p>
-                        
-                        <div class="bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-purple-500">
-                            <h4 class="font-semibold text-white mb-2 flex items-center">
-                                <svg class="w-4 h-4 mr-2 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
-                                </svg>
-                                Key Challenge
-                            </h4>
-                            <p class="text-gray-400 text-sm">Ensuring responsive design across all device sizes. Implemented mobile-first approach with Tailwind's responsive classes and custom JavaScript for component interactivity.</p>
-                        </div>
-                        
-                        <div class="flex gap-3">
-                            <a href="https://tailwindcss4-iota.vercel.app/" class="flex-1 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
-                                Live Demo
-                            </a>
-                            <a href="https://github.com/EnzoSoti/tailwindcss4" class="flex-1 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300" target="_blank" rel="noopener noreferrer">
-                                GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div> -->
-                
-                <!-- Project 3 -->
-                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-green-500 transition-all duration-500 hover:scale-105">
-                    <div class="relative overflow-hidden">
-                        <img src="./image/best-chat-apps-to-know.avif" alt="Chat Application" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                        <div class="absolute bottom-4 left-6 text-white">
-                            <h3 class="text-2xl font-bold">Chat Application</h3>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-1">Grade Calculator</h3>
+                                    <p class="text-gray-600 text-sm">Academic Tool</p>
+                                </div>
+                                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">2023</span>
+                            </div>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-4">
+                                Specialized calculator for STI College's OUU grading system with performance tracking features.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">JavaScript</span>
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">HTML/CSS</span>
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">LocalStorage</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="https://grade-calculator-xi.vercel.app/" class="flex-1 text-center btn-primary text-white px-4 py-2 rounded-lg text-sm font-medium" target="_blank">
+                                    View Demo
+                                </a>
+                                <a href="https://github.com/EnzoSoti/somethingnew" class="flex-1 text-center btn-secondary text-blue-900 px-4 py-2 rounded-lg text-sm font-medium" target="_blank">
+                                    GitHub
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="p-6">
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gradient-to-r from-green-500 to-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Node.js</span>
-                            <span class="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Socket.io</span>
-                            <span class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Firebase</span>
-                            <span class="bg-gradient-to-r from-purple-500 to-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Express</span>
+
+                    <!-- Project 3: Firebase CRUD -->
+                    <div class="bg-white rounded-2xl overflow-hidden corporate-shadow-lg card-hover scroll-scale-in">
+                        <div class="h-48 overflow-hidden">
+                            <img src="./image/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_bilz9pg5y8l7t9te1818.webp" alt="Firebase CRUD" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                         </div>
-                        
-                        <p class="text-gray-300 mb-6 leading-relaxed">A real-time chat application featuring instant messaging, user authentication, and message persistence. Supports both group and private conversations with read receipts and typing indicators.</p>
-                        
-                        <div class="bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-green-500">
-                            <h4 class="font-semibold text-white mb-2 flex items-center">
-                                <svg class="w-4 h-4 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
-                                </svg>
-                                Key Challenge
-                            </h4>
-                            <p class="text-gray-400 text-sm">Implementing real-time communication with minimal latency. Utilized Socket.io with optimized event handlers and Firebase for efficient data synchronization with offline message queuing.</p>
-                        </div>
-                        
-                        <div class="flex gap-3">
-                            <a href="https://chat-application-ruby-mu.vercel.app/" class="flex-1 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
-                                Live Demo
-                            </a>
-                            <a href="https://github.com/EnzoSoti/chat-application" class="flex-1 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300" target="_blank" rel="noopener noreferrer">
-                                GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 4 -->
-                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-yellow-500 transition-all duration-500 hover:scale-105">
-                    <div class="relative overflow-hidden">
-                        <img src="./image/maxresdefault.jpg" alt="Capstone Title Generator" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                        <div class="absolute bottom-4 left-6 text-white">
-                            <h3 class="text-2xl font-bold">Capstone Title Generator</h3>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-1">Firebase CRUD Application</h3>
+                                    <p class="text-gray-600 text-sm">Demo Project</p>
+                                </div>
+                                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">2023</span>
+                            </div>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-4">
+                                Full CRUD implementation with Firebase authentication and real-time data synchronization.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">Firebase</span>
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">JavaScript</span>
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">Auth</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="https://firebase-sable-ten.vercel.app/" class="flex-1 text-center btn-primary text-white px-4 py-2 rounded-lg text-sm font-medium" target="_blank">
+                                    View Demo
+                                </a>
+                                <a href="https://github.com/EnzoSoti/Firebase" class="flex-1 text-center btn-secondary text-blue-900 px-4 py-2 rounded-lg text-sm font-medium" target="_blank">
+                                    GitHub
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="p-6">
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
-                            <span class="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white text-xs font-semibold px-3 py-1 rounded-full">OpenAI API</span>
-                            <span class="bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full">HTML/CSS</span>
-                            <span class="bg-gradient-to-r from-teal-500 to-teal-600 text-white text-xs font-semibold px-3 py-1 rounded-full">JSON</span>
+
+                    <!-- Project 4: Weather App -->
+                    <div class="bg-white rounded-2xl overflow-hidden corporate-shadow-lg card-hover scroll-scale-in">
+                        <div class="h-48 overflow-hidden">
+                            <img src="./image/Ultimate-guide-header-Weather-app.png" alt="Weather App" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                         </div>
-                        
-                        <p class="text-gray-300 mb-6 leading-relaxed">An AI-powered application that helps students generate relevant and innovative capstone project titles based on keywords, areas of interest, and academic discipline.</p>
-                        
-                        <div class="bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-yellow-500">
-                            <h4 class="font-semibold text-white mb-2 flex items-center">
-                                <svg class="w-4 h-4 mr-2 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
-                                </svg>
-                                Key Challenge
-                            </h4>
-                            <p class="text-gray-400 text-sm">Creating relevant title suggestions across diverse academic fields. Implemented domain-specific training datasets and keyword categorization with user feedback loops.</p>
-                        </div>
-                        
-                        <div class="flex gap-3">
-                            <a href="https://capstone-title-gen-three.vercel.app/" class="flex-1 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
-                                Live Demo
-                            </a>
-                            <a href="https://github.com/EnzoSoti/WebSys" class="flex-1 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300" target="_blank" rel="noopener noreferrer">
-                                GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 5 -->
-                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-red-500 transition-all duration-500 hover:scale-105">
-                    <div class="relative overflow-hidden">
-                        <img src="./image/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_bilz9pg5y8l7t9te1818.webp" alt="Firebase CRUD" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                        <div class="absolute bottom-4 left-6 text-white">
-                            <h3 class="text-2xl font-bold">Firebase CRUD</h3>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-1">Weather Application</h3>
+                                    <p class="text-gray-600 text-sm">React App</p>
+                                </div>
+                                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">2023</span>
+                            </div>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-4">
+                                React-based weather app with location detection and 5-day forecast functionality.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">React</span>
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">API</span>
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">Geolocation</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="https://weather-project-react-iota.vercel.app/" class="flex-1 text-center btn-primary text-white px-4 py-2 rounded-lg text-sm font-medium" target="_blank">
+                                    View Demo
+                                </a>
+                                <a href="https://github.com/EnzoSoti/weather-app" class="flex-1 text-center btn-secondary text-blue-900 px-4 py-2 rounded-lg text-sm font-medium" target="_blank">
+                                    GitHub
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="p-6">
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Firestore</span>
-                            <span class="bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Firebase Auth</span>
-                            <span class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
-                            <span class="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">HTML/CSS</span>
+
+                    <!-- Project 5: Movie Search -->
+                    <div class="bg-white rounded-2xl overflow-hidden corporate-shadow-lg card-hover scroll-scale-in">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://csyxkpbavpcrhwqhcpyy.supabase.co/storage/v1/object/public/challenges/40/challenge-40-thumbnail" alt="Movie Search" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                         </div>
-                        
-                        <p class="text-gray-300 mb-6 leading-relaxed">A demonstration of Firebase integration with complete CRUD (Create, Read, Update, Delete) functionality. Features real-time data synchronization and user authentication.</p>
-                        
-                        <div class="bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-red-500">
-                            <h4 class="font-semibold text-white mb-2 flex items-center">
-                                <svg class="w-4 h-4 mr-2 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
-                                </svg>
-                                Key Challenge
-                            </h4>
-                            <p class="text-gray-400 text-sm">Managing data consistency during concurrent operations. Implemented optimistic UI updates with rollback mechanisms and transaction-based writes with offline capabilities.</p>
-                        </div>
-                        
-                        <div class="flex gap-3">
-                            <a href="https://firebase-sable-ten.vercel.app/" class="flex-1 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
-                                Live Demo
-                            </a>
-                            <a href="https://github.com/EnzoSoti/Firebase" class="flex-1 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300" target="_blank" rel="noopener noreferrer">
-                                GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 6 -->
-                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-cyan-500 transition-all duration-500 hover:scale-105">
-                    <div class="relative overflow-hidden">
-                        <img src="./image/Ultimate-guide-header-Weather-app.png" alt="Weather App" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                        <div class="absolute bottom-4 left-6 text-white">
-                            <h3 class="text-2xl font-bold">Weather App</h3>
-                        </div>
-                    </div>
-                    
-                    <div class="p-6">
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gradient-to-r from-cyan-500 to-cyan-600 text-white text-xs font-semibold px-3 py-1 rounded-full">React</span>
-                            <span class="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Weather API</span>
-                            <span class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
-                            <span class="bg-gradient-to-r from-green-500 to-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Geolocation</span>
-                        </div>
-                        
-                        <p class="text-gray-300 mb-6 leading-relaxed">A React-based weather application that provides current conditions, 5-day forecasts, and weather alerts. Features location detection and customizable units (Celsius/Fahrenheit).</p>
-                        
-                        <div class="bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-cyan-500">
-                            <h4 class="font-semibold text-white mb-2 flex items-center">
-                                <svg class="w-4 h-4 mr-2 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
-                                </svg>
-                                Key Challenge
-                            </h4>
-                            <p class="text-gray-400 text-sm">Handling API rate limits and unreliable responses. Implemented request caching, exponential backoff for retries, and fallback weather data sources with IP-based geolocation.</p>
-                        </div>
-                                            <div class="flex gap-3">
-                            <a href="https://weather-project-react-iota.vercel.app/" class="flex-1 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
-                                Live Demo
-                            </a>
-                            <a href="https://github.com/EnzoSoti/weather-app" class="flex-1 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300" target="_blank" rel="noopener noreferrer">
-                                GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 7 -->
-                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-cyan-500 transition-all duration-500 hover:scale-105">
-                    <div class="relative overflow-hidden">
-                        <img src="https://csyxkpbavpcrhwqhcpyy.supabase.co/storage/v1/object/public/challenges/40/challenge-40-thumbnail" alt="Movie Search App" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                        <div class="absolute bottom-4 left-6 text-white">
-                            <h3 class="text-2xl font-bold">Movie Search App</h3>
-                        </div>
-                    </div>
-                    
-                    <div class="p-6">
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gradient-to-r from-cyan-500 to-cyan-600 text-white text-xs font-semibold px-3 py-1 rounded-full">React</span>
-                            <span class="bg-gradient-to-r from-pink-500 to-pink-600 text-white text-xs font-semibold px-3 py-1 rounded-full">OMDb API</span>
-                            <span class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
-                            <span class="bg-gradient-to-r from-purple-500 to-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Movie Search</span>
-                        </div>
-                        
-                        <p class="text-gray-300 mb-6 leading-relaxed">A sleek React app that lets users search for movies using the OMDb API. Displays detailed info, posters, and handles missing data with smooth fallbacks.</p>
-                        
-                        <div class="bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-cyan-500">
-                            <h4 class="font-semibold text-white mb-2 flex items-center">
-                                <svg class="w-4 h-4 mr-2 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
-                                </svg>
-                                Key Challenge
-                            </h4>
-                            <p class="text-gray-400 text-sm">Handling incomplete or missing data from the API, optimizing search performance, and ensuring responsive UI even with rapid user input.</p>
-                        </div>
-                        
-                        <div class="flex gap-3">
-                            <a href="https://movie-search-six-eta.vercel.app/" class="flex-1 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
-                                Live Demo
-                            </a>
-                            <a href="https://github.com/EnzoSoti/movie-search" class="flex-1 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300" target="_blank" rel="noopener noreferrer">
-                                GitHub
-                            </a>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-1">Movie Search Application</h3>
+                                    <p class="text-gray-600 text-sm">React App</p>
+                                </div>
+                                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">2023</span>
+                            </div>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-4">
+                                Movie database search using OMDb API with detailed information display.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">React</span>
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">OMDb API</span>
+                                <span class="text-xs bg-blue-50 text-blue-900 px-2 py-1 rounded font-medium">JavaScript</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="https://movie-search-six-eta.vercel.app/" class="flex-1 text-center btn-primary text-white px-4 py-2 rounded-lg text-sm font-medium" target="_blank">
+                                    View Demo
+                                </a>
+                                <a href="https://github.com/EnzoSoti/movie-search" class="flex-1 text-center btn-secondary text-blue-900 px-4 py-2 rounded-lg text-sm font-medium" target="_blank">
+                                    GitHub
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- View More Button -->
-            <div class="text-center mt-16">
-                <a href="https://github.com/EnzoSoti" class="inline-block border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105" target="_blank" rel="noopener noreferrer">
-                    View All Projects on GitHub
-                    <svg class="w-4 h-4 inline-block ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                    </svg>
-                </a>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-16 bg-pattern">
+        <div class="w-full px-4 md:px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center scroll-fade-in">Resume</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto scroll-fade-in">
+                    Download or view my latest resume in PDF. A copy is available from both folders for your convenience.
+                </p>
+
+                <div class="w-full grid md:grid-cols-2 gap-6">
+                    <!-- PDF Copy -->
+                    <div class="bg-white rounded-2xl corporate-shadow-lg overflow-hidden card-hover scroll-scale-in">
+                        <div class="p-8 space-y-6">
+                            <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-file-pdf text-blue-900 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">PDF Copy</h3>
+                            <p class="text-gray-600">Download the PDF version of my resume for easy sharing and printing.</p>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <a href="pdf/ENZO%20UPDATED%20RESUME.pdf" target="_blank" class="flex-1 text-center btn-primary text-white px-4 py-3 rounded-lg font-medium">
+                                    View PDF
+                                </a>
+                                <a href="pdf/ENZO%20UPDATED%20RESUME.pdf" download class="flex-1 text-center btn-secondary text-blue-900 px-4 py-3 rounded-lg font-medium">
+                                    Download PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DOC Folder Copy -->
+                    <div class="bg-white rounded-2xl corporate-shadow-lg overflow-hidden card-hover scroll-scale-in">
+                        <div class="p-8 space-y-6">
+                            <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-folder text-blue-900 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">DOC Folder Copy</h3>
+                            <p class="text-gray-600">Access the DOC folder version of my resume for additional formatting options.</p>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <a href="doc/ENZO%20UPDATED%20RESUME.pdf" target="_blank" class="flex-1 text-center btn-primary text-white px-4 py-3 rounded-lg font-medium">
+                                    View PDF
+                                </a>
+                                <a href="doc/ENZO%20UPDATED%20RESUME.pdf" download class="flex-1 text-center btn-secondary text-blue-900 px-4 py-3 rounded-lg font-medium">
+                                    Download PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-white relative overflow-hidden">
-        <div class="container mx-auto px-4 relative z-10">
-            <!-- Header -->
-            <div class="text-center mb-12">
-                <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-800 to-blue-600 bg-clip-text text-transparent mb-4">
-                    Get In Touch
-                </h2>
-                <p class="text-xl text-gray-600 mb-2 max-w-2xl mx-auto">
-                    Interested in working together? Feel free to contact me!
+    <section id="contact" class="section-padding bg-white">
+        <div class="w-full px-4 md:px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center scroll-fade-in">Get In Touch</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto scroll-fade-in">
+                    I'm always open to discussing new opportunities, collaborations, or just having a chat about technology
                 </p>
-                <p class="text-lg text-gray-500 mb-8">
-                    This is automatically sent to my email ✨
-                </p>
-            </div>
-            
-            <!-- Contact Form -->
-            <div class="max-w-3xl mx-auto mb-16">
-                <form id="contactForm" class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-gray-100 hover:shadow-3xl transition-shadow duration-500">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <div class="group">
-                            <label for="name" class="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-blue-600 transition-colors duration-300">
-                                Name *
-                            </label>
-                            <input type="text" 
-                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 hover:border-gray-300" 
-                                id="name" name="name" required
-                                placeholder="Your full name">
+                
+                <div class="w-full">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Contact Information -->
+                        <div class="space-y-8 scroll-slide-left">
+                            <div class="bg-white rounded-2xl corporate-shadow-lg p-8">
+                                <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                                    <i class="fas fa-envelope text-blue-900 mr-3"></i>
+                                    Contact Information
+                                </h3>
+                                
+                                <div class="space-y-6">
+                                    <div class="flex items-start space-x-4 p-4 bg-blue-50 rounded-xl">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <i class="fas fa-envelope text-blue-900"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900 mb-1">Email</h4>
+                                            <p class="text-gray-600">parane.enzo@gmail.com</p>
+                                            <p class="text-sm text-gray-500">Primary contact method</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-4 p-4 bg-blue-50 rounded-xl">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <i class="fas fa-map-marker-alt text-blue-900"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900 mb-1">Location</h4>
+                                            <p class="text-gray-600">Caloocan City, Metro Manila</p>
+                                            <p class="text-sm text-gray-500">Philippines</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-4 p-4 bg-blue-50 rounded-xl">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <i class="fas fa-phone text-blue-900"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900 mb-1">Phone</h4>
+                                            <p class="text-gray-600">Available upon request</p>
+                                            <p class="text-sm text-gray-500">For professional inquiries</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-8 pt-6 border-t border-gray-200">
+                                    <h4 class="font-semibold text-gray-900 mb-4">Connect with me</h4>
+                                    <div class="flex space-x-4">
+                                        <a href="https://github.com/EnzoSoti" target="_blank" class="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center text-white shadow hover:bg-blue-800 transition-colors">
+                                            <i class="fab fa-github text-lg"></i>
+                                        </a>
+                                        <a href="https://www.linkedin.com/in/enzo-daniela-685374324/" target="_blank" class="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center text-white shadow hover:bg-blue-800 transition-colors">
+                                            <i class="fab fa-linkedin-in text-lg"></i>
+                                        </a>
+                                        <a href="https://www.facebook.com/enzo.daniela.31" target="_blank" class="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center text-white shadow hover:bg-blue-800 transition-colors">
+                                            <i class="fab fa-facebook-f text-lg"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="group">
-                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-blue-600 transition-colors duration-300">
-                                Email *
-                            </label>
-                            <input type="email" 
-                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 hover:border-gray-300" 
-                                id="email" name="email" required
-                                placeholder="your.email@example.com">
+                        
+                        <!-- Contact Form -->
+                        <div class="bg-white rounded-2xl corporate-shadow-lg p-8 scroll-slide-right">
+                            <h3 class="text-xl font-bold text-gray-900 mb-6">Email me directly</h3>
+                            <p class="text-gray-600 mb-6">Prefer using your email client? Click the button below to compose an email.</p>
+                            <a href="https://mail.google.com/mail/?view=cm&to=parane.enzo@gmail.com&su=Inquiry%20from%20Portfolio"
+                               target="_blank" rel="noopener"
+                               class="w-full inline-flex items-center justify-center btn-primary text-white px-6 py-4 rounded-lg font-medium">
+                                <i class="fas fa-envelope mr-3"></i>
+                                Email parane.enzo@gmail.com
+                            </a>
+                            
+                            <div class="mt-8 pt-6 border-t border-gray-200">
+                                <h3 class="text-xl font-bold text-gray-900 mb-4">Availability</h3>
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                                    <span class="font-medium text-gray-700">Currently open to opportunities</span>
+                                </div>
+                                <p class="text-gray-600 text-sm">
+                                    I'm actively seeking internship opportunities, freelance projects, and entry-level positions 
+                                    in web development. Feel free to reach out if you think I'd be a good fit for your team!
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div class="mb-6 group">
-                        <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-blue-600 transition-colors duration-300">
-                            Subject
-                        </label>
-                        <input type="text" 
-                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 hover:border-gray-300" 
-                            id="subject" name="subject"
-                            placeholder="What's this about?">
-                    </div>
-                    <div class="mb-8 group">
-                        <label for="message" class="block text-sm font-semibold text-gray-700 mb-2 group-focus-within:text-blue-600 transition-colors duration-300">
-                            Message *
-                        </label>
-                        <textarea class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 hover:border-gray-300 resize-none" 
-                                id="message" name="message" rows="6" required
-                                placeholder="Tell me about your project or just say hello!"></textarea>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" 
-                                class="group relative bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl shadow-blue-500/25">
-                            <span class="flex items-center justify-center space-x-2">
-                                <span>Send Message</span>
-                                <i class="fas fa-paper-plane group-hover:translate-x-1 transition-transform duration-300"></i>
-                            </span>
-                        </button>
-                    </div>
-                    <div id="formStatus" class="mt-6 text-center hidden"></div>
-                </form>
-            </div>
-            
-            <!-- Contact Info Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                <!-- Email Card -->
-                <div class="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl hover:scale-105 transition-all duration-500 text-center">
-                    <div class="relative inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-envelope text-xl"></i>
-                        <div class="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-500 rounded-2xl blur opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-                    </div>
-                    <h4 class="text-xl font-bold text-gray-800 mb-3">Email</h4>
-                    <p class="text-gray-600 font-medium">parane.enzo@gmail.com</p>
-                    <p class="text-sm text-gray-500 mt-2">Response within 24 hours</p>
-                </div>
-                
-                <!-- Phone Card -->
-                <div class="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl hover:scale-105 transition-all duration-500 text-center">
-                    <div class="relative inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 text-white rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-phone text-xl"></i>
-                        <div class="absolute inset-0 bg-gradient-to-br from-green-400 to-green-500 rounded-2xl blur opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-                    </div>
-                    <h4 class="text-xl font-bold text-gray-800 mb-3">Phone</h4>
-                    <p class="text-gray-600 font-medium">0963-322-6873</p>
-                    <p class="text-sm text-gray-500 mt-2">Smart / Talk n' Text</p>
-                </div>
-                
-                <!-- Location Card -->
-                <div class="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl hover:scale-105 transition-all duration-500 text-center">
-                    <div class="relative inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-map-marker-alt text-xl"></i>
-                        <div class="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-500 rounded-2xl blur opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-                    </div>
-                    <h4 class="text-xl font-bold text-gray-800 mb-3">Location</h4>
-                    <p class="text-gray-600 font-medium">2750 Yellowbell St., Area C, Barangay 174, Camarin, Caloocan City</p>
-                    <p class="text-sm text-gray-500 mt-2">Metro Manila, Philippines</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Call-to-Action -->
-    <section class="relative py-20 bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 dark:from-blue-600 dark:via-purple-700 dark:to-indigo-800 text-white text-center overflow-hidden scroll-scale-in">
-        <!-- Animated background elements -->
-        <!-- <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full animate-pulse"></div>
-            <div class="absolute bottom-10 right-10 w-24 h-24 bg-white rounded-full animate-bounce"></div>
-            <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-white rounded-full animate-ping"></div>
-        </div> -->
-        
-        <!-- Content -->
-        <div class="relative z-10">
-            <div class="mb-8 space-y-2">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
-                    Ready to Create Something Amazing?
-                </h2>
-                <p class="text-xl md:text-2xl text-blue-100 font-light max-w-2xl mx-auto">
-                    Let's turn your vision into reality
-                </p>
-            </div>
-            
-            <!-- Buttons Section -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                <a href="#contact" class="group relative bg-white text-blue-600 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 hover:scale-105">
-                    <span class="relative z-10">Let's Talk!</span>
-                    <div class="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div class="absolute inset-0 bg-white rounded-full group-hover:scale-95 transition-transform duration-300"></div>
-                    <span class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-bold">
-                        Let's Talk! ✨
-                    </span>
-                </a>
-                
-                <a href="mailto:parane.enzo@gmail.com" class="group bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-all duration-300 transform hover:scale-105">
-                    <span class="flex items-center gap-2">
-                        📧 Quick Email
-                    </span>
-                </a>
-            </div>
-
-            <!-- Download Resume Button -->
-            <div class="mb-12">
-                <div class="relative inline-block group">
-                    <!-- Main Download Button -->
-                    <button class="bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center hover:scale-105">
-                        <i class="fas fa-download mr-2 text-sm sm:text-base"></i>
-                        <span>Download Resume</span>
-                        <i class="fas fa-chevron-down ml-2 text-sm sm:text-base transition-transform duration-300 group-hover:rotate-180"></i>
-                    </button>
-                    
-                    <!-- Dropdown Menu -->
-                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-20 min-w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                        <a href="doc/ENZO UPDATED RESUME.pdf" class="flex items-center px-4 py-3 hover:bg-gray-50 transition-colors duration-200 text-gray-700 hover:text-emerald-600" download>
-                            <i class="fas fa-file-pdf text-red-500 mr-3"></i>
-                            <span class="font-medium">Download PDF</span>
-                        </a>
-                        <a href="pdf/ENZO UPDATED RESUME.pdf" class="flex items-center px-4 py-3 hover:bg-gray-50 transition-colors duration-200 text-gray-700 hover:text-emerald-600 border-t border-gray-100" download>
-                            <i class="fas fa-file-word text-blue-500 mr-3"></i>
-                            <span class="font-medium">Download Word</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Social proof or additional info -->
-            <div class="flex justify-center items-center gap-8 text-blue-100">
-                <div class="flex items-center gap-2">
-                    <span class="text-2xl">⚡</span>
-                    <span>Fast Response</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="text-2xl">🚀</span>
-                    <span>Quality Work</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="text-2xl">💡</span>
-                    <span>Creative Solutions</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Floating particles effect -->
-        <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute top-1/4 left-1/3 w-2 h-2 bg-white rounded-full animate-bounce" style="animation-delay: 0.5s;"></div>
-            <div class="absolute top-3/4 left-2/3 w-1 h-1 bg-blue-200 rounded-full animate-ping" style="animation-delay: 1s;"></div>
-            <div class="absolute top-1/2 right-1/4 w-3 h-3 bg-purple-200 rounded-full animate-pulse" style="animation-delay: 1.5s;"></div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
-        <!-- Background decoration -->
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent"></div>
-        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent"></div>
-        
-        <div class="container mx-auto px-4 py-8 relative z-10">
-            <!-- Main footer content -->
-            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
-                <!-- Logo and brand -->
-                <div class="flex items-center mb-6 md:mb-0 group">
-                    <div class="relative">
-                        <img src="image/My Logo.png" alt="logo" class="h-12 w-auto transition-transform duration-300 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-blue-400/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="w-full px-6">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+                <!-- Brand & Description -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <img src="image/My Logo.png" alt="Logo" class="h-10 w-10">
+                        <span class="text-xl font-bold">Enzo P. Daniela</span>
                     </div>
-                    <span class="ml-3 text-xl font-semibold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-                        Enzo P. Daniela
-                    </span>
+                    <p class="text-blue-100 leading-relaxed">
+                        IT Student & Web Developer specializing in full-stack development with expertise in Java, 
+                        Express.js, SQL, and Firebase.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/EnzoSoti" class="text-blue-100 hover:text-white transition-colors" target="_blank">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/enzo-daniela-9a8b3a2a6/" class="text-blue-100 hover:text-white transition-colors" target="_blank">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/enzo.daniela.7/" class="text-blue-100 hover:text-white transition-colors" target="_blank">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <!-- Social links -->
-                <div class="flex space-x-6">
-                    <a href="https://github.com/EnzoSoti" 
-                    class="group relative p-3 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110 hover:bg-white/10">
-                        <i class="fab fa-github text-xl group-hover:text-blue-300 transition-colors duration-300"></i>
-                        <div class="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
-                    </a>
-                    <a href="https://www.linkedin.com/in/enzo-daniela-685374324/" 
-                    class="group relative p-3 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110 hover:bg-white/10">
-                        <i class="fab fa-linkedin text-xl group-hover:text-blue-400 transition-colors duration-300"></i>
-                        <div class="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
-                    </a>
-                    <a href="https://www.facebook.com/enzo.daniela.31" 
-                    class="group relative p-3 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110 hover:bg-white/10">
-                        <i class="fab fa-facebook text-xl group-hover:text-blue-500 transition-colors duration-300"></i>
-                        <div class="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
-                    </a>
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#about" class="text-blue-100 hover:text-white transition-colors">About</a>
+                        </li>
+                        <li>
+                            <a href="#experience" class="text-blue-100 hover:text-white transition-colors">Experience</a>
+                        </li>
+                        <li>
+                            <a href="#skills" class="text-blue-100 hover:text-white transition-colors">Skills</a>
+                        </li>
+                        <li>
+                            <a href="#projects" class="text-blue-100 hover:text-white transition-colors">Projects</a>
+                        </li>
+                        <li>
+                            <a href="#contact" class="text-blue-100 hover:text-white transition-colors">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold">Contact Info</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-envelope text-blue-200 mt-1"></i>
+                            <span class="text-blue-100">parane.enzo@gmail.com</span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-blue-200 mt-1"></i>
+                            <span class="text-blue-100">Caloocan City, Philippines</span>
+                        </div>
+                    </div>
+                    <div class="pt-4">
+                        <a href="#contact" class="inline-block bg-white text-blue-900 px-6 py-2.5 rounded-lg font-medium hover:bg-blue-100 transition-colors">
+                            Get in Touch
+                        </a>
+                    </div>
                 </div>
             </div>
             
-            <!-- Divider -->
-            <div class="border-t border-gradient-to-r from-transparent via-gray-600 to-transparent mb-6"></div>
-            
-            <!-- Copyright and additional info -->
-            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                <div class="mb-4 md:mb-0">
-                    <p class="text-gray-300 text-sm">
-                        &copy; 2025 <span class="text-blue-300 font-medium">Enzo P. Daniela</span>. All rights reserved.
-                    </p>
-                    <p class="text-gray-400 text-xs mt-1">
-                        Built with passion and modern web technologies
-                    </p>
-                </div>
-                
-                <!-- Status indicator -->
-                <div class="flex items-center space-x-2 text-sm">
-                    <div class="flex items-center space-x-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full">
-                        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                        <span class="text-green-300 text-xs">Available for freelance and programming related stuffs</span>
-                    </div>
-                </div>
+            <div class="border-t border-blue-800 mt-8 pt-8 text-center">
+                <p class="text-blue-200">
+                    &copy; 2024 Enzo P. Daniela. All rights reserved.
+                </p>
             </div>
         </div>
     </footer>
-    
-    <!-- External JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="./javascript/contact.js"></script>
-    <script src="./javascript/project-button.js"></script>
-    <script src="./javascript/animation.js"></script>
 
-</body>
-</html>
+    <!-- JavaScript Files -->
+    <script src="javascript/site.js"></script>
+
+    
+    </body>
+    </html>
