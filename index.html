@@ -460,6 +460,8 @@
             </div>
         </div>
     </section>
+
+    <!-- Projects Section -->
     <section id="projects" class="section-padding">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-3xl md:text-5xl font-bold text-center mb-4 text-white fade-in-up">
@@ -848,7 +850,60 @@
         </div>
     </footer>
 
+    <!-- AI Chat Widget -->
+    <!-- Floating Chat Button -->
+    <button id="chatButton" class="chat-button" aria-label="Open AI Chat">
+        <i class="fas fa-robot"></i>
+        <span class="chat-badge">AI</span>
+    </button>
+
+    <!-- Chat Widget -->
+    <div id="chatWidget" class="chat-widget hidden">
+        <div class="chat-header">
+            <div class="flex items-center space-x-3">
+                <div class="chat-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div>
+                    <h3 class="chat-title">AI Assistant</h3>
+                    <p class="chat-status">
+                        <span class="status-dot"></span>
+                        Online
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button id="clearChat" class="chat-control-btn" title="Clear Chat">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+                <button id="chatMinimize" class="chat-control-btn" title="Minimize">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button id="chatClose" class="chat-control-btn" title="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="chatMessages" class="chat-messages">
+            <!-- Messages will be added here dynamically -->
+        </div>
+
+        <div class="chat-input-container">
+            <textarea id="chatInput" class="chat-input"
+                placeholder="Ask me about Enzo's experience, projects, or skills..." rows="1"></textarea>
+            <button id="chatSend" class="chat-send-btn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+
+        <div class="chat-footer">
+            <span class="text-xs text-gray-500">Powered by Google Gemini AI</span>
+        </div>
+    </div>
+
     <script src="javascript/site.js"></script>
+    <script type="module" src="javascript/gemini-chat.js"></script>
 </body>
 
 </html>
