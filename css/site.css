@@ -353,21 +353,25 @@ a:hover {
 
 /* View Details Button */
 .view-details-btn {
-    padding: 0.5rem 1rem;
-    background: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    color: var(--text-muted);
-    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    background: #000000;
+    border: 1px solid #000000;
+    color: #ffffff;
+    border-radius: 8px;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .view-details-btn:hover {
-    background: rgba(0, 0, 0, 0.05);
-    border-color: rgba(0, 0, 0, 0.2);
-    color: var(--text-main);
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Project Modal */
@@ -417,10 +421,10 @@ a:hover {
     right: 1rem;
     width: 2.5rem;
     height: 2.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 0.5rem;
-    color: white;
+    color: #000000;
     font-size: 1.25rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -430,8 +434,9 @@ a:hover {
 }
 
 .modal-close:hover {
-    background: rgba(239, 68, 68, 0.2);
-    border-color: rgba(239, 68, 68, 0.5);
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: rgb(239, 68, 68);
     transform: rotate(90deg);
 }
 
@@ -486,6 +491,12 @@ a:hover {
 }
 
 /* Chat Widget Styles */
+
+/* DISABLED - AI Assistant Feature */
+#chatButton,
+#chatWidget {
+    display: none !important;
+}
 
 /* Light Theme Chat Button */
 .chat-button {
@@ -589,13 +600,13 @@ a:hover {
 .chat-title {
     font-size: 16px;
     font-weight: 700;
-    color: white;
+    color: #000000;
     margin: 0;
 }
 
 .chat-status {
     font-size: 12px;
-    color: #a0aec0;
+    color: #666666;
     margin: 2px 0 0 0;
     display: flex;
     align-items: center;
@@ -625,10 +636,10 @@ a:hover {
 .chat-control-btn {
     width: 32px;
     height: 32px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.05);
     border: none;
     border-radius: 8px;
-    color: white;
+    color: #000000;
     cursor: pointer;
     transition: all 0.2s ease;
     display: flex;
@@ -637,7 +648,7 @@ a:hover {
 }
 
 .chat-control-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.1);
     transform: scale(1.05);
 }
 
@@ -724,7 +735,7 @@ a:hover {
 .typing-indicator span {
     width: 8px;
     height: 8px;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 50%;
     animation: typing 1.4s infinite;
 }

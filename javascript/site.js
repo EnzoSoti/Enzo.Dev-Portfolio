@@ -80,14 +80,14 @@ const observer = new IntersectionObserver((entries) => {
                  const progressBars = entry.target.querySelectorAll('.skill-bar-fill');
                  progressBars.forEach(bar => {
                      // Reset width to force transition (optional, but good for re-triggering if needed)
-                     // Actually, CSS transition handles it if width is set inline. 
+                     // Actually, CSS transition handles it if width is set inline.
                      // The inline style has the width. We need to make sure it animates from 0.
                      // A simple way is to store the target width in data attribute and set style.width to 0 initially in CSS or JS, then restore it here.
                      // But based on my CSS, the width is set in the HTML.
                      // Let's rely on the parent fading in for now, or add a specific class.
                  });
             }
-            // For now, let's keep it simple with the fade-ins. 
+            // For now, let's keep it simple with the fade-ins.
             // The CSS transition on .skill-bar-fill is 1.5s, so it will animate as the page loads/redraws.
             // But for a true scroll trigger, we might want to set width to 0 and then to value.
         }
@@ -313,15 +313,15 @@ viewDetailsBtns.forEach(btn => {
             if (project.team) {
                 teamSection = `
                     <div class="mb-6">
-                        <h4 class="text-lg font-bold text-white mb-3 flex items-center">
-                            <i class="fas fa-users text-purple-400 mr-2"></i>Team Members
+                        <h4 class="text-lg font-bold text-black mb-3 flex items-center">
+                            <i class="fas fa-users text-purple-600 mr-2"></i>Team Members
                         </h4>
                         <div class="flex flex-wrap gap-3">
                             ${project.team.map(member => `
                                 <a href="${member.linkedin}" target="_blank" 
-                                   class="flex items-center gap-2 px-4 py-2 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 rounded-lg transition-all">
-                                    <i class="fab fa-linkedin text-blue-400"></i>
-                                    <span class="text-sm text-gray-300">${member.name}</span>
+                                   class="flex items-center gap-2 px-4 py-2 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg transition-all">
+                                    <i class="fab fa-linkedin text-blue-600"></i>
+                                    <span class="text-sm text-gray-700">${member.name}</span>
                                 </a>
                             `).join('')}
                         </div>
@@ -334,17 +334,17 @@ viewDetailsBtns.forEach(btn => {
                     <div class="inline-block bg-gradient-to-r ${project.badgeColor} px-3 py-1 rounded-full text-xs font-bold text-white mb-3">
                         ${project.badge}
                     </div>
-                    <h3 class="text-3xl font-bold text-white mb-2">${project.title}</h3>
-                    <p class="text-gray-400 mb-4">${project.description}</p>
+                    <h3 class="text-3xl font-bold text-black mb-2">${project.title}</h3>
+                    <p class="text-gray-700 mb-4">${project.description}</p>
                     
                     <div class="grid grid-cols-2 gap-4 mb-4">
                         <div class="glass-panel p-3 rounded-lg">
                             <p class="text-xs text-gray-500 mb-1">Role</p>
-                            <p class="text-sm font-semibold text-white">${project.role}</p>
+                            <p class="text-sm font-semibold text-black">${project.role}</p>
                         </div>
                         <div class="glass-panel p-3 rounded-lg">
                             <p class="text-xs text-gray-500 mb-1">Duration</p>
-                            <p class="text-sm font-semibold text-white">${project.duration}</p>
+                            <p class="text-sm font-semibold text-black">${project.duration}</p>
                         </div>
                     </div>
                 </div>
@@ -352,13 +352,13 @@ viewDetailsBtns.forEach(btn => {
                 ${teamSection}
 
                 <div class="mb-6">
-                    <h4 class="text-lg font-bold text-white mb-3 flex items-center">
-                        <i class="fas fa-star text-yellow-400 mr-2"></i>Key Features
+                    <h4 class="text-lg font-bold text-black mb-3 flex items-center">
+                        <i class="fas fa-star text-yellow-600 mr-2"></i>Key Features
                     </h4>
                     <ul class="space-y-2">
                         ${project.features.map(feature => `
-                            <li class="flex items-start gap-2 text-gray-300 text-sm">
-                                <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                            <li class="flex items-start gap-2 text-gray-700 text-sm">
+                                <i class="fas fa-check-circle text-green-600 mt-1"></i>
                                 <span>${feature}</span>
                             </li>
                         `).join('')}
@@ -366,16 +366,16 @@ viewDetailsBtns.forEach(btn => {
                 </div>
 
                 <div class="mb-6">
-                    <h4 class="text-lg font-bold text-white mb-3 flex items-center">
-                        <i class="fas fa-code text-blue-400 mr-2"></i>Tech Stack
+                    <h4 class="text-lg font-bold text-black mb-3 flex items-center">
+                        <i class="fas fa-code text-blue-600 mr-2"></i>Tech Stack
                     </h4>
                     <div class="grid grid-cols-2 gap-3">
                         ${project.techStack.map(tech => `
                             <div class="glass-panel p-3 rounded-lg flex items-center gap-3">
-                                <i class="${tech.icon} text-2xl text-blue-400"></i>
+                                <i class="${tech.icon} text-2xl text-blue-600"></i>
                                 <div>
-                                    <p class="text-sm font-semibold text-white">${tech.name}</p>
-                                    <p class="text-xs text-gray-500">${tech.description}</p>
+                                    <p class="text-sm font-semibold text-black">${tech.name}</p>
+                                    <p class="text-xs text-gray-600">${tech.description}</p>
                                 </div>
                             </div>
                         `).join('')}

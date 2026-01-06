@@ -156,6 +156,11 @@ class GeminiChat {
             if (!response.ok) {
                 const errorData = await response.json();
                 console.error('API Error:', errorData);
+                
+                if (response.status === 403) {
+                    return "I apologize, but I encountered an error. Please try again or contact Enzo directly at parane.enzo@gmail.com.";
+                }
+                
                 throw new Error(`API request failed: ${response.status}`);
             }
 
@@ -171,6 +176,8 @@ class GeminiChat {
             return text;
         } catch (error) {
             console.error('Error sending message to Gemini:', error);
+            
+            // Provide user-friendly error message
             return "I apologize, but I encountered an error. Please try again or contact Enzo directly at parane.enzo@gmail.com.";
         }
     }
