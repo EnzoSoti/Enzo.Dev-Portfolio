@@ -6,9 +6,11 @@ const htmlElement = document.documentElement;
 const currentTheme = localStorage.getItem('theme') || 'light';
 htmlElement.setAttribute('data-theme', currentTheme);
 
-// Update icon based on current theme
+// Update icon and profile image based on current theme
 function updateThemeIcon(theme) {
     const icon = themeToggle.querySelector('i');
+    const profileImage = document.getElementById('profileImage');
+    
     if (icon) {
         if (theme === 'dark') {
             icon.classList.remove('fa-moon');
@@ -18,10 +20,41 @@ function updateThemeIcon(theme) {
             icon.classList.add('fa-moon');
         }
     }
+    
+    // Update profile image based on theme
+    if (profileImage) {
+        if (theme === 'dark') {
+            profileImage.src = './image/new_formal-removebg-preview black.png';
+            profileImage.setAttribute('data-normal', './image/new_formal-removebg-preview black.png');
+            profileImage.setAttribute('data-hover', './image/ops-removebg-preview black.png');
+        } else {
+            profileImage.src = './image/new_formal-removebg-preview.png';
+            profileImage.setAttribute('data-normal', './image/new_formal-removebg-preview.png');
+            profileImage.setAttribute('data-hover', './image/ops-removebg-preview white.png');
+        }
+    }
 }
 
-// Initialize icon
+// Initialize icon and image
 updateThemeIcon(currentTheme);
+
+// Add hover effect for profile image
+const profileImage = document.getElementById('profileImage');
+if (profileImage) {
+    profileImage.addEventListener('mouseenter', function() {
+        const hoverSrc = this.getAttribute('data-hover');
+        if (hoverSrc) {
+            this.src = hoverSrc;
+        }
+    });
+    
+    profileImage.addEventListener('mouseleave', function() {
+        const normalSrc = this.getAttribute('data-normal');
+        if (normalSrc) {
+            this.src = normalSrc;
+        }
+    });
+}
 
 // Toggle theme function
 function toggleTheme() {

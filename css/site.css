@@ -17,18 +17,18 @@
 }
 
 [data-theme="dark"] {
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
+    --bg-primary: #000000;
+    --bg-secondary: #1a1a1a;
     --text-primary: #f1f5f9;
     --text-secondary: #94a3b8;
     --text-muted: #64748b;
     --border: #334155;
     --border-hover: #f1f5f9;
-    --glass-nav-bg: rgba(15, 23, 42, 0.8);
+    --glass-nav-bg: rgba(0, 0, 0, 0.8);
     --btn-primary-bg: #f1f5f9;
     --btn-primary-hover: #ffffff;
-    --btn-primary-text: #0f172a;
-    --badge-bg: #1e293b;
+    --btn-primary-text: #000000;
+    --badge-bg: #1a1a1a;
     --badge-text: #94a3b8;
     --icon-color: #94a3b8;
     --icon-hover: #f1f5f9;
