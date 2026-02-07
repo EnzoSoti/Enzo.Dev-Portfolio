@@ -104,7 +104,6 @@ class GeminiChat {
     async initializeGemini() {
         try {
             this.isInitialized = true;
-            console.log('Gemini AI initialized successfully');
             
             // Initialize with context
             this.conversationHistory = [
@@ -135,14 +134,15 @@ class GeminiChat {
                 parts: [{ text: userMessage }]
             });
 
-            // FIXED: Correct endpoint following official documentation
-            const apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
+            // Use the exact model ID from Google AI Studio
+            // Current playground model: gemini-3-flash-preview
+            const modelId = 'gemini-3-flash-preview';
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${this.apiKey}`;
             
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'x-goog-api-key': this.apiKey  // API key goes in header, not query param
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     contents: this.conversationHistory,
@@ -200,8 +200,14 @@ class GeminiChat {
 let geminiChat = null;
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Gemini Chat
-    const API_KEY = 'AIzaSyCeY3jDbeHpUaAS_ZusdhIk0uwhf5NnErQ';
+    // Initialize Gemini Chat - API key is now stored in config.js
+    const API_KEY = CONFIG.GEMINI_API_KEY;
+    
+    if (!API_KEY || API_KEY === 'YOUR_GEMINI_API_KEY_HERE') {
+        console.warn('⚠️ Please set your Gemini API key in javascript/config.js');
+        return;
+    }
+    
     geminiChat = new GeminiChat(API_KEY);
 
     // Chat UI Elements
@@ -214,9 +220,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatSend = document.getElementById('chatSend');
     const clearChatBtn = document.getElementById('clearChat');
 
+
+
     // Toggle chat widget
     chatButton.addEventListener('click', () => {
+        // Force all styles inline with !important equivalent
+        chatWidget.setAttribute('style', `
+            display: flex !important;
+            flex-direction: column !important;
+            position: fixed !important;
+            bottom: 100px !important;
+            right: 24px !important;
+            width: 400px !important;
+            max-width: calc(100vw - 48px) !important;
+            height: 600px !important;
+            max-height: calc(100vh - 150px) !important;
+            background: #ffffff !important;
+            z-index: 99998 !important;
+            border-radius: 16px !important;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            overflow: hidden !important;
+        `);
+        
         chatWidget.classList.remove('hidden');
+        
         chatInput.focus();
         
         // Add welcome message if chat is empty
@@ -228,11 +258,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close chat
     chatClose.addEventListener('click', () => {
         chatWidget.classList.add('hidden');
+        chatWidget.style.display = 'none';
     });
 
     // Minimize chat
     chatMinimize.addEventListener('click', () => {
         chatWidget.classList.add('hidden');
+        chatWidget.style.display = 'none';
     });
 
     // Send message on button click

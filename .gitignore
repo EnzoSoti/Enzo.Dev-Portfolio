@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Environment and Config Files
+javascript/config.js
+config.js
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test files
+test-chat.html
