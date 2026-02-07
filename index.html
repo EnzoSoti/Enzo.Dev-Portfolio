@@ -17,129 +17,84 @@
 
 <body class="text-gray-900 antialiased selection:bg-black selection:text-white">
 
-    <!-- Navigation -->
-    <nav class="nav-fixed glass-nav w-full z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-3 group cursor-pointer">
-                    <div class="relative">
-                        <img src="image/My Logo.png" alt="Logo" class="relative h-10 w-10">
-                    </div>
-                    <span class="text-xl font-bold tracking-tight" style="color: var(--text-primary);">Enzo<span
-                            style="color: var(--text-secondary);">.Dev</span></span>
-                </div>
-
-                <div class="hidden md:flex space-x-8">
-                    <a href="#about" class="nav-link text-sm font-medium">About</a>
-                    <a href="#experience" class="nav-link text-sm font-medium">Experience</a>
-                    <a href="#skills" class="nav-link text-sm font-medium">Skills</a>
-                    <a href="#projects" class="nav-link text-sm font-medium">Projects</a>
-                    <a href="#resume" class="nav-link text-sm font-medium">Resume</a>
-                </div>
-
-                <div class="hidden md:flex items-center space-x-4">
-                    <button id="themeToggle" class="p-2 rounded-lg transition-colors" style="color: var(--text-secondary);" aria-label="Toggle theme">
-                        <i class="fas fa-moon text-lg"></i>
-                    </button>
-                    <a href="#contact" class="btn-primary px-6 py-2.5 rounded-lg font-medium text-sm">
-                        Let's Talk
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="flex items-center space-x-3 md:hidden">
-                    <button id="themeToggleMobile" class="p-2 rounded-lg transition-colors" style="color: var(--text-secondary);" aria-label="Toggle theme">
-                        <i class="fas fa-moon text-lg"></i>
-                    </button>
-                    <button id="mobileMenuBtn" class="transition-colors" style="color: var(--text-secondary);">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Menu -->
-            <div id="mobileMenu"
-                class="hidden md:hidden mt-4 pb-4 space-y-2 rounded-xl p-4 absolute left-4 right-4 top-20" style="background: var(--bg-secondary); border: 1px solid var(--border);">
-                <a href="#about"
-                    class="block px-4 py-2 rounded-lg transition-colors" style="color: var(--text-secondary);">About</a>
-                <a href="#experience"
-                    class="block px-4 py-2 rounded-lg transition-colors" style="color: var(--text-secondary);">Experience</a>
-                <a href="#skills"
-                    class="block px-4 py-2 rounded-lg transition-colors" style="color: var(--text-secondary);">Skills</a>
-                <a href="#projects"
-                    class="block px-4 py-2 rounded-lg transition-colors" style="color: var(--text-secondary);">Projects</a>
-                <a href="#resume"
-                    class="block px-4 py-2 rounded-lg transition-colors" style="color: var(--text-secondary);">Resume</a>
-                <a href="#contact" class="block px-4 py-2 font-medium" style="color: var(--text-primary);">Contact Me</a>
-            </div>
-        </div>
-    </nav>
-
     <!-- Hero Section -->
-    <section class="pt-32 pb-16">
+    <section class="pt-16 pb-8">
         <div class="max-w-3xl mx-auto px-6">
-            <div class="text-center fade-in-up">
-                <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-gray-200">
-                    <img src="./image/Formal.jpg" alt="Enzo P. Daniela" class="w-full h-full object-cover">
+            <div class="flex flex-col md:flex-row gap-8 items-center md:items-start fade-in-up">
+                <!-- Profile Picture - Left Side -->
+                <div class="flex-shrink-0 mx-auto md:mx-0">
+                    <div class="w-48 h-48 rounded-2xl overflow-hidden" style="border: 3px solid var(--border);">
+                        <img src="./image/Formal.jpg" alt="Enzo P. Daniela" class="w-full h-full object-cover">
+                    </div>
                 </div>
 
-                <h1 class="text-3xl md:text-4xl font-bold mb-2" style="color: var(--text-primary);">
-                    Enzo P. Daniela
-                </h1>
+                <!-- Content - Right Side -->
+                <div class="flex-1 text-center md:text-left">
+                    <!-- Name with verified badge -->
+                    <div class="flex items-center gap-2 mb-2 justify-center md:justify-start">
+                        <h1 class="text-3xl md:text-4xl font-bold" style="color: var(--text-primary);">
+                            Enzo P. Daniela
+                        </h1>
+                        <i class="fas fa-check-circle text-blue-500 text-xl"></i>
+                    </div>
 
-                <p class="text-sm mb-3" style="color: var(--text-secondary);">
-                    <i class="fas fa-map-marker-alt text-xs mr-1"></i>Caloocan City, Philippines
-                </p>
+                    <!-- Location -->
+                    <p class="text-base mb-4 flex items-center gap-2 justify-center md:justify-start" style="color: var(--text-secondary);">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Caloocan City, Philippines
+                    </p>
 
-                <p class="text-base mb-4" style="color: var(--text-primary);">
-                    <strong>IT Student | Backend Developer | Looking for INTERNSHIP</strong> 
-                </p>
+                    <!-- Title/Role -->
+                    <p class="text-lg mb-4 font-medium" style="color: var(--text-primary);">
+                        IT Student \ Backend Developer \ Looking for INTERNSHIP
+                    </p>
 
-                <div class="inline-flex items-center bg-green-50 border border-green-200 px-3 py-1.5 rounded-full text-xs font-medium text-green-700 mb-6">
-                    <span class="flex h-2 w-2 relative mr-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                    </span>
-                    Available for Opportunities
-                </div>
+                    <!-- Achievement Badge -->
+                    <div class="mb-6 flex justify-center md:justify-start">
+                        <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg inline-flex items-center gap-2">
+                            <i class="fas fa-trophy"></i>
+                            <span class="font-semibold">STI College Fairview - BS Information Technology</span>
+                        </div>
+                    </div>
 
-                <p class="text-sm leading-relaxed max-w-2xl mx-auto mb-6" style="color: var(--text-secondary);">
-                    Fourth-year IT student specializing in backend development and building scalable web applications. 
-                    Focused on creating efficient solutions with modern technologies.
-                </p>
+                    <!-- Action Buttons -->
+                    <div class="flex flex-wrap gap-3 mb-6 justify-center md:justify-start">
+                        <a href="mailto:parane.enzo@gmail.com" class="btn-primary px-6 py-3 rounded-lg text-sm font-medium inline-flex items-center gap-2">
+                            <i class="fas fa-calendar-alt"></i>
+                            Send Email
+                        </a>
+                        <a href="#projects" class="btn-secondary px-6 py-3 rounded-lg text-sm font-medium inline-flex items-center gap-2">
+                            <i class="fas fa-envelope"></i>
+                            View Projects
+                        </a>
+                        <a href="./doc/Enzo Daniela - Resume.pdf" target="_blank" class="btn-secondary px-6 py-3 rounded-lg text-sm font-medium inline-flex items-center gap-2">
+                            <i class="fas fa-book-open"></i>
+                            Read Resume
+                        </a>
+                    </div>
 
-                    <div class="flex flex-wrap justify-center gap-2 mb-4">
-                    <a href="mailto:parane.enzo@gmail.com" class="btn-primary px-4 py-2 rounded-md text-sm">
-                        <i class="fas fa-envelope mr-2"></i>Send Email
-                    </a>
-                    <a href="#projects" class="btn-secondary px-4 py-2 rounded-md text-sm">
-                        View Projects
-                    </a>
-                    <a href="./doc/Enzo Daniela - Resume.pdf" target="_blank" class="btn-secondary px-4 py-2 rounded-md text-sm">
-                        Read Resume
-                    </a>
-                </div>
-
-                <div class="flex justify-center space-x-4">
-                    <a href="https://github.com/EnzoSoti" target="_blank"
-                        class="transition-colors" style="color: var(--icon-color);">
-                        <i class="fab fa-github text-xl"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/enzo-daniela-685374324/" target="_blank"
-                        class="transition-colors" style="color: var(--icon-color);">
-                        <i class="fab fa-linkedin text-xl"></i>
-                    </a>
-                    <a href="https://www.facebook.com/enzo.daniela.31/" target="_blank"
-                        class="transition-colors" style="color: var(--icon-color);">
-                        <i class="fab fa-facebook text-xl"></i>
-                    </a>
+                    <!-- Social Links -->
+                    <div class="flex space-x-4 justify-center md:justify-start">
+                        <a href="https://github.com/EnzoSoti" target="_blank"
+                            class="transition-colors" style="color: var(--icon-color);">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/enzo-daniela-685374324/" target="_blank"
+                            class="transition-colors" style="color: var(--icon-color);">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/enzo.daniela.31/" target="_blank"
+                            class="transition-colors" style="color: var(--icon-color);">
+                            <i class="fab fa-facebook text-2xl"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16">
+    <section id="about" class="py-8">
         <div class="max-w-3xl mx-auto px-6">
             <h2 class="text-2xl font-bold mb-6 fade-in-up" style="color: var(--text-primary);">About</h2>
 
@@ -541,16 +496,21 @@
     </div>
 
     <!-- Floating Buttons -->
-    <!-- AI Chat Button (Bottom Right) -->
-    <button id="chatButton" class="chat-button" aria-label="Open AI Chat" style="position: fixed !important; bottom: 24px !important; right: 24px !important; z-index: 99999 !important; width: 60px !important; height: 60px !important; background: #000000 !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; border: 2px solid white !important; box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;">
-        <i class="fas fa-robot" style="font-size: 24px !important; color: #ffffff !important;"></i>
-        <span class="chat-badge" style="position: absolute; top: -5px; right: -5px; background: white; color: black; font-size: 10px; font-weight: bold; padding: 4px 8px; border-radius: 12px;">AI</span>
+    <!-- Theme Toggle Button (Top) -->
+    <button id="themeToggle" class="fixed right-6 text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" style="z-index: 9998; bottom: 176px; background: var(--btn-primary-bg); color: var(--btn-primary-text);" aria-label="Toggle theme">
+        <i class="fas fa-moon text-xl"></i>
     </button>
 
-    <!-- QR Code Button (Above Chat Button) -->
+    <!-- QR Code Button (Middle) -->
     <button id="qrCodeBtn" class="fixed right-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" style="z-index: 9998; bottom: 100px;">
         <i class="fas fa-qrcode text-xl"></i>
     </button>
+
+    <!-- AI Chat Button (Bottom) -->
+    <!-- <button id="chatButton" class="chat-button" aria-label="Open AI Chat" style="position: fixed !important; bottom: 24px !important; right: 24px !important; z-index: 99999 !important; width: 60px !important; height: 60px !important; background: #000000 !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; border: 2px solid white !important; box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;">
+        <i class="fas fa-robot" style="font-size: 24px !important; color: #ffffff !important;"></i>
+        <span class="chat-badge" style="position: absolute; top: -5px; right: -5px; background: white; color: black; font-size: 10px; font-weight: bold; padding: 4px 8px; border-radius: 12px;">AI</span>
+    </button> -->
 
     <!-- QR Code Modal -->
     <div id="qrModal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm hidden items-center justify-center z-50">

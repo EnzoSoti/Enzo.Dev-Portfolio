@@ -1,6 +1,5 @@
 // Theme Toggle
 const themeToggle = document.getElementById('themeToggle');
-const themeToggleMobile = document.getElementById('themeToggleMobile');
 const htmlElement = document.documentElement;
 
 // Check for saved theme preference or default to light mode
@@ -9,8 +8,8 @@ htmlElement.setAttribute('data-theme', currentTheme);
 
 // Update icon based on current theme
 function updateThemeIcon(theme) {
-    const icons = document.querySelectorAll('#themeToggle i, #themeToggleMobile i');
-    icons.forEach(icon => {
+    const icon = themeToggle.querySelector('i');
+    if (icon) {
         if (theme === 'dark') {
             icon.classList.remove('fa-moon');
             icon.classList.add('fa-sun');
@@ -18,7 +17,7 @@ function updateThemeIcon(theme) {
             icon.classList.remove('fa-sun');
             icon.classList.add('fa-moon');
         }
-    });
+    }
 }
 
 // Initialize icon
@@ -34,41 +33,9 @@ function toggleTheme() {
     updateThemeIcon(newTheme);
 }
 
-// Add event listeners
+// Add event listener
 if (themeToggle) {
     themeToggle.addEventListener('click', toggleTheme);
-}
-
-if (themeToggleMobile) {
-    themeToggleMobile.addEventListener('click', toggleTheme);
-}
-
-// Mobile Menu Toggle
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-
-if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        const icon = mobileMenuBtn.querySelector('i');
-        if (mobileMenu.classList.contains('hidden')) {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        } else {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        }
-    });
-
-    // Close menu when clicking a link
-    mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        });
-    });
 }
 
 // Typing Effect
