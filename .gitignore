@@ -2,8 +2,9 @@
 node_modules/
 
 # Environment and Config Files
-javascript/config.js
-config.js
+# NOTE: config.js is intentionally committed for this static demo so
+# that the deployed site can load the API key. For a real project,
+# you should keep secrets on a backend and re-add these patterns.
 .env
 .env.local
 
