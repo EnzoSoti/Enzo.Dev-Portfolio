@@ -7,7 +7,7 @@
     <meta name="description" content="Enzo P. Daniela - Professional IT Student & Web Developer Portfolio">
     <title>Enzo Daniela</title>
 
-    <link rel="icon" href="image/My Logo.png" type="image/png">
+    <link rel="icon" href="image/Formal.jpg" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -25,8 +25,8 @@
                     <div class="relative">
                         <img src="image/My Logo.png" alt="Logo" class="relative h-10 w-10">
                     </div>
-                    <span class="text-xl font-bold text-black tracking-tight">Enzo<span
-                            class="text-gray-600">.Dev</span></span>
+                    <span class="text-xl font-bold tracking-tight" style="color: var(--text-primary);">Enzo<span
+                            style="color: var(--text-secondary);">.Dev</span></span>
                 </div>
 
                 <div class="hidden md:flex space-x-8">
@@ -38,177 +38,145 @@
                 </div>
 
                 <div class="hidden md:flex items-center space-x-4">
+                    <button id="themeToggle" class="p-2 rounded-lg transition-colors" style="color: var(--text-secondary);" aria-label="Toggle theme">
+                        <i class="fas fa-moon text-lg"></i>
+                    </button>
                     <a href="#contact" class="btn-primary px-6 py-2.5 rounded-lg font-medium text-sm">
                         Let's Talk
                     </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white transition-colors">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
+                <div class="flex items-center space-x-3 md:hidden">
+                    <button id="themeToggleMobile" class="p-2 rounded-lg transition-colors" style="color: var(--text-secondary);" aria-label="Toggle theme">
+                        <i class="fas fa-moon text-lg"></i>
+                    </button>
+                    <button id="mobileMenuBtn" class="transition-colors" style="color: var(--text-secondary);">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
             </div>
 
             <!-- Mobile Menu -->
             <div id="mobileMenu"
-                class="hidden md:hidden mt-4 pb-4 space-y-2 glass-panel rounded-xl p-4 absolute left-4 right-4 top-20">
+                class="hidden md:hidden mt-4 pb-4 space-y-2 rounded-xl p-4 absolute left-4 right-4 top-20" style="background: var(--bg-secondary); border: 1px solid var(--border);">
                 <a href="#about"
-                    class="block text-gray-300 hover:text-white hover:bg-white/10 px-4 py-2 rounded-lg transition-colors">About</a>
+                    class="block px-4 py-2 rounded-lg transition-colors" style="color: var(--text-secondary);">About</a>
                 <a href="#experience"
-                    class="block text-gray-300 hover:text-white hover:bg-white/10 px-4 py-2 rounded-lg transition-colors">Experience</a>
+                    class="block px-4 py-2 rounded-lg transition-colors" style="color: var(--text-secondary);">Experience</a>
                 <a href="#skills"
-                    class="block text-gray-300 hover:text-white hover:bg-white/10 px-4 py-2 rounded-lg transition-colors">Skills</a>
+                    class="block px-4 py-2 rounded-lg transition-colors" style="color: var(--text-secondary);">Skills</a>
                 <a href="#projects"
-                    class="block text-gray-300 hover:text-white hover:bg-white/10 px-4 py-2 rounded-lg transition-colors">Projects</a>
+                    class="block px-4 py-2 rounded-lg transition-colors" style="color: var(--text-secondary);">Projects</a>
                 <a href="#resume"
-                    class="block text-gray-300 hover:text-white hover:bg-white/10 px-4 py-2 rounded-lg transition-colors">Resume</a>
-                <a href="#contact" class="block text-blue-400 hover:text-blue-300 px-4 py-2 font-medium">Contact Me</a>
+                    class="block px-4 py-2 rounded-lg transition-colors" style="color: var(--text-secondary);">Resume</a>
+                <a href="#contact" class="block px-4 py-2 font-medium" style="color: var(--text-primary);">Contact Me</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div class="hero-glow"></div>
-        <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8 slide-in-left">
-                    <div
-                        class="inline-flex items-center bg-black/5 border border-black/10 px-4 py-2 rounded-full text-sm font-medium text-gray-600">
-                        <span class="flex h-2 w-2 relative mr-2">
-                            <span
-                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-50"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
-                        </span>
-                        Available for Opportunities
-                    </div>
-
-                    <div>
-                        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-tight mb-4">
-                            Enzo P. Daniela
-                        </h1>
-                        <h2 class="text-2xl md:text-3xl text-gray-600 font-normal flex items-center">
-                            I am good at, <span id="typing-text"
-                                class="ml-2 text-black font-normal typing-cursor"></span>
-                        </h2>
-                    </div>
-
-                    <p class="text-lg text-gray-600 leading-relaxed max-w-lg">
-                        Fourth-year IT student specializing in backend development and building scalable web applications. 
-                        Focused on creating efficient solutions with modern technologies.
-                    </p>
-
-                    <div class="flex flex-wrap gap-4 pt-4">
-                        <a href="#projects"
-                            class="btn-primary px-8 py-4 rounded-lg font-bold text-white shadow-lg shadow-blue-500/25">
-                            View My Work
-                        </a>
-                        <a href="#contact" class="btn-secondary px-8 py-4 rounded-lg font-medium hover:bg-white/5">
-                            Contact Me
-                        </a>
-                    </div>
-
-                    <div class="pt-8 flex items-center space-x-6">
-                        <div class="flex items-center text-gray-600 text-sm">
-                            <i class="fas fa-map-marker-alt text-gray-600 mr-2"></i>
-                            Caloocan City, PH
-                        </div>
-                        <div class="h-4 w-px bg-gray-300"></div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/EnzoSoti"
-                                class="text-gray-600 hover:text-black transition-colors"><i
-                                    class="fab fa-github text-xl"></i></a>
-                            <a href="https://www.linkedin.com/in/enzo-daniela-685374324/"
-                                class="text-gray-600 hover:text-black transition-colors"><i
-                                    class="fab fa-linkedin text-xl"></i></a>
-                        </div>
-                    </div>
+    <section class="pt-32 pb-16">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center fade-in-up">
+                <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-gray-200">
+                    <img src="./image/Formal.jpg" alt="Enzo P. Daniela" class="w-full h-full object-cover">
                 </div>
 
-                <div class="flex justify-center lg:justify-end slide-in-right relative">
-                    <div class="relative w-80 h-80 md:w-96 md:h-96">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-2xl blur-2xl opacity-30 animate-pulse">
-                        </div>
-                        <div
-                            class="glass-card rounded-2xl p-2 w-full h-full relative z-10 overflow-hidden transform rotate-3 hover:rotate-0 transition-all duration-500">
-                            <img src="./image/awd.jpg" alt="Enzo P. Daniela"
-                                class="w-full h-full object-cover rounded-xl filter brightness-90 hover:brightness-100 transition-all">
-                        </div>
+                <h1 class="text-3xl md:text-4xl font-bold mb-2" style="color: var(--text-primary);">
+                    Enzo P. Daniela
+                </h1>
 
-                        <!-- Floating Stat Card -->
-                        <div class="absolute -bottom-6 -left-6 glass-panel p-4 rounded-xl z-20 animate-bounce"
-                            style="animation-duration: 3s;">
-                            <div class="flex items-center space-x-3">
-                                <div class="bg-blue-500/20 p-2 rounded-lg">
-                                    <i class="fas fa-code text-blue-400"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-gray-400">Main Focus</p>
-                                    <p class="font-bold text-black">Backend technologies</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <p class="text-sm mb-3" style="color: var(--text-secondary);">
+                    <i class="fas fa-map-marker-alt text-xs mr-1"></i>Caloocan City, Philippines
+                </p>
+
+                <p class="text-base mb-4" style="color: var(--text-primary);">
+                    <strong>IT Student | Backend Developer | Looking for INTERNSHIP</strong> 
+                </p>
+
+                <div class="inline-flex items-center bg-green-50 border border-green-200 px-3 py-1.5 rounded-full text-xs font-medium text-green-700 mb-6">
+                    <span class="flex h-2 w-2 relative mr-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    Available for Opportunities
+                </div>
+
+                <p class="text-sm leading-relaxed max-w-2xl mx-auto mb-6" style="color: var(--text-secondary);">
+                    Fourth-year IT student specializing in backend development and building scalable web applications. 
+                    Focused on creating efficient solutions with modern technologies.
+                </p>
+
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                    <a href="mailto:parane.enzo@gmail.com" class="btn-primary px-4 py-2 rounded-md text-sm">
+                        <i class="fas fa-envelope mr-2"></i>Send Email
+                    </a>
+                    <a href="#projects" class="btn-secondary px-4 py-2 rounded-md text-sm">
+                        View Projects
+                    </a>
+                    <a href="./doc/Enzo Daniela - Resume.pdf" target="_blank" class="btn-secondary px-4 py-2 rounded-md text-sm">
+                        Read Resume
+                    </a>
+                </div>
+
+                <div class="flex justify-center space-x-4">
+                    <a href="https://github.com/EnzoSoti" target="_blank"
+                        class="transition-colors" style="color: var(--icon-color);">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/enzo-daniela-685374324/" target="_blank"
+                        class="transition-colors" style="color: var(--icon-color);">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://www.facebook.com/enzo.daniela.31/" target="_blank"
+                        class="transition-colors" style="color: var(--icon-color);">
+                        <i class="fab fa-facebook text-xl"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section-padding relative">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-black fade-in-up">About</h2>
+    <section id="about" class="py-16">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-6 fade-in-up" style="color: var(--text-primary);">About</h2>
 
-            <div class="glass-card rounded-3xl p-8 md:p-12 fade-in-up">
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div class="space-y-6">
-                        <h3 class="text-2xl font-bold text-black">Behind the code</h3>
-                        <p class="text-gray-700 leading-relaxed">
-                            As a dedicated Information Technology student at STI College Fairview, I've transformed my
-                            passion for logical problem-solving into building functional web applications.
-                        </p>
-                        <p class="text-gray-700 leading-relaxed">
-                            I don't just write code; I engineer solutions. Specializing in the <span
-                                class="text-black font-medium">Java, Node.js, and SQL</span> ecosystem, I focus on
-                            creating robust backend architectures that power seamless frontend experiences.
-                        </p>
+            <div class="fade-in-up space-y-4">
+                <p class="text-sm leading-relaxed" style="color: var(--text-primary);">
+                    As a dedicated Information Technology student at STI College Fairview, I've transformed my
+                    passion for logical problem-solving into building functional web applications.
+                </p>
+                <p class="text-sm leading-relaxed" style="color: var(--text-primary);">
+                    I don't just write code; I engineer solutions. Specializing in the <span
+                        class="font-semibold" style="color: var(--text-primary);">Java, Node.js, and SQL</span> ecosystem, I focus on
+                    creating robust backend architectures that power seamless frontend experiences.
+                </p>
 
-                        <div class="pt-4 grid grid-cols-2 gap-4">
-                            <div class="glass-panel p-4 rounded-xl">
-                                <i class="fas fa-laptop-code text-black text-2xl mb-2"></i>
-                                <h4 class="font-bold text-black">Web Dev</h4>
-                                <p class="text-xs text-gray-600">Modern Apps</p>
+                <div class="grid md:grid-cols-2 gap-3 pt-4">
+                    <div class="p-4 rounded-lg transition-colors" style="border: 1px solid var(--border);">
+                        <div class="flex items-start space-x-3">
+                            <div class="p-2 rounded-lg" style="background: var(--bg-secondary);">
+                                <i class="fas fa-graduation-cap text-base" style="color: var(--text-primary);"></i>
                             </div>
-                            <div class="glass-panel p-4 rounded-xl">
-                                <i class="fas fa-server text-black text-2xl mb-2"></i>
-                                <h4 class="font-bold text-black">Backend</h4>
-                                <p class="text-xs text-gray-600">Robust APIs</p>
+                            <div>
+                                <h4 class="font-semibold text-sm mb-0.5" style="color: var(--text-primary);">BS Information Technology</h4>
+                                <p class="text-xs" style="color: var(--text-secondary);">STI College Fairview</p>
+                                <p class="text-xs" style="color: var(--text-muted);">2026</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex flex-col justify-center space-y-6">
-                        <div class="glass-panel p-6 rounded-xl flex items-center space-x-4 border-l-2 border-black">
-                            <div class="bg-black/5 p-3 rounded-lg">
-                                <i class="fas fa-graduation-cap text-black text-xl"></i>
+                    <div class="p-4 rounded-lg transition-colors" style="border: 1px solid var(--border);">
+                        <div class="flex items-start space-x-3">
+                            <div class="p-2 rounded-lg" style="background: var(--bg-secondary);">
+                                <i class="fas fa-bolt text-base" style="color: var(--text-primary);"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-black">Education</h4>
-                                <p class="text-gray-700 text-sm">BS Information Technology</p>
-                                <p class="text-gray-600 text-xs mt-1">STI College Fairview • 2026</p>
-                            </div>
-                        </div>
-
-                        <div
-                            class="glass-panel p-6 rounded-xl flex items-center space-x-4 border-l-2 border-black">
-                            <div class="bg-black/5 p-3 rounded-lg">
-                                <i class="fas fa-bolt text-black text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-black">Current Status</h4>
-                                <p class="text-gray-700 text-sm">Students & Freelancer</p>
-                                <p class="text-gray-600 text-xs mt-1">Open for work</p>
+                                <h4 class="font-semibold text-sm mb-0.5" style="color: var(--text-primary);">Current Status</h4>
+                                <p class="text-xs" style="color: var(--text-secondary);">Student & Freelancer</p>
+                                <p class="text-xs" style="color: var(--text-muted);">Open for work</p>
                             </div>
                         </div>
                     </div>
@@ -217,233 +185,83 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section-padding">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-black fade-in-up">Experience</h2>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Education -->
-                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group slide-in-left">
-                    <div class="absolute top-0 right-0 p-4 opacity-3 group-hover:opacity-5 transition-opacity">
-                        <i class="fas fa-university text-9xl text-gray-100"></i>
-                    </div>
-
-                    <div class="relative z-10">
-                        <div class="bg-black/5 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
-                            <i class="fas fa-graduation-cap text-black text-xl"></i>
-                        </div>
-
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-black">BS Information Technology</h3>
-                                <p class="text-gray-700">STI College Fairview</p>
+    <!-- Experience & Tech Stack Section -->
+    <section id="experience" class="py-16">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
+                <!-- Experience Column -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-6 fade-in-up" style="color: var(--text-primary);">Experience</h2>
+                    <div class="space-y-6 fade-in-up">
+                        <!-- Education Timeline Item -->
+                        <div class="pl-4 pb-6" style="border-left: 2px solid var(--border);">
+                            <div class="flex items-center mb-1">
+                                <span class="px-2 py-0.5 rounded-full text-xs font-medium" style="background: var(--badge-bg); color: var(--badge-text);">2022 - 2026</span>
                             </div>
-                            <span
-                                class="bg-black/5 border border-black/10 px-3 py-1 rounded-full text-xs text-gray-600">2022
-                                - 2026</span>
-                        </div>
-
-                        <p class="text-gray-700 text-sm leading-relaxed mb-4">
-                            Pursuing excellence in software engineering, database management, and system architecture.
-                            Supplemented with self-directed learning in modern web frameworks.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Capstone -->
-                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group slide-in-right">
-                    <div class="absolute top-0 right-0 p-4 opacity-3 group-hover:opacity-5 transition-opacity">
-                        <i class="fas fa-code-branch text-9xl text-gray-100"></i>
-                    </div>
-
-                    <div class="relative z-10">
-                        <div class="bg-black/5 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
-                            <i class="fas fa-laptop-code text-black text-xl"></i>
-                        </div>
-
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-black">Backend Developer</h3>
-                                <p class="text-gray-700">Capstone Project (OGFMSI)</p>
-                            </div>
-                            <span
-                                class="bg-black/5 border border-black/10 px-3 py-1 rounded-full text-xs text-gray-600">2024
-                                - 2025</span>
-                        </div>
-
-                        <p class="text-gray-700 text-sm leading-relaxed mb-6">
-                            Do the backend logic for a Gym Management System. Handled database schema design,
-                            API development, and secure authentication flows.
-                        </p>
-
-                        <div class="flex flex-wrap gap-2 text-xs font-mono">
-                            <span class="bg-black/5 text-gray-700 px-2 py-1 rounded border border-black/10">Express.js</span>
-                            <span class="bg-black/5 text-gray-700 px-2 py-1 rounded border border-black/10">MySql</span>
-                            <span class="bg-black/5 text-gray-700 px-2 py-1 rounded border border-black/10">Firebase</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section-padding relative overflow-hidden">
-        <!-- Decoration -->
-        <div
-            class="absolute top-1/2 -right-40 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px] pointer-events-none">
-        </div>
-
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-black fade-in-up">Tech Stack</h2>
-            <p class="text-center text-gray-600 mb-12 fade-in-up">Technologies I work with</p>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Languages -->
-                <div class="glass-card p-6 rounded-2xl fade-in-up" style="transition-delay: 100ms;">
-                    <h3 class="text-lg font-bold text-black mb-6 flex items-center">
-                        <i class="fas fa-code text-black mr-2"></i> Languages
-                    </h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-gray-700">Java</span>
-                                <span class="text-xs text-gray-600">90%</span>
-                            </div>
-                            <div class="skill-track">
-                                <div class="skill-bar-fill" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <!-- <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-gray-300">JavaScript</span>
-                                <span class="text-xs text-blue-400">80%</span>
-                            </div>
-                            <div class="skill-track">
-                                <div class="skill-bar-fill" style="width: 80%"></div>
-                            </div>
-                        </div> -->
-                        <!-- <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-gray-300">HTML5 / CSS3</span>
-                                <span class="text-xs text-blue-400">90%</span>
-                            </div>
-                            <div class="skill-track">
-                                <div class="skill-bar-fill" style="width: 90%"></div>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-
-                <!-- Backend -->
-                <div class="glass-card p-6 rounded-2xl fade-in-up" style="transition-delay: 200ms;">
-                    <h3 class="text-lg font-bold text-black mb-6 flex items-center">
-                        <i class="fas fa-server text-black mr-2"></i> Backend & DB
-                    </h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-gray-700">Node.js / Express</span>
-                                <span class="text-xs text-gray-600">70%</span>
-                            </div>
-                            <div class="skill-track">
-                                <div class="skill-bar-fill" style="width: 70%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-gray-700">MySQL / SQL</span>
-                                <span class="text-xs text-gray-600">80%</span>
-                            </div>
-                            <div class="skill-track">
-                                <div class="skill-bar-fill" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-gray-700">Firebase</span>
-                                <span class="text-xs text-gray-600">65%</span>
-                            </div>
-                            <div class="skill-track">
-                                <div class="skill-bar-fill" style="width: 65%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tools -->
-                <div class="glass-card p-6 rounded-2xl fade-in-up" style="transition-delay: 300ms;">
-                    <h3 class="text-lg font-bold text-black mb-6 flex items-center">
-                        <i class="fas fa-tools text-black mr-2"></i> Workflow
-                    </h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-black/5 p-3 rounded-xl text-center hover:bg-black/10 transition-colors">
-                            <i class="fab fa-git-alt text-2xl text-black mb-2"></i>
-                            <div class="text-xs text-gray-700">Git</div>
-                        </div>
-                        <div class="bg-black/5 p-3 rounded-xl text-center hover:bg-black/10 transition-colors">
-                            <i class="fab fa-github text-2xl text-black mb-2"></i>
-                            <div class="text-xs text-gray-700">GitHub</div>
-                        </div>
-                        <div class="bg-black/5 p-3 rounded-xl text-center hover:bg-black/10 transition-colors">
-                            <i class="fas fa-code text-2xl text-black mb-2"></i>
-                            <div class="text-xs text-gray-700">VS Code</div>
-                        </div>
-                        <div class="bg-black/5 p-3 rounded-xl text-center hover:bg-black/10 transition-colors">
-                            <i class="fas fa-terminal text-2xl text-black mb-2"></i>
-                            <div class="text-xs text-gray-700">Terminal</div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- AI & Transparency -->
-                <div class="glass-card p-8 rounded-2xl fade-in-up md:col-span-3 border border-black/10 relative overflow-hidden"
-                    style="transition-delay: 200ms;">
-
-                    <div class="absolute top-0 right-0 p-8 opacity-3 pointer-events-none hidden md:block">
-                        <i class="fas fa-microchip text-9xl text-gray-100"></i>
-                    </div>
-
-                    <div class="relative z-10 grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <h3 class="text-2xl font-bold text-black mb-6 flex items-center">
-                                <span class="bg-black/5 p-3 rounded-lg mr-4 border border-black/10">
-                                    <i class="fas fa-robot text-black"></i>
-                                </span>
-                                Transparency
-                            </h3>
-                            <p
-                                class="text-gray-700 text-lg leading-relaxed border-l-2 border-black pl-6 py-2">
-                                "Embracing AI tools to enhance coding efficiency and delivering modern web solutions."
+                            <h3 class="text-base font-bold mb-0.5" style="color: var(--text-primary);">BS Information Technology</h3>
+                            <p class="text-sm mb-2" style="color: var(--text-secondary);">STI College Fairview</p>
+                            <p class="text-xs leading-relaxed" style="color: var(--text-primary);">
+                                Pursuing excellence in software engineering, database management, and system architecture.
+                                Supplemented with self-directed learning in modern web frameworks.
                             </p>
                         </div>
 
-                        <div class="space-y-4">
-                            <!-- Tool 1 -->
-                            <div
-                                class="flex items-center p-4 bg-black/5 rounded-xl border border-black/10 hover:border-black/20 transition-colors">
-                                <div class="w-12 h-12 rounded-lg bg-black/10 flex items-center justify-center mr-4">
-                                    <i class="fas fa-bolt text-black text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold text-black">AI Accelerated</h4>
-                                    <p class="text-gray-700 font-medium">Built with Google Antigravity</p>
-                                </div>
+                        <!-- Capstone Timeline Item -->
+                        <div class="pl-4" style="border-left: 2px solid var(--border);">
+                            <div class="flex items-center mb-1">
+                                <span class="px-2 py-0.5 rounded-full text-xs font-medium" style="background: var(--badge-bg); color: var(--badge-text);">2024 - 2025</span>
                             </div>
+                            <h3 class="text-base font-bold mb-0.5" style="color: var(--text-primary);">Backend Developer</h3>
+                            <p class="text-sm mb-2" style="color: var(--text-secondary);">Capstone Project (OGFMSI)</p>
+                            <p class="text-xs leading-relaxed mb-3" style="color: var(--text-primary);">
+                                Do the backend logic for a Gym Management System. Handled database schema design,
+                                API development, and secure authentication flows.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 rounded text-xs" style="background: var(--badge-bg); color: var(--badge-text);">Express.js</span>
+                                <span class="px-2 py-0.5 rounded text-xs" style="background: var(--badge-bg); color: var(--badge-text);">MySQL</span>
+                                <span class="px-2 py-0.5 rounded text-xs" style="background: var(--badge-bg); color: var(--badge-text);">Firebase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                            <!-- Tool 2 -->
-                            <div
-                                class="flex items-center p-4 bg-black/5 rounded-xl border border-black/10 hover:border-black/20 transition-colors">
-                                <div
-                                    class="w-12 h-12 rounded-lg bg-black/10 flex items-center justify-center mr-4">
-                                    <i class="fas fa-keyboard text-black text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold text-black">Code Assistant</h4>
-                                    <p class="text-gray-700 font-medium">Cursor & Windsurf</p>
-                                </div>
+                <!-- Tech Stack Column -->
+                <div id="skills">
+                    <h2 class="text-2xl font-bold mb-2 fade-in-up" style="color: var(--text-primary);">Tech Stack</h2>
+                    <p class="text-sm mb-6 fade-in-up" style="color: var(--text-secondary);">Technologies I work with</p>
+
+                    <div class="space-y-5 fade-in-up">
+                        <!-- Frontend -->
+                        <div>
+                            <h3 class="text-sm font-semibold mb-2" style="color: var(--text-primary);">Frontend</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">HTM5</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">Tailwind CSS</span>
+                            </div>
+                        </div>
+
+                        <!-- Backend -->
+                        <div>
+                            <h3 class="text-sm font-semibold mb-2" style="color: var(--text-primary);">Backend</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">Express</span>
+                                <span class="tech-badge">Java</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Firebase</span>
+                            </div>
+                        </div>
+
+                        <!-- DevOps & Tools -->
+                        <div>
+                            <h3 class="text-sm font-semibold mb-2" style="color: var(--text-primary);">Tools</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-badge">Git</span>
+                                <span class="tech-badge">GitHub</span>
+                                <span class="tech-badge">VS Code</span>
                             </div>
                         </div>
                     </div>
@@ -453,279 +271,152 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section-padding">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-black fade-in-up">
-                Recent Projects</h2>
-            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto fade-in-up">Featured work and applications
-            </p>
+    <section id="projects" class="py-16">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-2 fade-in-up" style="color: var(--text-primary);">Recent Projects</h2>
+            <p class="text-sm mb-6 fade-in-up" style="color: var(--text-secondary);">Featured work and applications</p>
 
-            <!-- Project Filters -->
-            <div class="flex flex-wrap justify-center gap-3 mb-12 fade-in-up">
-                <button class="filter-btn active" data-filter="all">
-                    <i class="fas fa-th mr-2"></i>All Projects
-                </button>
-                <button class="filter-btn" data-filter="react">
-                    <i class="fab fa-react mr-2"></i>React
-                </button>
-                <button class="filter-btn" data-filter="firebase">
-                    <i class="fas fa-fire mr-2"></i>Firebase
-                </button>
-                <button class="filter-btn" data-filter="express">
-                    <i class="fas fa-server mr-2"></i>Express
-                </button>
-                <button class="filter-btn" data-filter="javascript">
-                    <i class="fab fa-js mr-2"></i>JavaScript
-                </button>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+            <div class="space-y-4" id="projectsGrid">
                 <!-- Project 1: Gym Management System -->
-                <div class="project-card glass-card rounded-2xl overflow-hidden group fade-in-up"
+                <div class="project-card rounded-lg p-4 transition-colors fade-in-up" style="border: 1px solid var(--border);"
                     data-tags="express mysql firebase node team">
-                    <!-- Featured Badge -->
-                    <div
-                        class="absolute top-4 left-4 z-20 bg-white px-3 py-1 rounded-full text-xs font-bold text-black">
-                        <i class="fas fa-star mr-1"></i>Capstone
-                    </div>
-
-                    <div class="h-48 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent z-10 opacity-60">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="md:w-32 h-20 flex-shrink-0 overflow-hidden rounded-md">
+                            <img src="image/landing.png" alt="OGFMSI"
+                                class="w-full h-full object-cover">
                         </div>
-                        <img src="image/landing.png" alt="OGFMSI"
-                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-black mb-2">Gym Management System</h3>
-                        <p class="text-gray-700 text-sm mb-4 line-clamp-3">Capstone project
-                            featuring full-stack gym
-                            management with POS, inventory tracking, and check-ins.</p>
+                        <div class="flex-1">
+                            <div class="flex items-start justify-between mb-1">
+                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Gym Management System</h3>
+                                <span class="px-2 py-0.5 rounded text-xs whitespace-nowrap" style="background: var(--badge-bg); color: var(--badge-text);">Capstone</span>
+                            </div>
+                            <p class="text-xs mb-2" style="color: var(--text-primary);">Capstone project featuring full-stack gym
+                                management with POS, inventory tracking, and check-ins.</p>
 
-                        <!-- Tech Stack with Tooltips -->
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="tech-tag" data-tooltip="Backend Framework">
-                                <i class="fas fa-server text-xs mr-1"></i>Express
-                            </span>
-                            <span class="tech-tag" data-tooltip="Database">
-                                <i class="fas fa-database text-xs mr-1"></i>MySQL
-                            </span>
-                            <span class="tech-tag tech-tag-firebase" data-tooltip="Real-time Database">
-                                <i class="fas fa-fire text-xs mr-1"></i>Firebase
-                            </span>
-                            <span class="tech-tag tech-tag-node" data-tooltip="Runtime Environment">
-                                <i class="fab fa-node text-xs mr-1"></i>Node.js
-                            </span>
+                            <div class="flex flex-wrap gap-1.5 mb-2">
+                                <span class="tech-badge">Express.js</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Firebase</span>
+                                <span class="tech-badge">Node.js</span>
+                            </div>
+
+                            <div class="flex gap-2">
+                                <a href="https://fitworxgymph.web.app/" target="_blank"
+                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
+                                    Demo →
+                                </a>
+                                <a href="https://github.com/deloyxd/ogfmsi" target="_blank"
+                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
+                                    Code →
+                                </a>
+                            </div>
                         </div>
-
-                        <!-- Team Badge -->
-                        <div class="mb-4 flex items-center gap-2 text-xs text-gray-500">
-                            <i class="fas fa-users text-gray-400"></i>
-                            <span>Team Project</span>
-                        </div>
-
-                        <div class="flex gap-3 mb-3">
-                            <a href="https://fitworxgymph.web.app/" target="_blank"
-                                class="flex-1 btn-primary text-center py-2 rounded-lg text-sm">
-                                <i class="fas fa-external-link-alt mr-1"></i>Demo
-                            </a>
-                            <a href="https://github.com/deloyxd/ogfmsi" target="_blank"
-                                class="flex-1 btn-secondary text-center py-2 rounded-lg text-sm">
-                                <i class="fab fa-github mr-1"></i>Code
-                            </a>
-                        </div>
-
-                        <!-- View Details Button -->
-                        <button class="view-details-btn w-full" data-project="gym">
-                            <i class="fas fa-info-circle mr-2"></i>View Details
-                        </button>
                     </div>
                 </div>
 
                 <!-- Project 2: Grade Calculator -->
-                <div class="project-card glass-card rounded-2xl overflow-hidden group fade-in-up"
-                    data-tags="javascript css html solo" style="transition-delay: 100ms;">
-                    <!-- Solo Badge -->
-                    <div
-                        class="absolute top-4 left-4 z-20 bg-white px-3 py-1 rounded-full text-xs font-bold text-black">
-                        <i class="fas fa-user mr-1"></i>Solo
-                    </div>
-
-                    <div class="h-48 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent z-10 opacity-60">
+                <div class="project-card rounded-lg p-4 transition-colors fade-in-up"
+                    data-tags="javascript css html solo" style="transition-delay: 100ms; border: 1px solid var(--border);">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="md:w-32 h-20 flex-shrink-0 overflow-hidden rounded-md">
+                            <img src="image/STI GRADE CALCULATOR.png" alt="Grade Calculator"
+                                class="w-full h-full object-cover">
                         </div>
-                        <img src="image/STI GRADE CALCULATOR.png" alt="Grade Calc"
-                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-black mb-2">Grade Calculator</h3>
-                        <p class="text-gray-700 text-sm mb-4 line-clamp-3">Specialized
-                            calculator for STI College
-                            grading system with local storage features.</p>
+                        <div class="flex-1">
+                            <div class="flex items-start justify-between mb-1">
+                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Grade Calculator</h3>
+                            </div>
+                            <p class="text-xs mb-2" style="color: var(--text-primary);">Specialized calculator for STI College
+                                grading system with local storage features.</p>
 
-                        <!-- Tech Stack with Tooltips -->
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="tech-tag tech-tag-js" data-tooltip="Vanilla JavaScript">
-                                <i class="fab fa-js text-xs mr-1"></i>JavaScript
-                            </span>
-                            <span class="tech-tag tech-tag-css" data-tooltip="Styling">
-                                <i class="fab fa-css3 text-xs mr-1"></i>CSS3
-                            </span>
-                            <span class="tech-tag tech-tag-html" data-tooltip="Structure">
-                                <i class="fab fa-html5 text-xs mr-1"></i>HTML5
-                            </span>
+                            <div class="flex flex-wrap gap-1.5 mb-2">
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">CSS3</span>
+                                <span class="tech-badge">HTML5</span>
+                            </div>
+
+                            <div class="flex gap-2">
+                                <a href="https://grade-calculator-xi.vercel.app/" target="_blank"
+                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
+                                    Demo →
+                                </a>
+                                <a href="https://github.com/EnzoSoti/somethingnew" target="_blank"
+                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
+                                    Code →
+                                </a>
+                            </div>
                         </div>
-
-                        <!-- Solo Badge -->
-                        <div class="mb-4 flex items-center gap-2 text-xs text-gray-400">
-                            <i class="fas fa-user text-green-400"></i>
-                            <span>Solo Developer</span>
-                        </div>
-
-                        <div class="flex gap-3 mb-3">
-                            <a href="https://grade-calculator-xi.vercel.app/" target="_blank"
-                                class="flex-1 btn-primary text-center py-2 rounded-lg text-sm">
-                                <i class="fas fa-external-link-alt mr-1"></i>Demo
-                            </a>
-                            <a href="https://github.com/EnzoSoti/somethingnew" target="_blank"
-                                class="flex-1 btn-secondary text-center py-2 rounded-lg text-sm">
-                                <i class="fab fa-github mr-1"></i>Code
-                            </a>
-                        </div>
-
-                        <!-- View Details Button -->
-                        <button class="view-details-btn w-full" data-project="grade">
-                            <i class="fas fa-info-circle mr-2"></i>View Details
-                        </button>
                     </div>
                 </div>
 
                 <!-- Project 3: Firebase CRUD -->
-                <div class="project-card glass-card rounded-2xl overflow-hidden group fade-in-up"
-                    data-tags="firebase javascript auth solo" style="transition-delay: 200ms;">
-                    <!-- Solo Badge -->
-                    <div
-                        class="absolute top-4 left-4 z-20 bg-white px-3 py-1 rounded-full text-xs font-bold text-black">
-                        <i class="fas fa-user mr-1"></i>Solo
-                    </div>
-
-                    <div class="h-48 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent z-10 opacity-60">
+                <div class="project-card rounded-lg p-4 transition-colors fade-in-up"
+                    data-tags="firebase javascript auth solo" style="transition-delay: 200ms; border: 1px solid var(--border);">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="md:w-32 h-20 flex-shrink-0 overflow-hidden rounded-md">
+                            <img src="image/FIREBASE CRUD.png" alt="Firebase CRUD"
+                                class="w-full h-full object-cover">
                         </div>
-                        <img src="image/FIREBASE CRUD.png" alt="Firebase CRUD"
-                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-black mb-2">Firebase CRUD</h3>
-                        <p class="text-gray-700 text-sm mb-4 line-clamp-3">Real-time data
-                            management application
-                            demonstrating Firebase integration prowess.</p>
+                        <div class="flex-1">
+                            <div class="flex items-start justify-between mb-1">
+                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Firebase CRUD</h3>
+                            </div>
+                            <p class="text-xs mb-2" style="color: var(--text-primary);">Real-time data management application
+                                demonstrating Firebase integration prowess.</p>
 
-                        <!-- Tech Stack with Tooltips -->
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="tech-tag tech-tag-firebase" data-tooltip="Backend as a Service">
-                                <i class="fas fa-fire text-xs mr-1"></i>Firebase
-                            </span>
-                            <span class="tech-tag tech-tag-js" data-tooltip="Programming Language">
-                                <i class="fab fa-js text-xs mr-1"></i>JavaScript
-                            </span>
-                            <span class="tech-tag" data-tooltip="Authentication">
-                                <i class="fas fa-lock text-xs mr-1"></i>Auth
-                            </span>
+                            <div class="flex flex-wrap gap-1.5 mb-2">
+                                <span class="tech-badge">Firebase</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Auth</span>
+                            </div>
+
+                            <div class="flex gap-2">
+                                <a href="https://firebase-sable-ten.vercel.app/" target="_blank"
+                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
+                                    Demo →
+                                </a>
+                                <a href="https://github.com/EnzoSoti/Firebase" target="_blank"
+                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
+                                    Code →
+                                </a>
+                            </div>
                         </div>
-
-                        <!-- Solo Badge -->
-                        <div class="mb-4 flex items-center gap-2 text-xs text-gray-400">
-                            <i class="fas fa-user text-green-400"></i>
-                            <span>Solo Developer</span>
-                        </div>
-
-                        <div class="flex gap-3 mb-3">
-                            <a href="https://firebase-sable-ten.vercel.app/" target="_blank"
-                                class="flex-1 btn-primary text-center py-2 rounded-lg text-sm">
-                                <i class="fas fa-external-link-alt mr-1"></i>Demo
-                            </a>
-                            <a href="https://github.com/EnzoSoti/Firebase" target="_blank"
-                                class="flex-1 btn-secondary text-center py-2 rounded-lg text-sm">
-                                <i class="fab fa-github mr-1"></i>Code
-                            </a>
-                        </div>
-
-                        <!-- View Details Button -->
-                        <button class="view-details-btn w-full" data-project="firebase">
-                            <i class="fas fa-info-circle mr-2"></i>View Details
-                        </button>
                     </div>
                 </div>
 
                 <!-- Project 4: Weather App -->
-                <div class="project-card glass-card rounded-2xl overflow-hidden group fade-in-up"
-                    data-tags="react javascript api solo" style="transition-delay: 300ms;">
-                    <!-- Solo Badge -->
-                    <div
-                        class="absolute top-4 left-4 z-20 bg-white px-3 py-1 rounded-full text-xs font-bold text-black">
-                        <i class="fas fa-user mr-1"></i>Solo
+                <div class="project-card rounded-lg p-4 transition-colors fade-in-up"
+                    data-tags="react javascript api solo" style="transition-delay: 300ms; border: 1px solid var(--border);">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="md:w-32 h-20 flex-shrink-0 overflow-hidden rounded-md">
+                            <img src="image/WEATHER.png" alt="Weather App"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-start justify-between mb-1">
+                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Weather App</h3>
+                            </div>
+                            <p class="text-xs mb-2" style="color: var(--text-primary);">React-based forecast application consuming
+                                live weather APIs with geolocation support.</p>
+
+                            <div class="flex flex-wrap gap-1.5 mb-2">
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">API</span>
+                            </div>
+
+                            <div class="flex gap-2">
+                                <a href="https://weather-project-react-iota.vercel.app/" target="_blank"
+                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
+                                    Demo →
+                                </a>
+                                <a href="https://github.com/EnzoSoti/weather-app" target="_blank"
+                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
+                                    Code →
+                                </a>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="h-48 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent z-10 opacity-60">
-                        </div>
-                        <img src="image/WEATHER.png" alt="Weather App"
-                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-black mb-2">Weather App</h3>
-                        <p class="text-gray-700 text-sm mb-4 line-clamp-3">React-based forecast
-                            application consuming
-                            live weather APIs with geolocation support.</p>
-
-                        <!-- Tech Stack with Tooltips -->
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="tech-tag tech-tag-react" data-tooltip="Frontend Library">
-                                <i class="fab fa-react text-xs mr-1"></i>React
-                            </span>
-                            <span class="tech-tag tech-tag-js" data-tooltip="Programming Language">
-                                <i class="fab fa-js text-xs mr-1"></i>JavaScript
-                            </span>
-                            <span class="tech-tag" data-tooltip="Weather API Integration">
-                                <i class="fas fa-cloud text-xs mr-1"></i>API
-                            </span>
-                        </div>
-
-                        <!-- Solo Badge -->
-                        <div class="mb-4 flex items-center gap-2 text-xs text-gray-400">
-                            <i class="fas fa-user text-green-400"></i>
-                            <span>Solo Developer</span>
-                        </div>
-
-                        <div class="flex gap-3 mb-3">
-                            <a href="https://weather-project-react-iota.vercel.app/" target="_blank"
-                                class="flex-1 btn-primary text-center py-2 rounded-lg text-sm">
-                                <i class="fas fa-external-link-alt mr-1"></i>Demo
-                            </a>
-                            <a href="https://github.com/EnzoSoti/weather-app" target="_blank"
-                                class="flex-1 btn-secondary text-center py-2 rounded-lg text-sm">
-                                <i class="fab fa-github mr-1"></i>Code
-                            </a>
-                        </div>
-
-                        <!-- View Details Button -->
-                        <button class="view-details-btn w-full" data-project="weather">
-                            <i class="fas fa-info-circle mr-2"></i>View Details
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Details Modal -->
-        <div id="projectModal" class="project-modal hidden">
-            <div class="modal-overlay"></div>
-            <div class="modal-content glass-card">
-                <button class="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-                <div id="modalBody">
-                    <!-- Content will be injected by JavaScript -->
                 </div>
             </div>
         </div>
@@ -733,21 +424,18 @@
 
     <!-- Resume Section -->
     <section id="resume" class="py-16">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="glass-card rounded-2xl p-8 md:p-12 text-center fade-in-up">
-                <i class="fas fa-file-alt text-5xl text-black mb-6"></i>
-                <h2 class="text-3xl font-bold text-black mb-4">Grab My Resume</h2>
-                <p class="text-gray-700 mb-8 max-w-lg mx-auto">Need a printable version of my
-                    qualifications? Download
-                    the latest copy below.</p>
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="rounded-lg p-6 text-center fade-in-up transition-colors" style="border: 1px solid var(--border);">
+                <h2 class="text-xl font-bold mb-2" style="color: var(--text-primary);">Resume</h2>
+                <p class="text-sm mb-4" style="color: var(--text-primary);">Download my latest resume</p>
 
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <div class="flex flex-col sm:flex-row justify-center gap-2">
                     <a href="./doc/Enzo Daniela - Resume.pdf" target="_blank"
-                        class="btn-primary px-8 py-3 rounded-lg font-medium flex items-center justify-center">
+                        class="btn-primary px-6 py-3 rounded-lg font-medium inline-flex items-center justify-center">
                         <i class="fas fa-eye mr-2"></i> View PDF
                     </a>
                     <a href="./doc/Enzo Daniela - Resume.pdf" download
-                        class="btn-secondary px-8 py-3 rounded-lg font-medium flex items-center justify-center">
+                        class="btn-secondary px-6 py-3 rounded-lg font-medium inline-flex items-center justify-center">
                         <i class="fas fa-download mr-2"></i> Download
                     </a>
                 </div>
@@ -756,68 +444,46 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section-padding relative">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-black fade-in-up">
-                Get In Touch</h2>
+    <section id="contact" class="py-16">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-6 fade-in-up" style="color: var(--text-primary);">Get In Touch</h2>
 
-            <div class="glass-card rounded-3xl p-8 md:p-12 fade-in-up">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-8">
-                        <div>
-                            <h3 class="text-2xl font-bold text-black mb-2">Let's Connect</h3>
-                            <p class="text-gray-700">Have a project in mind or want to discuss
-                                the latest tech? I'm just
-                                a message away.</p>
-                        </div>
-
-                        <div class="space-y-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="bg-black/5 p-3 rounded-lg text-black">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <a href="mailto:parane.enzo@gmail.com"
-                                    class="text-gray-700 hover:text-black transition-colors">parane.enzo@gmail.com</a>
-                            </div>
-                            <div class="flex items-center space-x-4">
-                                <div class="bg-black/5 p-3 rounded-lg text-black">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <a href="mailto:parane.enzo@outlook.com"
-                                    class="text-gray-700 hover:text-black transition-colors">parane.enzo@outlook.com</a>
-                            </div>
-                            <div class="flex items-center space-x-4">
-                                <div class="bg-black/5 p-3 rounded-lg text-black">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <span class="text-gray-700">Caloocan City, MNL</span>
-                            </div>
-                        </div>
-
-                        <div class="flex space-x-4 pt-2">
-                            <a href="https://github.com/EnzoSoti" target="_blank"
-                                class="bg-black/5 hover:bg-black/10 p-3 rounded-lg transition-colors text-black">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/enzo-daniela-685374324/" target="_blank"
-                                class="bg-black/5 hover:bg-black/10 p-3 rounded-lg transition-colors text-black">
-                                <i class="fab fa-linkedin-in text-xl"></i>
-                            </a>
-                            <a href="https://www.facebook.com/enzo.daniela.31/" target="_blank"
-                                class="bg-black/5 hover:bg-black/10 p-3 rounded-lg transition-colors text-black">
-                                <i class="fab fa-facebook-f text-xl"></i>
-                            </a>
-                        </div>
+            <div class="fade-in-up space-y-4">
+                <div class="flex items-center space-x-4 pb-4" style="border-bottom: 1px solid var(--border);">
+                    <div class="p-3 rounded-lg" style="background: var(--bg-secondary); color: var(--text-primary);">
+                        <i class="fas fa-envelope"></i>
                     </div>
-
-                    <div class="bg-black/5 rounded-2xl p-6 text-center">
-                        <i class="fas fa-paper-plane text-4xl text-black mb-4"></i>
-                        <h4 class="text-xl font-bold text-black mb-2">Email Me Directly</h4>
-                        <p class="text-gray-600 text-sm mb-6">Click below to open your default
-                            email client.</p>
+                    <div>
+                        <p class="text-sm mb-1" style="color: var(--text-secondary);">Email</p>
                         <a href="mailto:parane.enzo@gmail.com"
-                            class="btn-primary w-full block py-3 rounded-lg font-bold">
-                            Send Message
+                            class="transition-colors font-medium" style="color: var(--text-primary);">parane.enzo@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4 pb-4" style="border-bottom: 1px solid var(--border);">
+                    <div class="p-3 rounded-lg" style="background: var(--bg-secondary); color: var(--text-primary);">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm mb-1" style="color: var(--text-secondary);">Location</p>
+                        <span class="font-medium" style="color: var(--text-primary);">Caloocan City, MNL</span>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <p class="text-sm mb-4" style="color: var(--text-secondary);">Social Links</p>
+                    <div class="flex space-x-3">
+                        <a href="https://github.com/EnzoSoti" target="_blank"
+                            class="p-2 rounded-lg transition-colors" style="background: var(--bg-secondary); color: var(--text-primary);">
+                            <i class="fab fa-github text-lg"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/enzo-daniela-685374324/" target="_blank"
+                            class="p-2 rounded-lg transition-colors" style="background: var(--bg-secondary); color: var(--text-primary);">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                        <a href="https://www.facebook.com/enzo.daniela.31/" target="_blank"
+                            class="p-2 rounded-lg transition-colors" style="background: var(--bg-secondary); color: var(--text-primary);">
+                            <i class="fab fa-facebook-f text-lg"></i>
                         </a>
                     </div>
                 </div>
@@ -826,17 +492,10 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-black/10 py-12">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <img src="image/My Logo.png" alt="Logo" class="h-10 w-10 mx-auto mb-4 opacity-40">
-            <p class="text-gray-600 mb-2">Designed & Built by Enzo P. Daniela</p>
-            <p class="text-gray-500 text-xs mb-6">
-                <span class="opacity-70">Powered by</span>
-                <span class="text-gray-500">Google Antigravity</span> •
-                <span class="text-gray-500">Cursor</span> •
-                <span class="text-gray-500">Windsurf</span>
-            </p>
-            <p class="text-gray-500 text-sm">&copy; 2025 All Rights Reserved.</p>
+    <footer class="py-8 mt-16" style="border-top: 1px solid var(--border);">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <p class="text-sm mb-1" style="color: var(--text-secondary);">© 2026 Enzo P. Daniela. All rights reserved.</p>
+            <p class="text-xs" style="color: var(--text-muted);">Built with modern web technologies</p>
         </div>
     </footer>
 
@@ -848,7 +507,7 @@
                     <i class="fas fa-robot"></i>
                 </div>
                 <div>
-                    <h3 class="chat-title">AI Assistant</h3>
+                    <h3 class="chat-title">Chat with Enzo</h3>
                     <p class="chat-status">
                         <span class="status-dot"></span>
                         Online
@@ -878,10 +537,6 @@
             <button id="chatSend" class="chat-send-btn">
                 <i class="fas fa-paper-plane"></i>
             </button>
-        </div>
-
-        <div class="chat-footer">
-            <span class="text-xs text-gray-500">Powered by Google Gemini AI</span>
         </div>
     </div>
 

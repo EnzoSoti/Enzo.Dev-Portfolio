@@ -1,3 +1,48 @@
+// Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+const themeToggleMobile = document.getElementById('themeToggleMobile');
+const htmlElement = document.documentElement;
+
+// Check for saved theme preference or default to light mode
+const currentTheme = localStorage.getItem('theme') || 'light';
+htmlElement.setAttribute('data-theme', currentTheme);
+
+// Update icon based on current theme
+function updateThemeIcon(theme) {
+    const icons = document.querySelectorAll('#themeToggle i, #themeToggleMobile i');
+    icons.forEach(icon => {
+        if (theme === 'dark') {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    });
+}
+
+// Initialize icon
+updateThemeIcon(currentTheme);
+
+// Toggle theme function
+function toggleTheme() {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    htmlElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+}
+
+// Add event listeners
+if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+}
+
+if (themeToggleMobile) {
+    themeToggleMobile.addEventListener('click', toggleTheme);
+}
+
 // Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -184,8 +229,10 @@ const modalClose = document.querySelector('.modal-close');
 const modalOverlay = document.querySelector('.modal-overlay');
 const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
 
-// Project data with detailed information
-const projectData = {
+// Only run modal code if modal elements exist
+if (modal && modalBody && modalClose && modalOverlay) {
+    // Project data with detailed information
+    const projectData = {
     gym: {
         title: 'Gym Management System (OGFMSI)',
         badge: 'Capstone Project',
@@ -400,18 +447,19 @@ viewDetailsBtns.forEach(btn => {
     });
 });
 
-// Close modal
-function closeModal() {
-    modal.classList.add('hidden');
-    document.body.style.overflow = ''; // Restore scrolling
-}
-
-modalClose.addEventListener('click', closeModal);
-modalOverlay.addEventListener('click', closeModal);
-
-// Close modal on Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-        closeModal();
+    // Close modal
+    function closeModal() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = ''; // Restore scrolling
     }
-});
+
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+}
