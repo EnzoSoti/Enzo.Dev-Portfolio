@@ -67,6 +67,87 @@ body {
     overflow-x: hidden;
 }
 
+/* Theme Toggle Switch */
+.theme-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.theme-toggle-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border);
+    transition: all 0.3s ease;
+    border-radius: 34px;
+    border: 2px solid var(--border);
+}
+
+.theme-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+}
+
+.theme-toggle-input:checked + .theme-toggle-slider {
+    background-color: #4f46e5;
+    border-color: #4f46e5;
+}
+
+.theme-toggle-input:checked + .theme-toggle-slider:before {
+    transform: translateX(24px);
+}
+
+.theme-icon-sun,
+.theme-icon-moon {
+    position: absolute;
+    font-size: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.3s ease;
+}
+
+.theme-icon-sun {
+    left: 6px;
+    color: #fbbf24;
+    opacity: 0;
+}
+
+.theme-icon-moon {
+    right: 6px;
+    color: #e5e7eb;
+    opacity: 1;
+}
+
+.theme-toggle-input:checked ~ .theme-icon-sun {
+    opacity: 1;
+}
+
+.theme-toggle-input:checked ~ .theme-icon-moon {
+    opacity: 0;
+}
+
+.theme-toggle-slider:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 /* Navigation */
 .glass-nav {
     background: var(--glass-nav-bg);
@@ -155,6 +236,22 @@ body {
 
 .tech-badge:hover {
     border-color: var(--border-hover);
+}
+
+/* Project Cards */
+.project-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: var(--border-hover) !important;
+}
+
+[data-theme="dark"] .project-card:hover {
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.05);
 }
 
 /* Sections */

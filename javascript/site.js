@@ -6,19 +6,18 @@ const htmlElement = document.documentElement;
 const currentTheme = localStorage.getItem('theme') || 'light';
 htmlElement.setAttribute('data-theme', currentTheme);
 
-// Update icon and profile image based on current theme
+// Set initial toggle state
+if (themeToggle) {
+    themeToggle.checked = (currentTheme === 'dark');
+}
+
+// Update profile image based on current theme
 function updateThemeIcon(theme) {
-    const icon = themeToggle.querySelector('i');
     const profileImage = document.getElementById('profileImage');
     
-    if (icon) {
-        if (theme === 'dark') {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
+    // Update toggle checkbox state
+    if (themeToggle) {
+        themeToggle.checked = (theme === 'dark');
     }
     
     // Update profile image based on theme
@@ -35,7 +34,7 @@ function updateThemeIcon(theme) {
     }
 }
 
-// Initialize icon and image
+// Initialize image
 updateThemeIcon(currentTheme);
 
 // Add hover effect for profile image
@@ -66,10 +65,29 @@ function toggleTheme() {
     updateThemeIcon(newTheme);
 }
 
-// Add event listener
+// Add event listener for checkbox toggle
 if (themeToggle) {
-    themeToggle.addEventListener('click', toggleTheme);
+    themeToggle.addEventListener('change', toggleTheme);
 }
+
+// Make project cards clickable
+document.addEventListener('DOMContentLoaded', function() {
+    const projectCards = document.querySelectorAll('.project-card[data-url]');
+    
+    projectCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Don't trigger if clicking on a link inside the card
+            if (e.target.tagName === 'A' || e.target.closest('a')) {
+                return;
+            }
+            
+            const url = this.getAttribute('data-url');
+            if (url) {
+                window.open(url, '_blank');
+            }
+        });
+    });
+});
 
 // Typing Effect
 const typingTextElement = document.getElementById('typing-text');
