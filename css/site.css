@@ -870,3 +870,51 @@ a:hover {
         font-size: 13px;
     }
 }
+/* Projects Modal */
+#projectsModal {
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease;
+}
+
+#projectsModal > div {
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Modal scrollbar styling */
+#projectsModal > div::-webkit-scrollbar {
+    width: 8px;
+}
+
+#projectsModal > div::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+}
+
+#projectsModal > div::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}
+
+#projectsModal > div::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}

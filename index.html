@@ -31,11 +31,13 @@
                 <!-- Content - Right Side -->
                 <div class="flex-1 text-center md:text-left">
                     <!-- Name with verified badge and theme toggle -->
-                    <div class="flex items-center gap-3 mb-1 justify-center md:justify-start flex-wrap">
-                        <h1 class="text-3xl md:text-4xl font-bold" style="color: var(--text-primary);">
-                            Enzo P. Daniela
-                        </h1>
-                        <i class="fas fa-check-circle text-blue-500 text-xl"></i>
+                    <div class="flex items-center justify-between mb-1 flex-wrap gap-3">
+                        <div class="flex items-center gap-3 mx-auto md:mx-0">
+                            <h1 class="text-3xl md:text-4xl font-bold" style="color: var(--text-primary);">
+                                Enzo P. Daniela
+                            </h1>
+                            <i class="fas fa-check-circle text-blue-500 text-xl"></i>
+                        </div>
                         
                         <!-- Theme Toggle Switch -->
                         <label class="theme-toggle-switch" aria-label="Toggle theme">
@@ -246,15 +248,22 @@
     <!-- Projects Section -->
     <section id="projects" class="py-6">
         <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-2xl font-bold mb-2 fade-in-up" style="color: var(--text-primary);">Recent Projects</h2>
-            <p class="text-sm mb-4 fade-in-up" style="color: var(--text-secondary);">Featured work and applications</p>
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h2 class="text-2xl font-bold mb-2 fade-in-up" style="color: var(--text-primary);">Recent Projects</h2>
+                    <p class="text-sm fade-in-up" style="color: var(--text-secondary);">Featured work and applications</p>
+                </div>
+                <button id="viewAllProjectsBtn" class="text-sm font-medium transition-colors fade-in-up" style="color: var(--text-secondary); cursor: pointer;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
+                    View All <i class="fas fa-chevron-right text-xs"></i>
+                </button>
+            </div>
 
-            <div class="space-y-4" id="projectsGrid">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="projectsGrid">
                 <!-- Project 1: Gym Management System -->
                 <div class="project-card rounded-lg p-4 transition-colors fade-in-up cursor-pointer hover:shadow-lg" style="border: 1px solid var(--border);"
                     data-tags="express mysql firebase node team" data-url="https://fitworxgymph.web.app/">
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <div class="md:w-32 h-20 flex-shrink-0 overflow-hidden rounded-md">
+                    <div class="flex flex-col gap-3">
+                        <div class="w-full h-32 overflow-hidden rounded-md">
                             <img src="image/landing.png" alt="OGFMSI"
                                 class="w-full h-full object-cover">
                         </div>
@@ -290,8 +299,8 @@
                 <!-- Project 2: Grade Calculator -->
                 <div class="project-card rounded-lg p-4 transition-colors fade-in-up cursor-pointer hover:shadow-lg"
                     data-tags="javascript css html solo" style="transition-delay: 100ms; border: 1px solid var(--border);" data-url="https://grade-calculator-xi.vercel.app/">
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <div class="md:w-32 h-20 flex-shrink-0 overflow-hidden rounded-md">
+                    <div class="flex flex-col gap-3">
+                        <div class="w-full h-32 overflow-hidden rounded-md">
                             <img src="image/STI GRADE CALCULATOR.png" alt="Grade Calculator"
                                 class="w-full h-full object-cover">
                         </div>
@@ -323,10 +332,10 @@
                 </div>
 
                 <!-- Project 3: Firebase CRUD -->
-                <div class="project-card rounded-lg p-4 transition-colors fade-in-up cursor-pointer hover:shadow-lg"
+                <div class="project-card rounded-lg p-4 transition-colors fade-in-up cursor-pointer hover:shadow-lg hidden"
                     data-tags="firebase javascript auth solo" style="transition-delay: 200ms; border: 1px solid var(--border);" data-url="https://firebase-sable-ten.vercel.app/">
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <div class="md:w-32 h-20 flex-shrink-0 overflow-hidden rounded-md">
+                    <div class="flex flex-col gap-3">
+                        <div class="w-full h-32 overflow-hidden rounded-md">
                             <img src="image/FIREBASE CRUD.png" alt="Firebase CRUD"
                                 class="w-full h-full object-cover">
                         </div>
@@ -358,10 +367,10 @@
                 </div>
 
                 <!-- Project 4: Weather App -->
-                <div class="project-card rounded-lg p-4 transition-colors fade-in-up cursor-pointer hover:shadow-lg"
+                <div class="project-card rounded-lg p-4 transition-colors fade-in-up cursor-pointer hover:shadow-lg hidden"
                     data-tags="react javascript api solo" style="transition-delay: 300ms; border: 1px solid var(--border);" data-url="https://weather-project-react-iota.vercel.app/">
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <div class="md:w-32 h-20 flex-shrink-0 overflow-hidden rounded-md">
+                    <div class="flex flex-col gap-3">
+                        <div class="w-full h-32 overflow-hidden rounded-md">
                             <img src="image/WEATHER.png" alt="Weather App"
                                 class="w-full h-full object-cover">
                         </div>
@@ -394,6 +403,122 @@
             </div>
         </div>
     </section>
+
+    <!-- Projects Modal -->
+    <div id="projectsModal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm hidden items-center justify-center z-50" style="display: none;">
+        <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-6 max-w-5xl w-full mx-4 max-h-[90vh] overflow-y-auto" style="background: var(--bg-primary);">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold" style="color: var(--text-primary);">All Projects</h3>
+                <button id="closeProjectsModal" class="text-gray-500 hover:text-gray-700 transition-colors" style="color: var(--text-secondary);">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Project 1: Gym Management System -->
+                <div class="project-card rounded-lg p-4 transition-colors cursor-pointer hover:shadow-lg" style="border: 1px solid var(--border);"
+                    data-url="https://fitworxgymph.web.app/" onclick="window.open(this.dataset.url, '_blank')">
+                    <div class="flex flex-col gap-3">
+                        <div class="w-full h-32 overflow-hidden rounded-md">
+                            <img src="image/landing.png" alt="OGFMSI" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-start justify-between mb-1">
+                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Gym Management System</h3>
+                                <span class="px-2 py-0.5 rounded text-xs whitespace-nowrap" style="background: var(--badge-bg); color: var(--badge-text);">Capstone</span>
+                            </div>
+                            <p class="text-xs mb-2" style="color: var(--text-primary);">Capstone project featuring full-stack gym management with POS, inventory tracking, and check-ins.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-2">
+                                <span class="tech-badge">Express.js</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Firebase</span>
+                                <span class="tech-badge">Node.js</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="https://fitworxgymph.web.app/" target="_blank" class="text-xs transition-colors" style="color: var(--text-secondary);" onclick="event.stopPropagation();">Demo →</a>
+                                <a href="https://github.com/deloyxd/ogfmsi" target="_blank" class="text-xs transition-colors" style="color: var(--text-secondary);" onclick="event.stopPropagation();">Code →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Grade Calculator -->
+                <div class="project-card rounded-lg p-4 transition-colors cursor-pointer hover:shadow-lg" style="border: 1px solid var(--border);"
+                    data-url="https://grade-calculator-xi.vercel.app/" onclick="window.open(this.dataset.url, '_blank')">
+                    <div class="flex flex-col gap-3">
+                        <div class="w-full h-32 overflow-hidden rounded-md">
+                            <img src="image/STI GRADE CALCULATOR.png" alt="Grade Calculator" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-start justify-between mb-1">
+                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Grade Calculator</h3>
+                            </div>
+                            <p class="text-xs mb-2" style="color: var(--text-primary);">Specialized calculator for STI College grading system with local storage features.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-2">
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">CSS3</span>
+                                <span class="tech-badge">HTML5</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="https://grade-calculator-xi.vercel.app/" target="_blank" class="text-xs transition-colors" style="color: var(--text-secondary);" onclick="event.stopPropagation();">Demo →</a>
+                                <a href="https://github.com/EnzoSoti/somethingnew" target="_blank" class="text-xs transition-colors" style="color: var(--text-secondary);" onclick="event.stopPropagation();">Code →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Firebase CRUD -->
+                <div class="project-card rounded-lg p-4 transition-colors cursor-pointer hover:shadow-lg" style="border: 1px solid var(--border);"
+                    data-url="https://firebase-sable-ten.vercel.app/" onclick="window.open(this.dataset.url, '_blank')">
+                    <div class="flex flex-col gap-3">
+                        <div class="w-full h-32 overflow-hidden rounded-md">
+                            <img src="image/FIREBASE CRUD.png" alt="Firebase CRUD" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-start justify-between mb-1">
+                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Firebase CRUD</h3>
+                            </div>
+                            <p class="text-xs mb-2" style="color: var(--text-primary);">Real-time data management application demonstrating Firebase integration prowess.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-2">
+                                <span class="tech-badge">Firebase</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Auth</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="https://firebase-sable-ten.vercel.app/" target="_blank" class="text-xs transition-colors" style="color: var(--text-secondary);" onclick="event.stopPropagation();">Demo →</a>
+                                <a href="https://github.com/EnzoSoti/Firebase" target="_blank" class="text-xs transition-colors" style="color: var(--text-secondary);" onclick="event.stopPropagation();">Code →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Weather App -->
+                <div class="project-card rounded-lg p-4 transition-colors cursor-pointer hover:shadow-lg" style="border: 1px solid var(--border);"
+                    data-url="https://weather-project-react-iota.vercel.app/" onclick="window.open(this.dataset.url, '_blank')">
+                    <div class="flex flex-col gap-3">
+                        <div class="w-full h-32 overflow-hidden rounded-md">
+                            <img src="image/WEATHER.png" alt="Weather App" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-start justify-between mb-1">
+                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Weather App</h3>
+                            </div>
+                            <p class="text-xs mb-2" style="color: var(--text-primary);">React-based forecast application consuming live weather APIs with geolocation support.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-2">
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">API</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="https://weather-project-react-iota.vercel.app/" target="_blank" class="text-xs transition-colors" style="color: var(--text-secondary);" onclick="event.stopPropagation();">Demo →</a>
+                                <a href="https://github.com/EnzoSoti/weather-app" target="_blank" class="text-xs transition-colors" style="color: var(--text-secondary);" onclick="event.stopPropagation();">Code →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Resume & Contact Section -->
     <section id="contact" class="py-4">
