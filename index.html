@@ -81,22 +81,6 @@
                             Read Resume
                         </a>
                     </div>
-
-                    <!-- Social Links -->
-                    <div class="flex space-x-4 justify-center md:justify-start">
-                        <a href="https://github.com/EnzoSoti" target="_blank"
-                            class="transition-colors" style="color: var(--icon-color);">
-                            <i class="fab fa-github text-2xl"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/enzo-daniela-685374324/" target="_blank"
-                            class="transition-colors" style="color: var(--icon-color);">
-                            <i class="fab fa-linkedin text-2xl"></i>
-                        </a>
-                        <a href="https://www.facebook.com/enzo.daniela.31/" target="_blank"
-                            class="transition-colors" style="color: var(--icon-color);">
-                            <i class="fab fa-facebook text-2xl"></i>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -411,69 +395,81 @@
         </div>
     </section>
 
-    <!-- Resume Section -->
-    <section id="resume" class="py-6">
+    <!-- Resume & Contact Section -->
+    <section id="contact" class="py-4">
         <div class="max-w-3xl mx-auto px-6">
-            <div class="rounded-lg p-6 text-center fade-in-up transition-colors" style="border: 1px solid var(--border);">
-                <h2 class="text-xl font-bold mb-2" style="color: var(--text-primary);">Resume</h2>
-                <p class="text-sm mb-4" style="color: var(--text-primary);">Download my latest resume</p>
-
-                <div class="flex flex-col sm:flex-row justify-center gap-2">
-                    <a href="./doc/Enzo Daniela - Resume.pdf" target="_blank"
-                        class="btn-primary px-6 py-3 rounded-lg font-medium inline-flex items-center justify-center">
-                        <i class="fas fa-eye mr-2"></i> View PDF
-                    </a>
-                    <a href="./doc/Enzo Daniela - Resume.pdf" download
-                        class="btn-secondary px-6 py-3 rounded-lg font-medium inline-flex items-center justify-center">
-                        <i class="fas fa-download mr-2"></i> Download
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-6">
-        <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-2xl font-bold mb-6 fade-in-up" style="color: var(--text-primary);">Get In Touch</h2>
-
-            <div class="fade-in-up space-y-4">
-                <div class="flex items-center space-x-4 pb-4" style="border-bottom: 1px solid var(--border);">
-                    <div class="p-3 rounded-lg" style="background: var(--bg-secondary); color: var(--text-primary);">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm mb-1" style="color: var(--text-secondary);">Email</p>
-                        <a href="mailto:parane.enzo@gmail.com"
-                            class="transition-colors font-medium" style="color: var(--text-primary);">parane.enzo@gmail.com</a>
+            <div class="grid md:grid-cols-3 gap-4">
+                <!-- Resume Column -->
+                <div id="resume">
+                    <h2 class="text-lg font-bold mb-3 fade-in-up" style="color: var(--text-primary);">Resume</h2>
+                    
+                    <div class="fade-in-up space-y-2">
+                        <p class="text-xs mb-3" style="color: var(--text-secondary);">Download my latest resume</p>
+                        
+                        <a href="./doc/Enzo Daniela - Resume.pdf" target="_blank"
+                            class="btn-primary w-full px-3 py-2 rounded-lg text-sm font-medium inline-flex items-center justify-center">
+                            <i class="fas fa-eye mr-2"></i> View PDF
+                        </a>
+                        <a href="./doc/Enzo Daniela - Resume.pdf" download
+                            class="btn-secondary w-full px-3 py-2 rounded-lg text-sm font-medium inline-flex items-center justify-center">
+                            <i class="fas fa-download mr-2"></i> Download
+                        </a>
                     </div>
                 </div>
 
-                <div class="flex items-center space-x-4 pb-4" style="border-bottom: 1px solid var(--border);">
-                    <div class="p-3 rounded-lg" style="background: var(--bg-secondary); color: var(--text-primary);">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm mb-1" style="color: var(--text-secondary);">Location</p>
-                        <span class="font-medium" style="color: var(--text-primary);">Caloocan City, MNL</span>
+                <!-- Get In Touch Column -->
+                <div>
+                    <h2 class="text-lg font-bold mb-3 fade-in-up" style="color: var(--text-primary);">Get In Touch</h2>
+
+                    <div class="fade-in-up space-y-3">
+                        <div class="flex items-center space-x-3 pb-3" style="border-bottom: 1px solid var(--border);">
+                            <div class="p-2 rounded-lg" style="background: var(--bg-secondary); color: var(--text-primary);">
+                                <i class="fas fa-envelope text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs mb-0.5" style="color: var(--text-secondary);">Email</p>
+                                <a href="mailto:parane.enzo@gmail.com"
+                                    class="transition-colors font-medium text-sm" style="color: var(--text-primary);">parane.enzo@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-3 pb-3" style="border-bottom: 1px solid var(--border);">
+                            <div class="p-2 rounded-lg" style="background: var(--bg-secondary); color: var(--text-primary);">
+                                <i class="fas fa-map-marker-alt text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs mb-0.5" style="color: var(--text-secondary);">Location</p>
+                                <span class="font-medium text-sm" style="color: var(--text-primary);">Caloocan City, MNL</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="pt-4">
-                    <p class="text-sm mb-4" style="color: var(--text-secondary);">Social Links</p>
-                    <div class="flex space-x-3">
-                        <a href="https://github.com/EnzoSoti" target="_blank"
-                            class="p-2 rounded-lg transition-colors" style="background: var(--bg-secondary); color: var(--text-primary);">
-                            <i class="fab fa-github text-lg"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/enzo-daniela-685374324/" target="_blank"
-                            class="p-2 rounded-lg transition-colors" style="background: var(--bg-secondary); color: var(--text-primary);">
-                            <i class="fab fa-linkedin-in text-lg"></i>
-                        </a>
-                        <a href="https://www.facebook.com/enzo.daniela.31/" target="_blank"
-                            class="p-2 rounded-lg transition-colors" style="background: var(--bg-secondary); color: var(--text-primary);">
-                            <i class="fab fa-facebook-f text-lg"></i>
-                        </a>
+                <!-- Social Links Column -->
+                <div>
+                    <h2 class="text-lg font-bold mb-3 fade-in-up" style="color: var(--text-primary);">Social Links</h2>
+
+                    <div class="social-links-container fade-in-up">
+                        <ul class="social-links-list">
+                            <li>
+                                <a href="https://www.linkedin.com/in/enzo-daniela-685374324/" target="_blank" class="social-link">
+                                    <i class="fab fa-linkedin"></i>
+                                    <span>LinkedIn</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/EnzoSoti" target="_blank" class="social-link">
+                                    <i class="fab fa-github"></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/" target="_blank" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>Instagram</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
