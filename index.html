@@ -609,58 +609,11 @@
         </div>
     </footer>
 
-    <!-- Chat Widget -->
-    <div id="chatWidget" class="chat-widget hidden" style="position: fixed !important; bottom: 100px !important; right: 24px !important; width: 400px !important; max-width: calc(100vw - 48px) !important; height: 600px !important; max-height: calc(100vh - 150px) !important; background: #ffffff !important; border-radius: 16px !important; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important; z-index: 99998 !important; border: 1px solid rgba(0, 0, 0, 0.1) !important; overflow: hidden !important;">
-        <div class="chat-header">
-            <div class="flex items-center space-x-3">
-                <div class="chat-avatar">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div>
-                    <h3 class="chat-title">Chat with Enzo</h3>
-                    <p class="chat-status">
-                        <span class="status-dot"></span>
-                        Online
-                    </p>
-                </div>
-            </div>
-            <div class="flex items-center space-x-2">
-                <button id="clearChat" class="chat-control-btn" title="Clear Chat">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
-                <button id="chatMinimize" class="chat-control-btn" title="Minimize">
-                    <i class="fas fa-minus"></i>
-                </button>
-                <button id="chatClose" class="chat-control-btn" title="Close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-        </div>
-
-        <div id="chatMessages" class="chat-messages">
-            <!-- Messages will be added here dynamically -->
-        </div>
-
-        <div class="chat-input-container">
-                <textarea id="chatInput" class="chat-input" 
-                    placeholder="Ask about Enzo" rows="1"></textarea>
-            <button id="chatSend" class="chat-send-btn">
-                <i class="fas fa-paper-plane"></i>
-            </button>
-        </div>
-    </div>
-
     <!-- Floating Buttons -->
-    <!-- QR Code Button (Middle) -->
-    <button id="qrCodeBtn" class="fixed right-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" style="z-index: 9998; bottom: 100px;">
+    <!-- QR Code Button -->
+    <button id="qrCodeBtn" class="fixed right-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" style="z-index: 9998; bottom: 24px;">
         <i class="fas fa-qrcode text-xl"></i>
     </button>
-
-    <!-- AI Chat Button (Bottom) -->
-    <!-- <button id="chatButton" class="chat-button" aria-label="Open AI Chat" style="position: fixed !important; bottom: 24px !important; right: 24px !important; z-index: 99999 !important; width: 60px !important; height: 60px !important; background: #000000 !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; border: 2px solid white !important; box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;">
-        <i class="fas fa-robot" style="font-size: 24px !important; color: #ffffff !important;"></i>
-        <span class="chat-badge" style="position: absolute; top: -5px; right: -5px; background: white; color: black; font-size: 10px; font-weight: bold; padding: 4px 8px; border-radius: 12px;">AI</span>
-    </button> -->
 
     <!-- QR Code Modal -->
     <div id="qrModal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm hidden items-center justify-center z-50">
@@ -681,9 +634,7 @@
         </div>
     </div>
 
-    <script src="javascript/config.js"></script>
     <script src="javascript/site.js"></script>
-    <script type="module" src="javascript/gemini-chat.js"></script>
     <script src="javascript/qr-code.js"></script>
 </body>
 
