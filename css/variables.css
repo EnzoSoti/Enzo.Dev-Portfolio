@@ -1,0 +1,36 @@
+/* CSS Variables and Theme Configuration */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9fafb;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e5e7eb;
+    --border-hover: #111827;
+    --glass-nav-bg: rgba(255, 255, 255, 0.8);
+    --btn-primary-bg: #000000;
+    --btn-primary-hover: #1a1a1a;
+    --btn-primary-text: #ffffff;
+    --badge-bg: #f3f4f6;
+    --badge-text: #374151;
+    --icon-color: #6b7280;
+    --icon-hover: #111827;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #000000;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border: #334155;
+    --border-hover: #f1f5f9;
+    --glass-nav-bg: rgba(0, 0, 0, 0.8);
+    --btn-primary-bg: #f1f5f9;
+    --btn-primary-hover: #ffffff;
+    --btn-primary-text: #000000;
+    --badge-bg: #1a1a1a;
+    --badge-text: #94a3b8;
+    --icon-color: #94a3b8;
+    --icon-hover: #f1f5f9;
+}

@@ -1,0 +1,28 @@
+/* Modal Styles */
+#projectsModal {
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease;
+}
+
+#projectsModal > div {
+    animation: slideUp 0.3s ease;
+}
+
+/* Modal scrollbar styling */
+#projectsModal > div::-webkit-scrollbar {
+    width: 8px;
+}
+
+#projectsModal > div::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 2px;
+}
+
+#projectsModal > div::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
+}
+
+#projectsModal > div::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
