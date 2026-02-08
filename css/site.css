@@ -372,6 +372,20 @@ a:hover {
     text-decoration: none;
 }
 
+/* Timeline Dots Hover Effect */
+.timeline-dot {
+    transition: background 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.experience-item:hover .timeline-dot-hollow {
+    background: var(--text-primary) !important;
+}
+
+.experience-item:hover .timeline-dot {
+    transform: scale(1.3);
+}
+
 /* Projects Modal */
 #projectsModal {
     backdrop-filter: blur(8px);
