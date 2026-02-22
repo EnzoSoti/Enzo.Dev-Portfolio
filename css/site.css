@@ -10,18 +10,27 @@
  */
 
 /* Core Styles */
-@import url('variables.css');      /* CSS custom properties and theme variables */
-@import url('base.css');           /* Base styles and typography */
+@import url('variables.css');
+/* CSS custom properties and theme variables */
+@import url('base.css');
+/* Base styles and typography */
 
 /* Component Styles */
-@import url('theme-toggle.css');   /* Theme toggle switch */
-@import url('navigation.css');     /* Navigation bar */
-@import url('buttons.css');        /* Button styles */
-@import url('cards.css');          /* Cards and badges */
-@import url('social-links.css');   /* Social links */
-@import url('timeline.css');       /* Timeline elements */
+@import url('theme-toggle.css');
+/* Theme toggle switch */
+@import url('navigation.css');
+/* Navigation bar */
+@import url('buttons.css');
+/* Button styles */
+@import url('cards.css');
+/* Cards and badges */
+@import url('social-links.css');
+/* Social links */
+@import url('timeline.css');
+/* Timeline elements */
 
 /* Feature Styles */
-@import url('animations.css');     /* Animation classes */
-@import url('modal.css');          /* Modal styles */
-
+@import url('animations.css');
+/* Animation classes */
+@import url('modal.css');
+/* Modal styles */
