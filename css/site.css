@@ -1,36 +1,83 @@
-/**
- * SITE.CSS - MODULAR ARCHITECTURE
- * ================================
- * 
- * This file has been refactored into modular components for better maintainability.
- * Each feature/section now has its own CSS file in the css/ directory.
- * 
- * Import order matters - variables must come first, then base styles,
- * followed by component-specific styles.
- */
+.stagger-1 {
+    animation-delay: 0.1s;
+    opacity: 0;
+}
 
-/* Core Styles */
-@import url('variables.css');
-/* CSS custom properties and theme variables */
-@import url('base.css');
-/* Base styles and typography */
+.stagger-2 {
+    animation-delay: 0.2s;
+    opacity: 0;
+}
 
-/* Component Styles */
-@import url('theme-toggle.css');
-/* Theme toggle switch */
-@import url('navigation.css');
-/* Navigation bar */
-@import url('buttons.css');
-/* Button styles */
-@import url('cards.css');
-/* Cards and badges */
-@import url('social-links.css');
-/* Social links */
-@import url('timeline.css');
-/* Timeline elements */
+.stagger-3 {
+    animation-delay: 0.3s;
+    opacity: 0;
+}
 
-/* Feature Styles */
-@import url('animations.css');
-/* Animation classes */
-@import url('modal.css');
-/* Modal styles */
+.stagger-4 {
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+.stagger-5 {
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+.dark .dark-invert {
+    filter: invert(1);
+}
+
+.project-img {
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-img {
+    transform: scale(1.04);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scroll progress container styling */
+#scrollProgress {
+    transform-origin: left;
+}
+
+/* Hide default cursor on desktop for custom fluid cursor */
+@media (min-width: 768px) {
+    html, body, a, button, input, textarea, .previewable-img, .filter-btn, .cursor-zoom-in, .cursor-zoom-out {
+        cursor: none !important;
+    }
+}
+
+/* 3D tilt smooth transform */
+.project-card {
+    transition: transform 0.15s ease-out, border-color 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+/* Premium Scroll Reveal System */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-up.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-fade {
+    opacity: 0;
+    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-fade.revealed {
+    opacity: 1;
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }

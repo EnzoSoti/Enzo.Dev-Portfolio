@@ -1,689 +1,452 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Enzo P. Daniela - Professional IT Student & Web Developer Portfolio">
-    <title>Enzo Daniela - IT Student</title>
+    <title>Enzo Daniela — IT Student & Backend Developer</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Enzo Daniela — IT Student & Backend Developer">
+    <meta name="description" content="Portfolio showcasing full-stack systems, API architecture, and database design. IT Graduate based in Caloocan City.">
+    <meta name="keywords" content="Enzo Daniela, Backend Developer, Full Stack Developer, Node.js, Express, React, Portfolio">
+    <meta name="author" content="Enzo Daniela">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://enzosoti.github.io/">
+    <meta property="og:title" content="Enzo Daniela — Backend Developer">
+    <meta property="og:description" content="Backend-first developer. Focused on building robust server-side logic and RESTful APIs.">
+    <meta property="og:image" content="./image/landing.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://enzosoti.github.io/">
+    <meta property="twitter:title" content="Enzo Daniela — Backend Developer">
+    <meta property="twitter:description" content="Backend-first developer. Focused on building robust server-side logic and RESTful APIs.">
+    <meta property="twitter:image" content="./image/landing.png">
 
     <link rel="icon" href="image/Formal.jpg" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Georgia', 'serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        cream: '#F7F5F0',
+                        ink: '#0F0E0C',
+                        accent: '#C8522A',
+                    },
+                    keyframes: {
+                        fadeUp: { '0%': { opacity: 0, transform: 'translateY(24px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+                        blink: { '0%,100%': { opacity: 1 }, '50%': { opacity: 0 } },
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.6s ease forwards',
+                        blink: 'blink 1s step-end infinite',
+                    },
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/site.css">
 </head>
 
-<body class="text-gray-900 antialiased selection:bg-black selection:text-white">
+<body class="bg-cream text-ink font-mono transition-colors duration-300 dark:bg-ink dark:text-cream">
 
-    <!-- Hero Section -->
-    <section class="pt-12 pb-2">
-        <div class="max-w-3xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row gap-6 items-center md:items-start fade-in-up">
-                <!-- Profile Picture - Left Side -->
-                <div class="flex-shrink-0 mx-auto md:mx-0">
-                    <div class="w-48 h-48 overflow-hidden"
-                        style="background: var(--bg-secondary); border: 3px solid var(--border);">
-                        <img id="profileImage" src="./image/new_formal-removebg-preview.png" alt="Enzo P. Daniela"
-                            class="w-full h-full object-cover transition-all duration-150 ease-in-out cursor-pointer hover:scale-105"
-                            data-normal="./image/new_formal-removebg-preview.png"
-                            data-hover="./image/ops-removebg-preview white.png">
-                    </div>
-                </div>
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgress" class="fixed top-0 left-0 w-0 h-[3px] bg-accent z-[60] transition-all duration-100 ease-out"></div>
 
-                <!-- Content - Right Side -->
-                <div class="flex-1 text-center md:text-left">
-                    <!-- Name with verified badge and theme toggle -->
-                    <div class="flex items-center justify-between mb-1 flex-wrap gap-3">
-                        <div class="flex items-center gap-3 mx-auto md:mx-0">
-                            <h1 class="text-3xl md:text-4xl font-bold" style="color: var(--text-primary);">
-                                Enzo P. Daniela
-                            </h1>
-                            <i class="fas fa-check-circle text-blue-500 text-xl"></i>
-                        </div>
+    <!-- Custom Fluid Cursor elements -->
+    <div id="customCursor" class="hidden md:block fixed w-8 h-8 rounded-full border border-accent pointer-events-none z-[100] -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-out"></div>
+    <div id="customCursorDot" class="hidden md:block fixed w-2 h-2 rounded-full bg-accent pointer-events-none z-[100] -translate-x-1/2 -translate-y-1/2"></div>
 
-                        <!-- Theme Toggle Switch -->
-                        <label class="theme-toggle-switch" aria-label="Toggle theme">
-                            <input type="checkbox" id="themeToggle" class="theme-toggle-input">
-                            <span class="theme-toggle-slider">
-                                <i class="fas fa-sun theme-icon-sun"></i>
-                                <i class="fas fa-moon theme-icon-moon"></i>
-                            </span>
-                        </label>
-                    </div>
-
-                    <!-- Location -->
-                    <p class="text-base mb-2 flex items-center gap-2 justify-center md:justify-start"
-                        style="color: var(--text-secondary);">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Caloocan City, Philippines
-                    </p>
-
-                    <!-- Title/Role -->
-                    <p class="text-lg mb-3 font-medium" style="color: var(--text-primary);">
-                        IT Student | Backend Developer | Looking for INTERNSHIP
-                    </p>
-
-                    <!-- Achievement Badge -->
-                    <div class="mb-4 flex justify-center md:justify-start">
-                        <div
-                            class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1 rounded-sm inline-flex items-center gap-1.5 text-xs">
-                            <i class="fas fa-trophy text-xs"></i>
-                            <span class="font-semibold">STI College Fairview - BS Information Technology</span>
-                        </div>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="flex flex-wrap gap-3 mb-4 justify-center md:justify-start">
-                        <a href="mailto:parane.enzo@gmail.com"
-                            class="btn-primary px-4 py-2 rounded-sm text-sm font-medium inline-flex items-center gap-2">
-                            <i class="fas fa-calendar-alt"></i>
-                            Send Email
-                        </a>
-                        <a href="#projects"
-                            class="btn-secondary px-4 py-2 rounded-sm text-sm font-medium inline-flex items-center gap-2">
-                            <i class="fas fa-envelope"></i>
-                            View Projects
-                        </a>
-                        <a href="./doc/Enzo Daniela - Resume.pdf" target="_blank"
-                            class="btn-secondary px-4 py-2 rounded-sm text-sm font-medium inline-flex items-center gap-2">
-                            <i class="fas fa-book-open"></i>
-                            Read Resume
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-3">
-        <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-2xl font-bold mb-4 fade-in-up" style="color: var(--text-primary);">About</h2>
-
-            <div class="fade-in-up grid md:grid-cols-3 gap-6 items-start">
-                <!-- Left Side - Text Content (2/3) -->
-                <div class="space-y-4 md:col-span-2">
-                    <p class="text-sm leading-relaxed" style="color: var(--text-primary);">
-                        Bachelor of Science in Information Technology student with hands-on experience in backend
-                        development through academic and personal projects. Focused on building server-side logic,
-                        RESTful APIs, and database operations using <span class="font-semibold"
-                            style="color: var(--text-primary);">Node.js, Express.js, MySQL, and Firebase</span>. Uses
-                        AI-assisted tools to support frontend implementation while concentrating primarily on backend
-                        functionality.
-                    </p>
-                    <p class="text-sm leading-relaxed" style="color: var(--text-primary);">
-                        Comfortable working on both solo and team-based projects and eager to gain real-world experience
-                        as an <span class="font-semibold" style="color: var(--text-primary);">IT | Backend Developer
-                            Intern (OJT)</span>.
-                    </p>
-                </div>
-
-                <!-- Right Side - Education & Status Cards (1/3) -->
-                <div class="space-y-3 md:col-span-1">
-                    <div class="p-3 rounded-sm transition-colors" style="border: 1px solid var(--border);">
-                        <div class="flex items-start space-x-2">
-                            <div class="p-1.5 rounded-sm" style="background: var(--bg-secondary);">
-                                <i class="fas fa-graduation-cap text-sm" style="color: var(--text-primary);"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-sm mb-0.5" style="color: var(--text-primary);">BS
-                                    Information Technology</h4>
-                                <p class="text-xs" style="color: var(--text-secondary);">STI College Fairview</p>
-                                <p class="text-xs" style="color: var(--text-muted);">2026</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-3 rounded-sm transition-colors" style="border: 1px solid var(--border);">
-                        <div class="flex items-start space-x-2">
-                            <div class="p-1.5 rounded-sm" style="background: var(--bg-secondary);">
-                                <i class="fas fa-bolt text-sm" style="color: var(--text-primary);"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-sm mb-0.5" style="color: var(--text-primary);">Current
-                                    Status</h4>
-                                <p class="text-xs" style="color: var(--text-secondary);">Student</p>
-                                <p class="text-xs" style="color: var(--text-muted);">Open for work | OJT internship</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience & Tech Stack Section -->
-    <section id="experience" class="py-3">
-        <div class="max-w-3xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- Experience Column -->
-                <div>
-                    <h2 class="text-2xl font-bold mb-4 fade-in-up" style="color: var(--text-primary);">Experience</h2>
-                    <div class="space-y-3 fade-in-up">
-                        <!-- BS Information Technology -->
-                        <div class="experience-item flex items-start gap-3 pl-4"
-                            style="border-left: 2px solid var(--border);">
-                            <div class="timeline-dot timeline-dot-filled w-2 h-2 rounded-sm mt-2 flex-shrink-0"
-                                style="background: var(--text-primary);"></div>
-                            <div class="flex-1">
-                                <div class="flex items-start justify-between gap-4">
-                                    <div>
-                                        <h3 class="text-base font-bold mb-0.5" style="color: var(--text-primary);">BS
-                                            Information Technology</h3>
-                                        <p class="text-sm" style="color: var(--text-secondary);">STI College Fairview
-                                        </p>
-                                    </div>
-                                    <span class="text-sm font-medium flex-shrink-0"
-                                        style="color: var(--text-secondary);">2026</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Backend Developer -->
-                        <div class="experience-item flex items-start gap-3 pl-4"
-                            style="border-left: 2px solid var(--border);">
-                            <div class="timeline-dot timeline-dot-hollow w-2 h-2 rounded-sm mt-2 flex-shrink-0"
-                                style="border: 2px solid var(--text-primary); background: transparent;"></div>
-                            <div class="flex-1">
-                                <div class="flex items-start justify-between gap-4">
-                                    <div>
-                                        <h3 class="text-base font-bold mb-0.5" style="color: var(--text-primary);">
-                                            Backend Developer for Capstone</h3>
-                                        <p class="text-sm" style="color: var(--text-secondary);">Capstone Project
-                                            (OGFMSI)</p>
-                                    </div>
-                                    <span class="text-sm font-medium flex-shrink-0"
-                                        style="color: var(--text-secondary);">2025</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Freelance Developer -->
-                        <div class="experience-item flex items-start gap-3 pl-4"
-                            style="border-left: 2px solid var(--border);">
-                            <div class="timeline-dot timeline-dot-hollow w-2 h-2 rounded-sm mt-2 flex-shrink-0"
-                                style="border: 2px solid var(--text-primary); background: transparent;"></div>
-                            <div class="flex-1">
-                                <div class="flex items-start justify-between gap-4">
-                                    <div>
-                                        <h3 class="text-base font-bold mb-0.5" style="color: var(--text-primary);">
-                                            Normal Developer</h3>
-                                        <p class="text-sm" style="color: var(--text-secondary);">Currently Student</p>
-                                    </div>
-                                    <span class="text-sm font-medium flex-shrink-0"
-                                        style="color: var(--text-secondary);">2024</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Hello World! -->
-                        <div class="experience-item flex items-start gap-3 pl-4"
-                            style="border-left: 2px solid var(--border);">
-                            <div class="timeline-dot timeline-dot-hollow w-2 h-2 rounded-sm mt-2 flex-shrink-0"
-                                style="border: 2px solid var(--text-primary); background: transparent;"></div>
-                            <div class="flex-1">
-                                <div class="flex items-start justify-between gap-4">
-                                    <div>
-                                        <h3 class="text-base font-bold mb-0.5" style="color: var(--text-primary);">Hello
-                                            World! 👋</h3>
-                                        <p class="text-sm" style="color: var(--text-secondary);">Wrote my first line of
-                                            code</p>
-                                    </div>
-                                    <span class="text-sm font-medium flex-shrink-0"
-                                        style="color: var(--text-secondary);">2020</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tech Stack Column -->
-                <div id="skills">
-                    <h2 class="text-2xl font-bold mb-2 fade-in-up" style="color: var(--text-primary);">Tech Stack</h2>
-                    <p class="text-sm mb-4 fade-in-up" style="color: var(--text-secondary);">Technologies I work with
-                    </p>
-
-                    <div class="space-y-4 fade-in-up">
-                        <!-- Frontend -->
-                        <div>
-                            <h3 class="text-sm font-semibold mb-2" style="color: var(--text-primary);">Frontend</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tech-badge">JavaScript</span>
-                                <span class="tech-badge">HTML</span>
-                                <span class="tech-badge">CSS</span>
-                                <span class="tech-badge">Tailwind CSS</span>
-                            </div>
-                        </div>
-
-                        <!-- Backend -->
-                        <div>
-                            <h3 class="text-sm font-semibold mb-2" style="color: var(--text-primary);">Backend</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tech-badge">Node.js</span>
-                                <span class="tech-badge">Express</span>
-                                <span class="tech-badge">Java</span>
-                                <span class="tech-badge">MySQL</span>
-                                <span class="tech-badge">Firebase</span>
-                            </div>
-                        </div>
-
-                        <!-- DevOps & Tools -->
-                        <div>
-                            <h3 class="text-sm font-semibold mb-2" style="color: var(--text-primary);">Tools</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tech-badge">Git</span>
-                                <span class="tech-badge">GitHub</span>
-                                <span class="tech-badge">VS Code</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-3">
-        <div class="max-w-3xl mx-auto px-6">
-            <div class="flex items-center justify-between mb-4">
-                <div>
-                    <h2 class="text-2xl font-bold mb-2 fade-in-up" style="color: var(--text-primary);">Recent Projects
-                    </h2>
-                    <p class="text-sm fade-in-up" style="color: var(--text-secondary);">Featured work and applications
-                    </p>
-                </div>
-                <button id="viewAllProjectsBtn" class="text-sm font-medium transition-colors fade-in-up"
-                    style="color: var(--text-secondary); cursor: pointer;"
-                    onmouseover="this.style.color='var(--text-primary)'"
-                    onmouseout="this.style.color='var(--text-secondary)'">
-                    <strong>View All </strong><i class="fas fa-chevron-right text-xs"></i>
-                </button>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="projectsGrid">
-                <!-- Project 1: Gym Management System -->
-                <div class="project-card rounded-sm p-4 transition-colors fade-in-up cursor-pointer hover:shadow-lg"
-                    style="border: 1px solid var(--border);" data-tags="express mysql firebase node team"
-                    data-url="https://fitworxgymph.web.app/">
-                    <div class="flex flex-col gap-3">
-                        <div class="w-full h-32 overflow-hidden rounded-sm">
-                            <img src="image/landing.png" alt="OGFMSI" class="w-full h-full object-cover">
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-start justify-between mb-1">
-                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Gym Management
-                                    System</h3>
-                                <span class="px-2 py-0.5 rounded-sm text-xs whitespace-nowrap"
-                                    style="background: var(--badge-bg); color: var(--badge-text);">Capstone</span>
-                            </div>
-                            <p class="text-xs mb-2" style="color: var(--text-primary);">Capstone project featuring
-                                full-stack gym
-                                management with POS, inventory tracking, and check-ins.</p>
-
-                            <div class="flex flex-wrap gap-1.5 mb-2">
-                                <span class="tech-badge">Express.js</span>
-                                <span class="tech-badge">MySQL</span>
-                                <span class="tech-badge">Firebase</span>
-                                <span class="tech-badge">Node.js</span>
-                            </div>
-
-                            <div class="flex gap-2">
-                                <a href="https://fitworxgymph.web.app/" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
-                                    Demo →
-                                </a>
-                                <a href="https://github.com/deloyxd/ogfmsi" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
-                                    Code →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: Grade Calculator -->
-                <div class="project-card rounded-sm p-4 transition-colors fade-in-up cursor-pointer hover:shadow-lg"
-                    data-tags="javascript css html solo"
-                    style="transition-delay: 100ms; border: 1px solid var(--border);"
-                    data-url="https://grade-calculator-xi.vercel.app/">
-                    <div class="flex flex-col gap-3">
-                        <div class="w-full h-32 overflow-hidden rounded-sm">
-                            <img src="image/STI GRADE CALCULATOR.png" alt="Grade Calculator"
-                                class="w-full h-full object-cover">
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-start justify-between mb-1">
-                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Grade Calculator
-                                </h3>
-                            </div>
-                            <p class="text-xs mb-2" style="color: var(--text-primary);">Specialized calculator for STI
-                                College
-                                grading system with local storage features.</p>
-
-                            <div class="flex flex-wrap gap-1.5 mb-2">
-                                <span class="tech-badge">JavaScript</span>
-                                <span class="tech-badge">CSS3</span>
-                                <span class="tech-badge">HTML5</span>
-                            </div>
-
-                            <div class="flex gap-2">
-                                <a href="https://grade-calculator-xi.vercel.app/" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
-                                    Demo →
-                                </a>
-                                <a href="https://github.com/EnzoSoti/somethingnew" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
-                                    Code →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Firebase CRUD -->
-                <div class="project-card rounded-sm p-4 transition-colors fade-in-up cursor-pointer hover:shadow-lg hidden"
-                    data-tags="firebase javascript auth solo"
-                    style="transition-delay: 200ms; border: 1px solid var(--border);"
-                    data-url="https://firebase-sable-ten.vercel.app/">
-                    <div class="flex flex-col gap-3">
-                        <div class="w-full h-32 overflow-hidden rounded-sm">
-                            <img src="image/FIREBASE CRUD.png" alt="Firebase CRUD" class="w-full h-full object-cover">
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-start justify-between mb-1">
-                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Firebase CRUD</h3>
-                            </div>
-                            <p class="text-xs mb-2" style="color: var(--text-primary);">Real-time data management
-                                application
-                                demonstrating Firebase integration prowess.</p>
-
-                            <div class="flex flex-wrap gap-1.5 mb-2">
-                                <span class="tech-badge">Firebase</span>
-                                <span class="tech-badge">JavaScript</span>
-                                <span class="tech-badge">Auth</span>
-                            </div>
-
-                            <div class="flex gap-2">
-                                <a href="https://firebase-sable-ten.vercel.app/" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
-                                    Demo →
-                                </a>
-                                <a href="https://github.com/EnzoSoti/Firebase" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
-                                    Code →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4: Weather App -->
-                <div class="project-card rounded-sm p-4 transition-colors fade-in-up cursor-pointer hover:shadow-lg hidden"
-                    data-tags="react javascript api solo"
-                    style="transition-delay: 300ms; border: 1px solid var(--border);"
-                    data-url="https://weather-project-react-iota.vercel.app/">
-                    <div class="flex flex-col gap-3">
-                        <div class="w-full h-32 overflow-hidden rounded-sm">
-                            <img src="image/WEATHER.png" alt="Weather App" class="w-full h-full object-cover">
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-start justify-between mb-1">
-                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Weather App</h3>
-                            </div>
-                            <p class="text-xs mb-2" style="color: var(--text-primary);">React-based forecast application
-                                consuming
-                                live weather APIs with geolocation support.</p>
-
-                            <div class="flex flex-wrap gap-1.5 mb-2">
-                                <span class="tech-badge">React</span>
-                                <span class="tech-badge">JavaScript</span>
-                                <span class="tech-badge">API</span>
-                            </div>
-
-                            <div class="flex gap-2">
-                                <a href="https://weather-project-react-iota.vercel.app/" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
-                                    Demo →
-                                </a>
-                                <a href="https://github.com/EnzoSoti/weather-app" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);">
-                                    Code →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Modal -->
-    <div id="projectsModal"
-        class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm hidden items-center justify-center z-50"
-        style="display: none;">
-        <div class="bg-white dark:bg-gray-900 rounded-sm shadow-2xl p-6 max-w-5xl w-full mx-4 max-h-[90vh] overflow-y-auto"
-            style="background: var(--bg-primary);">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold" style="color: var(--text-primary);">All Projects</h3>
-                <button id="closeProjectsModal" class="text-gray-500 hover:text-gray-700 transition-colors"
-                    style="color: var(--text-secondary);">
-                    <i class="fas fa-times text-2xl"></i>
-                </button>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Project 1: Gym Management System -->
-                <div class="project-card rounded-sm p-4 transition-colors cursor-pointer hover:shadow-lg"
-                    style="border: 1px solid var(--border);" data-url="https://fitworxgymph.web.app/"
-                    onclick="window.open(this.dataset.url, '_blank')">
-                    <div class="flex flex-col gap-3">
-                        <div class="w-full h-32 overflow-hidden rounded-sm">
-                            <img src="image/landing.png" alt="OGFMSI" class="w-full h-full object-cover">
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-start justify-between mb-1">
-                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Gym Management
-                                    System</h3>
-                                <span class="px-2 py-0.5 rounded-sm text-xs whitespace-nowrap"
-                                    style="background: var(--badge-bg); color: var(--badge-text);">Capstone</span>
-                            </div>
-                            <p class="text-xs mb-2" style="color: var(--text-primary);">Capstone project featuring
-                                full-stack gym management with POS, inventory tracking, and check-ins.</p>
-                            <div class="flex flex-wrap gap-1.5 mb-2">
-                                <span class="tech-badge">Express.js</span>
-                                <span class="tech-badge">MySQL</span>
-                                <span class="tech-badge">Firebase</span>
-                                <span class="tech-badge">Node.js</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="https://fitworxgymph.web.app/" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);"
-                                    onclick="event.stopPropagation();">Demo →</a>
-                                <a href="https://github.com/deloyxd/ogfmsi" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);"
-                                    onclick="event.stopPropagation();">Code →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: Grade Calculator -->
-                <div class="project-card rounded-sm p-4 transition-colors cursor-pointer hover:shadow-lg"
-                    style="border: 1px solid var(--border);" data-url="https://grade-calculator-xi.vercel.app/"
-                    onclick="window.open(this.dataset.url, '_blank')">
-                    <div class="flex flex-col gap-3">
-                        <div class="w-full h-32 overflow-hidden rounded-sm">
-                            <img src="image/STI GRADE CALCULATOR.png" alt="Grade Calculator"
-                                class="w-full h-full object-cover">
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-start justify-between mb-1">
-                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Grade Calculator
-                                </h3>
-                            </div>
-                            <p class="text-xs mb-2" style="color: var(--text-primary);">Specialized calculator for STI
-                                College grading system with local storage features.</p>
-                            <div class="flex flex-wrap gap-1.5 mb-2">
-                                <span class="tech-badge">JavaScript</span>
-                                <span class="tech-badge">CSS3</span>
-                                <span class="tech-badge">HTML5</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="https://grade-calculator-xi.vercel.app/" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);"
-                                    onclick="event.stopPropagation();">Demo →</a>
-                                <a href="https://github.com/EnzoSoti/somethingnew" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);"
-                                    onclick="event.stopPropagation();">Code →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Firebase CRUD -->
-                <div class="project-card rounded-sm p-4 transition-colors cursor-pointer hover:shadow-lg"
-                    style="border: 1px solid var(--border);" data-url="https://firebase-sable-ten.vercel.app/"
-                    onclick="window.open(this.dataset.url, '_blank')">
-                    <div class="flex flex-col gap-3">
-                        <div class="w-full h-32 overflow-hidden rounded-sm">
-                            <img src="image/FIREBASE CRUD.png" alt="Firebase CRUD" class="w-full h-full object-cover">
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-start justify-between mb-1">
-                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Firebase CRUD</h3>
-                            </div>
-                            <p class="text-xs mb-2" style="color: var(--text-primary);">Real-time data management
-                                application demonstrating Firebase integration prowess.</p>
-                            <div class="flex flex-wrap gap-1.5 mb-2">
-                                <span class="tech-badge">Firebase</span>
-                                <span class="tech-badge">JavaScript</span>
-                                <span class="tech-badge">Auth</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="https://firebase-sable-ten.vercel.app/" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);"
-                                    onclick="event.stopPropagation();">Demo →</a>
-                                <a href="https://github.com/EnzoSoti/Firebase" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);"
-                                    onclick="event.stopPropagation();">Code →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4: Weather App -->
-                <div class="project-card rounded-sm p-4 transition-colors cursor-pointer hover:shadow-lg"
-                    style="border: 1px solid var(--border);" data-url="https://weather-project-react-iota.vercel.app/"
-                    onclick="window.open(this.dataset.url, '_blank')">
-                    <div class="flex flex-col gap-3">
-                        <div class="w-full h-32 overflow-hidden rounded-sm">
-                            <img src="image/WEATHER.png" alt="Weather App" class="w-full h-full object-cover">
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-start justify-between mb-1">
-                                <h3 class="text-base font-bold" style="color: var(--text-primary);">Weather App</h3>
-                            </div>
-                            <p class="text-xs mb-2" style="color: var(--text-primary);">React-based forecast application
-                                consuming live weather APIs with geolocation support.</p>
-                            <div class="flex flex-wrap gap-1.5 mb-2">
-                                <span class="tech-badge">React</span>
-                                <span class="tech-badge">JavaScript</span>
-                                <span class="tech-badge">API</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="https://weather-project-react-iota.vercel.app/" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);"
-                                    onclick="event.stopPropagation();">Demo →</a>
-                                <a href="https://github.com/EnzoSoti/weather-app" target="_blank"
-                                    class="text-xs transition-colors" style="color: var(--text-secondary);"
-                                    onclick="event.stopPropagation();">Code →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Preloader Screen -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-cream dark:bg-ink flex items-center justify-center transition-all duration-500 ease-in-out">
+        <div class="flex flex-col items-center gap-4">
+            <span class="text-accent text-lg font-mono tracking-[0.5em] uppercase animate-pulse">EPD.dev</span>
+            <div class="w-16 h-[1px] bg-accent/20 relative overflow-hidden">
+                <div class="absolute top-0 left-0 h-full w-1/2 bg-accent animate-[loading_1.5s_infinite]"></div>
             </div>
         </div>
     </div>
+    
+    <style>
+        @keyframes loading {
+            0% { left: -50%; }
+            100% { left: 100%; }
+        }
+    </style>
 
-    <!-- Resume & Contact Section -->
-    <section id="contact" class="py-3">
-        <div class="max-w-3xl mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-4">
-                <!-- Resume Column -->
-                <div id="resume">
-                    <h2 class="text-lg font-bold mb-3 fade-in-up" style="color: var(--text-primary);">Resume</h2>
+    <!-- Nav -->
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 bg-cream/90 dark:bg-ink/90 backdrop-blur-sm border-b border-ink/10 dark:border-cream/10">
+        <div class="max-w-5xl mx-auto px-6 h-12 flex items-center justify-between">
+            <span class="text-xs tracking-widest uppercase font-mono font-semibold text-accent">enzo.daniela</span>
+            <div class="flex items-center gap-6">
+                <a href="#about"
+                    class="text-xs tracking-wider uppercase opacity-60 hover:opacity-100 transition-opacity hidden sm:block">About</a>
+                <a href="#projects"
+                    class="text-xs tracking-wider uppercase opacity-60 hover:opacity-100 transition-opacity hidden sm:block">Work</a>
+                <a href="#contact"
+                    class="text-xs tracking-wider uppercase opacity-60 hover:opacity-100 transition-opacity hidden sm:block">Contact</a>
+                <button id="themeToggle"
+                    class="w-7 h-7 flex items-center justify-center rounded-full border border-ink/20 dark:border-cream/20 hover:bg-ink/5 dark:hover:bg-cream/5 transition-colors"
+                    aria-label="Toggle theme">
+                    <svg id="sunIcon" class="w-3.5 h-3.5 hidden dark:block" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2a1 1 0 011 1v1a1 1 0 01-2 0V3a1 1 0 011-1zm0 15a5 5 0 100-10 5 5 0 000 10zm7.07-12.07a1 1 0 010 1.41l-.71.71a1 1 0 01-1.41-1.41l.71-.71a1 1 0 011.41 0zM21 11h1a1 1 0 010 2h-1a1 1 0 010-2zM4.93 4.93a1 1 0 011.41 0l.71.71a1 1 0 01-1.41 1.41l-.71-.71a1 1 0 010-1.41zM3 11h1a1 1 0 010 2H3a1 1 0 010-2zm15.36 7.07l-.71-.71a1 1 0 011.41-1.41l.71.71a1 1 0 01-1.41 1.41zM12 20a1 1 0 011 1v1a1 1 0 01-2 0v-1a1 1 0 011-1zm-7.07-1.93a1 1 0 010-1.41l.71-.71a1 1 0 011.41 1.41l-.71.71a1 1 0 01-1.41 0z" />
+                    </svg>
+                    <svg id="moonIcon" class="w-3.5 h-3.5 block dark:hidden" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-                    <div class="fade-in-up space-y-2">
-                        <p class="text-xs mb-3" style="color: var(--text-secondary);">Download my latest resume</p>
+    <!-- Hero -->
+    <section class="min-h-screen flex flex-col justify-center pt-12 pb-0 px-6">
+        <div class="max-w-5xl mx-auto w-full">
 
-                        <a href="./doc/Enzo Daniela - Resume copy.pdf" target="_blank"
-                            class="btn-primary w-full px-3 py-2 rounded-sm text-sm font-medium inline-flex items-center justify-center">
-                            <i class="fas fa-eye mr-2"></i> View PDF
-                        </a>
-                        <a href="./doc/Enzo Daniela - Resume copy.pdf" download
-                            class="btn-secondary w-full px-3 py-2 rounded-sm text-sm font-medium inline-flex items-center justify-center">
-                            <i class="fas fa-download mr-2"></i> Download
-                        </a>
+            <!-- Big label -->
+            <p class="animate-fade-up stagger-1 text-xs tracking-[0.3em] uppercase text-accent mb-8">
+                Portfolio — 2026
+            </p>
+
+            <!-- Big editorial name -->
+            <div class="animate-fade-up stagger-2">
+                <h1 class="font-display text-[clamp(3rem,10vw,8rem)] leading-none font-normal tracking-tight mb-2">
+                    Enzo<br>
+                    <span class="italic text-accent">Daniela.</span>
+                </h1>
+            </div>
+
+            <!-- Divider + tagline row -->
+            <div
+                class="animate-fade-up stagger-3 flex flex-col sm:flex-row sm:items-end gap-6 mt-8 pb-8 border-b border-ink/15 dark:border-cream/15">
+                <p class="text-sm leading-relaxed max-w-sm opacity-70">
+                    IT Graduate & Web Developer based in Caloocan City, Philippines. Building systems
+                    with Node.js, Express, MySQL, Supabase & Docker.
+                </p>
+                <div class="sm:ml-auto flex flex-wrap gap-3">
+                    <a href="mailto:parane.enzo@gmail.com"
+                        class="px-5 py-2.5 bg-ink text-cream dark:bg-cream dark:text-ink text-xs tracking-widest uppercase hover:opacity-80 transition-opacity">
+                        Hire Me
+                    </a>
+                    <a href="./doc/Resume.pdf" target="_blank"
+                        class="px-5 py-2.5 border border-ink dark:border-cream text-xs tracking-widest uppercase hover:bg-ink hover:text-cream dark:hover:bg-cream dark:hover:text-ink transition-colors">
+                        Resume
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stats row -->
+            <div
+                class="animate-fade-up stagger-4 grid grid-cols-2 sm:grid-cols-4 border-b border-ink/15 dark:border-cream/15">
+                <div class="py-6 pr-6 border-r border-ink/15 dark:border-cream/15">
+                    <p class="font-display text-4xl font-normal text-accent">4+</p>
+                    <p class="text-xs uppercase tracking-widest opacity-50 mt-1">Projects</p>
+                </div>
+                <div class="py-6 px-6 border-r border-ink/15 dark:border-cream/15">
+                    <p class="font-display text-4xl font-normal text-accent">6yr</p>
+                    <p class="text-xs uppercase tracking-widest opacity-50 mt-1">Coding</p>
+                </div>
+                <div class="py-6 px-6 border-r border-ink/15 dark:border-cream/15">
+                    <p class="font-display text-4xl font-normal text-accent">BS</p>
+                    <p class="text-xs uppercase tracking-widest opacity-50 mt-1">IT Degree</p>
+                </div>
+                <div class="py-6 pl-6">
+                    <p class="font-display text-4xl font-normal text-accent">Web</p>
+                    <p class="text-xs uppercase tracking-widest opacity-50 mt-1">Developer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-start">
+
+                <!-- Left: photo + status -->
+                <div class="reveal-up">
+                    <div class="relative inline-block">
+                        <img src="./image/new_formal-removebg-preview.png" alt="Enzo P. Daniela"
+                            class="previewable-img w-full max-w-xs grayscale hover:grayscale-0 transition-all duration-500 border border-ink/10 dark:border-cream/10">
+                        <div class="absolute -bottom-4 -right-4 bg-accent text-cream px-4 py-2">
+                            <p class="text-xs tracking-widest uppercase">BSIT Graduate</p>
+                        </div>
+                    </div>
+                    <div class="mt-12 space-y-4">
+                        <div class="flex items-center gap-4 py-3 border-t border-ink/10 dark:border-cream/10">
+                            <span class="text-xs tracking-widest uppercase opacity-40 w-20 flex-shrink-0">School</span>
+                            <span class="text-sm">STI College Fairview</span>
+                        </div>
+                        <div class="flex items-center gap-4 py-3 border-t border-ink/10 dark:border-cream/10">
+                            <span class="text-xs tracking-widest uppercase opacity-40 w-20 flex-shrink-0">Course</span>
+                            <span class="text-sm">BS Information Technology</span>
+                        </div>
+                        <div class="flex items-center gap-4 py-3 border-t border-ink/10 dark:border-cream/10">
+                            <span
+                                class="text-xs tracking-widest uppercase opacity-40 w-20 flex-shrink-0">Graduated</span>
+                            <span class="text-sm">July 17, 2026</span>
+                        </div>
+                        <div class="flex items-center gap-4 py-3 border-t border-b border-ink/10 dark:border-cream/10">
+                            <span
+                                class="text-xs tracking-widest uppercase opacity-40 w-20 flex-shrink-0">Location</span>
+                            <span class="text-sm">Caloocan City, PH</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Get In Touch Column -->
-                <div>
-                    <h2 class="text-lg font-bold mb-3 fade-in-up" style="color: var(--text-primary);">Get In Touch</h2>
+                <!-- Right: bio + stack -->
+                <div class="reveal-up delay-200">
+                    <p class="text-xs tracking-[0.3em] uppercase text-accent mb-6">About</p>
+                    <p class="font-display text-2xl leading-relaxed mb-6 font-normal">
+                        Backend-first developer who actually cares about how the data moves.
+                    </p>
+                    <p class="text-sm leading-relaxed opacity-70 mb-4">
+                        BS Information Technology graduate with hands-on experience in web development through
+                        internship, academic, and personal projects. Focused on building robust server-side logic,
+                        RESTful APIs, and
+                        database operations.
+                    </p>
+                    <p class="text-sm leading-relaxed opacity-70 mb-12">
+                        Comfortable working on both solo and team-based projects. Uses AI-assisted tools like Claude and
+                        GitHub Copilot to accelerate development and support frontend implementation.
+                    </p>
 
-                    <div class="fade-in-up space-y-3">
-                        <div class="flex items-center space-x-3 pb-3" style="border-bottom: 1px solid var(--border);">
-                            <div class="p-2 rounded-sm"
-                                style="background: var(--bg-secondary); color: var(--text-primary);">
-                                <i class="fas fa-envelope text-sm"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs mb-0.5" style="color: var(--text-secondary);">Email</p>
-                                <a href="mailto:parane.enzo@gmail.com" class="transition-colors font-medium text-sm"
-                                    style="color: var(--text-primary);">parane.enzo@gmail.com</a>
+                    <!-- Stack -->
+                    <p class="text-xs tracking-[0.3em] uppercase text-accent mb-6">Tech Stack</p>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-xs uppercase tracking-widest opacity-40 mb-2">Backend</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">Node.js</span>
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">Express.js</span>
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">Java</span>
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">MySQL</span>
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">Firebase</span>
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">Supabase</span>
                             </div>
                         </div>
-
-                        <div class="flex items-center space-x-3 pb-3" style="border-bottom: 1px solid var(--border);">
-                            <div class="p-2 rounded-sm"
-                                style="background: var(--bg-secondary); color: var(--text-primary);">
-                                <i class="fas fa-map-marker-alt text-sm"></i>
+                        <div>
+                            <p class="text-xs uppercase tracking-widest opacity-40 mb-2">Frontend</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">JavaScript</span>
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">TypeScript</span>
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">HTML/CSS</span>
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">Tailwind</span>
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">React</span>
                             </div>
-                            <div>
-                                <p class="text-xs mb-0.5" style="color: var(--text-secondary);">Location</p>
-                                <span class="font-medium text-sm" style="color: var(--text-primary);">Caloocan City,
-                                    MNL</span>
+                        </div>
+                        <div>
+                            <p class="text-xs uppercase tracking-widest opacity-40 mb-2">Tools & AI</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">Docker</span>
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">Git/GitHub</span>
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">Claude</span>
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">GitHub
+                                    Copilot</span>
+                                <span
+                                    class="px-3 py-1 border border-ink/20 dark:border-cream/20 text-xs tracking-wider">Antigravity</span>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Social Links Column -->
-                <div>
-                    <h2 class="text-lg font-bold mb-3 fade-in-up" style="color: var(--text-primary);">Social Links</h2>
+            <!-- GitHub Activity Heatmap -->
+            <div class="mt-16 pt-16 border-t border-ink/10 dark:border-cream/10 reveal-up">
+                <p class="text-xs tracking-[0.3em] uppercase text-accent mb-6 font-semibold">GitHub Activity</p>
+                <div class="overflow-x-auto pb-2 border border-ink/10 dark:border-cream/10 p-6 bg-ink/5 dark:bg-cream/5 rounded">
+                    <div class="min-w-[750px]">
+                        <img src="https://ghchart.rshah.org/C8522A/EnzoSoti" alt="Enzo P. Daniela's GitHub Contribution Calendar Heatmap" 
+                             class="w-full h-auto select-none" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <div class="social-links-container fade-in-up">
-                        <ul class="social-links-list">
-                            <li>
-                                <a href="https://www.linkedin.com/in/enzo-daniela-685374324/" target="_blank"
-                                    class="social-link">
-                                    <i class="fab fa-linkedin"></i>
-                                    <span>LinkedIn</span>
-                                </a>
+    <!-- Experience -->
+    <section id="experience" class="py-24 px-6 border-t border-ink/10 dark:border-cream/10">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Left: Title -->
+                <div class="reveal-up">
+                    <p class="text-xs tracking-[0.3em] uppercase text-accent mb-4">Professional History</p>
+                    <h2 class="font-display text-4xl font-normal mb-6">History.</h2>
+                    <p class="text-sm opacity-60 leading-relaxed">
+                        A summary of my academic background at STI College, leading to backend development projects and internship experience at the Integrated Bar of the Philippines.
+                    </p>
+                </div>
+
+                <!-- Right: Detailed entries -->
+                <div class="md:col-span-2 space-y-12 reveal-up delay-200">
+                    <!-- Integrated Bar of the Philippines -->
+                    <div class="border-b border-ink/10 dark:border-cream/10 pb-8">
+                        <div class="flex items-start gap-4 mb-4">
+                            <img src="image/ibp logo.png" alt="IBP Logo"
+                                class="w-12 h-12 object-contain bg-white dark:bg-transparent p-1 rounded">
+                            <div class="flex-1">
+                                <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                                    <h3 class="text-lg font-semibold text-accent">Integrated Bar of the Philippines
+                                        (IBP)</h3>
+                                    <span class="text-xs opacity-50 font-mono">March 2026 — May 2026</span>
+                                </div>
+                                <p class="text-sm font-semibold opacity-80">Web Developer Intern | IT Support</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start gap-3 text-sm opacity-70">
+                                <span
+                                    class="text-accent mt-1.5 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></span>
+                                <span>Contributed to the development of a Human Resource Information System
+                                    (HRIS)</span>
                             </li>
-                            <li>
-                                <a href="https://github.com/EnzoSoti" target="_blank" class="social-link">
-                                    <i class="fab fa-github"></i>
-                                    <span>GitHub</span>
-                                </a>
+                            <li class="flex items-start gap-3 text-sm opacity-70">
+                                <span
+                                    class="text-accent mt-1.5 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></span>
+                                <span>Contributed to the development of an Attendance Monitoring System (AMS)</span>
                             </li>
-                            <li>
-                                <a href="https://www.instagram.com/" target="_blank" class="social-link">
-                                    <i class="fab fa-instagram"></i>
-                                    <span>Instagram</span>
-                                </a>
+                            <li class="flex items-start gap-3 text-sm opacity-70">
+                                <span
+                                    class="text-accent mt-1.5 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></span>
+                                <span>Assisted in building a Ticketing Management System for internal operations</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm opacity-70">
+                                <span
+                                    class="text-accent mt-1.5 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></span>
+                                <span>Streamlined employee and administrative workflows</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm opacity-70">
+                                <span
+                                    class="text-accent mt-1.5 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></span>
+                                <span>Provided technical support and system maintenance</span>
+                            </li>
+                        </ul>
+
+                        <!-- Visual Showcase of System & Events -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                            <div class="overflow-hidden border border-ink/10 dark:border-cream/10 group/img">
+                                <div class="overflow-hidden h-40">
+                                    <img src="image/ibp pic.jpg" alt="IBP Event / ASEAN Summit"
+                                        class="previewable-img w-full h-full object-cover grayscale group-hover/img:grayscale-0 group-hover/img:scale-105 transition-all duration-500">
+                                </div>
+                                <div class="p-3 bg-ink/5 dark:bg-cream/5 border-t border-ink/10 dark:border-cream/10">
+                                    <p class="text-[10px] uppercase tracking-wider opacity-60 font-semibold mb-0.5">
+                                        Deployment: ASEAN Summit</p>
+                                    <p class="text-[10px] opacity-40 leading-normal">Where the real-time attendance
+                                        tracking system supported delegates.</p>
+                                </div>
+                            </div>
+                            <div class="overflow-hidden border border-ink/10 dark:border-cream/10 group/img">
+                                <div class="overflow-hidden h-40">
+                                    <img src="image/Screenshot 2026-05-13 081804.png" alt="Attendance System Dashboard"
+                                        class="previewable-img w-full h-full object-cover grayscale group-hover/img:grayscale-0 group-hover/img:scale-105 transition-all duration-500">
+                                </div>
+                                <div class="p-3 bg-ink/5 dark:bg-cream/5 border-t border-ink/10 dark:border-cream/10">
+                                    <p class="text-[10px] uppercase tracking-wider opacity-60 font-semibold mb-0.5">
+                                        Attendance Dashboard UI</p>
+                                    <p class="text-[10px] opacity-40 leading-normal">The live statistics panel built for
+                                        managing check-ins and registration.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Online Gym Facility Management System (Capstone) -->
+                    <div class="border-b border-ink/10 dark:border-cream/10 pb-8">
+                        <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-4">
+                            <h3 class="text-lg font-semibold">Online Gym Facility Management System (Capstone)</h3>
+                            <span class="text-xs opacity-50 font-mono">Aug 2025 — Dec 2025</span>
+                        </div>
+                        <p class="text-sm font-semibold mb-4">Backend Developer & Team Lead</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start gap-3 text-sm opacity-70">
+                                <span
+                                    class="text-accent mt-1.5 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></span>
+                                <span>Developed and structured 20+ backend route modules implementing RESTful APIs for
+                                    membership management, ecommerce, and payment processing.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm opacity-70">
+                                <span
+                                    class="text-accent mt-1.5 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></span>
+                                <span>Implemented secure equipment tracking, reservations, and customer inquiries using
+                                    Node.js & Express.js.</span>
+                            </li>
+                        </ul>
+
+                        <!-- Visual Showcase of Capstone System -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                            <div class="overflow-hidden border border-ink/10 dark:border-cream/10 group/img">
+                                <div class="overflow-hidden h-40">
+                                    <img src="image/capstone pic.jpg" alt="Capstone Defense with Adviser Rubinado Lubian III"
+                                        class="previewable-img w-full h-full object-cover grayscale group-hover/img:grayscale-0 group-hover/img:scale-105 transition-all duration-500">
+                                </div>
+                                <div class="p-3 bg-ink/5 dark:bg-cream/5 border-t border-ink/10 dark:border-cream/10">
+                                    <p class="text-[10px] uppercase tracking-wider opacity-60 font-semibold mb-0.5">
+                                        Capstone Defense</p>
+                                    <p class="text-[10px] opacity-40 leading-normal">With Capstone adviser Rubinado Lubian III, celebrating the project release.</p>
+                                </div>
+                            </div>
+                            <div class="overflow-hidden border border-ink/10 dark:border-cream/10 group/img">
+                                <div class="overflow-hidden h-40">
+                                    <img src="image/landing.png" alt="Gym Management System UI"
+                                        class="previewable-img w-full h-full object-cover grayscale group-hover/img:grayscale-0 group-hover/img:scale-105 transition-all duration-500">
+                                </div>
+                                <div class="p-3 bg-ink/5 dark:bg-cream/5 border-t border-ink/10 dark:border-cream/10">
+                                    <p class="text-[10px] uppercase tracking-wider opacity-60 font-semibold mb-0.5">
+                                        Fitworx Landing Portal</p>
+                                    <p class="text-[10px] opacity-40 leading-normal">The administrative and member login portal interface for Fitworx Gym.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education / STI College Fairview -->
+                    <div>
+                        <div class="flex items-start gap-4 mb-4">
+                            <img src="image/STI.png" alt="STI Logo" class="w-12 h-12 object-contain bg-white dark:bg-transparent p-1 rounded">
+                            <div class="flex-1">
+                                <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                                    <h3 class="text-lg font-semibold text-accent">STI College Fairview</h3>
+                                    <span class="text-xs opacity-50 font-mono">July 2026</span>
+                                </div>
+                                <p class="text-sm font-semibold opacity-80">Bachelor of Science in Information Technology (BSIT)</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm opacity-70">
+                                <span class="text-accent mt-1.5 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></span>
+                                <span>Graduated on July 17, 2026, with an emphasis on web development, database management systems, and systems integration.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm opacity-70">
+                                <span class="text-accent mt-1.5 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></span>
+                                <span>Completed a 4-year BSIT curriculum focusing on practical application development and software design methodologies.</span>
                             </li>
                         </ul>
                     </div>
@@ -692,62 +455,288 @@
         </div>
     </section>
 
+    <!-- Projects -->
+    <section id="projects" class="py-24 px-6 border-t border-ink/10 dark:border-cream/10">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal-up">
+                <div>
+                    <p class="text-xs tracking-[0.3em] uppercase text-accent mb-2">Selected Work</p>
+                    <h2 class="font-display text-4xl font-normal">Projects.</h2>
+                </div>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <button class="filter-btn active px-3 py-1 border border-accent bg-accent text-cream transition-colors duration-200" data-filter="all">All</button>
+                    <button class="filter-btn px-3 py-1 border border-ink/20 dark:border-cream/20 opacity-60 hover:opacity-100 hover:border-accent transition-colors duration-200" data-filter="react">React</button>
+                    <button class="filter-btn px-3 py-1 border border-ink/20 dark:border-cream/20 opacity-60 hover:opacity-100 hover:border-accent transition-colors duration-200" data-filter="node">Node.js</button>
+                    <button class="filter-btn px-3 py-1 border border-ink/20 dark:border-cream/20 opacity-60 hover:opacity-100 hover:border-accent transition-colors duration-200" data-filter="database">Databases</button>
+                    <button class="filter-btn px-3 py-1 border border-ink/20 dark:border-cream/20 opacity-60 hover:opacity-100 hover:border-accent transition-colors duration-200" data-filter="vanilla">Vanilla JS</button>
+                </div>
+                <a href="https://github.com/EnzoSoti" target="_blank"
+                    class="text-xs tracking-widest uppercase opacity-50 hover:opacity-100 hover:text-accent transition-all hidden md:inline-block">
+                    GitHub →
+                </a>
+            </div>
+
+            <!-- Featured project -->
+            <a href="https://fitworxgymph.web.app/" target="_blank" class="project-card filterable-project block group mb-6 transition-all duration-300 transform scale-100 opacity-100 reveal-up delay-100" data-category="node database">
+                <div class="overflow-hidden border border-ink/10 dark:border-cream/10">
+                    <div class="relative">
+                        <img src="image/landing.png" alt="Gym Management System"
+                            class="project-img previewable-img w-full h-72 object-cover">
+                        <div
+                            class="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                            <span class="text-cream text-sm tracking-widest uppercase">View Live ↗</span>
+                        </div>
+                    </div>
+                    <div
+                        class="p-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 border-t border-ink/10 dark:border-cream/10">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <h3 class="text-lg font-semibold">Gym Management System</h3>
+                                <span
+                                    class="px-2 py-0.5 bg-accent text-cream text-xs tracking-wider uppercase">Capstone</span>
+                            </div>
+                            <p class="text-sm opacity-60 max-w-md">Full-stack gym management with POS, inventory
+                                tracking, and member check-ins.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 sm:text-right sm:justify-end">
+                            <span class="tech-pill px-2 py-1 border border-ink/20 dark:border-cream/20 text-xs transition-all duration-200">Express.js</span>
+                            <span class="tech-pill px-2 py-1 border border-ink/20 dark:border-cream/20 text-xs transition-all duration-200">MySQL</span>
+                            <span class="tech-pill px-2 py-1 border border-ink/20 dark:border-cream/20 text-xs transition-all duration-200">Firebase</span>
+                            <span class="tech-pill px-2 py-1 border border-ink/20 dark:border-cream/20 text-xs transition-all duration-200">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 3-col grid -->
+            <div class="grid md:grid-cols-3 gap-4 reveal-up delay-200">
+
+                <!-- Grade Calculator -->
+                <a href="https://grade-calculator-xi.vercel.app/" target="_blank"
+                    class="project-card filterable-project group block border border-ink/10 dark:border-cream/10 overflow-hidden transition-all duration-300 transform scale-100 opacity-100" data-category="vanilla">
+                    <div class="overflow-hidden relative">
+                        <img src="image/STI GRADE CALCULATOR.png" alt="Grade Calculator"
+                            class="project-img previewable-img w-full h-40 object-cover">
+                        <div
+                            class="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                            <span class="text-cream text-xs tracking-widest uppercase">View Live ↗</span>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-ink/10 dark:border-cream/10">
+                        <h3 class="text-sm font-semibold mb-1 group-hover:text-accent transition-colors">Grade
+                            Calculator</h3>
+                        <p class="text-xs opacity-50 mb-3">STI grading system with local storage.</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">JavaScript</span>
+                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">CSS3</span>
+                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">HTML5</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Attendance Monitoring -->
+                <a href="https://attendance-tracker-asean.vercel.app/" target="_blank"
+                    class="project-card filterable-project group block border border-ink/10 dark:border-cream/10 overflow-hidden transition-all duration-300 transform scale-100 opacity-100" data-category="react node database">
+                    <div class="overflow-hidden border-b border-ink/10 dark:border-cream/10 relative">
+                        <img src="image/Screenshot 2026-05-13 081804.png" alt="Attendance Monitoring System"
+                            class="project-img previewable-img w-full h-40 object-cover">
+                        <div
+                            class="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                            <span class="text-cream text-xs tracking-widest uppercase">View Live ↗</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center justify-between gap-2 mb-1">
+                            <h3 class="text-sm font-semibold group-hover:text-accent transition-colors">Attendance System</h3>
+                            <span class="px-1.5 py-0.5 border border-accent/40 text-[9px] uppercase tracking-wider text-accent font-semibold rounded-sm">IBP</span>
+                        </div>
+                        <p class="text-xs opacity-50 mb-3">QR-based logging, 95% tracking accuracy.</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">React</span>
+                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">Node.js</span>
+                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">Supabase</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Ticketing System -->
+                <a href="#" class="project-card filterable-project group block border border-ink/10 dark:border-cream/10 overflow-hidden transition-all duration-300 transform scale-100 opacity-100" data-category="react">
+                    <div
+                        class="w-full h-40 bg-ink/5 dark:bg-cream/5 flex flex-col items-center justify-center border-b border-ink/10 dark:border-cream/10 relative transition-colors group-hover:bg-ink/10 dark:group-hover:bg-cream/10">
+                        <span class="text-[10px] uppercase tracking-widest opacity-40">Internal Tool / IBP</span>
+                        <div
+                            class="absolute inset-0 bg-ink/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                            <span class="text-cream text-xs tracking-widest uppercase font-semibold">Not Yet Deployed</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center justify-between gap-2 mb-1">
+                            <h3 class="text-sm font-semibold group-hover:text-accent transition-colors">Ticketing System</h3>
+                            <span class="px-1.5 py-0.5 border border-accent/40 text-[9px] uppercase tracking-wider text-accent font-semibold rounded-sm">IBP</span>
+                        </div>
+                        <p class="text-xs opacity-50 mb-3">Facility issue management & workflows.</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">TypeScript</span>
+                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">React</span>
+                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">Tailwind</span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-24 px-6 border-t border-ink/10 dark:border-cream/10">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Left Title block -->
+                <div class="reveal-up">
+                    <p class="text-xs tracking-[0.3em] uppercase text-accent mb-4">Endorsements</p>
+                    <h2 class="font-display text-4xl font-normal mb-6">Feedback.</h2>
+                    <p class="text-sm opacity-60 leading-relaxed">
+                        Feedback and recommendations from my Capstone adviser and internship supervisor on system architecture, database design, and web development.
+                    </p>
+                </div>
+
+                <!-- Right cards -->
+                <div class="md:col-span-2 grid md:grid-cols-2 gap-6 reveal-up delay-200">
+                    <!-- Rubinado Lubian III -->
+                    <div class="p-6 border border-ink/10 dark:border-cream/10 bg-ink/5 dark:bg-cream/5 flex flex-col justify-between relative">
+                        <div class="text-accent opacity-10 text-7xl font-serif absolute top-2 right-4 pointer-events-none select-none">“</div>
+                        <p class="text-sm opacity-70 italic leading-relaxed mb-8 relative z-10">
+                            "Enzo stood out as an exemplary student and team leader during his Capstone project. He demonstrated great responsibility in guiding his team, exceptional problem-solving skills, and a strong commitment to academic excellence. The success of their Capstone system is a testament to his dedication and work ethic."
+                        </p>
+                        <div class="flex items-center gap-3 border-t border-ink/10 dark:border-cream/10 pt-4 mt-auto">
+                            <div class="w-8 h-8 rounded-full bg-accent/15 flex items-center justify-center text-accent font-semibold text-xs tracking-wider">RL</div>
+                            <div>
+                                <a href="https://www.facebook.com/flux.lubian" target="_blank" class="text-xs font-semibold uppercase tracking-wider text-accent hover:underline inline-flex items-center gap-1">
+                                    Rubinado Lubian III <span class="text-[8px] opacity-75">↗</span>
+                                </a>
+                                <p class="text-[10px] opacity-40">Capstone Adviser / STI Fairview</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Norberto Beltran -->
+                    <div class="p-6 border border-ink/10 dark:border-cream/10 bg-ink/5 dark:bg-cream/5 flex flex-col justify-between relative">
+                        <div class="text-accent opacity-10 text-7xl font-serif absolute top-2 right-4 pointer-events-none select-none">“</div>
+                        <p class="text-sm opacity-70 italic leading-relaxed mb-8 relative z-10">
+                            "As a Web Developer Intern, Enzo quickly adapted to our systems at the IBP. He played a critical role in deploying the Attendance Monitoring System at the ASEAN Summit and streamlined key internal workflows."
+                        </p>
+                        <div class="flex items-center gap-3 border-t border-ink/10 dark:border-cream/10 pt-4 mt-auto">
+                            <div class="w-8 h-8 rounded-full bg-accent/15 flex items-center justify-center text-accent font-semibold text-xs tracking-wider">NB</div>
+                            <div>
+                                <h4 class="text-xs font-semibold uppercase tracking-wider text-accent">Norberto Beltran</h4>
+                                <p class="text-[10px] opacity-40">OJT Supervisor / IBP IT Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24 px-6 border-t border-ink/10 dark:border-cream/10">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal-up">
+                    <p class="text-xs tracking-[0.3em] uppercase text-accent mb-6">Let's Talk</p>
+                    <h2 class="font-display text-5xl font-normal mb-6 leading-tight">
+                        Open for<br>
+                        <span class="italic text-accent">work.</span>
+                    </h2>
+                    <p class="text-sm opacity-60 leading-relaxed mb-8 max-w-sm">
+                        I am currently looking for full-time roles in web development. Feel free to reach out if you
+                        think we'd be a good fit!
+                    </p>
+                    <!-- Minimalist Contact Form -->
+                    <form id="contactForm" class="space-y-4 max-w-sm mt-8 relative">
+                        <div class="relative">
+                            <input type="text" id="formName" placeholder="Name" required
+                                class="w-full bg-transparent border-b border-ink/20 dark:border-cream/20 py-2 text-xs focus:outline-none focus:border-accent transition-colors duration-300 placeholder-ink/40 dark:placeholder-cream/40">
+                        </div>
+                        <div class="relative">
+                            <input type="email" id="formEmail" placeholder="Email" required
+                                class="w-full bg-transparent border-b border-ink/20 dark:border-cream/20 py-2 text-xs focus:outline-none focus:border-accent transition-colors duration-300 placeholder-ink/40 dark:placeholder-cream/40">
+                        </div>
+                        <div class="relative">
+                            <textarea id="formMessage" placeholder="Message" rows="3" required
+                                class="w-full bg-transparent border-b border-ink/20 dark:border-cream/20 py-2 text-xs focus:outline-none focus:border-accent transition-colors duration-300 placeholder-ink/40 dark:placeholder-cream/40 resize-none"></textarea>
+                        </div>
+                        <button type="submit" id="formSubmitBtn"
+                            class="w-full inline-flex items-center justify-center gap-3 px-6 py-3 bg-ink text-cream dark:bg-cream dark:text-ink text-xs tracking-widest uppercase hover:opacity-90 transition-all duration-300 border border-transparent">
+                            <span id="submitBtnText">Send Message</span>
+                            <span id="submitBtnIcon" class="transition-transform duration-300">→</span>
+                        </button>
+                    </form>
+                </div>
+                <div class="space-y-0 reveal-up delay-200">
+                    <a href="mailto:parane.enzo@gmail.com"
+                        class="flex items-center justify-between py-5 border-t border-ink/10 dark:border-cream/10 group">
+                        <span class="text-xs uppercase tracking-widest opacity-40">Email</span>
+                        <span class="text-sm group-hover:text-accent transition-colors">parane.enzo@gmail.com ↗</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/enzo-daniela-685374324/" target="_blank"
+                        class="flex items-center justify-between py-5 border-t border-ink/10 dark:border-cream/10 group">
+                        <span class="text-xs uppercase tracking-widest opacity-40">LinkedIn</span>
+                        <span class="text-sm group-hover:text-accent transition-colors">Enzo Daniela ↗</span>
+                    </a>
+                    <a href="https://github.com/EnzoSoti" target="_blank"
+                        class="flex items-center justify-between py-5 border-t border-ink/10 dark:border-cream/10 group">
+                        <span class="text-xs uppercase tracking-widest opacity-40">GitHub</span>
+                        <span class="text-sm group-hover:text-accent transition-colors">EnzoSoti ↗</span>
+                    </a>
+                    <a href="https://www.facebook.com/enzo.daniela.31/" target="_blank"
+                        class="flex items-center justify-between py-5 border-t border-b border-ink/10 dark:border-cream/10 group">
+                        <span class="text-xs uppercase tracking-widest opacity-40">Facebook</span>
+                        <span class="text-sm group-hover:text-accent transition-colors">Enzo Daniela ↗</span>
+                    </a>
+                    <div class="pt-6">
+                        <div class="flex gap-3">
+                            <a href="./doc/Resume.pdf" target="_blank"
+                                class="px-5 py-2.5 border border-ink/20 dark:border-cream/20 text-xs tracking-widest uppercase hover:bg-ink hover:text-cream dark:hover:bg-cream dark:hover:text-ink transition-colors">
+                                View PDF
+                            </a>
+                            <a href="./doc/Resume.pdf" download
+                                class="px-5 py-2.5 border border-ink/20 dark:border-cream/20 text-xs tracking-widest uppercase hover:bg-ink hover:text-cream dark:hover:bg-cream dark:hover:text-ink transition-colors">
+                                Download CV
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="py-4 mt-4" style="border-top: 1px solid var(--border);">
-        <div class="max-w-3xl mx-auto px-6 text-center">
-            <p class="text-sm mb-1" style="color: var(--text-secondary);">© 2026 Enzo P. Daniela. All rights reserved.
-            </p>
-            <p class="text-xs" style="color: var(--text-muted);">Built with modern web technologies</p>
+    <footer class="border-t border-ink/10 dark:border-cream/10 py-6 px-6">
+        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+            <p class="text-xs opacity-30">© 2026 Enzo P. Daniela</p>
+            <p class="text-xs opacity-30">Caloocan City, Philippines</p>
+            <p class="text-xs opacity-30">Built with Tailwind CSS</p>
         </div>
     </footer>
 
-    <!-- Floating Buttons -->
-    <!-- QR Code Button -->
-    <button id="qrCodeBtn"
-        class="fixed right-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300"
-        style="z-index: 9998; bottom: 24px;">
-        <i class="fas fa-qrcode text-xl"></i>
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 z-40 w-10 h-10 rounded-full border border-ink/10 dark:border-cream/10 bg-cream/90 dark:bg-ink/90 backdrop-blur-sm flex items-center justify-center text-ink dark:text-cream shadow-md transition-all duration-300 opacity-0 translate-y-4 pointer-events-none hover:border-accent hover:text-accent group" aria-label="Back to top">
+        <svg class="w-10 h-10 absolute inset-0 -rotate-90" viewBox="0 0 36 36">
+            <path class="text-ink/5 dark:text-cream/5" stroke="currentColor" stroke-width="2" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <path id="backToTopProgress" class="text-accent transition-all duration-100" stroke="currentColor" stroke-width="2" stroke-dasharray="0, 100" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+        </svg>
+        <span class="text-sm transition-transform duration-300 group-hover:-translate-y-0.5">↑</span>
     </button>
 
-    <!-- QR Code Modal -->
-    <div id="qrModal"
-        class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm hidden items-center justify-center z-50">
-        <div class="bg-white rounded-sm shadow-2xl p-8 max-w-md w-full mx-4 transform transition-all">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-gray-900">Scan to Visit</h3>
-                <button id="closeQrModal" class="text-gray-500 hover:text-gray-700 transition-colors">
-                    <i class="fas fa-times text-2xl"></i>
-                </button>
-            </div>
-            <div class="flex flex-col items-center">
-                <div id="qrcode" class="bg-white p-4 rounded-sm shadow-inner mb-4"></div>
-                <p class="text-gray-600 text-center mb-4">Scan this QR code to open the website on your device</p>
-                <button id="downloadQr"
-                    class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-sm font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-300">
-                    <i class="fas fa-download mr-2"></i>Download QR Code
-                </button>
-            </div>
-        </div>
+    <!-- Image Preview Modal HTML -->
+    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-ink/90 dark:bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out opacity-0 transition-opacity duration-300">
+        <button id="closeModal" class="absolute top-6 right-6 text-cream/70 hover:text-cream text-3xl font-mono focus:outline-none" aria-label="Close Preview">&times;</button>
+        <img id="modalImage" src="" alt="Preview" class="max-w-full max-h-[90vh] object-contain select-none shadow-2xl transition-transform duration-300 scale-95">
     </div>
 
-    <!-- JavaScript Modules - Modular Architecture -->
-    <!-- Core Functionality -->
-    <script src="javascript/theme.js"></script>
-    <script src="javascript/typing-effect.js"></script>
+    <script src="js/site.js"></script>
 
-    <!-- Animation & Scroll -->
-    <script src="javascript/scroll-animations.js"></script>
-    <script src="javascript/smooth-scroll.js"></script>
-
-    <!-- Project Features -->
-    <script src="javascript/project-cards.js"></script>
-    <script src="javascript/project-filter.js"></script>
-    <script src="javascript/project-modal.js"></script>
-    <script src="javascript/projects-gallery-modal.js"></script>
-    <script src="javascript/project-rotation.js"></script>
-
-    <!-- QR Code -->
-    <script src="javascript/qr-code.js"></script>
 </body>
 
 </html>
