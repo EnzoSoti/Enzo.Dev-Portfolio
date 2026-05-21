@@ -1,0 +1,22 @@
+{
+  "name": "enzo-dev-portfolio-server",
+  "version": "1.0.0",
+  "description": "Backend API for Enzo.Dev-Portfolio",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "prisma generate",
+    "seed": "node seed.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.15.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "firebase": "^10.12.2",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.15.0"
+  }
+}

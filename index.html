@@ -5,25 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enzo Daniela — IT Student & Backend Developer</title>
-    
+
     <!-- Primary Meta Tags -->
     <meta name="title" content="Enzo Daniela — IT Student & Backend Developer">
-    <meta name="description" content="Portfolio showcasing full-stack systems, API architecture, and database design. IT Graduate based in Caloocan City.">
-    <meta name="keywords" content="Enzo Daniela, Backend Developer, Full Stack Developer, Node.js, Express, React, Portfolio">
+    <meta name="description"
+        content="Portfolio showcasing full-stack systems, API architecture, and database design. IT Graduate based in Caloocan City.">
+    <meta name="keywords"
+        content="Enzo Daniela, Backend Developer, Full Stack Developer, Node.js, Express, React, Portfolio">
     <meta name="author" content="Enzo Daniela">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://enzosoti.github.io/">
     <meta property="og:title" content="Enzo Daniela — Backend Developer">
-    <meta property="og:description" content="Backend-first developer. Focused on building robust server-side logic and RESTful APIs.">
+    <meta property="og:description"
+        content="Backend-first developer. Focused on building robust server-side logic and RESTful APIs.">
     <meta property="og:image" content="./image/landing.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://enzosoti.github.io/">
     <meta property="twitter:title" content="Enzo Daniela — Backend Developer">
-    <meta property="twitter:description" content="Backend-first developer. Focused on building robust server-side logic and RESTful APIs.">
+    <meta property="twitter:description"
+        content="Backend-first developer. Focused on building robust server-side logic and RESTful APIs.">
     <meta property="twitter:image" content="./image/landing.png">
 
     <link rel="icon" href="image/Formal.jpg" type="image/png">
@@ -61,14 +65,20 @@
 <body class="bg-cream text-ink font-mono transition-colors duration-300 dark:bg-ink dark:text-cream">
 
     <!-- Scroll Progress Bar -->
-    <div id="scrollProgress" class="fixed top-0 left-0 w-0 h-[3px] bg-accent z-[60] transition-all duration-100 ease-out"></div>
+    <div id="scrollProgress"
+        class="fixed top-0 left-0 w-0 h-[3px] bg-accent z-[60] transition-all duration-100 ease-out"></div>
 
     <!-- Custom Fluid Cursor elements -->
-    <div id="customCursor" class="hidden md:block fixed w-8 h-8 rounded-full border border-accent pointer-events-none z-[100] -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-out"></div>
-    <div id="customCursorDot" class="hidden md:block fixed w-2 h-2 rounded-full bg-accent pointer-events-none z-[100] -translate-x-1/2 -translate-y-1/2"></div>
+    <div id="customCursor"
+        class="hidden md:block fixed w-8 h-8 rounded-full border border-accent pointer-events-none z-[100] -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-out">
+    </div>
+    <div id="customCursorDot"
+        class="hidden md:block fixed w-2 h-2 rounded-full bg-accent pointer-events-none z-[100] -translate-x-1/2 -translate-y-1/2">
+    </div>
 
     <!-- Preloader Screen -->
-    <div id="preloader" class="fixed inset-0 z-[100] bg-cream dark:bg-ink flex items-center justify-center transition-all duration-500 ease-in-out">
+    <div id="preloader"
+        class="fixed inset-0 z-[100] bg-cream dark:bg-ink flex items-center justify-center transition-all duration-500 ease-in-out">
         <div class="flex flex-col items-center gap-4">
             <span class="text-accent text-lg font-mono tracking-[0.5em] uppercase animate-pulse">EPD.dev</span>
             <div class="w-16 h-[1px] bg-accent/20 relative overflow-hidden">
@@ -76,11 +86,16 @@
             </div>
         </div>
     </div>
-    
+
     <style>
         @keyframes loading {
-            0% { left: -50%; }
-            100% { left: 100%; }
+            0% {
+                left: -50%;
+            }
+
+            100% {
+                left: 100%;
+            }
         }
     </style>
 
@@ -97,13 +112,17 @@
                 <a href="#contact"
                     class="text-xs tracking-wider uppercase opacity-60 hover:opacity-100 transition-opacity hidden sm:block">Contact</a>
                 <button id="themeToggle"
-                    class="w-7 h-7 flex items-center justify-center rounded-full border border-ink/20 dark:border-cream/20 hover:bg-ink/5 dark:hover:bg-cream/5 transition-colors"
+                    class="relative w-7 h-7 flex items-center justify-center rounded-full border border-ink/20 dark:border-cream/20 hover:bg-ink/5 dark:hover:bg-cream/5 transition-colors group overflow-hidden"
                     aria-label="Toggle theme">
-                    <svg id="sunIcon" class="w-3.5 h-3.5 hidden dark:block" fill="currentColor" viewBox="0 0 24 24">
+                    <svg id="sunIcon"
+                        class="w-3.5 h-3.5 absolute transition-all duration-500 transform rotate-90 scale-0 opacity-0 dark:rotate-0 dark:scale-100 dark:opacity-100 group-hover:rotate-12"
+                        fill="currentColor" viewBox="0 0 24 24">
                         <path
                             d="M12 2a1 1 0 011 1v1a1 1 0 01-2 0V3a1 1 0 011-1zm0 15a5 5 0 100-10 5 5 0 000 10zm7.07-12.07a1 1 0 010 1.41l-.71.71a1 1 0 01-1.41-1.41l.71-.71a1 1 0 011.41 0zM21 11h1a1 1 0 010 2h-1a1 1 0 010-2zM4.93 4.93a1 1 0 011.41 0l.71.71a1 1 0 01-1.41 1.41l-.71-.71a1 1 0 010-1.41zM3 11h1a1 1 0 010 2H3a1 1 0 010-2zm15.36 7.07l-.71-.71a1 1 0 011.41-1.41l.71.71a1 1 0 01-1.41 1.41zM12 20a1 1 0 011 1v1a1 1 0 01-2 0v-1a1 1 0 011-1zm-7.07-1.93a1 1 0 010-1.41l.71-.71a1 1 0 011.41 1.41l-.71.71a1 1 0 01-1.41 0z" />
                     </svg>
-                    <svg id="moonIcon" class="w-3.5 h-3.5 block dark:hidden" fill="currentColor" viewBox="0 0 24 24">
+                    <svg id="moonIcon"
+                        class="w-3.5 h-3.5 absolute transition-all duration-500 transform rotate-0 scale-100 opacity-100 dark:-rotate-90 dark:scale-0 dark:opacity-0 group-hover:-rotate-12"
+                        fill="currentColor" viewBox="0 0 24 24">
                         <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
                     </svg>
                 </button>
@@ -116,27 +135,27 @@
         <div class="max-w-5xl mx-auto w-full">
 
             <!-- Big label -->
-            <p class="animate-fade-up stagger-1 text-xs tracking-[0.3em] uppercase text-accent mb-8">
+            <p id="dyn-heroLabel" class="animate-fade-up stagger-1 text-xs tracking-[0.3em] uppercase text-accent mb-8">
                 Portfolio — 2026
             </p>
 
             <!-- Big editorial name -->
             <div class="animate-fade-up stagger-2">
                 <h1 class="font-display text-[clamp(3rem,10vw,8rem)] leading-none font-normal tracking-tight mb-2">
-                    Enzo<br>
-                    <span class="italic text-accent">Daniela.</span>
+                    <span id="dyn-heroName1">Enzo</span><br>
+                    <span id="dyn-heroName2" class="italic text-accent">Daniela.</span>
                 </h1>
             </div>
 
             <!-- Divider + tagline row -->
             <div
                 class="animate-fade-up stagger-3 flex flex-col sm:flex-row sm:items-end gap-6 mt-8 pb-8 border-b border-ink/15 dark:border-cream/15">
-                <p class="text-sm leading-relaxed max-w-sm opacity-70">
+                <p id="dyn-heroTagline" class="text-sm leading-relaxed max-w-sm opacity-70">
                     IT Graduate & Web Developer based in Caloocan City, Philippines. Building systems
                     with Node.js, Express, MySQL, Supabase & Docker.
                 </p>
                 <div class="sm:ml-auto flex flex-wrap gap-3">
-                    <a href="mailto:parane.enzo@gmail.com"
+                    <a id="dyn-hireMeBtn" href="mailto:parane.enzo@gmail.com"
                         class="px-5 py-2.5 bg-ink text-cream dark:bg-cream dark:text-ink text-xs tracking-widest uppercase hover:opacity-80 transition-opacity">
                         Hire Me
                     </a>
@@ -155,7 +174,7 @@
                     <p class="text-xs uppercase tracking-widest opacity-50 mt-1">Projects</p>
                 </div>
                 <div class="py-6 px-6 border-r border-ink/15 dark:border-cream/15">
-                    <p class="font-display text-4xl font-normal text-accent">6yr</p>
+                    <p class="font-display text-4xl font-normal text-accent">4+yr</p>
                     <p class="text-xs uppercase tracking-widest opacity-50 mt-1">Coding</p>
                 </div>
                 <div class="py-6 px-6 border-r border-ink/15 dark:border-cream/15">
@@ -178,30 +197,30 @@
                 <!-- Left: photo + status -->
                 <div class="reveal-up">
                     <div class="relative inline-block">
-                        <img src="./image/new_formal-removebg-preview.png" alt="Enzo P. Daniela"
+                        <img id="dyn-profileImg" src="./image/new_formal-removebg-preview.png" alt="Enzo P. Daniela"
                             class="previewable-img w-full max-w-xs grayscale hover:grayscale-0 transition-all duration-500 border border-ink/10 dark:border-cream/10">
                         <div class="absolute -bottom-4 -right-4 bg-accent text-cream px-4 py-2">
-                            <p class="text-xs tracking-widest uppercase">BSIT Graduate</p>
+                            <p id="dyn-badgeText" class="text-xs tracking-widest uppercase">BSIT Graduate</p>
                         </div>
                     </div>
                     <div class="mt-12 space-y-4">
                         <div class="flex items-center gap-4 py-3 border-t border-ink/10 dark:border-cream/10">
                             <span class="text-xs tracking-widest uppercase opacity-40 w-20 flex-shrink-0">School</span>
-                            <span class="text-sm">STI College Fairview</span>
+                            <span id="dyn-school" class="text-sm">STI College Fairview</span>
                         </div>
                         <div class="flex items-center gap-4 py-3 border-t border-ink/10 dark:border-cream/10">
                             <span class="text-xs tracking-widest uppercase opacity-40 w-20 flex-shrink-0">Course</span>
-                            <span class="text-sm">BS Information Technology</span>
+                            <span id="dyn-course" class="text-sm">BS Information Technology</span>
                         </div>
                         <div class="flex items-center gap-4 py-3 border-t border-ink/10 dark:border-cream/10">
                             <span
                                 class="text-xs tracking-widest uppercase opacity-40 w-20 flex-shrink-0">Graduated</span>
-                            <span class="text-sm">July 17, 2026</span>
+                            <span id="dyn-graduated" class="text-sm">July 17, 2026</span>
                         </div>
                         <div class="flex items-center gap-4 py-3 border-t border-b border-ink/10 dark:border-cream/10">
                             <span
                                 class="text-xs tracking-widest uppercase opacity-40 w-20 flex-shrink-0">Location</span>
-                            <span class="text-sm">Caloocan City, PH</span>
+                            <span id="dyn-location" class="text-sm">Caloocan City, PH</span>
                         </div>
                     </div>
                 </div>
@@ -209,16 +228,16 @@
                 <!-- Right: bio + stack -->
                 <div class="reveal-up delay-200">
                     <p class="text-xs tracking-[0.3em] uppercase text-accent mb-6">About</p>
-                    <p class="font-display text-2xl leading-relaxed mb-6 font-normal">
+                    <p id="dyn-aboutTitle" class="font-display text-2xl leading-relaxed mb-6 font-normal">
                         Backend-first developer who actually cares about how the data moves.
                     </p>
-                    <p class="text-sm leading-relaxed opacity-70 mb-4">
+                    <p id="dyn-aboutText1" class="text-sm leading-relaxed opacity-70 mb-4">
                         BS Information Technology graduate with hands-on experience in web development through
                         internship, academic, and personal projects. Focused on building robust server-side logic,
                         RESTful APIs, and
                         database operations.
                     </p>
-                    <p class="text-sm leading-relaxed opacity-70 mb-12">
+                    <p id="dyn-aboutText2" class="text-sm leading-relaxed opacity-70 mb-12">
                         Comfortable working on both solo and team-based projects. Uses AI-assisted tools like Claude and
                         GitHub Copilot to accelerate development and support frontend implementation.
                     </p>
@@ -275,16 +294,85 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Interactive Data Flow -->
+                    <div class="mt-12 pt-12 border-t border-ink/10 dark:border-cream/10">
+                        <p class="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-semibold">Interactive Data Flow</p>
+                        <p class="text-xs opacity-60 leading-relaxed mb-6">
+                            Simulate how the frontend interfaces with my Express API backend and retrieves cached data from Firebase.
+                        </p>
+                        
+                        <!-- Visual Node Diagram -->
+                        <div class="relative flex items-center justify-between border border-ink/10 dark:border-cream/10 p-6 bg-ink/5 dark:bg-cream/5 rounded-sm mb-4 overflow-hidden h-32">
+                            <!-- Visual Connection Lines (SVG) -->
+                            <svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                                <path id="flow-path-api" d="" stroke="currentColor" class="text-ink/10 dark:text-cream/10" stroke-width="2" stroke-dasharray="4,4" fill="none" />
+                                <path id="flow-path-db" d="" stroke="currentColor" class="text-ink/10 dark:text-cream/10" stroke-width="2" stroke-dasharray="4,4" fill="none" />
+                                
+                                <!-- Animated Data Packets -->
+                                <circle id="packet-client-to-api" r="4" fill="#C8522A" class="opacity-0" filter="drop-shadow(0 0 4px #C8522A)"></circle>
+                                <circle id="packet-api-to-db" r="4" fill="#C8522A" class="opacity-0" filter="drop-shadow(0 0 4px #C8522A)"></circle>
+                                <circle id="packet-db-to-api" r="4" fill="#C8522A" class="opacity-0" filter="drop-shadow(0 0 4px #C8522A)"></circle>
+                                <circle id="packet-api-to-client" r="4" fill="#C8522A" class="opacity-0" filter="drop-shadow(0 0 4px #C8522A)"></circle>
+                            </svg>
+
+                            <!-- Node 1: Client -->
+                            <div id="node-client" class="z-10 flex flex-col items-center gap-2 transition-all duration-300">
+                                <div class="w-12 h-12 rounded-full border border-ink/20 dark:border-cream/20 bg-cream dark:bg-ink flex items-center justify-center text-xs font-bold text-accent shadow-sm node-circle transition-all">UI</div>
+                                <span class="text-[9px] uppercase tracking-wider opacity-60 font-semibold">Client</span>
+                            </div>
+                            
+                            <!-- Node 2: Express API -->
+                            <div id="node-api" class="z-10 flex flex-col items-center gap-2 transition-all duration-300">
+                                <div class="w-12 h-12 rounded-full border border-ink/20 dark:border-cream/20 bg-cream dark:bg-ink flex items-center justify-center text-xs font-bold text-accent shadow-sm node-circle transition-all">API</div>
+                                <span class="text-[9px] uppercase tracking-wider opacity-60 font-semibold">Express</span>
+                            </div>
+                            
+                            <!-- Node 3: Firebase Database -->
+                            <div id="node-db" class="z-10 flex flex-col items-center gap-2 transition-all duration-300">
+                                <div class="w-12 h-12 rounded-full border border-ink/20 dark:border-cream/20 bg-cream dark:bg-ink flex items-center justify-center text-xs font-bold text-accent shadow-sm node-circle transition-all">DB</div>
+                                <span class="text-[9px] uppercase tracking-wider opacity-60 font-semibold">Firebase</span>
+                            </div>
+                        </div>
+
+                        <!-- Mini terminal display -->
+                        <div class="border border-ink/10 dark:border-cream/10 bg-ink dark:bg-black/90 p-4 rounded-sm mb-4 font-mono text-[10px] text-cream/70 h-32 overflow-y-auto flex flex-col gap-1.5" id="flow-console">
+                            <span class="text-accent">&gt; Click "Simulate Request" to query the server...</span>
+                        </div>
+
+                        <button id="simulateBtn" class="w-full py-2.5 bg-ink text-cream dark:bg-cream dark:text-ink text-xs tracking-widest uppercase hover:opacity-90 hover:bg-accent hover:text-cream dark:hover:bg-accent dark:hover:text-cream transition-colors border border-transparent">
+                            Simulate Request
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <!-- GitHub Activity Heatmap -->
             <div class="mt-16 pt-16 border-t border-ink/10 dark:border-cream/10 reveal-up">
                 <p class="text-xs tracking-[0.3em] uppercase text-accent mb-6 font-semibold">GitHub Activity</p>
-                <div class="overflow-x-auto pb-2 border border-ink/10 dark:border-cream/10 p-6 bg-ink/5 dark:bg-cream/5 rounded">
+                
+                <!-- Live GitHub Stats Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                    <div class="border border-ink/10 dark:border-cream/10 p-5 bg-ink/5 dark:bg-cream/5 rounded-sm relative overflow-hidden group hover:border-accent/40 transition-colors duration-300">
+                        <p class="text-[10px] uppercase tracking-widest opacity-40">Public Repositories</p>
+                        <p id="gh-repos" class="text-3xl font-display text-accent mt-2 font-normal">--</p>
+                    </div>
+                    <div class="border border-ink/10 dark:border-cream/10 p-5 bg-ink/5 dark:bg-cream/5 rounded-sm relative overflow-hidden group hover:border-accent/40 transition-colors duration-300">
+                        <p class="text-[10px] uppercase tracking-widest opacity-40">GitHub Stars</p>
+                        <p id="gh-stars" class="text-3xl font-display text-accent mt-2 font-normal">--</p>
+                    </div>
+                    <div class="border border-ink/10 dark:border-cream/10 p-5 bg-ink/5 dark:bg-cream/5 rounded-sm relative overflow-hidden group hover:border-accent/40 transition-colors duration-300">
+                        <p class="text-[10px] uppercase tracking-widest opacity-40">Latest Activity</p>
+                        <p id="gh-activity" class="text-xs font-mono mt-2 opacity-80 leading-relaxed line-clamp-2 h-10 flex items-center">Fetching latest event...</p>
+                    </div>
+                </div>
+
+                <div
+                    class="overflow-x-auto pb-2 border border-ink/10 dark:border-cream/10 p-6 bg-ink/5 dark:bg-cream/5 rounded">
                     <div class="min-w-[750px]">
-                        <img src="https://ghchart.rshah.org/C8522A/EnzoSoti" alt="Enzo P. Daniela's GitHub Contribution Calendar Heatmap" 
-                             class="w-full h-auto select-none" />
+                        <img src="https://ghchart.rshah.org/C8522A/EnzoSoti"
+                            alt="Enzo P. Daniela's GitHub Contribution Calendar Heatmap"
+                            class="w-full h-auto select-none" />
                     </div>
                 </div>
             </div>
@@ -300,12 +388,13 @@
                     <p class="text-xs tracking-[0.3em] uppercase text-accent mb-4">Professional History</p>
                     <h2 class="font-display text-4xl font-normal mb-6">History.</h2>
                     <p class="text-sm opacity-60 leading-relaxed">
-                        A summary of my academic background at STI College, leading to backend development projects and internship experience at the Integrated Bar of the Philippines.
+                        A summary of my academic background at STI College, leading to backend development projects and
+                        internship experience at the Integrated Bar of the Philippines.
                     </p>
                 </div>
 
                 <!-- Right: Detailed entries -->
-                <div class="md:col-span-2 space-y-12 reveal-up delay-200">
+                <div id="dyn-experiencesContainer" class="md:col-span-2 space-y-12 reveal-up delay-200">
                     <!-- Integrated Bar of the Philippines -->
                     <div class="border-b border-ink/10 dark:border-cream/10 pb-8">
                         <div class="flex items-start gap-4 mb-4">
@@ -404,13 +493,15 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
                             <div class="overflow-hidden border border-ink/10 dark:border-cream/10 group/img">
                                 <div class="overflow-hidden h-40">
-                                    <img src="image/capstone pic.jpg" alt="Capstone Defense with Adviser Rubinado Lubian III"
+                                    <img src="image/capstone pic.jpg"
+                                        alt="Capstone Defense with Adviser Rubinado Lubian III"
                                         class="previewable-img w-full h-full object-cover grayscale group-hover/img:grayscale-0 group-hover/img:scale-105 transition-all duration-500">
                                 </div>
                                 <div class="p-3 bg-ink/5 dark:bg-cream/5 border-t border-ink/10 dark:border-cream/10">
                                     <p class="text-[10px] uppercase tracking-wider opacity-60 font-semibold mb-0.5">
                                         Capstone Defense</p>
-                                    <p class="text-[10px] opacity-40 leading-normal">With Capstone adviser Rubinado Lubian III, celebrating the project release.</p>
+                                    <p class="text-[10px] opacity-40 leading-normal">With Capstone adviser Rubinado
+                                        Lubian III, celebrating the project release.</p>
                                 </div>
                             </div>
                             <div class="overflow-hidden border border-ink/10 dark:border-cream/10 group/img">
@@ -421,7 +512,8 @@
                                 <div class="p-3 bg-ink/5 dark:bg-cream/5 border-t border-ink/10 dark:border-cream/10">
                                     <p class="text-[10px] uppercase tracking-wider opacity-60 font-semibold mb-0.5">
                                         Fitworx Landing Portal</p>
-                                    <p class="text-[10px] opacity-40 leading-normal">The administrative and member login portal interface for Fitworx Gym.</p>
+                                    <p class="text-[10px] opacity-40 leading-normal">The administrative and member login
+                                        portal interface for Fitworx Gym.</p>
                                 </div>
                             </div>
                         </div>
@@ -430,23 +522,29 @@
                     <!-- Education / STI College Fairview -->
                     <div>
                         <div class="flex items-start gap-4 mb-4">
-                            <img src="image/STI.png" alt="STI Logo" class="w-12 h-12 object-contain bg-white dark:bg-transparent p-1 rounded">
+                            <img src="image/STI.png" alt="STI Logo"
+                                class="w-12 h-12 object-contain bg-white dark:bg-transparent p-1 rounded">
                             <div class="flex-1">
                                 <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
                                     <h3 class="text-lg font-semibold text-accent">STI College Fairview</h3>
                                     <span class="text-xs opacity-50 font-mono">July 2026</span>
                                 </div>
-                                <p class="text-sm font-semibold opacity-80">Bachelor of Science in Information Technology (BSIT)</p>
+                                <p class="text-sm font-semibold opacity-80">Bachelor of Science in Information
+                                    Technology (BSIT)</p>
                             </div>
                         </div>
                         <ul class="space-y-3">
                             <li class="flex items-start gap-3 text-sm opacity-70">
-                                <span class="text-accent mt-1.5 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></span>
-                                <span>Graduated on July 17, 2026, with an emphasis on web development, database management systems, and systems integration.</span>
+                                <span
+                                    class="text-accent mt-1.5 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></span>
+                                <span>Graduated on July 17, 2026, with an emphasis on web development, database
+                                    management systems, and systems integration.</span>
                             </li>
                             <li class="flex items-start gap-3 text-sm opacity-70">
-                                <span class="text-accent mt-1.5 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></span>
-                                <span>Completed a 4-year BSIT curriculum focusing on practical application development and software design methodologies.</span>
+                                <span
+                                    class="text-accent mt-1.5 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0"></span>
+                                <span>Completed a 4-year BSIT curriculum focusing on practical application development
+                                    and software design methodologies.</span>
                             </li>
                         </ul>
                     </div>
@@ -464,11 +562,21 @@
                     <h2 class="font-display text-4xl font-normal">Projects.</h2>
                 </div>
                 <div class="flex flex-wrap gap-2 text-xs">
-                    <button class="filter-btn active px-3 py-1 border border-accent bg-accent text-cream transition-colors duration-200" data-filter="all">All</button>
-                    <button class="filter-btn px-3 py-1 border border-ink/20 dark:border-cream/20 opacity-60 hover:opacity-100 hover:border-accent transition-colors duration-200" data-filter="react">React</button>
-                    <button class="filter-btn px-3 py-1 border border-ink/20 dark:border-cream/20 opacity-60 hover:opacity-100 hover:border-accent transition-colors duration-200" data-filter="node">Node.js</button>
-                    <button class="filter-btn px-3 py-1 border border-ink/20 dark:border-cream/20 opacity-60 hover:opacity-100 hover:border-accent transition-colors duration-200" data-filter="database">Databases</button>
-                    <button class="filter-btn px-3 py-1 border border-ink/20 dark:border-cream/20 opacity-60 hover:opacity-100 hover:border-accent transition-colors duration-200" data-filter="vanilla">Vanilla JS</button>
+                    <button
+                        class="filter-btn active px-3 py-1 border border-accent bg-accent text-cream transition-colors duration-200"
+                        data-filter="all">All</button>
+                    <button
+                        class="filter-btn px-3 py-1 border border-ink/20 dark:border-cream/20 opacity-60 hover:opacity-100 hover:border-accent transition-colors duration-200"
+                        data-filter="react">React</button>
+                    <button
+                        class="filter-btn px-3 py-1 border border-ink/20 dark:border-cream/20 opacity-60 hover:opacity-100 hover:border-accent transition-colors duration-200"
+                        data-filter="node">Node.js</button>
+                    <button
+                        class="filter-btn px-3 py-1 border border-ink/20 dark:border-cream/20 opacity-60 hover:opacity-100 hover:border-accent transition-colors duration-200"
+                        data-filter="database">Databases</button>
+                    <button
+                        class="filter-btn px-3 py-1 border border-ink/20 dark:border-cream/20 opacity-60 hover:opacity-100 hover:border-accent transition-colors duration-200"
+                        data-filter="vanilla">Vanilla JS</button>
                 </div>
                 <a href="https://github.com/EnzoSoti" target="_blank"
                     class="text-xs tracking-widest uppercase opacity-50 hover:opacity-100 hover:text-accent transition-all hidden md:inline-block">
@@ -476,9 +584,12 @@
                 </a>
             </div>
 
-            <!-- Featured project -->
-            <a href="https://fitworxgymph.web.app/" target="_blank" class="project-card filterable-project block group mb-6 transition-all duration-300 transform scale-100 opacity-100 reveal-up delay-100" data-category="node database">
-                <div class="overflow-hidden border border-ink/10 dark:border-cream/10">
+            <div id="dyn-projectsContainer" class="w-full">
+                <!-- Featured project -->
+                <a href="https://fitworxgymph.web.app/" target="_blank"
+                    class="project-card filterable-project block group mb-6 transition-all duration-300 transform scale-100 opacity-100 reveal-up delay-100"
+                    data-category="node database">
+                    <div class="overflow-hidden border border-ink/10 dark:border-cream/10">
                     <div class="relative">
                         <img src="image/landing.png" alt="Gym Management System"
                             class="project-img previewable-img w-full h-72 object-cover">
@@ -499,10 +610,14 @@
                                 tracking, and member check-ins.</p>
                         </div>
                         <div class="flex flex-wrap gap-2 sm:text-right sm:justify-end">
-                            <span class="tech-pill px-2 py-1 border border-ink/20 dark:border-cream/20 text-xs transition-all duration-200">Express.js</span>
-                            <span class="tech-pill px-2 py-1 border border-ink/20 dark:border-cream/20 text-xs transition-all duration-200">MySQL</span>
-                            <span class="tech-pill px-2 py-1 border border-ink/20 dark:border-cream/20 text-xs transition-all duration-200">Firebase</span>
-                            <span class="tech-pill px-2 py-1 border border-ink/20 dark:border-cream/20 text-xs transition-all duration-200">Node.js</span>
+                            <span
+                                class="tech-pill px-2 py-1 border border-ink/20 dark:border-cream/20 text-xs transition-all duration-200">Express.js</span>
+                            <span
+                                class="tech-pill px-2 py-1 border border-ink/20 dark:border-cream/20 text-xs transition-all duration-200">MySQL</span>
+                            <span
+                                class="tech-pill px-2 py-1 border border-ink/20 dark:border-cream/20 text-xs transition-all duration-200">Firebase</span>
+                            <span
+                                class="tech-pill px-2 py-1 border border-ink/20 dark:border-cream/20 text-xs transition-all duration-200">Node.js</span>
                         </div>
                     </div>
                 </div>
@@ -513,7 +628,8 @@
 
                 <!-- Grade Calculator -->
                 <a href="https://grade-calculator-xi.vercel.app/" target="_blank"
-                    class="project-card filterable-project group block border border-ink/10 dark:border-cream/10 overflow-hidden transition-all duration-300 transform scale-100 opacity-100" data-category="vanilla">
+                    class="project-card filterable-project group block border border-ink/10 dark:border-cream/10 overflow-hidden transition-all duration-300 transform scale-100 opacity-100"
+                    data-category="vanilla">
                     <div class="overflow-hidden relative">
                         <img src="image/STI GRADE CALCULATOR.png" alt="Grade Calculator"
                             class="project-img previewable-img w-full h-40 object-cover">
@@ -527,16 +643,20 @@
                             Calculator</h3>
                         <p class="text-xs opacity-50 mb-3">STI grading system with local storage.</p>
                         <div class="flex flex-wrap gap-1.5 mt-2">
-                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">JavaScript</span>
-                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">CSS3</span>
-                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">HTML5</span>
+                            <span
+                                class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">JavaScript</span>
+                            <span
+                                class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">CSS3</span>
+                            <span
+                                class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">HTML5</span>
                         </div>
                     </div>
                 </a>
 
                 <!-- Attendance Monitoring -->
                 <a href="https://attendance-tracker-asean.vercel.app/" target="_blank"
-                    class="project-card filterable-project group block border border-ink/10 dark:border-cream/10 overflow-hidden transition-all duration-300 transform scale-100 opacity-100" data-category="react node database">
+                    class="project-card filterable-project group block border border-ink/10 dark:border-cream/10 overflow-hidden transition-all duration-300 transform scale-100 opacity-100"
+                    data-category="react node database">
                     <div class="overflow-hidden border-b border-ink/10 dark:border-cream/10 relative">
                         <img src="image/Screenshot 2026-05-13 081804.png" alt="Attendance Monitoring System"
                             class="project-img previewable-img w-full h-40 object-cover">
@@ -547,43 +667,57 @@
                     </div>
                     <div class="p-4">
                         <div class="flex items-center justify-between gap-2 mb-1">
-                            <h3 class="text-sm font-semibold group-hover:text-accent transition-colors">Attendance System</h3>
-                            <span class="px-1.5 py-0.5 border border-accent/40 text-[9px] uppercase tracking-wider text-accent font-semibold rounded-sm">IBP</span>
+                            <h3 class="text-sm font-semibold group-hover:text-accent transition-colors">Attendance
+                                System</h3>
+                            <span
+                                class="px-1.5 py-0.5 border border-accent/40 text-[9px] uppercase tracking-wider text-accent font-semibold rounded-sm">IBP</span>
                         </div>
                         <p class="text-xs opacity-50 mb-3">QR-based logging, 95% tracking accuracy.</p>
                         <div class="flex flex-wrap gap-1.5 mt-2">
-                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">React</span>
-                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">Node.js</span>
-                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">Supabase</span>
+                            <span
+                                class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">React</span>
+                            <span
+                                class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">Node.js</span>
+                            <span
+                                class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">Supabase</span>
                         </div>
                     </div>
                 </a>
 
                 <!-- Ticketing System -->
-                <a href="#" class="project-card filterable-project group block border border-ink/10 dark:border-cream/10 overflow-hidden transition-all duration-300 transform scale-100 opacity-100" data-category="react">
+                <a href="#"
+                    class="project-card filterable-project group block border border-ink/10 dark:border-cream/10 overflow-hidden transition-all duration-300 transform scale-100 opacity-100"
+                    data-category="react">
                     <div
                         class="w-full h-40 bg-ink/5 dark:bg-cream/5 flex flex-col items-center justify-center border-b border-ink/10 dark:border-cream/10 relative transition-colors group-hover:bg-ink/10 dark:group-hover:bg-cream/10">
                         <span class="text-[10px] uppercase tracking-widest opacity-40">Internal Tool / IBP</span>
                         <div
                             class="absolute inset-0 bg-ink/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                            <span class="text-cream text-xs tracking-widest uppercase font-semibold">Not Yet Deployed</span>
+                            <span class="text-cream text-xs tracking-widest uppercase font-semibold">Not Yet
+                                Deployed</span>
                         </div>
                     </div>
                     <div class="p-4">
                         <div class="flex items-center justify-between gap-2 mb-1">
-                            <h3 class="text-sm font-semibold group-hover:text-accent transition-colors">Ticketing System</h3>
-                            <span class="px-1.5 py-0.5 border border-accent/40 text-[9px] uppercase tracking-wider text-accent font-semibold rounded-sm">IBP</span>
+                            <h3 class="text-sm font-semibold group-hover:text-accent transition-colors">Ticketing System
+                            </h3>
+                            <span
+                                class="px-1.5 py-0.5 border border-accent/40 text-[9px] uppercase tracking-wider text-accent font-semibold rounded-sm">IBP</span>
                         </div>
                         <p class="text-xs opacity-50 mb-3">Facility issue management & workflows.</p>
                         <div class="flex flex-wrap gap-1.5 mt-2">
-                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">TypeScript</span>
-                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">React</span>
-                            <span class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">Tailwind</span>
+                            <span
+                                class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">TypeScript</span>
+                            <span
+                                class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">React</span>
+                            <span
+                                class="tech-pill px-1.5 py-0.5 border border-ink/10 dark:border-cream/10 text-[10px] opacity-60 rounded-sm transition-all duration-200">Tailwind</span>
                         </div>
                     </div>
                 </a>
 
             </div>
+            </div> <!-- Close dyn-projectsContainer -->
         </div>
     </section>
 
@@ -596,22 +730,32 @@
                     <p class="text-xs tracking-[0.3em] uppercase text-accent mb-4">Endorsements</p>
                     <h2 class="font-display text-4xl font-normal mb-6">Feedback.</h2>
                     <p class="text-sm opacity-60 leading-relaxed">
-                        Feedback and recommendations from my Capstone adviser and internship supervisor on system architecture, database design, and web development.
+                        Feedback and recommendations from my Capstone adviser and internship supervisor on system
+                        architecture, database design, and web development.
                     </p>
                 </div>
 
                 <!-- Right cards -->
                 <div class="md:col-span-2 grid md:grid-cols-2 gap-6 reveal-up delay-200">
                     <!-- Rubinado Lubian III -->
-                    <div class="p-6 border border-ink/10 dark:border-cream/10 bg-ink/5 dark:bg-cream/5 flex flex-col justify-between relative">
-                        <div class="text-accent opacity-10 text-7xl font-serif absolute top-2 right-4 pointer-events-none select-none">“</div>
+                    <div
+                        class="p-6 border border-ink/10 dark:border-cream/10 bg-ink/5 dark:bg-cream/5 flex flex-col justify-between relative">
+                        <div
+                            class="text-accent opacity-10 text-7xl font-serif absolute top-2 right-4 pointer-events-none select-none">
+                            “</div>
                         <p class="text-sm opacity-70 italic leading-relaxed mb-8 relative z-10">
-                            "Enzo stood out as an exemplary student and team leader during his Capstone project. He demonstrated great responsibility in guiding his team, exceptional problem-solving skills, and a strong commitment to academic excellence. The success of their Capstone system is a testament to his dedication and work ethic."
+                            "Enzo stood out as an exemplary student and team leader during his Capstone project. He
+                            demonstrated great responsibility in guiding his team, exceptional problem-solving skills,
+                            and a strong commitment to academic excellence. The success of their Capstone system is a
+                            testament to his dedication and work ethic."
                         </p>
                         <div class="flex items-center gap-3 border-t border-ink/10 dark:border-cream/10 pt-4 mt-auto">
-                            <div class="w-8 h-8 rounded-full bg-accent/15 flex items-center justify-center text-accent font-semibold text-xs tracking-wider">RL</div>
+                            <div
+                                class="w-8 h-8 rounded-full bg-accent/15 flex items-center justify-center text-accent font-semibold text-xs tracking-wider">
+                                RL</div>
                             <div>
-                                <a href="https://www.facebook.com/flux.lubian" target="_blank" class="text-xs font-semibold uppercase tracking-wider text-accent hover:underline inline-flex items-center gap-1">
+                                <a href="https://www.facebook.com/flux.lubian" target="_blank"
+                                    class="text-xs font-semibold uppercase tracking-wider text-accent hover:underline inline-flex items-center gap-1">
                                     Rubinado Lubian III <span class="text-[8px] opacity-75">↗</span>
                                 </a>
                                 <p class="text-[10px] opacity-40">Capstone Adviser / STI Fairview</p>
@@ -620,15 +764,23 @@
                     </div>
 
                     <!-- Norberto Beltran -->
-                    <div class="p-6 border border-ink/10 dark:border-cream/10 bg-ink/5 dark:bg-cream/5 flex flex-col justify-between relative">
-                        <div class="text-accent opacity-10 text-7xl font-serif absolute top-2 right-4 pointer-events-none select-none">“</div>
+                    <div
+                        class="p-6 border border-ink/10 dark:border-cream/10 bg-ink/5 dark:bg-cream/5 flex flex-col justify-between relative">
+                        <div
+                            class="text-accent opacity-10 text-7xl font-serif absolute top-2 right-4 pointer-events-none select-none">
+                            “</div>
                         <p class="text-sm opacity-70 italic leading-relaxed mb-8 relative z-10">
-                            "As a Web Developer Intern, Enzo quickly adapted to our systems at the IBP. He played a critical role in deploying the Attendance Monitoring System at the ASEAN Summit and streamlined key internal workflows."
+                            "As a Web Developer Intern, Enzo quickly adapted to our systems at the IBP. He played a
+                            critical role in deploying the Attendance Monitoring System at the ASEAN Summit and
+                            streamlined key internal workflows."
                         </p>
                         <div class="flex items-center gap-3 border-t border-ink/10 dark:border-cream/10 pt-4 mt-auto">
-                            <div class="w-8 h-8 rounded-full bg-accent/15 flex items-center justify-center text-accent font-semibold text-xs tracking-wider">NB</div>
+                            <div
+                                class="w-8 h-8 rounded-full bg-accent/15 flex items-center justify-center text-accent font-semibold text-xs tracking-wider">
+                                NB</div>
                             <div>
-                                <h4 class="text-xs font-semibold uppercase tracking-wider text-accent">Norberto Beltran</h4>
+                                <h4 class="text-xs font-semibold uppercase tracking-wider text-accent">Norberto Beltran
+                                </h4>
                                 <p class="text-[10px] opacity-40">OJT Supervisor / IBP IT Support</p>
                             </div>
                         </div>
@@ -648,7 +800,7 @@
                         Open for<br>
                         <span class="italic text-accent">work.</span>
                     </h2>
-                    <p class="text-sm opacity-60 leading-relaxed mb-8 max-w-sm">
+                    <p id="dyn-contactText" class="text-sm opacity-60 leading-relaxed mb-8 max-w-sm">
                         I am currently looking for full-time roles in web development. Feel free to reach out if you
                         think we'd be a good fit!
                     </p>
@@ -674,10 +826,10 @@
                     </form>
                 </div>
                 <div class="space-y-0 reveal-up delay-200">
-                    <a href="mailto:parane.enzo@gmail.com"
+                    <a id="dyn-contactEmailLink" href="mailto:parane.enzo@gmail.com"
                         class="flex items-center justify-between py-5 border-t border-ink/10 dark:border-cream/10 group">
                         <span class="text-xs uppercase tracking-widest opacity-40">Email</span>
-                        <span class="text-sm group-hover:text-accent transition-colors">parane.enzo@gmail.com ↗</span>
+                        <span id="dyn-contactEmailText" class="text-sm group-hover:text-accent transition-colors">parane.enzo@gmail.com ↗</span>
                     </a>
                     <a href="https://www.linkedin.com/in/enzo-daniela-685374324/" target="_blank"
                         class="flex items-center justify-between py-5 border-t border-ink/10 dark:border-cream/10 group">
@@ -714,25 +866,34 @@
     <!-- Footer -->
     <footer class="border-t border-ink/10 dark:border-cream/10 py-6 px-6">
         <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-            <p class="text-xs opacity-30">© 2026 Enzo P. Daniela</p>
+            <p class="text-xs opacity-30"><a href="admin/index.html" class="hover:text-accent transition-colors duration-200 cursor-default">©</a> 2026 Enzo P. Daniela</p>
             <p class="text-xs opacity-30">Caloocan City, Philippines</p>
             <p class="text-xs opacity-30">Built with Tailwind CSS</p>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-6 right-6 z-40 w-10 h-10 rounded-full border border-ink/10 dark:border-cream/10 bg-cream/90 dark:bg-ink/90 backdrop-blur-sm flex items-center justify-center text-ink dark:text-cream shadow-md transition-all duration-300 opacity-0 translate-y-4 pointer-events-none hover:border-accent hover:text-accent group" aria-label="Back to top">
+    <button id="backToTop"
+        class="fixed bottom-6 right-6 z-40 w-10 h-10 rounded-full border border-ink/10 dark:border-cream/10 bg-cream/90 dark:bg-ink/90 backdrop-blur-sm flex items-center justify-center text-ink dark:text-cream shadow-md transition-all duration-300 opacity-0 translate-y-4 pointer-events-none hover:border-accent hover:text-accent group"
+        aria-label="Back to top">
         <svg class="w-10 h-10 absolute inset-0 -rotate-90" viewBox="0 0 36 36">
-            <path class="text-ink/5 dark:text-cream/5" stroke="currentColor" stroke-width="2" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-            <path id="backToTopProgress" class="text-accent transition-all duration-100" stroke="currentColor" stroke-width="2" stroke-dasharray="0, 100" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <path class="text-ink/5 dark:text-cream/5" stroke="currentColor" stroke-width="2" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <path id="backToTopProgress" class="text-accent transition-all duration-100" stroke="currentColor"
+                stroke-width="2" stroke-dasharray="0, 100" fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
         </svg>
         <span class="text-sm transition-transform duration-300 group-hover:-translate-y-0.5">↑</span>
     </button>
 
     <!-- Image Preview Modal HTML -->
-    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-ink/90 dark:bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out opacity-0 transition-opacity duration-300">
-        <button id="closeModal" class="absolute top-6 right-6 text-cream/70 hover:text-cream text-3xl font-mono focus:outline-none" aria-label="Close Preview">&times;</button>
-        <img id="modalImage" src="" alt="Preview" class="max-w-full max-h-[90vh] object-contain select-none shadow-2xl transition-transform duration-300 scale-95">
+    <div id="imageModal"
+        class="fixed inset-0 z-50 hidden bg-ink/90 dark:bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out opacity-0 transition-opacity duration-300">
+        <button id="closeModal"
+            class="absolute top-6 right-6 text-cream/70 hover:text-cream text-3xl font-mono focus:outline-none"
+            aria-label="Close Preview">&times;</button>
+        <img id="modalImage" src="" alt="Preview"
+            class="max-w-full max-h-[90vh] object-contain select-none shadow-2xl transition-transform duration-300 scale-95">
     </div>
 
     <script src="js/site.js"></script>

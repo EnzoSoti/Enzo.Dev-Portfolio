@@ -81,3 +81,37 @@ html {
 .delay-300 { transition-delay: 0.3s; }
 .delay-400 { transition-delay: 0.4s; }
 .delay-500 { transition-delay: 0.5s; }
+
+/* View Transitions Theme Toggle */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+::view-transition-new(root) {
+    z-index: 9999;
+}
+
+/* Disable default layout transitions during theme switch to prevent animation conflicts */
+.transitioning,
+.transitioning * {
+    transition: none !important;
+}
+
+/* Interactive Data Flow Diagram Styles */
+.node-circle {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.node-circle.active {
+    background-color: #C8522A !important;
+    border-color: #C8522A !important;
+    color: #F7F5F0 !important;
+    box-shadow: 0 0 20px rgba(200, 82, 42, 0.6);
+    transform: scale(1.15);
+}

@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model PortfolioConfig {
+  id          Int      @id @default(1)
+  heroLabel   String   @default("Portfolio — 2026")
+  heroName1   String   @default("Enzo")
+  heroName2   String   @default("Daniela.")
+  heroTagline String   @default("IT Graduate & Web Developer based in Caloocan City, Philippines. Building systems with Node.js, Express, MySQL, Supabase & Docker.")
+  aboutTitle  String   @default("Backend-first developer who actually cares about how the data moves.")
+  aboutText1  String   @default("BS Information Technology graduate with hands-on experience in web development through internship, academic, and personal projects. Focused on building robust server-side logic, RESTful APIs, and database operations.")
+  aboutText2  String   @default("Comfortable working on both solo and team-based projects. Uses AI-assisted tools like Claude and GitHub Copilot to accelerate development and support frontend implementation.")
+  profileImg  String   @default("./image/new_formal-removebg-preview.png")
+  badgeText   String   @default("BSIT Graduate")
+  school      String   @default("STI College Fairview")
+  course      String   @default("BS Information Technology")
+  graduated   String   @default("July 17, 2026")
+  location    String   @default("Caloocan City, PH")
+  contactText String   @default("I am currently looking for full-time roles in web development. Feel free to reach out if you think we'd be a good fit!")
+  email       String   @default("parane.enzo@gmail.com")
+  updatedAt   DateTime @updatedAt
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  imageUrl    String   @default("")
+  liveUrl     String   @default("")
+  githubUrl   String   @default("")
+  tags        String   @default("")
+  category    String   @default("all")
+  badge       String   @default("")
+  featured    Boolean  @default(false)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Experience {
+  id          Int      @id @default(autoincrement())
+  role        String
+  company     String
+  period      String
+  description String   @default("")
+  bullets     String   @default("")
+  logoUrl     String   @default("")
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

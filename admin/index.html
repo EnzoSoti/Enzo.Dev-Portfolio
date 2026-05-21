@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login — EPD Control Room</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { mono: ['JetBrains Mono', 'monospace'], display: ['Georgia', 'serif'] },
+                    colors: { cream: '#F7F5F0', ink: '#0F0E0C', accent: '#C8522A' },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background: #0F0E0C; }
+        .glass {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(24px);
+        }
+        .login-glow {
+            box-shadow: 0 0 80px rgba(200, 82, 42, 0.08), 0 0 2px rgba(200, 82, 42, 0.15);
+        }
+        input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px #0F0E0C inset !important;
+            -webkit-text-fill-color: #F7F5F0 !important;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-in { animation: fadeUp 0.6s ease forwards; }
+        .stagger-1 { animation-delay: 0.1s; opacity: 0; }
+        .stagger-2 { animation-delay: 0.25s; opacity: 0; }
+        .stagger-3 { animation-delay: 0.4s; opacity: 0; }
+        .stagger-4 { animation-delay: 0.55s; opacity: 0; }
+
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(200, 82, 42, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200, 82, 42, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-8px); }
+            40% { transform: translateX(8px); }
+            60% { transform: translateX(-4px); }
+            80% { transform: translateX(4px); }
+        }
+    </style>
+</head>
+<body class="min-h-screen grid-bg flex items-center justify-center font-mono text-cream p-4">
+
+    <!-- Decorative accent line at top -->
+    <div class="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-40"></div>
+
+    <div class="w-full max-w-sm">
+        <!-- Header -->
+        <div class="text-center mb-10 animate-in stagger-1">
+            <span class="text-accent text-xs tracking-[0.5em] uppercase font-semibold">EPD.dev</span>
+            <h1 class="font-display text-3xl mt-3 font-normal tracking-tight">Control Room</h1>
+            <p class="text-xs opacity-30 mt-2 tracking-wider">ADMIN ACCESS ONLY</p>
+        </div>
+
+        <!-- Login Card -->
+        <div class="glass rounded-sm p-8 login-glow animate-in stagger-2">
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label class="text-[10px] uppercase tracking-widest opacity-40 block mb-2">Email</label>
+                    <input type="text" id="loginEmail" required autocomplete="off"
+                        class="w-full bg-transparent border-b border-cream/10 py-2.5 text-sm focus:outline-none focus:border-accent transition-colors duration-300 placeholder-cream/20"
+                        placeholder="admin@enzo.dev">
+                </div>
+                <div>
+                    <label class="text-[10px] uppercase tracking-widest opacity-40 block mb-2">Password</label>
+                    <input type="password" id="loginPassword" required
+                        class="w-full bg-transparent border-b border-cream/10 py-2.5 text-sm focus:outline-none focus:border-accent transition-colors duration-300 placeholder-cream/20"
+                        placeholder="••••••••">
+                </div>
+
+                <!-- Error Message -->
+                <div id="loginError" class="hidden text-xs text-red-400 tracking-wider py-2 px-3 border border-red-500/20 bg-red-500/5 rounded-sm">
+                    Invalid credentials. Access denied.
+                </div>
+
+                <button type="submit" id="loginBtn"
+                    class="w-full py-3 bg-accent text-cream text-xs tracking-[0.2em] uppercase hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-3">
+                    <span id="loginBtnText">Authenticate</span>
+                    <span id="loginBtnIcon">→</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Footer info -->
+        <div class="text-center mt-8 animate-in stagger-3">
+            <p class="text-[10px] opacity-20 tracking-wider">
+                Session-based authentication • Static credentials for testing
+            </p>
+        </div>
+
+        <!-- Back to portfolio link -->
+        <div class="text-center mt-4 animate-in stagger-4">
+            <a href="/" class="text-xs text-accent/60 hover:text-accent transition-colors tracking-wider uppercase">
+                ← Back to Portfolio
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://localhost:5000'
+            : 'https://your-deployed-backend.com';
+
+        // Check if already logged in
+        const existingToken = localStorage.getItem('adminToken');
+        if (existingToken) {
+            fetch(`${API_BASE}/api/admin/verify`, {
+                headers: { 'Authorization': `Bearer ${existingToken}` }
+            }).then(r => r.json()).then(data => {
+                if (data.valid) window.location.href = '/admin/dashboard.html';
+            }).catch(() => localStorage.removeItem('adminToken'));
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const loginBtn = document.getElementById('loginBtn');
+            const loginBtnText = document.getElementById('loginBtnText');
+            const loginBtnIcon = document.getElementById('loginBtnIcon');
+            const errorEl = document.getElementById('loginError');
+
+            errorEl.classList.add('hidden');
+
+            // Loading state
+            loginBtn.disabled = true;
+            loginBtnText.textContent = 'Authenticating...';
+            loginBtnIcon.innerHTML = '<svg class="animate-spin h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
+
+            try {
+                const res = await fetch(`${API_BASE}/api/admin/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await res.json();
+
+                if (res.ok && data.token) {
+                    // Success
+                    loginBtn.classList.remove('bg-accent');
+                    loginBtn.classList.add('bg-emerald-600');
+                    loginBtnText.textContent = 'Access Granted';
+                    loginBtnIcon.innerHTML = '✓';
+
+                    localStorage.setItem('adminToken', data.token);
+
+                    setTimeout(() => {
+                        window.location.href = '/admin/dashboard.html';
+                    }, 600);
+                } else {
+                    throw new Error(data.error || 'Invalid credentials');
+                }
+            } catch (err) {
+                // Error shake
+                const card = document.querySelector('.glass');
+                card.classList.add('shake');
+                setTimeout(() => card.classList.remove('shake'), 500);
+
+                errorEl.classList.remove('hidden');
+                loginBtn.disabled = false;
+                loginBtnText.textContent = 'Authenticate';
+                loginBtnIcon.innerHTML = '→';
+            }
+        });
+    </script>
+</body>
+</html>

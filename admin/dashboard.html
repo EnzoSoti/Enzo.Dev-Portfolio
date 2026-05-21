@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — EPD Control Room</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { mono: ['JetBrains Mono', 'monospace'], display: ['Georgia', 'serif'] },
+                    colors: { cream: '#F7F5F0', ink: '#0F0E0C', accent: '#C8522A' },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background: #0F0E0C; }
+        .glass { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+        .glass-hover:hover { background: rgba(255,255,255,0.06); }
+        .tab-active { border-bottom: 2px solid #C8522A; color: #C8522A; opacity: 1; }
+        .field-input {
+            background: transparent;
+            border-bottom: 1px solid rgba(247,245,240,0.1);
+            padding: 8px 0;
+            font-size: 13px;
+            color: #F7F5F0;
+            width: 100%;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .field-input:focus { border-color: #C8522A; }
+        textarea.field-input { resize: vertical; min-height: 60px; }
+
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(200, 82, 42, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200, 82, 42, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .toast {
+            position: fixed; bottom: 24px; right: 24px; z-index: 100;
+            padding: 12px 20px; border-radius: 2px;
+            font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+            transform: translateY(100px); opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast-success { background: #059669; color: white; }
+        .toast-error { background: #dc2626; color: white; }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-in { animation: fadeUp 0.4s ease forwards; }
+
+        .card-item { transition: all 0.2s ease; }
+        .card-item:hover { background: rgba(255,255,255,0.04); }
+    </style>
+</head>
+<body class="min-h-screen grid-bg font-mono text-cream">
+
+    <!-- Top Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-ink/95 backdrop-blur-sm border-b border-cream/5">
+        <div class="max-w-6xl mx-auto px-6 h-12 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <span class="text-accent text-xs tracking-[0.3em] uppercase font-semibold">EPD</span>
+                <span class="text-cream/20">|</span>
+                <span class="text-xs tracking-wider opacity-40">Control Room</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="/" target="_blank" class="text-[10px] uppercase tracking-wider opacity-40 hover:opacity-100 hover:text-accent transition-all">
+                    View Site ↗
+                </a>
+                <button id="logoutBtn" class="text-[10px] uppercase tracking-wider text-red-400/60 hover:text-red-400 transition-colors">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="max-w-6xl mx-auto px-6 pt-20 pb-12">
+
+        <!-- Dashboard Header -->
+        <div class="mb-8">
+            <p class="text-[10px] tracking-[0.3em] uppercase text-accent mb-2">Admin Dashboard</p>
+            <h1 class="font-display text-3xl font-normal">Control Room.</h1>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="flex gap-0 border-b border-cream/5 mb-8 overflow-x-auto">
+            <button class="tab-btn tab-active px-5 py-3 text-[10px] uppercase tracking-[0.15em] opacity-60 hover:opacity-100 transition-all whitespace-nowrap" data-tab="general">
+                General
+            </button>
+            <button class="tab-btn px-5 py-3 text-[10px] uppercase tracking-[0.15em] opacity-60 hover:opacity-100 transition-all whitespace-nowrap" data-tab="projects">
+                Projects
+            </button>
+            <button class="tab-btn px-5 py-3 text-[10px] uppercase tracking-[0.15em] opacity-60 hover:opacity-100 transition-all whitespace-nowrap" data-tab="experience">
+                Experience
+            </button>
+            <button class="tab-btn px-5 py-3 text-[10px] uppercase tracking-[0.15em] opacity-60 hover:opacity-100 transition-all whitespace-nowrap" data-tab="contacts">
+                Contacts
+            </button>
+        </div>
+
+        <!-- Tab Panels -->
+
+        <!-- General Settings -->
+        <div id="panel-general" class="tab-panel animate-in">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Hero Section -->
+                <div class="glass rounded-sm p-6">
+                    <h3 class="text-xs uppercase tracking-[0.2em] text-accent mb-6 font-semibold">Hero Section</h3>
+                    <div class="space-y-5">
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Label</label>
+                            <input type="text" id="cfg-heroLabel" class="field-input">
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Name Line 1</label>
+                            <input type="text" id="cfg-heroName1" class="field-input">
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Name Line 2</label>
+                            <input type="text" id="cfg-heroName2" class="field-input">
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Tagline</label>
+                            <textarea id="cfg-heroTagline" class="field-input" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Section -->
+                <div class="glass rounded-sm p-6">
+                    <h3 class="text-xs uppercase tracking-[0.2em] text-accent mb-6 font-semibold">About Section</h3>
+                    <div class="space-y-5">
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">About Title</label>
+                            <textarea id="cfg-aboutTitle" class="field-input" rows="2"></textarea>
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">About Paragraph 1</label>
+                            <textarea id="cfg-aboutText1" class="field-input" rows="3"></textarea>
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">About Paragraph 2</label>
+                            <textarea id="cfg-aboutText2" class="field-input" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Details -->
+                <div class="glass rounded-sm p-6">
+                    <h3 class="text-xs uppercase tracking-[0.2em] text-accent mb-6 font-semibold">Profile Details</h3>
+                    <div class="space-y-5">
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Badge Text</label>
+                            <input type="text" id="cfg-badgeText" class="field-input">
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">School</label>
+                            <input type="text" id="cfg-school" class="field-input">
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Course</label>
+                            <input type="text" id="cfg-course" class="field-input">
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Graduated</label>
+                            <input type="text" id="cfg-graduated" class="field-input">
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Location</label>
+                            <input type="text" id="cfg-location" class="field-input">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Settings -->
+                <div class="glass rounded-sm p-6">
+                    <h3 class="text-xs uppercase tracking-[0.2em] text-accent mb-6 font-semibold">Contact Settings</h3>
+                    <div class="space-y-5">
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Contact Text</label>
+                            <textarea id="cfg-contactText" class="field-input" rows="3"></textarea>
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Email</label>
+                            <input type="text" id="cfg-email" class="field-input">
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Profile Image URL</label>
+                            <input type="text" id="cfg-profileImg" class="field-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="saveConfigBtn" class="mt-8 px-8 py-3 bg-accent text-cream text-xs tracking-[0.2em] uppercase hover:opacity-90 transition-all">
+                Save Changes
+            </button>
+        </div>
+
+        <!-- Projects Manager -->
+        <div id="panel-projects" class="tab-panel hidden">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-xs uppercase tracking-[0.2em] opacity-40">Manage Projects</h3>
+                <button id="addProjectBtn" class="px-4 py-2 border border-accent/40 text-accent text-[10px] uppercase tracking-wider hover:bg-accent hover:text-cream transition-all">
+                    + Add Project
+                </button>
+            </div>
+
+            <div id="projectsList" class="space-y-3"></div>
+
+            <!-- Project Form Modal -->
+            <div id="projectModal" class="fixed inset-0 z-50 hidden bg-ink/90 backdrop-blur-sm flex items-center justify-center p-4">
+                <div class="glass rounded-sm p-8 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 id="projectModalTitle" class="text-xs uppercase tracking-[0.2em] text-accent font-semibold">New Project</h3>
+                        <button id="closeProjectModal" class="text-cream/40 hover:text-cream text-lg">×</button>
+                    </div>
+                    <form id="projectForm" class="space-y-5">
+                        <input type="hidden" id="proj-id">
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Title</label>
+                            <input type="text" id="proj-title" class="field-input" required>
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Description</label>
+                            <textarea id="proj-description" class="field-input" rows="2" required></textarea>
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Image URL</label>
+                            <input type="text" id="proj-imageUrl" class="field-input">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Live URL</label>
+                                <input type="text" id="proj-liveUrl" class="field-input">
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">GitHub URL</label>
+                                <input type="text" id="proj-githubUrl" class="field-input">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Tags (comma-separated)</label>
+                                <input type="text" id="proj-tags" class="field-input" placeholder="React,Node.js">
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Category</label>
+                                <input type="text" id="proj-category" class="field-input" placeholder="node database">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Badge</label>
+                                <input type="text" id="proj-badge" class="field-input" placeholder="e.g. Capstone">
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Sort Order</label>
+                                <input type="number" id="proj-sortOrder" class="field-input" value="0">
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" id="proj-featured" class="accent-accent">
+                            <label for="proj-featured" class="text-[10px] uppercase tracking-widest opacity-40">Featured (large card)</label>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-accent text-cream text-xs tracking-[0.2em] uppercase hover:opacity-90 transition-all">
+                            Save Project
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Manager -->
+        <div id="panel-experience" class="tab-panel hidden">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-xs uppercase tracking-[0.2em] opacity-40">Manage Experience</h3>
+                <button id="addExpBtn" class="px-4 py-2 border border-accent/40 text-accent text-[10px] uppercase tracking-wider hover:bg-accent hover:text-cream transition-all">
+                    + Add Experience
+                </button>
+            </div>
+
+            <div id="experiencesList" class="space-y-3"></div>
+
+            <!-- Experience Form Modal -->
+            <div id="expModal" class="fixed inset-0 z-50 hidden bg-ink/90 backdrop-blur-sm flex items-center justify-center p-4">
+                <div class="glass rounded-sm p-8 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 id="expModalTitle" class="text-xs uppercase tracking-[0.2em] text-accent font-semibold">New Experience</h3>
+                        <button id="closeExpModal" class="text-cream/40 hover:text-cream text-lg">×</button>
+                    </div>
+                    <form id="expForm" class="space-y-5">
+                        <input type="hidden" id="exp-id">
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Role / Title</label>
+                            <input type="text" id="exp-role" class="field-input" required>
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Company / Institution</label>
+                            <input type="text" id="exp-company" class="field-input" required>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Period</label>
+                                <input type="text" id="exp-period" class="field-input" placeholder="March 2026 — May 2026">
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Logo URL</label>
+                                <input type="text" id="exp-logoUrl" class="field-input">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Bullet Points (one per line)</label>
+                            <textarea id="exp-bullets" class="field-input" rows="5" placeholder="One achievement per line..."></textarea>
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Sort Order</label>
+                            <input type="number" id="exp-sortOrder" class="field-input" value="0">
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-accent text-cream text-xs tracking-[0.2em] uppercase hover:opacity-90 transition-all">
+                            Save Experience
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contacts Inbox -->
+        <div id="panel-contacts" class="tab-panel hidden">
+            <h3 class="text-xs uppercase tracking-[0.2em] opacity-40 mb-6">Contact Submissions</h3>
+            <div id="contactsList" class="space-y-3">
+                <p class="text-xs opacity-30">Loading messages...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
