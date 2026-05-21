@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // API Server Configuration
     const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'http://localhost:5000'
-        : 'https://your-deployed-backend.com'; // Replace with deployed backend URL when ready
+        : 'https://enzo-dev-portfolio.onrender.com';
 
     // 6b. Client Hydration logic
     async function hydratePortfolio() {

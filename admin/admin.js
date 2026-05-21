@@ -1,7 +1,6 @@
-// ─── Admin Dashboard Logic ────────────────────────────────────
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:5000'
-    : 'https://your-deployed-backend.com';
+    : 'https://enzo-dev-portfolio.onrender.com';
 
 const token = localStorage.getItem('adminToken');
 
@@ -111,10 +110,10 @@ function renderProjectsList(projects) {
                 </div>
             </div>
             <div class="flex gap-2 flex-shrink-0">
-                <button onclick="editProject(${p.id})" class="px-3 py-1.5 border border-cream/10 text-[10px] uppercase tracking-wider opacity-50 hover:opacity-100 hover:border-accent hover:text-accent transition-all">
+                <button onclick="editProject('${p.id}')" class="px-3 py-1.5 border border-cream/10 text-[10px] uppercase tracking-wider opacity-50 hover:opacity-100 hover:border-accent hover:text-accent transition-all">
                     Edit
                 </button>
-                <button onclick="deleteProject(${p.id})" class="px-3 py-1.5 border border-red-500/20 text-red-400/50 text-[10px] uppercase tracking-wider hover:border-red-500/60 hover:text-red-400 transition-all">
+                <button onclick="deleteProject('${p.id}')" class="px-3 py-1.5 border border-red-500/20 text-red-400/50 text-[10px] uppercase tracking-wider hover:border-red-500/60 hover:text-red-400 transition-all">
                     Delete
                 </button>
             </div>
@@ -235,10 +234,10 @@ function renderExperiencesList(experiences) {
                     <p class="text-[10px] opacity-30 mt-1">${bullets.length} bullet point${bullets.length !== 1 ? 's' : ''}</p>
                 </div>
                 <div class="flex gap-2 flex-shrink-0">
-                    <button onclick="editExperience(${e.id})" class="px-3 py-1.5 border border-cream/10 text-[10px] uppercase tracking-wider opacity-50 hover:opacity-100 hover:border-accent hover:text-accent transition-all">
+                    <button onclick="editExperience('${e.id}')" class="px-3 py-1.5 border border-cream/10 text-[10px] uppercase tracking-wider opacity-50 hover:opacity-100 hover:border-accent hover:text-accent transition-all">
                         Edit
                     </button>
-                    <button onclick="deleteExperience(${e.id})" class="px-3 py-1.5 border border-red-500/20 text-red-400/50 text-[10px] uppercase tracking-wider hover:border-red-500/60 hover:text-red-400 transition-all">
+                    <button onclick="deleteExperience('${e.id}')" class="px-3 py-1.5 border border-red-500/20 text-red-400/50 text-[10px] uppercase tracking-wider hover:border-red-500/60 hover:text-red-400 transition-all">
                         Delete
                     </button>
                 </div>

@@ -1,14 +1,120 @@
 const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
-const { PrismaClient } = require('@prisma/client');
-const { doc, getDoc, setDoc, collection, addDoc, getDocs } = require('firebase/firestore');
+const { doc, getDoc, setDoc, collection, addDoc, getDocs, updateDoc, deleteDoc } = require('firebase/firestore');
 const { db } = require('./firebase');
 require('dotenv').config();
 
 const app = express();
-const prisma = new PrismaClient();
 const PORT = process.env.PORT || 5000;
+
+// Default Seed Data
+const DEFAULT_CONFIG = {
+    heroLabel: "Portfolio — 2026",
+    heroName1: "Enzo",
+    heroName2: "Daniela.",
+    heroTagline: "IT Graduate & Web Developer based in Caloocan City, Philippines. Building systems with Node.js, Express, MySQL, Supabase & Docker.",
+    aboutTitle: "Backend-first developer who actually cares about how the data moves.",
+    aboutText1: "BS Information Technology graduate with hands-on experience in web development through internship, academic, and personal projects. Focused on building robust server-side logic, RESTful APIs, and database operations.",
+    aboutText2: "Comfortable working on both solo and team-based projects. Uses AI-assisted tools like Claude and GitHub Copilot to accelerate development and support frontend implementation.",
+    profileImg: "./image/new_formal-removebg-preview.png",
+    badgeText: "BSIT Graduate",
+    school: "STI College Fairview",
+    course: "BS Information Technology",
+    graduated: "July 17, 2026",
+    location: "Caloocan City, PH",
+    contactText: "I am currently looking for full-time roles in web development. Feel free to reach out if you think we'd be a good fit!",
+    email: "parane.enzo@gmail.com"
+};
+
+const DEFAULT_PROJECTS = [
+    {
+        title: "Gym Management System",
+        description: "Full-stack gym management with POS, inventory tracking, and member check-ins.",
+        imageUrl: "image/landing.png",
+        liveUrl: "https://fitworxgymph.web.app/",
+        tags: "Express.js,MySQL,Firebase,Node.js",
+        category: "node database",
+        badge: "Capstone",
+        featured: true,
+        sortOrder: 1
+    },
+    {
+        title: "Grade Calculator",
+        description: "STI grading system with local storage.",
+        imageUrl: "image/STI GRADE CALCULATOR.png",
+        liveUrl: "https://grade-calculator-xi.vercel.app/",
+        tags: "JavaScript,CSS3,HTML5",
+        category: "vanilla",
+        badge: "",
+        featured: false,
+        sortOrder: 2
+    },
+    {
+        title: "Attendance System",
+        description: "QR-based logging, 95% tracking accuracy.",
+        imageUrl: "image/Screenshot 2026-05-13 081804.png",
+        liveUrl: "https://attendance-tracker-asean.vercel.app/",
+        tags: "React,Node.js,Supabase",
+        category: "react node database",
+        badge: "IBP",
+        featured: false,
+        sortOrder: 3
+    },
+    {
+        title: "Ticketing System",
+        description: "Facility issue management & workflows.",
+        imageUrl: "",
+        liveUrl: "",
+        tags: "TypeScript,React,Tailwind",
+        category: "react",
+        badge: "IBP",
+        featured: false,
+        sortOrder: 4
+    }
+];
+
+const DEFAULT_EXPERIENCES = [
+    {
+        role: "Web Developer Intern | IT Support",
+        company: "Integrated Bar of the Philippines (IBP)",
+        period: "March 2026 — May 2026",
+        description: "",
+        bullets: JSON.stringify([
+            "Contributed to the development of a Human Resource Information System (HRIS)",
+            "Contributed to the development of an Attendance Monitoring System (AMS)",
+            "Assisted in building a Ticketing Management System for internal operations",
+            "Streamlined employee and administrative workflows",
+            "Provided technical support and system maintenance"
+        ]),
+        logoUrl: "image/ibp logo.png",
+        sortOrder: 1
+    },
+    {
+        role: "Backend Developer & Team Lead",
+        company: "Online Gym Facility Management System (Capstone)",
+        period: "Aug 2025 — Dec 2025",
+        description: "",
+        bullets: JSON.stringify([
+            "Developed and structured 20+ backend route modules implementing RESTful APIs for membership management, ecommerce, and payment processing.",
+            "Implemented secure equipment tracking, reservations, and customer inquiries using Node.js & Express.js."
+        ]),
+        logoUrl: "",
+        sortOrder: 2
+    },
+    {
+        role: "Bachelor of Science in Information Technology (BSIT)",
+        company: "STI College Fairview",
+        period: "July 2026",
+        description: "",
+        bullets: JSON.stringify([
+            "Graduated on July 17, 2026, with an emphasis on web development, database management systems, and systems integration.",
+            "Completed a 4-year BSIT curriculum focusing on practical application development and software design methodologies."
+        ]),
+        logoUrl: "image/STI.png",
+        sortOrder: 3
+    }
+];
 
 // Static admin credentials (testing only)
 const ADMIN_EMAIL = '1';
@@ -43,12 +149,28 @@ app.get('/api/admin/verify', requireAuth, (req, res) => {
 // ─── Portfolio Config (Singleton CRUD) ────────────────────────
 app.get('/api/portfolio', async (req, res) => {
     try {
-        let config = await prisma.portfolioConfig.findUnique({ where: { id: 1 } });
-        if (!config) {
-            config = await prisma.portfolioConfig.create({ data: { id: 1 } });
-        }
-        const projects = await prisma.project.findMany({ orderBy: { sortOrder: 'asc' } });
-        const experiences = await prisma.experience.findMany({ orderBy: { sortOrder: 'asc' } });
+        const configDoc = doc(db, 'portfolio', 'config');
+        const configSnap = await getDoc(configDoc);
+        let config = configSnap.exists() ? { id: 'config', ...configSnap.data() } : DEFAULT_CONFIG;
+
+        // Fetch Projects
+        const projectsCol = collection(db, 'projects');
+        const projSnapshot = await getDocs(projectsCol);
+        const projects = [];
+        projSnapshot.forEach(doc => {
+            projects.push({ id: doc.id, ...doc.data() });
+        });
+        projects.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+
+        // Fetch Experiences
+        const expCol = collection(db, 'experiences');
+        const expSnapshot = await getDocs(expCol);
+        const experiences = [];
+        expSnapshot.forEach(doc => {
+            experiences.push({ id: doc.id, ...doc.data() });
+        });
+        experiences.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+
         res.json({ config, projects, experiences });
     } catch (error) {
         console.error('Portfolio fetch error:', error);
@@ -59,14 +181,11 @@ app.get('/api/portfolio', async (req, res) => {
 app.put('/api/portfolio/config', requireAuth, async (req, res) => {
     try {
         const data = req.body;
-        // Remove fields that shouldn't be updated directly
         delete data.id;
-        delete data.updatedAt;
-        const config = await prisma.portfolioConfig.update({
-            where: { id: 1 },
-            data
-        });
-        res.json(config);
+        
+        const configDoc = doc(db, 'portfolio', 'config');
+        await setDoc(configDoc, data, { merge: true });
+        res.json({ id: 'config', ...data });
     } catch (error) {
         console.error('Config update error:', error);
         res.status(500).json({ error: 'Failed to update config' });
@@ -76,7 +195,13 @@ app.put('/api/portfolio/config', requireAuth, async (req, res) => {
 // ─── Projects CRUD ────────────────────────────────────────────
 app.get('/api/projects', async (req, res) => {
     try {
-        const projects = await prisma.project.findMany({ orderBy: { sortOrder: 'asc' } });
+        const projectsCol = collection(db, 'projects');
+        const projSnapshot = await getDocs(projectsCol);
+        const projects = [];
+        projSnapshot.forEach(doc => {
+            projects.push({ id: doc.id, ...doc.data() });
+        });
+        projects.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
         res.json(projects);
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch projects' });
@@ -85,8 +210,8 @@ app.get('/api/projects', async (req, res) => {
 
 app.post('/api/projects', requireAuth, async (req, res) => {
     try {
-        const project = await prisma.project.create({ data: req.body });
-        res.status(201).json(project);
+        const docRef = await addDoc(collection(db, 'projects'), req.body);
+        res.status(201).json({ id: docRef.id, ...req.body });
     } catch (error) {
         console.error('Project create error:', error);
         res.status(500).json({ error: 'Failed to create project' });
@@ -97,13 +222,9 @@ app.put('/api/projects/:id', requireAuth, async (req, res) => {
     try {
         const data = req.body;
         delete data.id;
-        delete data.createdAt;
-        delete data.updatedAt;
-        const project = await prisma.project.update({
-            where: { id: parseInt(req.params.id) },
-            data
-        });
-        res.json(project);
+        const docRef = doc(db, 'projects', req.params.id);
+        await setDoc(docRef, data, { merge: true });
+        res.json({ id: req.params.id, ...data });
     } catch (error) {
         console.error('Project update error:', error);
         res.status(500).json({ error: 'Failed to update project' });
@@ -112,7 +233,7 @@ app.put('/api/projects/:id', requireAuth, async (req, res) => {
 
 app.delete('/api/projects/:id', requireAuth, async (req, res) => {
     try {
-        await prisma.project.delete({ where: { id: parseInt(req.params.id) } });
+        await deleteDoc(doc(db, 'projects', req.params.id));
         res.json({ success: true });
     } catch (error) {
         console.error('Project delete error:', error);
@@ -123,7 +244,13 @@ app.delete('/api/projects/:id', requireAuth, async (req, res) => {
 // ─── Experiences CRUD ─────────────────────────────────────────
 app.get('/api/experiences', async (req, res) => {
     try {
-        const experiences = await prisma.experience.findMany({ orderBy: { sortOrder: 'asc' } });
+        const expCol = collection(db, 'experiences');
+        const expSnapshot = await getDocs(expCol);
+        const experiences = [];
+        expSnapshot.forEach(doc => {
+            experiences.push({ id: doc.id, ...doc.data() });
+        });
+        experiences.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
         res.json(experiences);
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch experiences' });
@@ -132,8 +259,8 @@ app.get('/api/experiences', async (req, res) => {
 
 app.post('/api/experiences', requireAuth, async (req, res) => {
     try {
-        const experience = await prisma.experience.create({ data: req.body });
-        res.status(201).json(experience);
+        const docRef = await addDoc(collection(db, 'experiences'), req.body);
+        res.status(201).json({ id: docRef.id, ...req.body });
     } catch (error) {
         console.error('Experience create error:', error);
         res.status(500).json({ error: 'Failed to create experience' });
@@ -144,13 +271,9 @@ app.put('/api/experiences/:id', requireAuth, async (req, res) => {
     try {
         const data = req.body;
         delete data.id;
-        delete data.createdAt;
-        delete data.updatedAt;
-        const experience = await prisma.experience.update({
-            where: { id: parseInt(req.params.id) },
-            data
-        });
-        res.json(experience);
+        const docRef = doc(db, 'experiences', req.params.id);
+        await setDoc(docRef, data, { merge: true });
+        res.json({ id: req.params.id, ...data });
     } catch (error) {
         console.error('Experience update error:', error);
         res.status(500).json({ error: 'Failed to update experience' });
@@ -159,7 +282,7 @@ app.put('/api/experiences/:id', requireAuth, async (req, res) => {
 
 app.delete('/api/experiences/:id', requireAuth, async (req, res) => {
     try {
-        await prisma.experience.delete({ where: { id: parseInt(req.params.id) } });
+        await deleteDoc(doc(db, 'experiences', req.params.id));
         res.json({ success: true });
     } catch (error) {
         console.error('Experience delete error:', error);
@@ -277,29 +400,37 @@ app.get('/api/ping', async (req, res) => {
 app.listen(PORT, async () => {
     console.log(`Server is running on port ${PORT}`);
     
-    // Automatically run database migrations & seeds on start if needed
+    // Automatically initialize Firestore data if config document doesn't exist
     try {
-        console.log('Checking database status...');
-        const count = await prisma.portfolioConfig.count();
-        if (count === 0) {
-            console.log('Database is empty. Running auto-seeding...');
-            const { execSync } = require('child_process');
-            execSync('node seed.js', { stdio: 'inherit' });
-            console.log('Seeding completed successfully.');
+        console.log('Checking database status (Firestore)...');
+        const configDoc = doc(db, 'portfolio', 'config');
+        const configSnap = await getDoc(configDoc);
+        
+        if (!configSnap.exists()) {
+            console.log('Firestore config not found! Seeding database defaults...');
+            
+            // Seed Configuration
+            await setDoc(configDoc, DEFAULT_CONFIG);
+            console.log('Seeded default configuration.');
+            
+            // Seed Projects
+            const projectsCol = collection(db, 'projects');
+            for (const proj of DEFAULT_PROJECTS) {
+                await addDoc(projectsCol, proj);
+            }
+            console.log('Seeded default projects.');
+            
+            // Seed Experiences
+            const expCol = collection(db, 'experiences');
+            for (const exp of DEFAULT_EXPERIENCES) {
+                await addDoc(expCol, exp);
+            }
+            console.log('Seeded default experiences.');
+            console.log('Firestore database initialized and seeded successfully.');
         } else {
-            console.log('Database connected successfully. Config records found:', count);
+            console.log('Firestore connected successfully. Config records found.');
         }
     } catch (err) {
-        console.warn('Database connection check failed or tables missing. Attempting to deploy migrations & seed...', err.message);
-        try {
-            const { execSync } = require('child_process');
-            console.log('Running prisma migrations deploy...');
-            execSync('npx prisma migrate deploy', { stdio: 'inherit' });
-            console.log('Running database seed...');
-            execSync('node seed.js', { stdio: 'inherit' });
-            console.log('Auto-initialization completed successfully.');
-        } catch (migrationErr) {
-            console.error('Auto-initialization migration/seed failed. Please check database environment settings.', migrationErr);
-        }
+        console.error('Failed to initialize Firestore database:', err);
     }
 });
