@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const fetch = require('node-fetch');
 const { doc, getDoc, setDoc, collection, addDoc, getDocs, updateDoc, deleteDoc } = require('firebase/firestore');
 const { db } = require('./firebase');
@@ -123,6 +124,11 @@ const ADMIN_TOKEN = 'epd-admin-session-token-2026';
 
 app.use(cors());
 app.use(express.json());
+app.use('/admin', express.static(path.join(__dirname, '..', 'admin')));
+app.use('/css', express.static(path.join(__dirname, '..', 'css')));
+app.use('/js', express.static(path.join(__dirname, '..', 'js')));
+app.use('/image', express.static(path.join(__dirname, '..', 'image')));
+app.use(express.static(path.join(__dirname, '..')));
 
 // ─── Auth Middleware ───────────────────────────────────────────
 function requireAuth(req, res, next) {

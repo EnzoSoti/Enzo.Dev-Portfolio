@@ -193,7 +193,13 @@
                         </div>
                         <div>
                             <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Profile Image URL</label>
-                            <input type="text" id="cfg-profileImg" class="field-input">
+                            <div class="flex items-end gap-3">
+                                <input type="text" id="cfg-profileImg" class="field-input" placeholder="./image/your-photo.png">
+                                <button type="button" class="js-file-picker px-3 py-2 border border-cream/10 text-[10px] uppercase tracking-wider opacity-60 hover:opacity-100 transition-all whitespace-nowrap" data-target="cfg-profileImg" data-prefix="./image/">
+                                    Browse File
+                                </button>
+                            </div>
+                            <p class="mt-2 text-[10px] uppercase tracking-[0.2em] opacity-20">Opens the file manager and fills the field with ./image/&lt;filename&gt;.</p>
                         </div>
                     </div>
                 </div>
@@ -239,7 +245,13 @@
                         </div>
                         <div>
                             <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Image URL</label>
-                            <input type="text" id="proj-imageUrl" class="field-input">
+                            <div class="flex items-end gap-3">
+                                <input type="text" id="proj-imageUrl" class="field-input" placeholder="image/your-project.png">
+                                <button type="button" class="js-file-picker px-3 py-2 border border-cream/10 text-[10px] uppercase tracking-wider opacity-60 hover:opacity-100 transition-all whitespace-nowrap" data-target="proj-imageUrl" data-prefix="image/">
+                                    Browse File
+                                </button>
+                            </div>
+                            <p class="mt-2 text-[10px] uppercase tracking-[0.2em] opacity-20">Opens the file manager and fills the field with image/&lt;filename&gt;.</p>
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
@@ -318,7 +330,13 @@
                             </div>
                             <div>
                                 <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Logo URL</label>
-                                <input type="text" id="exp-logoUrl" class="field-input">
+                                <div class="flex items-end gap-3">
+                                    <input type="text" id="exp-logoUrl" class="field-input" placeholder="image/your-logo.png">
+                                    <button type="button" class="js-file-picker px-3 py-2 border border-cream/10 text-[10px] uppercase tracking-wider opacity-60 hover:opacity-100 transition-all whitespace-nowrap" data-target="exp-logoUrl" data-prefix="image/">
+                                        Browse File
+                                    </button>
+                                </div>
+                                <p class="mt-2 text-[10px] uppercase tracking-[0.2em] opacity-20">Opens the file manager and fills the field with image/&lt;filename&gt;.</p>
                             </div>
                         </div>
                         <div>

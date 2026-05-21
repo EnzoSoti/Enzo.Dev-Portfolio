@@ -14,6 +14,54 @@ function authHeaders() {
     return { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
 }
 
+function setButtonLoading(button, isLoading, loadingText = 'Loading...') {
+    if (!button) return;
+
+    if (isLoading) {
+        if (!button.dataset.originalHtml) {
+            button.dataset.originalHtml = button.innerHTML;
+        }
+
+        button.disabled = true;
+        button.classList.add('opacity-70', 'cursor-wait');
+        button.innerHTML = `<span class="inline-flex items-center gap-2"><span class="h-3 w-3 rounded-full border-2 border-current border-t-transparent animate-spin"></span><span>${loadingText}</span></span>`;
+        return;
+    }
+
+    if (button.dataset.originalHtml) {
+        button.innerHTML = button.dataset.originalHtml;
+        delete button.dataset.originalHtml;
+    }
+
+    button.disabled = false;
+    button.classList.remove('opacity-70', 'cursor-wait');
+}
+
+function openFilePicker(targetInputId, prefix) {
+    const targetInput = document.getElementById(targetInputId);
+    if (!targetInput) return;
+
+    const picker = document.createElement('input');
+    picker.type = 'file';
+    picker.accept = 'image/*';
+
+    picker.addEventListener('change', () => {
+        const file = picker.files && picker.files[0];
+        if (!file) return;
+
+        targetInput.value = `${prefix}${file.name}`;
+        showToast(`Inserted ${prefix}${file.name}`, 'success');
+    });
+
+    picker.click();
+}
+
+document.querySelectorAll('.js-file-picker').forEach(button => {
+    button.addEventListener('click', () => {
+        openFilePicker(button.dataset.target, button.dataset.prefix || 'image/');
+    });
+});
+
 function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
     toast.textContent = message;
@@ -84,6 +132,17 @@ const configFields = [
 ];
 
 async function loadConfig() {
+    const projectsContainer = document.getElementById('projectsList');
+    const experiencesContainer = document.getElementById('experiencesList');
+
+    if (projectsContainer) {
+        projectsContainer.innerHTML = '<p class="text-xs opacity-30">Loading projects...</p>';
+    }
+
+    if (experiencesContainer) {
+        experiencesContainer.innerHTML = '<p class="text-xs opacity-30">Loading experiences...</p>';
+    }
+
     try {
         const res = await fetch(`${API_BASE}/api/portfolio`);
         const data = await res.json();
@@ -105,11 +164,14 @@ async function loadConfig() {
 }
 
 document.getElementById('saveConfigBtn').addEventListener('click', async () => {
+    const saveButton = document.getElementById('saveConfigBtn');
     const payload = {};
     configFields.forEach(field => {
         const el = document.getElementById(`cfg-${field}`);
         if (el) payload[field] = el.value;
     });
+
+    setButtonLoading(saveButton, true, 'Saving...');
 
     try {
         const res = await fetch(`${API_BASE}/api/portfolio/config`, {
@@ -121,6 +183,8 @@ document.getElementById('saveConfigBtn').addEventListener('click', async () => {
         showToast('Configuration saved successfully');
     } catch (err) {
         showToast('Failed to save config', 'error');
+    } finally {
+        setButtonLoading(saveButton, false);
     }
 });
 
@@ -149,7 +213,7 @@ function renderProjectsList(projects) {
                 <button onclick="editProject('${p.id}')" class="px-3 py-1.5 border border-cream/10 text-[10px] uppercase tracking-wider opacity-50 hover:opacity-100 hover:border-accent hover:text-accent transition-all">
                     Edit
                 </button>
-                <button onclick="deleteProject('${p.id}')" class="px-3 py-1.5 border border-red-500/20 text-red-400/50 text-[10px] uppercase tracking-wider hover:border-red-500/60 hover:text-red-400 transition-all">
+                <button onclick="deleteProject('${p.id}', this)" class="px-3 py-1.5 border border-red-500/20 text-red-400/50 text-[10px] uppercase tracking-wider hover:border-red-500/60 hover:text-red-400 transition-all">
                     Delete
                 </button>
             </div>
@@ -190,9 +254,12 @@ window.editProject = async function(id) {
     document.getElementById('projectModal').classList.remove('hidden');
 };
 
-window.deleteProject = async function(id) {
+window.deleteProject = async function(id, triggerButton) {
     const confirmed = await showConfirm('Delete Project', 'Are you sure you want to delete this project? This action cannot be undone.');
     if (!confirmed) return;
+
+    setButtonLoading(triggerButton, true, 'Deleting...');
+
     try {
         const res = await fetch(`${API_BASE}/api/projects/${id}`, {
             method: 'DELETE',
@@ -203,11 +270,14 @@ window.deleteProject = async function(id) {
         refreshProjects();
     } catch (err) {
         showToast('Failed to delete project', 'error');
+    } finally {
+        setButtonLoading(triggerButton, false);
     }
 };
 
 document.getElementById('projectForm').addEventListener('submit', async (e) => {
     e.preventDefault();
+    const submitButton = e.submitter || document.querySelector('#projectForm button[type="submit"]');
     const id = document.getElementById('proj-id').value;
     const payload = {
         title: document.getElementById('proj-title').value,
@@ -222,6 +292,8 @@ document.getElementById('projectForm').addEventListener('submit', async (e) => {
         featured: document.getElementById('proj-featured').checked
     };
 
+    setButtonLoading(submitButton, true, 'Saving...');
+
     try {
         const url = id ? `${API_BASE}/api/projects/${id}` : `${API_BASE}/api/projects`;
         const method = id ? 'PUT' : 'POST';
@@ -232,10 +304,17 @@ document.getElementById('projectForm').addEventListener('submit', async (e) => {
         refreshProjects();
     } catch (err) {
         showToast('Failed to save project', 'error');
+    } finally {
+        setButtonLoading(submitButton, false);
     }
 });
 
 async function refreshProjects() {
+    const container = document.getElementById('projectsList');
+    if (container) {
+        container.innerHTML = '<p class="text-xs opacity-30">Loading projects...</p>';
+    }
+
     try {
         const res = await fetch(`${API_BASE}/api/projects`);
         allProjects = await res.json();
@@ -274,7 +353,7 @@ function renderExperiencesList(experiences) {
                     <button onclick="editExperience('${e.id}')" class="px-3 py-1.5 border border-cream/10 text-[10px] uppercase tracking-wider opacity-50 hover:opacity-100 hover:border-accent hover:text-accent transition-all">
                         Edit
                     </button>
-                    <button onclick="deleteExperience('${e.id}')" class="px-3 py-1.5 border border-red-500/20 text-red-400/50 text-[10px] uppercase tracking-wider hover:border-red-500/60 hover:text-red-400 transition-all">
+                    <button onclick="deleteExperience('${e.id}', this)" class="px-3 py-1.5 border border-red-500/20 text-red-400/50 text-[10px] uppercase tracking-wider hover:border-red-500/60 hover:text-red-400 transition-all">
                         Delete
                     </button>
                 </div>
@@ -313,9 +392,12 @@ window.editExperience = function(id) {
     document.getElementById('expModal').classList.remove('hidden');
 };
 
-window.deleteExperience = async function(id) {
+window.deleteExperience = async function(id, triggerButton) {
     const confirmed = await showConfirm('Delete Experience', 'Are you sure you want to delete this experience? This action cannot be undone.');
     if (!confirmed) return;
+
+    setButtonLoading(triggerButton, true, 'Deleting...');
+
     try {
         const res = await fetch(`${API_BASE}/api/experiences/${id}`, {
             method: 'DELETE',
@@ -326,11 +408,14 @@ window.deleteExperience = async function(id) {
         refreshExperiences();
     } catch (err) {
         showToast('Failed to delete experience', 'error');
+    } finally {
+        setButtonLoading(triggerButton, false);
     }
 };
 
 document.getElementById('expForm').addEventListener('submit', async (e) => {
     e.preventDefault();
+    const submitButton = e.submitter || document.querySelector('#expForm button[type="submit"]');
     const id = document.getElementById('exp-id').value;
     const bulletsRaw = document.getElementById('exp-bullets').value;
     const bullets = bulletsRaw.split('\n').filter(b => b.trim()).map(b => b.trim());
@@ -344,6 +429,8 @@ document.getElementById('expForm').addEventListener('submit', async (e) => {
         sortOrder: parseInt(document.getElementById('exp-sortOrder').value) || 0
     };
 
+    setButtonLoading(submitButton, true, 'Saving...');
+
     try {
         const url = id ? `${API_BASE}/api/experiences/${id}` : `${API_BASE}/api/experiences`;
         const method = id ? 'PUT' : 'POST';
@@ -354,10 +441,17 @@ document.getElementById('expForm').addEventListener('submit', async (e) => {
         refreshExperiences();
     } catch (err) {
         showToast('Failed to save experience', 'error');
+    } finally {
+        setButtonLoading(submitButton, false);
     }
 });
 
 async function refreshExperiences() {
+    const container = document.getElementById('experiencesList');
+    if (container) {
+        container.innerHTML = '<p class="text-xs opacity-30">Loading experiences...</p>';
+    }
+
     try {
         const res = await fetch(`${API_BASE}/api/experiences`);
         allExperiences = await res.json();
@@ -370,6 +464,8 @@ async function refreshExperiences() {
 // ─── Contacts Inbox ───────────────────────────────────────────
 async function loadContacts() {
     const container = document.getElementById('contactsList');
+    container.innerHTML = '<p class="text-xs opacity-30">Loading messages...</p>';
+
     try {
         const res = await fetch(`${API_BASE}/api/contacts`, { headers: authHeaders() });
         const contacts = await res.json();
@@ -404,8 +500,11 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
 
 // ─── Restore Defaults ──────────────────────────────────────────
 document.getElementById('resetDefaultsBtn').addEventListener('click', async () => {
+    const resetButton = document.getElementById('resetDefaultsBtn');
     const confirmed = await showConfirm('Restore Defaults', 'Are you sure you want to restore the database to its default values? This will overwrite all custom configurations, projects, and experiences with the default Capstone state. This action cannot be undone.');
     if (!confirmed) return;
+
+    setButtonLoading(resetButton, true, 'Restoring...');
 
     try {
         const res = await fetch(`${API_BASE}/api/portfolio/reset`, {
@@ -424,6 +523,8 @@ document.getElementById('resetDefaultsBtn').addEventListener('click', async () =
         }
     } catch (err) {
         showToast(err.message, 'error');
+    } finally {
+        setButtonLoading(resetButton, false);
     }
 });
 

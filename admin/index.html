@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login — EPD Control Room</title>
+    <link rel="icon" href="../image/Formal.jpg" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -177,6 +178,10 @@
                 card.classList.add('shake');
                 setTimeout(() => card.classList.remove('shake'), 500);
 
+                const isNetworkError = err instanceof TypeError || /Failed to fetch|ERR_CONNECTION_REFUSED/i.test(err.message || '');
+                errorEl.textContent = isNetworkError
+                    ? 'Backend unavailable. Start the API server on port 5000.'
+                    : 'Invalid credentials. Access denied.';
                 errorEl.classList.remove('hidden');
                 loginBtn.disabled = false;
                 loginBtnText.textContent = 'Authenticate';
