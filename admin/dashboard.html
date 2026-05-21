@@ -199,9 +199,14 @@
                 </div>
             </div>
 
-            <button id="saveConfigBtn" class="mt-8 px-8 py-3 bg-accent text-cream text-xs tracking-[0.2em] uppercase hover:opacity-90 transition-all">
-                Save Changes
-            </button>
+            <div class="mt-8 pt-8 border-t border-cream/5 flex items-center justify-between">
+                <button id="saveConfigBtn" class="px-8 py-3 bg-accent text-cream text-xs tracking-[0.2em] uppercase hover:opacity-90 transition-all">
+                    Save Changes
+                </button>
+                <button id="resetDefaultsBtn" class="px-4 py-2.5 border border-red-500/20 text-red-400/50 text-[10px] uppercase tracking-wider hover:border-red-500/60 hover:text-red-400 transition-all">
+                    Restore Defaults
+                </button>
+            </div>
         </div>
 
         <!-- Projects Manager -->
@@ -337,6 +342,23 @@
             <h3 class="text-xs uppercase tracking-[0.2em] opacity-40 mb-6">Contact Submissions</h3>
             <div id="contactsList" class="space-y-3">
                 <p class="text-xs opacity-30">Loading messages...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Confirmation Modal -->
+    <div id="confirmModal" class="fixed inset-0 z-50 hidden bg-ink/90 backdrop-blur-sm flex items-center justify-center p-4 animate-in">
+        <div class="glass rounded-sm p-6 w-full max-w-sm text-center">
+            <p id="confirmModalIcon" class="text-2xl mb-3 text-accent">⚠️</p>
+            <h3 id="confirmModalTitle" class="text-xs uppercase tracking-[0.2em] text-accent mb-2 font-semibold">Confirm Action</h3>
+            <p id="confirmModalMessage" class="text-xs opacity-60 leading-relaxed mb-6">Are you sure you want to proceed?</p>
+            <div class="flex gap-3 justify-center">
+                <button id="confirmCancelBtn" class="px-5 py-2 border border-cream/10 text-[10px] uppercase tracking-wider opacity-60 hover:opacity-100 transition-all">
+                    Cancel
+                </button>
+                <button id="confirmOkBtn" class="px-5 py-2 bg-accent text-cream text-[10px] uppercase tracking-wider hover:opacity-90 transition-all">
+                    Confirm
+                </button>
             </div>
         </div>
     </div>

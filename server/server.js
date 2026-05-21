@@ -192,6 +192,42 @@ app.put('/api/portfolio/config', requireAuth, async (req, res) => {
     }
 });
 
+app.post('/api/portfolio/reset', requireAuth, async (req, res) => {
+    try {
+        console.log('Resetting database to defaults...');
+        
+        // 1. Reset Config Doc
+        const configDoc = doc(db, 'portfolio', 'config');
+        await setDoc(configDoc, DEFAULT_CONFIG);
+        
+        // 2. Delete and re-seed projects
+        const projectsCol = collection(db, 'projects');
+        const projSnapshot = await getDocs(projectsCol);
+        for (const projectDoc of projSnapshot.docs) {
+            await deleteDoc(doc(db, 'projects', projectDoc.id));
+        }
+        for (const proj of DEFAULT_PROJECTS) {
+            await addDoc(projectsCol, proj);
+        }
+        
+        // 3. Delete and re-seed experiences
+        const expCol = collection(db, 'experiences');
+        const expSnapshot = await getDocs(expCol);
+        for (const experienceDoc of expSnapshot.docs) {
+            await deleteDoc(doc(db, 'experiences', experienceDoc.id));
+        }
+        for (const exp of DEFAULT_EXPERIENCES) {
+            await addDoc(expCol, exp);
+        }
+
+        console.log('Database reset completed successfully.');
+        res.json({ success: true, message: 'Database reset to default values successfully.' });
+    } catch (error) {
+        console.error('Database reset error:', error);
+        res.status(500).json({ error: 'Failed to reset database to default values.' });
+    }
+});
+
 // ─── Projects CRUD ────────────────────────────────────────────
 app.get('/api/projects', async (req, res) => {
     try {

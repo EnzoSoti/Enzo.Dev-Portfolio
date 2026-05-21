@@ -21,6 +21,42 @@ function showToast(message, type = 'success') {
     setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
+function showConfirm(title, message, isDanger = true) {
+    return new Promise((resolve) => {
+        const modal = document.getElementById('confirmModal');
+        const titleEl = document.getElementById('confirmModalTitle');
+        const msgEl = document.getElementById('confirmModalMessage');
+        const okBtn = document.getElementById('confirmOkBtn');
+        const cancelBtn = document.getElementById('confirmCancelBtn');
+        const iconEl = document.getElementById('confirmModalIcon');
+
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+        iconEl.textContent = isDanger ? '⚠️' : 'ℹ️';
+
+        modal.classList.remove('hidden');
+
+        const handleOk = () => {
+            cleanup();
+            resolve(true);
+        };
+
+        const handleCancel = () => {
+            cleanup();
+            resolve(false);
+        };
+
+        const cleanup = () => {
+            modal.classList.add('hidden');
+            okBtn.removeEventListener('click', handleOk);
+            cancelBtn.removeEventListener('click', handleCancel);
+        };
+
+        okBtn.addEventListener('click', handleOk);
+        cancelBtn.addEventListener('click', handleCancel);
+    });
+}
+
 // ─── Tab Navigation ───────────────────────────────────────────
 const tabBtns = document.querySelectorAll('.tab-btn');
 const tabPanels = document.querySelectorAll('.tab-panel');
@@ -155,7 +191,8 @@ window.editProject = async function(id) {
 };
 
 window.deleteProject = async function(id) {
-    if (!confirm('Delete this project?')) return;
+    const confirmed = await showConfirm('Delete Project', 'Are you sure you want to delete this project? This action cannot be undone.');
+    if (!confirmed) return;
     try {
         const res = await fetch(`${API_BASE}/api/projects/${id}`, {
             method: 'DELETE',
@@ -277,7 +314,8 @@ window.editExperience = function(id) {
 };
 
 window.deleteExperience = async function(id) {
-    if (!confirm('Delete this experience?')) return;
+    const confirmed = await showConfirm('Delete Experience', 'Are you sure you want to delete this experience? This action cannot be undone.');
+    if (!confirmed) return;
     try {
         const res = await fetch(`${API_BASE}/api/experiences/${id}`, {
             method: 'DELETE',
@@ -362,6 +400,31 @@ async function loadContacts() {
 document.getElementById('logoutBtn').addEventListener('click', () => {
     localStorage.removeItem('adminToken');
     window.location.href = '/admin/index.html';
+});
+
+// ─── Restore Defaults ──────────────────────────────────────────
+document.getElementById('resetDefaultsBtn').addEventListener('click', async () => {
+    const confirmed = await showConfirm('Restore Defaults', 'Are you sure you want to restore the database to its default values? This will overwrite all custom configurations, projects, and experiences with the default Capstone state. This action cannot be undone.');
+    if (!confirmed) return;
+
+    try {
+        const res = await fetch(`${API_BASE}/api/portfolio/reset`, {
+            method: 'POST',
+            headers: authHeaders()
+        });
+
+        if (res.ok) {
+            showToast('Database restored to default values successfully.', 'success');
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        } else {
+            const data = await res.json();
+            throw new Error(data.error || 'Reset failed');
+        }
+    } catch (err) {
+        showToast(err.message, 'error');
+    }
 });
 
 // ─── Init ─────────────────────────────────────────────────────
