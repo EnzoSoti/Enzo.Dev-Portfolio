@@ -275,6 +275,15 @@ document.addEventListener('DOMContentLoaded', () => {
         ? 'http://localhost:5000'
         : 'https://enzo-dev-portfolio.onrender.com';
 
+    function normalizeProfileImagePath(value, basePath = './image/') {
+        const trimmed = (value || '').trim();
+        if (!trimmed) return '';
+        if (/^(https?:)?\/\//i.test(trimmed) || trimmed.startsWith('./') || trimmed.startsWith('../') || trimmed.startsWith('/')) {
+            return trimmed;
+        }
+        return `${basePath}${trimmed}`;
+    }
+
     // 6b. Client Hydration logic
     async function hydratePortfolio() {
         try {
@@ -291,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (document.getElementById('dyn-heroName2')) document.getElementById('dyn-heroName2').textContent = cfg.heroName2;
                 if (document.getElementById('dyn-heroTagline')) document.getElementById('dyn-heroTagline').textContent = cfg.heroTagline;
                 
-                if (document.getElementById('dyn-profileImg') && cfg.profileImg) document.getElementById('dyn-profileImg').src = cfg.profileImg;
+                if (document.getElementById('dyn-profileImg') && cfg.profileImg) document.getElementById('dyn-profileImg').src = normalizeProfileImagePath(cfg.profileImg);
                 if (document.getElementById('dyn-badgeText')) document.getElementById('dyn-badgeText').textContent = cfg.badgeText;
                 
                 if (document.getElementById('dyn-school')) document.getElementById('dyn-school').textContent = cfg.school;

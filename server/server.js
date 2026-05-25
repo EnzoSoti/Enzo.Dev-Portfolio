@@ -1,6 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const fs = require('fs');
 const path = require('path');
+const multer = require('multer');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const fetch = require('node-fetch');
 const { doc, getDoc, setDoc, collection, addDoc, getDocs, updateDoc, deleteDoc } = require('firebase/firestore');
 const { db } = require('./firebase');
@@ -8,6 +12,68 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+app.disable('x-powered-by');
+app.set('trust proxy', 1);
+
+const allowedOrigins = [
+    /^https:\/\/.*\.vercel\.app$/i,
+    /^https:\/\/.*\.onrender\.com$/i,
+    /^http:\/\/localhost(?::\d+)?$/i,
+    /^http:\/\/127\.0\.0\.1(?::\d+)?$/i,
+];
+
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 300,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: 'Too many requests. Please slow down.' },
+});
+
+const loginLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 10,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: 'Too many login attempts. Please try again later.' },
+});
+
+const uploadLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 20,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: 'Too many upload attempts. Please try again later.' },
+});
+
+const adminActionLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 40,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: 'Too many admin actions. Please slow down.' },
+});
+
+const publicWriteLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 30,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: 'Too many submissions. Please try again later.' },
+});
+
+app.use(helmet({ contentSecurityPolicy: false }));
+app.use((req, res, next) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+    res.setHeader('Referrer-Policy', 'same-origin');
+    res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    if (req.secure || req.headers['x-forwarded-proto'] === 'https') {
+        res.setHeader('Strict-Transport-Security', 'max-age=15552000; includeSubDomains');
+    }
+    next();
+});
 
 // Default Seed Data
 const DEFAULT_CONFIG = {
@@ -122,13 +188,49 @@ const ADMIN_EMAIL = '1';
 const ADMIN_PASSWORD = '1';
 const ADMIN_TOKEN = 'epd-admin-session-token-2026';
 
-app.use(cors());
-app.use(express.json());
+app.use(cors({
+    origin: (origin, cb) => {
+        if (!origin) return cb(null, true);
+        if (allowedOrigins.some(pattern => pattern.test(origin))) {
+            return cb(null, true);
+        }
+        return cb(new Error('CORS blocked for this origin'));
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    maxAge: 86400,
+}));
+app.use(express.json({ limit: '100kb' }));
+app.use(express.urlencoded({ extended: false, limit: '50kb' }));
 app.use('/admin', express.static(path.join(__dirname, '..', 'admin')));
 app.use('/css', express.static(path.join(__dirname, '..', 'css')));
 app.use('/js', express.static(path.join(__dirname, '..', 'js')));
 app.use('/image', express.static(path.join(__dirname, '..', 'image')));
 app.use(express.static(path.join(__dirname, '..')));
+
+const imageUploadDir = path.join(__dirname, '..', 'image', 'uploads');
+if (!fs.existsSync(imageUploadDir)) {
+    fs.mkdirSync(imageUploadDir, { recursive: true });
+}
+
+const uploadStorage = multer.diskStorage({
+    destination: (_req, _file, cb) => cb(null, imageUploadDir),
+    filename: (_req, file, cb) => {
+        const safeName = file.originalname.replace(/[^a-zA-Z0-9._-]/g, '_');
+        cb(null, `${Date.now()}-${safeName}`);
+    }
+});
+
+const uploadImage = multer({
+    storage: uploadStorage,
+    limits: { fileSize: 5 * 1024 * 1024 },
+    fileFilter: (_req, file, cb) => {
+        if (!file.mimetype.startsWith('image/')) {
+            return cb(new Error('Only image files are allowed'));
+        }
+        cb(null, true);
+    }
+});
 
 // ─── Auth Middleware ───────────────────────────────────────────
 function requireAuth(req, res, next) {
@@ -140,7 +242,7 @@ function requireAuth(req, res, next) {
 }
 
 // ─── Admin Auth ───────────────────────────────────────────────
-app.post('/api/admin/login', (req, res) => {
+app.post('/api/admin/login', loginLimiter, (req, res) => {
     const { email, password } = req.body;
     if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
         return res.json({ success: true, token: ADMIN_TOKEN, user: { email: 'admin@enzo.dev' } });
@@ -184,7 +286,7 @@ app.get('/api/portfolio', async (req, res) => {
     }
 });
 
-app.put('/api/portfolio/config', requireAuth, async (req, res) => {
+app.put('/api/portfolio/config', requireAuth, adminActionLimiter, async (req, res) => {
     try {
         const data = req.body;
         delete data.id;
@@ -198,7 +300,25 @@ app.put('/api/portfolio/config', requireAuth, async (req, res) => {
     }
 });
 
-app.post('/api/portfolio/reset', requireAuth, async (req, res) => {
+app.post('/api/uploads/profile-image', requireAuth, uploadLimiter, uploadImage.single('image'), async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: 'No image file provided' });
+        }
+
+        const publicUrl = `${req.protocol}://${req.get('host')}/image/uploads/${encodeURIComponent(req.file.filename)}`;
+        res.json({
+            url: publicUrl,
+            filename: req.file.filename,
+            originalName: req.file.originalname
+        });
+    } catch (error) {
+        console.error('Profile image upload error:', error);
+        res.status(500).json({ error: 'Failed to upload profile image' });
+    }
+});
+
+app.post('/api/portfolio/reset', requireAuth, adminActionLimiter, async (req, res) => {
     try {
         console.log('Resetting database to defaults...');
         
@@ -250,7 +370,7 @@ app.get('/api/projects', async (req, res) => {
     }
 });
 
-app.post('/api/projects', requireAuth, async (req, res) => {
+app.post('/api/projects', requireAuth, adminActionLimiter, async (req, res) => {
     try {
         const docRef = await addDoc(collection(db, 'projects'), req.body);
         res.status(201).json({ id: docRef.id, ...req.body });
@@ -260,7 +380,7 @@ app.post('/api/projects', requireAuth, async (req, res) => {
     }
 });
 
-app.put('/api/projects/:id', requireAuth, async (req, res) => {
+app.put('/api/projects/:id', requireAuth, adminActionLimiter, async (req, res) => {
     try {
         const data = req.body;
         delete data.id;
@@ -273,7 +393,7 @@ app.put('/api/projects/:id', requireAuth, async (req, res) => {
     }
 });
 
-app.delete('/api/projects/:id', requireAuth, async (req, res) => {
+app.delete('/api/projects/:id', requireAuth, adminActionLimiter, async (req, res) => {
     try {
         await deleteDoc(doc(db, 'projects', req.params.id));
         res.json({ success: true });
@@ -299,7 +419,7 @@ app.get('/api/experiences', async (req, res) => {
     }
 });
 
-app.post('/api/experiences', requireAuth, async (req, res) => {
+app.post('/api/experiences', requireAuth, adminActionLimiter, async (req, res) => {
     try {
         const docRef = await addDoc(collection(db, 'experiences'), req.body);
         res.status(201).json({ id: docRef.id, ...req.body });
@@ -309,7 +429,7 @@ app.post('/api/experiences', requireAuth, async (req, res) => {
     }
 });
 
-app.put('/api/experiences/:id', requireAuth, async (req, res) => {
+app.put('/api/experiences/:id', requireAuth, adminActionLimiter, async (req, res) => {
     try {
         const data = req.body;
         delete data.id;
@@ -322,7 +442,7 @@ app.put('/api/experiences/:id', requireAuth, async (req, res) => {
     }
 });
 
-app.delete('/api/experiences/:id', requireAuth, async (req, res) => {
+app.delete('/api/experiences/:id', requireAuth, adminActionLimiter, async (req, res) => {
     try {
         await deleteDoc(doc(db, 'experiences', req.params.id));
         res.json({ success: true });
@@ -333,7 +453,7 @@ app.delete('/api/experiences/:id', requireAuth, async (req, res) => {
 });
 
 // ─── Contacts Inbox (Firebase) ────────────────────────────────
-app.get('/api/contacts', requireAuth, async (req, res) => {
+app.get('/api/contacts', requireAuth, adminActionLimiter, async (req, res) => {
     try {
         const contactsCol = collection(db, 'contacts');
         const snapshot = await getDocs(contactsCol);
@@ -413,7 +533,7 @@ app.get('/api/github-stats', async (req, res) => {
 });
 
 // ─── Contact Form (Firebase) ──────────────────────────────────
-app.post('/api/contact', async (req, res) => {
+app.post('/api/contact', publicWriteLimiter, async (req, res) => {
     try {
         const { name, email, message } = req.body;
         if (!name || !email || !message) {

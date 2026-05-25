@@ -157,6 +157,21 @@
                     <h3 class="text-xs uppercase tracking-[0.2em] text-accent mb-6 font-semibold">Profile Details</h3>
                     <div class="space-y-5">
                         <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-2">Profile Image</label>
+                            <div class="flex items-center gap-4">
+                                <img id="cfg-profileImgPreview" src="../image/new_formal-removebg-preview.png" alt="Profile preview" class="h-20 w-20 object-cover border border-cream/10 bg-ink/40">
+                                <div class="flex-1 space-y-3">
+                                    <div class="flex items-end gap-3">
+                                        <input type="text" id="cfg-profileImg" class="field-input" placeholder="./image/your-photo.png">
+                                        <button type="button" class="js-file-picker px-3 py-2 border border-cream/10 text-[10px] uppercase tracking-wider opacity-60 hover:opacity-100 transition-all whitespace-nowrap" data-target="cfg-profileImg" data-prefix="./image/">
+                                            Browse File
+                                        </button>
+                                    </div>
+                                    <p class="text-[10px] uppercase tracking-[0.2em] opacity-20">Uploads the image to the hosted backend and updates dyn-profileImg.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
                             <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Badge Text</label>
                             <input type="text" id="cfg-badgeText" class="field-input">
                         </div>
@@ -190,16 +205,6 @@
                         <div>
                             <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Email</label>
                             <input type="text" id="cfg-email" class="field-input">
-                        </div>
-                        <div>
-                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Profile Image URL</label>
-                            <div class="flex items-end gap-3">
-                                <input type="text" id="cfg-profileImg" class="field-input" placeholder="./image/your-photo.png">
-                                <button type="button" class="js-file-picker px-3 py-2 border border-cream/10 text-[10px] uppercase tracking-wider opacity-60 hover:opacity-100 transition-all whitespace-nowrap" data-target="cfg-profileImg" data-prefix="./image/">
-                                    Browse File
-                                </button>
-                            </div>
-                            <p class="mt-2 text-[10px] uppercase tracking-[0.2em] opacity-20">Opens the file manager and fills the field with ./image/&lt;filename&gt;.</p>
                         </div>
                     </div>
                 </div>

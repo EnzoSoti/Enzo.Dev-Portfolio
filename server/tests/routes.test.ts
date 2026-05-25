@@ -83,6 +83,16 @@ const routeChecks: RouteCheck[] = [
     },
   },
   {
+    name: 'GET /api/ping includes basic security headers',
+    run: async () => {
+      const res = await fetch(`${baseUrl}/api/ping`);
+
+      assert.equal(res.headers.get('x-content-type-options'), 'nosniff');
+      assert.equal(res.headers.get('x-frame-options'), 'SAMEORIGIN');
+      assert.equal(res.headers.get('referrer-policy'), 'same-origin');
+    },
+  },
+  {
     name: 'POST /api/admin/login accepts the real admin credentials',
     run: async () => {
       const res = await fetch(`${baseUrl}/api/admin/login`, {
@@ -139,6 +149,45 @@ const routeChecks: RouteCheck[] = [
 
       const body = await res.json();
       assert.equal(body.error, 'Please provide name, email, and message.');
+    },
+  },
+  {
+    name: 'POST /api/uploads/profile-image stores and exposes an uploaded image',
+    run: async () => {
+      const loginRes = await fetch(`${baseUrl}/api/admin/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: '1', password: '1' }),
+      });
+
+      const loginBody = await loginRes.json();
+
+      const formData = new FormData();
+      formData.append(
+        'image',
+        new Blob(['profile-image-test'], { type: 'image/png' }),
+        'profile-test.png'
+      );
+
+      const uploadRes = await fetch(`${baseUrl}/api/uploads/profile-image`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${loginBody.token}`,
+        },
+        body: formData,
+      });
+
+      assert.equal(uploadRes.status, 200);
+
+      const uploadBody = await uploadRes.json();
+      assert.equal(typeof uploadBody.url, 'string');
+      assert.match(uploadBody.url, /\/image\/uploads\/\d+-profile-test\.png$/);
+
+      const imageRes = await fetch(uploadBody.url);
+      assert.equal(imageRes.status, 200);
+      assert.equal(imageRes.headers.get('content-type')?.startsWith('image/'), true);
     },
   },
 ];

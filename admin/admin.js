@@ -37,7 +37,34 @@ function setButtonLoading(button, isLoading, loadingText = 'Loading...') {
     button.classList.remove('opacity-70', 'cursor-wait');
 }
 
-function openFilePicker(targetInputId, prefix) {
+function normalizeProfileImagePath(value, basePath = './image/') {
+    const trimmed = (value || '').trim();
+    if (!trimmed) return '';
+    if (/^(https?:)?\/\//i.test(trimmed) || trimmed.startsWith('./') || trimmed.startsWith('../') || trimmed.startsWith('/')) {
+        return trimmed;
+    }
+    return `${basePath}${trimmed}`;
+}
+
+function resolveAdminProfileImagePreviewPath(value) {
+    const trimmed = (value || '').trim();
+    if (!trimmed) return '../image/new_formal-removebg-preview.png';
+    if (/^(https?:)?\/\//i.test(trimmed) || trimmed.startsWith('/')) {
+        return trimmed;
+    }
+    if (trimmed.startsWith('../image/')) {
+        return trimmed;
+    }
+    if (trimmed.startsWith('./image/')) {
+        return `../image/${trimmed.slice('./image/'.length)}`;
+    }
+    if (trimmed.startsWith('./') || trimmed.startsWith('../')) {
+        return trimmed;
+    }
+    return `../image/${trimmed}`;
+}
+
+function openFilePicker(targetInputId) {
     const targetInput = document.getElementById(targetInputId);
     if (!targetInput) return;
 
@@ -45,22 +72,54 @@ function openFilePicker(targetInputId, prefix) {
     picker.type = 'file';
     picker.accept = 'image/*';
 
-    picker.addEventListener('change', () => {
+    picker.addEventListener('change', async () => {
         const file = picker.files && picker.files[0];
         if (!file) return;
 
-        targetInput.value = `${prefix}${file.name}`;
-        showToast(`Inserted ${prefix}${file.name}`, 'success');
+        try {
+            const formData = new FormData();
+            formData.append('image', file);
+
+            const res = await fetch(`${API_BASE}/api/uploads/profile-image`, {
+                method: 'POST',
+                headers: { 'Authorization': `Bearer ${token}` },
+                body: formData
+            });
+
+            if (!res.ok) throw new Error('Upload failed');
+
+            const data = await res.json();
+            targetInput.value = data.url;
+            targetInput.dispatchEvent(new Event('input', { bubbles: true }));
+            showToast('Profile image uploaded', 'success');
+        } catch (err) {
+            showToast('Failed to upload image', 'error');
+        }
     });
 
     picker.click();
 }
 
+function syncProfileImagePreview() {
+    const input = document.getElementById('cfg-profileImg');
+    const preview = document.getElementById('cfg-profileImgPreview');
+
+    if (!input || !preview) return;
+
+    preview.src = resolveAdminProfileImagePreviewPath(input.value);
+}
+
 document.querySelectorAll('.js-file-picker').forEach(button => {
     button.addEventListener('click', () => {
-        openFilePicker(button.dataset.target, button.dataset.prefix || 'image/');
+        openFilePicker(button.dataset.target);
     });
 });
+
+const profileImgInput = document.getElementById('cfg-profileImg');
+if (profileImgInput) {
+    profileImgInput.addEventListener('input', syncProfileImagePreview);
+    profileImgInput.addEventListener('change', syncProfileImagePreview);
+}
 
 function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
@@ -155,6 +214,8 @@ async function loadConfig() {
             }
         });
 
+        syncProfileImagePreview();
+
         // Also load projects and experiences
         renderProjectsList(data.projects);
         renderExperiencesList(data.experiences);
@@ -168,7 +229,10 @@ document.getElementById('saveConfigBtn').addEventListener('click', async () => {
     const payload = {};
     configFields.forEach(field => {
         const el = document.getElementById(`cfg-${field}`);
-        if (el) payload[field] = el.value;
+        if (!el) return;
+        payload[field] = field === 'profileImg'
+            ? normalizeProfileImagePath(el.value)
+            : el.value;
     });
 
     setButtonLoading(saveButton, true, 'Saving...');
