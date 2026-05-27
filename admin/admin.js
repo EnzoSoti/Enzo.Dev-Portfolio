@@ -55,6 +55,9 @@ function resolveAdminProfileImagePreviewPath(value) {
     if (trimmed.startsWith('../image/')) {
         return trimmed;
     }
+    if (trimmed.startsWith('image/')) {
+        return `../${trimmed}`;
+    }
     if (trimmed.startsWith('./image/')) {
         return `../image/${trimmed.slice('./image/'.length)}`;
     }
@@ -110,7 +113,9 @@ function syncProfileImagePreview() {
 }
 
 document.querySelectorAll('.js-file-picker').forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         openFilePicker(button.dataset.target);
     });
 });
@@ -179,6 +184,7 @@ tabBtns.forEach(btn => {
 
         // Load tab-specific data
         if (tabName === 'contacts') loadContacts();
+        if (tabName === 'gallery') refreshGallery();
     });
 });
 
@@ -193,6 +199,7 @@ const configFields = [
 async function loadConfig() {
     const projectsContainer = document.getElementById('projectsList');
     const experiencesContainer = document.getElementById('experiencesList');
+    const galleryContainer = document.getElementById('galleryList');
 
     if (projectsContainer) {
         projectsContainer.innerHTML = '<p class="text-xs opacity-30">Loading projects...</p>';
@@ -200,6 +207,10 @@ async function loadConfig() {
 
     if (experiencesContainer) {
         experiencesContainer.innerHTML = '<p class="text-xs opacity-30">Loading experiences...</p>';
+    }
+
+    if (galleryContainer) {
+        galleryContainer.innerHTML = '<p class="text-xs opacity-30">Loading gallery...</p>';
     }
 
     try {
@@ -216,9 +227,10 @@ async function loadConfig() {
 
         syncProfileImagePreview();
 
-        // Also load projects and experiences
+        // Also load projects, experiences, and gallery
         renderProjectsList(data.projects);
         renderExperiencesList(data.experiences);
+        renderGalleryList(data.gallery || []);
     } catch (err) {
         showToast('Failed to load config', 'error');
     }
@@ -591,6 +603,133 @@ document.getElementById('resetDefaultsBtn').addEventListener('click', async () =
         setButtonLoading(resetButton, false);
     }
 });
+
+// ─── Gallery CRUD ─────────────────────────────────────────────
+let allGallery = [];
+
+function renderGalleryList(gallery) {
+    allGallery = gallery;
+    const container = document.getElementById('galleryList');
+    if (!container) return;
+    
+    if (!gallery.length) {
+        container.innerHTML = '<p class="text-xs opacity-30">No gallery items yet.</p>';
+        return;
+    }
+
+    container.innerHTML = gallery.map(item => `
+        <div class="glass rounded-sm p-5 card-item flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4 min-w-0 flex-1">
+                ${item.imageUrl ? `<img src="${resolveAdminProfileImagePreviewPath(item.imageUrl)}" alt="${item.title}" class="w-12 h-12 object-cover bg-white dark:bg-transparent rounded border border-cream/5">` : `
+                <div class="w-12 h-12 bg-accent/10 flex items-center justify-center text-accent text-[10px] uppercase font-semibold tracking-wider rounded">IMG</div>`}
+                <div class="min-w-0 flex-1">
+                    <div class="flex items-center gap-3 mb-1">
+                        <h4 class="text-sm font-semibold truncate text-cream">${item.title}</h4>
+                        <span class="text-[10px] opacity-30 font-mono">Order: ${item.sortOrder || 0}</span>
+                    </div>
+                    <p class="text-[11px] opacity-50 truncate">${item.description || ''}</p>
+                </div>
+            </div>
+            <div class="flex gap-2 flex-shrink-0">
+                <button onclick="editGallery('${item.id}')" class="px-3 py-1.5 border border-cream/10 text-[10px] uppercase tracking-wider opacity-50 hover:opacity-100 hover:border-accent hover:text-accent transition-all">
+                    Edit
+                </button>
+                <button onclick="deleteGallery('${item.id}', this)" class="px-3 py-1.5 border border-red-500/20 text-red-400/50 text-[10px] uppercase tracking-wider hover:border-red-500/60 hover:text-red-400 transition-all">
+                    Delete
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+document.getElementById('addGalleryBtn').addEventListener('click', () => {
+    document.getElementById('galleryModalTitle').textContent = 'New Gallery Item';
+    document.getElementById('galleryForm').reset();
+    document.getElementById('gal-id').value = '';
+    document.getElementById('gal-sortOrder').value = allGallery.length + 1;
+    document.getElementById('galleryModal').classList.remove('hidden');
+});
+
+document.getElementById('closeGalleryModal').addEventListener('click', () => {
+    document.getElementById('galleryModal').classList.add('hidden');
+});
+
+window.editGallery = function(id) {
+    const item = allGallery.find(g => g.id === id);
+    if (!item) return;
+
+    document.getElementById('galleryModalTitle').textContent = 'Edit Gallery Item';
+    document.getElementById('gal-id').value = item.id;
+    document.getElementById('gal-title').value = item.title;
+    document.getElementById('gal-description').value = item.description || '';
+    document.getElementById('gal-imageUrl').value = item.imageUrl || '';
+    document.getElementById('gal-sortOrder').value = item.sortOrder || 0;
+    document.getElementById('galleryModal').classList.remove('hidden');
+};
+
+window.deleteGallery = async function(id, triggerButton) {
+    const confirmed = await showConfirm('Delete Gallery Item', 'Are you sure you want to delete this gallery item? This action cannot be undone.');
+    if (!confirmed) return;
+
+    setButtonLoading(triggerButton, true, 'Deleting...');
+
+    try {
+        const res = await fetch(`${API_BASE}/api/gallery/${id}`, {
+            method: 'DELETE',
+            headers: authHeaders()
+        });
+        if (!res.ok) throw new Error();
+        showToast('Gallery item deleted');
+        refreshGallery();
+    } catch (err) {
+        showToast('Failed to delete gallery item', 'error');
+    } finally {
+        setButtonLoading(triggerButton, false);
+    }
+};
+
+document.getElementById('galleryForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitButton = e.submitter || document.querySelector('#galleryForm button[type="submit"]');
+    const id = document.getElementById('gal-id').value;
+    const payload = {
+        title: document.getElementById('gal-title').value,
+        description: document.getElementById('gal-description').value,
+        imageUrl: document.getElementById('gal-imageUrl').value,
+        sortOrder: parseInt(document.getElementById('gal-sortOrder').value) || 0
+    };
+
+    setButtonLoading(submitButton, true, 'Saving...');
+
+    try {
+        const url = id ? `${API_BASE}/api/gallery/${id}` : `${API_BASE}/api/gallery`;
+        const method = id ? 'PUT' : 'POST';
+        const res = await fetch(url, { method, headers: authHeaders(), body: JSON.stringify(payload) });
+        if (!res.ok) throw new Error();
+        showToast(id ? 'Gallery item updated' : 'Gallery item created');
+        document.getElementById('galleryModal').classList.add('hidden');
+        refreshGallery();
+    } catch (err) {
+        showToast('Failed to save gallery item', 'error');
+    } finally {
+        setButtonLoading(submitButton, false);
+    }
+});
+
+async function refreshGallery() {
+    const container = document.getElementById('galleryList');
+    if (container) {
+        container.innerHTML = '<p class="text-xs opacity-30">Loading gallery items...</p>';
+    }
+
+    try {
+        const res = await fetch(`${API_BASE}/api/gallery`);
+        allGallery = await res.json();
+        renderGalleryList(allGallery);
+    } catch (err) {
+        showToast('Failed to load gallery', 'error');
+    }
+}
 
 // ─── Init ─────────────────────────────────────────────────────
 loadConfig();

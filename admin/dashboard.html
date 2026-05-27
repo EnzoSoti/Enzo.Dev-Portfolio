@@ -100,6 +100,9 @@
             <button class="tab-btn px-5 py-3 text-[10px] uppercase tracking-[0.15em] opacity-60 hover:opacity-100 transition-all whitespace-nowrap" data-tab="experience">
                 Experience
             </button>
+            <button class="tab-btn px-5 py-3 text-[10px] uppercase tracking-[0.15em] opacity-60 hover:opacity-100 transition-all whitespace-nowrap" data-tab="gallery">
+                Gallery
+            </button>
             <button class="tab-btn px-5 py-3 text-[10px] uppercase tracking-[0.15em] opacity-60 hover:opacity-100 transition-all whitespace-nowrap" data-tab="contacts">
                 Contacts
             </button>
@@ -354,6 +357,56 @@
                         </div>
                         <button type="submit" class="w-full py-3 bg-accent text-cream text-xs tracking-[0.2em] uppercase hover:opacity-90 transition-all">
                             Save Experience
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Manager -->
+        <div id="panel-gallery" class="tab-panel hidden">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-xs uppercase tracking-[0.2em] opacity-40">Manage Gallery</h3>
+                <button id="addGalleryBtn" class="px-4 py-2 border border-accent/40 text-accent text-[10px] uppercase tracking-wider hover:bg-accent hover:text-cream transition-all">
+                    + Add Gallery Item
+                </button>
+            </div>
+
+            <div id="galleryList" class="space-y-3"></div>
+
+            <!-- Gallery Form Modal -->
+            <div id="galleryModal" class="fixed inset-0 z-50 hidden bg-ink/90 backdrop-blur-sm flex items-center justify-center p-4">
+                <div class="glass rounded-sm p-8 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 id="galleryModalTitle" class="text-xs uppercase tracking-[0.2em] text-accent font-semibold">New Gallery Item</h3>
+                        <button id="closeGalleryModal" class="text-cream/40 hover:text-cream text-lg">×</button>
+                    </div>
+                    <form id="galleryForm" class="space-y-5">
+                        <input type="hidden" id="gal-id">
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Title / Caption</label>
+                            <input type="text" id="gal-title" class="field-input" required>
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Description</label>
+                            <textarea id="gal-description" class="field-input" rows="3" placeholder="Brief context or description..."></textarea>
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Image URL</label>
+                            <div class="flex items-end gap-3">
+                                <input type="text" id="gal-imageUrl" class="field-input" placeholder="image/your-photo.png" required>
+                                <button type="button" class="js-file-picker px-3 py-2 border border-cream/10 text-[10px] uppercase tracking-wider opacity-60 hover:opacity-100 transition-all whitespace-nowrap" data-target="gal-imageUrl" data-prefix="image/">
+                                    Browse File
+                                </button>
+                            </div>
+                            <p class="mt-2 text-[10px] uppercase tracking-[0.2em] opacity-20">Opens the file manager and uploads/selects the image file.</p>
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-30 block mb-1">Sort Order</label>
+                            <input type="number" id="gal-sortOrder" class="field-input" value="0">
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-accent text-cream text-xs tracking-[0.2em] uppercase hover:opacity-90 transition-all">
+                            Save Gallery Item
                         </button>
                     </form>
                 </div>

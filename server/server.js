@@ -183,6 +183,33 @@ const DEFAULT_EXPERIENCES = [
     }
 ];
 
+const DEFAULT_GALLERY = [
+    {
+        title: "Board Presentation",
+        description: "Presenting the completed HRIS to the IBP Board of Lawyers — the culmination of our internship project.",
+        imageUrl: "image/picture with boards.jpg",
+        sortOrder: 1
+    },
+    {
+        title: "OJT Certificate",
+        description: "Received the official certificate of completion for the On-the-Job Training program at IBP.",
+        imageUrl: "image/picture with certificate.jpg",
+        sortOrder: 2
+    },
+    {
+        title: "With HR Heads",
+        description: "Together with the IBP Human Resources department heads who guided our team throughout the internship.",
+        imageUrl: "image/picture with hr heads.jpg",
+        sortOrder: 3
+    },
+    {
+        title: "With Supervisor",
+        description: "With my OJT supervisor who mentored our team on IT support and web development throughout the program.",
+        imageUrl: "image/picture with supervisor.jpg",
+        sortOrder: 4
+    }
+];
+
 // Static admin credentials (testing only)
 const ADMIN_EMAIL = '1';
 const ADMIN_PASSWORD = '1';
@@ -279,7 +306,16 @@ app.get('/api/portfolio', async (req, res) => {
         });
         experiences.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
 
-        res.json({ config, projects, experiences });
+        // Fetch Gallery
+        const galleryCol = collection(db, 'gallery');
+        const gallerySnapshot = await getDocs(galleryCol);
+        const gallery = [];
+        gallerySnapshot.forEach(doc => {
+            gallery.push({ id: doc.id, ...doc.data() });
+        });
+        gallery.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+
+        res.json({ config, projects, experiences, gallery });
     } catch (error) {
         console.error('Portfolio fetch error:', error);
         res.status(500).json({ error: 'Failed to fetch portfolio data' });
@@ -344,6 +380,16 @@ app.post('/api/portfolio/reset', requireAuth, adminActionLimiter, async (req, re
         }
         for (const exp of DEFAULT_EXPERIENCES) {
             await addDoc(expCol, exp);
+        }
+
+        // 4. Delete and re-seed gallery
+        const galleryCol = collection(db, 'gallery');
+        const gallerySnapshot = await getDocs(galleryCol);
+        for (const galleryDoc of gallerySnapshot.docs) {
+            await deleteDoc(doc(db, 'gallery', galleryDoc.id));
+        }
+        for (const gal of DEFAULT_GALLERY) {
+            await addDoc(galleryCol, gal);
         }
 
         console.log('Database reset completed successfully.');
@@ -449,6 +495,55 @@ app.delete('/api/experiences/:id', requireAuth, adminActionLimiter, async (req, 
     } catch (error) {
         console.error('Experience delete error:', error);
         res.status(500).json({ error: 'Failed to delete experience' });
+    }
+});
+
+// ─── Gallery CRUD ─────────────────────────────────────────────
+app.get('/api/gallery', async (req, res) => {
+    try {
+        const galleryCol = collection(db, 'gallery');
+        const snapshot = await getDocs(galleryCol);
+        const gallery = [];
+        snapshot.forEach(doc => {
+            gallery.push({ id: doc.id, ...doc.data() });
+        });
+        gallery.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+        res.json(gallery);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch gallery' });
+    }
+});
+
+app.post('/api/gallery', requireAuth, adminActionLimiter, async (req, res) => {
+    try {
+        const docRef = await addDoc(collection(db, 'gallery'), req.body);
+        res.status(201).json({ id: docRef.id, ...req.body });
+    } catch (error) {
+        console.error('Gallery create error:', error);
+        res.status(500).json({ error: 'Failed to create gallery item' });
+    }
+});
+
+app.put('/api/gallery/:id', requireAuth, adminActionLimiter, async (req, res) => {
+    try {
+        const data = req.body;
+        delete data.id;
+        const docRef = doc(db, 'gallery', req.params.id);
+        await setDoc(docRef, data, { merge: true });
+        res.json({ id: req.params.id, ...data });
+    } catch (error) {
+        console.error('Gallery update error:', error);
+        res.status(500).json({ error: 'Failed to update gallery item' });
+    }
+});
+
+app.delete('/api/gallery/:id', requireAuth, adminActionLimiter, async (req, res) => {
+    try {
+        await deleteDoc(doc(db, 'gallery', req.params.id));
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Gallery delete error:', error);
+        res.status(500).json({ error: 'Failed to delete gallery item' });
     }
 });
 
@@ -559,6 +654,11 @@ app.get('/api/ping', async (req, res) => {
     }
 });
 
+// ─── Clean URL Fallbacks ──────────────────────────────────────
+app.get(['/about', '/projects', '/gallery', '/contact', '/experience', '/testimonials'], (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
+
 app.listen(PORT, async () => {
     console.log(`Server is running on port ${PORT}`);
     
@@ -588,9 +688,27 @@ app.listen(PORT, async () => {
                 await addDoc(expCol, exp);
             }
             console.log('Seeded default experiences.');
+
+            // Seed Gallery
+            const galleryCol = collection(db, 'gallery');
+            for (const gal of DEFAULT_GALLERY) {
+                await addDoc(galleryCol, gal);
+            }
+            console.log('Seeded default gallery.');
             console.log('Firestore database initialized and seeded successfully.');
         } else {
             console.log('Firestore connected successfully. Config records found.');
+
+            // Self-healing check for newly introduced gallery collection
+            const galleryCol = collection(db, 'gallery');
+            const gallerySnap = await getDocs(galleryCol);
+            if (gallerySnap.empty) {
+                console.log('Gallery collection is empty! Seeding default gallery items...');
+                for (const gal of DEFAULT_GALLERY) {
+                    await addDoc(galleryCol, gal);
+                }
+                console.log('Default gallery seeded successfully.');
+            }
         }
     } catch (err) {
         console.error('Failed to initialize Firestore database:', err);

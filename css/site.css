@@ -37,6 +37,58 @@
 
 html {
     scroll-behavior: smooth;
+    background: #E5E1DA;
+}
+
+html.dark {
+    background: #080706;
+}
+
+/* Full-Screen Section Card System */
+.section-card {
+    min-height: 100vh;
+    background: #F7F5F0;
+    border-radius: 1.25rem;
+    margin: 0 0.5rem 0.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+html.dark .section-card {
+    background: #0F0E0C;
+}
+
+/* Hero card - flush top, rounded bottom */
+.section-card--hero {
+    margin-top: 0;
+    border-radius: 0 0 1.25rem 1.25rem;
+}
+
+/* Footer card - no full-height requirement */
+.section-card--footer {
+    min-height: auto;
+    background: #F7F5F0;
+    border-radius: 1.25rem;
+    margin: 0 0.5rem 0.5rem;
+    overflow: hidden;
+}
+
+html.dark .section-card--footer {
+    background: #0F0E0C;
+}
+
+@media (min-width: 768px) {
+    .section-card {
+        border-radius: 1.5rem;
+        margin: 0 0.75rem 0.75rem;
+    }
+    .section-card--hero {
+        border-radius: 0 0 1.5rem 1.5rem;
+    }
+    .section-card--footer {
+        border-radius: 1.5rem;
+        margin: 0 0.75rem 0.75rem;
+    }
 }
 
 /* Custom scroll progress container styling */
@@ -115,3 +167,34 @@ html {
     box-shadow: 0 0 20px rgba(200, 82, 42, 0.6);
     transform: scale(1.15);
 }
+
+/* OJT Gallery Styles */
+.gallery-item {
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-item:hover {
+    border-color: rgba(200, 82, 42, 0.4);
+    box-shadow: 0 8px 30px rgba(200, 82, 42, 0.08);
+}
+
+.gallery-track {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+.gallery-track:active {
+    cursor: grabbing;
+}
+
+.gallery-track::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-slide {
+    scroll-snap-align: start;
+}
+
+

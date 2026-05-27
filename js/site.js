@@ -1,4 +1,82 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ═══════════════════════════════════════════════════════════
+    // Clean URL Router (History API)
+    // Maps /about → section#about, /projects → section#projects, etc.
+    // ═══════════════════════════════════════════════════════════
+    const ROUTE_SECTIONS = ['about', 'projects', 'gallery', 'contact', 'experience', 'testimonials'];
+
+    function getRouteFromPath(pathname) {
+        const clean = pathname.replace(/^\//, '').replace(/\.html$/, '').replace(/^index$/, '');
+        return ROUTE_SECTIONS.includes(clean) ? clean : null;
+    }
+
+    function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    // Intercept nav link clicks to push clean URLs
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[data-route]');
+        if (!link) return;
+        e.preventDefault();
+        const route = link.getAttribute('data-route');
+        if (route) {
+            history.pushState({ route }, '', '/' + route);
+            scrollToSection(route);
+        }
+    });
+
+    // Handle browser back/forward
+    window.addEventListener('popstate', (e) => {
+        if (e.state && e.state.route) {
+            scrollToSection(e.state.route);
+        } else {
+            // Back to home — scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+
+    // On initial page load, check if the URL is a section route
+    const initialRoute = getRouteFromPath(window.location.pathname);
+    if (initialRoute) {
+        // Replace current history entry so back goes to actual previous page
+        history.replaceState({ route: initialRoute }, '', '/' + initialRoute);
+        // Scroll after a short delay to let the page render
+        requestAnimationFrame(() => {
+            setTimeout(() => scrollToSection(initialRoute), 100);
+        });
+    }
+
+    // Update URL on scroll to reflect which section is in view
+    let scrollUpdateTimer = null;
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollUpdateTimer);
+        scrollUpdateTimer = setTimeout(() => {
+            let currentSection = null;
+            for (const id of ROUTE_SECTIONS) {
+                const el = document.getElementById(id);
+                if (el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top <= 150 && rect.bottom > 150) {
+                        currentSection = id;
+                        break;
+                    }
+                }
+            }
+
+            const currentRoute = getRouteFromPath(window.location.pathname);
+            if (currentSection && currentSection !== currentRoute) {
+                history.replaceState({ route: currentSection }, '', '/' + currentSection);
+            } else if (!currentSection && currentRoute) {
+                // User scrolled back to top / hero
+                history.replaceState(null, '', '/');
+            }
+        }, 150);
+    }, { passive: true });
+
     // Theme toggle logic
     const toggle = document.getElementById('themeToggle');
     const html = document.documentElement;
@@ -284,6 +362,76 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${basePath}${trimmed}`;
     }
 
+    const DEFAULT_GALLERY = [
+        {
+            title: "Board Presentation",
+            description: "Presenting the completed HRIS to the IBP Board of Lawyers — the culmination of our internship project.",
+            imageUrl: "image/picture with boards.jpg",
+            sortOrder: 1
+        },
+        {
+            title: "OJT Certificate",
+            description: "Received the official certificate of completion for the On-the-Job Training program at IBP.",
+            imageUrl: "image/picture with certificate.jpg",
+            sortOrder: 2
+        },
+        {
+            title: "With HR Heads",
+            description: "Together with the IBP Human Resources department heads who guided our team throughout the internship.",
+            imageUrl: "image/picture with hr heads.jpg",
+            sortOrder: 3
+        },
+        {
+            title: "With Supervisor",
+            description: "With my OJT supervisor who mentored our team on IT support and web development throughout the program.",
+            imageUrl: "image/picture with supervisor.jpg",
+            sortOrder: 4
+        }
+    ];
+
+    function renderGallery(galleryItems) {
+        const track = document.getElementById('galleryTrack');
+        if (!track) return;
+        
+        if (!galleryItems || galleryItems.length === 0) {
+            track.innerHTML = '<div class="w-full text-center py-12 opacity-40 text-xs">No gallery items available.</div>';
+            return;
+        }
+
+        track.innerHTML = galleryItems.map((item, index) => {
+            const slideNum = String(index + 1).padStart(2, '0');
+            return `
+                <div class="gallery-slide flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[38vw]" data-caption="${item.title}">
+                    <div class="gallery-item group overflow-hidden border border-ink/10 dark:border-cream/10 relative font-mono">
+                        <div class="overflow-hidden aspect-[3/2]">
+                            ${item.imageUrl ? `<img src="${item.imageUrl}" alt="${item.title}" class="previewable-img w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out">` : `
+                            <div class="w-full h-full bg-ink/5 dark:bg-cream/5 flex items-center justify-center">
+                                <span class="text-[10px] uppercase tracking-widest opacity-40">Gallery Image</span>
+                            </div>`}
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none flex items-end">
+                            <div class="p-5">
+                                <p class="text-cream text-[10px] tracking-widest uppercase font-semibold">Scroll to explore →</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-4 flex items-start justify-between gap-4">
+                        <div>
+                            <p class="text-xs font-semibold tracking-wider uppercase mb-1">${item.title}</p>
+                            <p class="text-[10px] opacity-50 leading-relaxed max-w-xs">${item.description || ''}</p>
+                        </div>
+                        <span class="text-[10px] opacity-20 font-mono mt-0.5 flex-shrink-0">${slideNum}</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        const totalSlidesEl = document.getElementById('galleryTotalSlides');
+        if (totalSlidesEl) {
+            totalSlidesEl.textContent = String(galleryItems.length).padStart(2, '0');
+        }
+    }
+
     // 6b. Client Hydration logic
     async function hydratePortfolio() {
         try {
@@ -439,13 +587,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
+            // 4. Hydrate Gallery
+            const gallery = data.gallery;
+            if (gallery && gallery.length > 0) {
+                renderGallery(gallery);
+            } else {
+                renderGallery(DEFAULT_GALLERY);
+            }
+
             console.log('Hydration complete!');
         } catch (err) {
             console.warn('Hydration failed or server is offline, using premium offline fallback.', err);
+            renderGallery(DEFAULT_GALLERY);
         } finally {
             // Bind tilt, hover, stack lights, and animations onto either loaded or fallback cards
             bindDynamicInteractions();
             setupProjectFilters();
+            initGallerySlider();
         }
     }
 
@@ -761,5 +919,128 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'admin/index.html';
         }
     });
+
+    // 9. Gallery Horizontal Scroll Carousel
+    function initGallerySlider() {
+        const galleryTrack = document.getElementById('galleryTrack');
+        const galleryPrev = document.getElementById('galleryPrev');
+        const galleryNext = document.getElementById('galleryNext');
+        const galleryProgress = document.getElementById('galleryProgress');
+        const galleryCurrentSlide = document.getElementById('galleryCurrentSlide');
+
+        if (galleryTrack) {
+            const slides = galleryTrack.querySelectorAll('.gallery-slide');
+            const totalSlides = slides.length;
+            if (totalSlides === 0) return;
+
+            // Reset UI state for dynamic slide count
+            if (galleryProgress) {
+                galleryProgress.style.width = (100 / totalSlides) + '%';
+            }
+            if (galleryCurrentSlide) {
+                galleryCurrentSlide.textContent = '01';
+            }
+
+            // Update progress bar and slide counter on scroll
+            function updateGalleryState() {
+                const scrollLeft = galleryTrack.scrollLeft;
+                const maxScroll = galleryTrack.scrollWidth - galleryTrack.clientWidth;
+                const progress = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0;
+
+                if (galleryProgress) {
+                    const startPercent = 100 / totalSlides;
+                    const mappedProgress = startPercent + (progress * (1 - startPercent / 100));
+                    galleryProgress.style.width = mappedProgress + '%';
+                }
+
+                // Determine current slide
+                if (galleryCurrentSlide && slides.length > 0) {
+                    const slideWidth = slides[0].offsetWidth + 20; // 20px gap
+                    const currentIndex = Math.round(scrollLeft / slideWidth);
+                    const slideNum = Math.min(currentIndex + 1, totalSlides);
+                    galleryCurrentSlide.textContent = String(slideNum).padStart(2, '0');
+                }
+            }
+
+            // Remove existing scroll listeners to avoid double-binding
+            galleryTrack.removeEventListener('scroll', updateGalleryState);
+            galleryTrack.addEventListener('scroll', updateGalleryState, { passive: true });
+
+            // Navigation arrows
+            function scrollGallery(direction) {
+                if (slides.length === 0) return;
+                const slideWidth = slides[0].offsetWidth + 20;
+                galleryTrack.scrollBy({
+                    left: direction * slideWidth,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Bind click events (if buttons exist)
+            if (galleryPrev) {
+                galleryPrev.replaceWith(galleryPrev.cloneNode(true));
+                document.getElementById('galleryPrev').addEventListener('click', () => scrollGallery(-1));
+            }
+            if (galleryNext) {
+                galleryNext.replaceWith(galleryNext.cloneNode(true));
+                document.getElementById('galleryNext').addEventListener('click', () => scrollGallery(1));
+            }
+
+            // Mouse drag-to-scroll for desktop
+            let isDragging = false;
+            let startX = 0;
+            let scrollStart = 0;
+
+            const handleMouseDown = (e) => {
+                if (e.target.closest('.previewable-img')) return;
+                isDragging = true;
+                startX = e.pageX - galleryTrack.offsetLeft;
+                scrollStart = galleryTrack.scrollLeft;
+                galleryTrack.style.scrollSnapType = 'none';
+            };
+
+            const handleMouseMove = (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - galleryTrack.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                galleryTrack.scrollLeft = scrollStart - walk;
+            };
+
+            const stopDrag = () => {
+                if (isDragging) {
+                    isDragging = false;
+                    galleryTrack.style.scrollSnapType = 'x mandatory';
+                }
+            };
+
+            galleryTrack.removeEventListener('mousedown', handleMouseDown);
+            galleryTrack.addEventListener('mousedown', handleMouseDown);
+
+            galleryTrack.removeEventListener('mousemove', handleMouseMove);
+            galleryTrack.addEventListener('mousemove', handleMouseMove);
+
+            galleryTrack.removeEventListener('mouseup', stopDrag);
+            galleryTrack.addEventListener('mouseup', stopDrag);
+
+            galleryTrack.removeEventListener('mouseleave', stopDrag);
+            galleryTrack.addEventListener('mouseleave', stopDrag);
+
+            // Keyboard navigation when gallery is in view
+            const handleKeyDown = (e) => {
+                const gallerySection = document.getElementById('gallery');
+                if (!gallerySection) return;
+                const rect = gallerySection.getBoundingClientRect();
+                const inView = rect.top < window.innerHeight && rect.bottom > 0;
+                if (!inView) return;
+
+                if (e.key === 'ArrowLeft') scrollGallery(-1);
+                if (e.key === 'ArrowRight') scrollGallery(1);
+            };
+
+            document.removeEventListener('keydown', handleKeyDown);
+            document.addEventListener('keydown', handleKeyDown);
+        }
+    }
 });
 
