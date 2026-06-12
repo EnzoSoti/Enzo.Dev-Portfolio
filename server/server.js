@@ -95,6 +95,24 @@ const DEFAULT_CONFIG = {
     email: "parane.enzo@gmail.com"
 };
 
+function resolveProfileImageForResponse(profileImg) {
+    const trimmed = (profileImg || '').trim();
+    if (!trimmed || trimmed === './image/new_formal-removebg-preview.png') {
+        return DEFAULT_PROFILE_IMG;
+    }
+
+    const uploadPathMatch = trimmed.match(/\/image\/uploads\/([^/?#]+)$/i) || trimmed.match(/^\.\/image\/uploads\/([^/?#]+)$/i) || trimmed.match(/^image\/uploads\/([^/?#]+)$/i);
+    if (uploadPathMatch) {
+        const fileName = decodeURIComponent(uploadPathMatch[1]);
+        const filePath = path.join(imageUploadDir, fileName);
+        if (!fs.existsSync(filePath)) {
+            return DEFAULT_PROFILE_IMG;
+        }
+    }
+
+    return trimmed;
+}
+
 const DEFAULT_PROJECTS = [
     {
         title: "Gym Management System",
@@ -291,9 +309,7 @@ app.get('/api/portfolio', async (req, res) => {
         const configDoc = doc(db, 'portfolio', 'config');
         const configSnap = await getDoc(configDoc);
         let config = configSnap.exists() ? { id: 'config', ...configSnap.data() } : DEFAULT_CONFIG;
-        if (config.profileImg === './image/new_formal-removebg-preview.png') {
-            config = { ...config, profileImg: DEFAULT_PROFILE_IMG };
-        }
+        config = { ...config, profileImg: resolveProfileImageForResponse(config.profileImg) };
 
         // Fetch Projects
         const projectsCol = collection(db, 'projects');
