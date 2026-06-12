@@ -76,6 +76,7 @@ app.use((req, res, next) => {
 });
 
 // Default Seed Data
+const DEFAULT_PROFILE_IMG = "./image/gradpic.jpg";
 const DEFAULT_CONFIG = {
     heroLabel: "Portfolio — 2026",
     heroName1: "Enzo",
@@ -84,7 +85,7 @@ const DEFAULT_CONFIG = {
     aboutTitle: "Backend-first developer who actually cares about how the data moves.",
     aboutText1: "BS Information Technology graduate with hands-on experience in web development through internship, academic, and personal projects. Focused on building robust server-side logic, RESTful APIs, and database operations.",
     aboutText2: "Comfortable working on both solo and team-based projects. Uses AI-assisted tools like Claude and GitHub Copilot to accelerate development and support frontend implementation.",
-    profileImg: "./image/new_formal-removebg-preview.png",
+    profileImg: DEFAULT_PROFILE_IMG,
     badgeText: "BSIT Graduate",
     school: "STI College Fairview",
     course: "BS Information Technology",
@@ -287,6 +288,9 @@ app.get('/api/portfolio', async (req, res) => {
         const configDoc = doc(db, 'portfolio', 'config');
         const configSnap = await getDoc(configDoc);
         let config = configSnap.exists() ? { id: 'config', ...configSnap.data() } : DEFAULT_CONFIG;
+        if (config.profileImg === './image/new_formal-removebg-preview.png') {
+            config = { ...config, profileImg: DEFAULT_PROFILE_IMG };
+        }
 
         // Fetch Projects
         const projectsCol = collection(db, 'projects');
@@ -698,6 +702,11 @@ app.listen(PORT, async () => {
             console.log('Firestore database initialized and seeded successfully.');
         } else {
             console.log('Firestore connected successfully. Config records found.');
+
+            if (configSnap.data()?.profileImg === './image/new_formal-removebg-preview.png') {
+                await setDoc(configDoc, { ...configSnap.data(), profileImg: DEFAULT_PROFILE_IMG });
+                console.log('Updated legacy profile image path to gradpic.jpg.');
+            }
 
             // Self-healing check for newly introduced gallery collection
             const galleryCol = collection(db, 'gallery');

@@ -48,7 +48,7 @@ function normalizeProfileImagePath(value, basePath = './image/') {
 
 function resolveAdminProfileImagePreviewPath(value) {
     const trimmed = (value || '').trim();
-    if (!trimmed) return '../image/new_formal-removebg-preview.png';
+    if (!trimmed) return '../image/gradpic.jpg';
     if (/^(https?:)?\/\//i.test(trimmed) || trimmed.startsWith('/')) {
         return trimmed;
     }

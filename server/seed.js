@@ -1,6 +1,8 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
+const DEFAULT_PROFILE_IMG = "./image/gradpic.jpg";
+
 async function main() {
     // Seed PortfolioConfig (singleton)
     await prisma.portfolioConfig.upsert({
@@ -15,7 +17,7 @@ async function main() {
             aboutTitle: "Backend-first developer who actually cares about how the data moves.",
             aboutText1: "BS Information Technology graduate with hands-on experience in web development through internship, academic, and personal projects. Focused on building robust server-side logic, RESTful APIs, and database operations.",
             aboutText2: "Comfortable working on both solo and team-based projects. Uses AI-assisted tools like Claude and GitHub Copilot to accelerate development and support frontend implementation.",
-            profileImg: "./image/new_formal-removebg-preview.png",
+            profileImg: DEFAULT_PROFILE_IMG,
             badgeText: "BSIT Graduate",
             school: "STI College Fairview",
             course: "BS Information Technology",

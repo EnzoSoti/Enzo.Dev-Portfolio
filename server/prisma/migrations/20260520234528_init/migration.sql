@@ -8,7 +8,7 @@ CREATE TABLE "PortfolioConfig" (
     "aboutTitle" TEXT NOT NULL DEFAULT 'Backend-first developer who actually cares about how the data moves.',
     "aboutText1" TEXT NOT NULL DEFAULT 'BS Information Technology graduate with hands-on experience in web development through internship, academic, and personal projects. Focused on building robust server-side logic, RESTful APIs, and database operations.',
     "aboutText2" TEXT NOT NULL DEFAULT 'Comfortable working on both solo and team-based projects. Uses AI-assisted tools like Claude and GitHub Copilot to accelerate development and support frontend implementation.',
-    "profileImg" TEXT NOT NULL DEFAULT './image/new_formal-removebg-preview.png',
+    "profileImg" TEXT NOT NULL DEFAULT './image/gradpic.jpg',
     "badgeText" TEXT NOT NULL DEFAULT 'BSIT Graduate',
     "school" TEXT NOT NULL DEFAULT 'STI College Fairview',
     "course" TEXT NOT NULL DEFAULT 'BS Information Technology',

@@ -16,7 +16,7 @@ model PortfolioConfig {
   aboutTitle  String   @default("Backend-first developer who actually cares about how the data moves.")
   aboutText1  String   @default("BS Information Technology graduate with hands-on experience in web development through internship, academic, and personal projects. Focused on building robust server-side logic, RESTful APIs, and database operations.")
   aboutText2  String   @default("Comfortable working on both solo and team-based projects. Uses AI-assisted tools like Claude and GitHub Copilot to accelerate development and support frontend implementation.")
-  profileImg  String   @default("./image/new_formal-removebg-preview.png")
+  profileImg  String   @default("./image/gradpic.jpg")
   badgeText   String   @default("BSIT Graduate")
   school      String   @default("STI College Fairview")
   course      String   @default("BS Information Technology")
