@@ -233,7 +233,10 @@ app.use(express.urlencoded({ extended: false, limit: '50kb' }));
 app.use('/admin', express.static(path.join(__dirname, '..', 'admin')));
 app.use('/css', express.static(path.join(__dirname, '..', 'css')));
 app.use('/js', express.static(path.join(__dirname, '..', 'js')));
-app.use('/image', express.static(path.join(__dirname, '..', 'image')));
+app.use('/image', (req, res, next) => {
+    res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+    next();
+}, express.static(path.join(__dirname, '..', 'image')));
 app.use(express.static(path.join(__dirname, '..')));
 
 const imageUploadDir = path.join(__dirname, '..', 'image', 'uploads');
