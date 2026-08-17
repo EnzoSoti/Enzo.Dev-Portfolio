@@ -88,7 +88,7 @@ export const About: React.FC<AboutProps> = ({ config, onImageClick }) => {
 
           {/* Right Column: Bio, Tech Stack & Simulation */}
           <div>
-            <p className="text-xs tracking-[0.3em] uppercase text-accent mb-6">About</p>
+            <p className="text-xs tracking-[0.3em] uppercase text-accent mb-6 font-semibold">01 // ABOUT</p>
             <h2 className="font-display text-2xl leading-relaxed mb-6 font-normal">
               {config.aboutTitle || 'Backend-first developer who actually cares about how the data moves.'}
             </h2>

@@ -117,7 +117,7 @@ const DEFAULT_PROJECTS = [
     {
         title: "FinTech Pro — Budget & Salary Tracker",
         description: "Minimalist FinTech salary cut-off and daily budget tracker PWA with real-time analytics, offline sync, and expense metrics.",
-        imageUrl: "",
+        imageUrl: "image/sotbt.png",
         liveUrl: "https://sotbt.vercel.app/",
         tags: "React,TypeScript,Tailwind,PWA,FinTech",
         category: "react",

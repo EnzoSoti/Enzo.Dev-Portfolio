@@ -71,7 +71,7 @@ export const Gallery: React.FC<GalleryProps> = ({ galleryItems, onImageClick }) 
         {/* Header row with title, counter & arrows */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
-            <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4">Visual Journey</p>
+            <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-semibold">05 // VISUAL LOG</p>
             <h2 className="font-display text-4xl font-normal mb-3">Gallery.</h2>
             <p className="text-sm opacity-60 leading-relaxed max-w-md">
               A visual record of projects, events, and milestones throughout my software development journey.

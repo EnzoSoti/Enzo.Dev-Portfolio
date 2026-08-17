@@ -7,17 +7,32 @@ interface ExperienceProps {
 }
 
 export const Experience: React.FC<ExperienceProps> = ({ experiences, onImageClick }) => {
+  const getRoleSkills = (company: string): string[] => {
+    if (company.includes('Great Sierra')) {
+      return ['React', 'TypeScript', 'Python', 'SQL', 'Google Apps Script', 'REST APIs'];
+    }
+    if (company.includes('Integrated Bar')) {
+      return ['HRIS System', 'AMS System', 'Ticketing API', 'IT Support'];
+    }
+    if (company.includes('Gym Facility')) {
+      return ['Node.js', 'Express.js', 'MySQL', 'Firebase', 'Team Lead'];
+    }
+    if (company.includes('STI')) {
+      return ['Software Engineering', 'DBMS', 'Web Development', 'Systems Integration'];
+    }
+    return [];
+  };
+
   return (
     <section id="experience" className="section-card py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="grid md:grid-cols-3 gap-12">
           {/* Left: Title & Intro */}
           <div>
-            <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4">Professional History</p>
-            <h2 className="font-display text-4xl font-normal mb-6">History.</h2>
+            <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-semibold">02 // HISTORY</p>
+            <h2 className="font-display text-4xl font-normal mb-6">Experience.</h2>
             <p className="text-sm opacity-60 leading-relaxed">
-              A summary of my academic background at STI College, leading to backend development projects and internship
-              experience at the Integrated Bar of the Philippines.
+              Full-time software engineering at Great Sierra Development Corporation, complemented by enterprise internship at IBP and academic foundation at STI College.
             </p>
           </div>
 
@@ -32,6 +47,7 @@ export const Experience: React.FC<ExperienceProps> = ({ experiences, onImageClic
               }
 
               const isLast = idx === experiences.length - 1;
+              const roleSkills = getRoleSkills(exp.company);
 
               return (
                 <div
@@ -43,10 +59,10 @@ export const Experience: React.FC<ExperienceProps> = ({ experiences, onImageClic
                       <img
                         src={exp.logoUrl}
                         alt={`${exp.company} Logo`}
-                        className="w-12 h-12 object-contain bg-white dark:bg-transparent p-1 rounded border border-ink/5 dark:border-cream/5"
+                        className="w-12 h-12 object-contain bg-white dark:bg-transparent p-1 rounded border border-ink/10 dark:border-cream/10"
                       />
                     ) : (
-                      <div className="w-12 h-12 bg-accent/10 flex items-center justify-center text-accent font-semibold rounded text-sm">
+                      <div className="w-12 h-12 bg-accent/10 flex items-center justify-center text-accent font-semibold rounded text-sm border border-accent/20">
                         {exp.company.substring(0, 2).toUpperCase()}
                       </div>
                     )}
@@ -60,14 +76,28 @@ export const Experience: React.FC<ExperienceProps> = ({ experiences, onImageClic
                   </div>
 
                   {/* Bullet points */}
-                  <ul className="space-y-3 mb-6">
+                  <ul className="space-y-3 mb-4">
                     {bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-3 text-sm opacity-70">
+                      <li key={bIdx} className="flex items-start gap-3 text-sm opacity-70 leading-relaxed">
                         <span className="text-accent mt-1.5 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0" />
                         <span>{bullet}</span>
                       </li>
                     ))}
                   </ul>
+
+                  {/* Role Skills Tags */}
+                  {roleSkills.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mt-4 mb-2">
+                      {roleSkills.map((skill, sIdx) => (
+                        <span
+                          key={sIdx}
+                          className="px-2 py-0.5 border border-ink/15 dark:border-cream/15 text-[10px] opacity-75 rounded-sm font-mono"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Images showcase (if available) */}
                   {exp.images && exp.images.length > 0 && (

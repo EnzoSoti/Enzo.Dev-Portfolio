@@ -51,7 +51,7 @@ export const Contact: React.FC<ContactProps> = ({ config }) => {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* Left: Headline & Minimalist Contact Form */}
           <div>
-            <p className="text-xs tracking-[0.3em] uppercase text-accent mb-6">Let's Talk</p>
+            <p className="text-xs tracking-[0.3em] uppercase text-accent mb-6 font-semibold">06 // LET'S TALK</p>
             <h2 className="font-display text-5xl font-normal mb-6 leading-tight">
               Open for
               <br />
@@ -59,7 +59,7 @@ export const Contact: React.FC<ContactProps> = ({ config }) => {
             </h2>
             <p className="text-sm opacity-60 leading-relaxed mb-8 max-w-sm">
               {config.contactText ||
-                "I am currently looking for full-time roles in web development. Feel free to reach out if you think we'd be a good fit!"}
+                "I am open for software development inquiries, systems integration, and full-stack collaborations. Feel free to reach out!"}
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4 max-w-sm mt-8 relative">
@@ -119,15 +119,28 @@ export const Contact: React.FC<ContactProps> = ({ config }) => {
 
           {/* Right: Direct Links & Resume CV Downloads */}
           <div className="space-y-0">
-            <a
-              href={`mailto:${config.email || 'parane.enzo@gmail.com'}`}
-              className="flex items-center justify-between py-5 border-t border-ink/10 dark:border-cream/10 group"
-            >
+            <div className="flex items-center justify-between py-5 border-t border-ink/10 dark:border-cream/10 group">
               <span className="text-xs uppercase tracking-widest opacity-40">Email</span>
-              <span className="text-sm group-hover:text-accent transition-colors">
-                {config.email || 'parane.enzo@gmail.com'} ↗
-              </span>
-            </a>
+              <div className="flex items-center gap-3">
+                <a
+                  href={`mailto:${config.email || 'parane.enzo@gmail.com'}`}
+                  className="text-sm group-hover:text-accent transition-colors"
+                >
+                  {config.email || 'parane.enzo@gmail.com'} ↗
+                </a>
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigator.clipboard.writeText(config.email || 'parane.enzo@gmail.com');
+                    showToast('Email address copied!', 'success');
+                  }}
+                  title="Copy email to clipboard"
+                  className="text-[10px] uppercase font-mono px-2 py-0.5 border border-ink/20 dark:border-cream/20 rounded opacity-60 hover:opacity-100 hover:border-accent"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
 
             <a
               href="https://www.linkedin.com/in/enzo-daniela-685374324/"

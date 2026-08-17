@@ -13,7 +13,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ testimonials = DEFAU
         <div className="grid md:grid-cols-3 gap-12">
           {/* Left Title Block */}
           <div>
-            <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4">Endorsements</p>
+            <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-semibold">04 // ENDORSEMENTS</p>
             <h2 className="font-display text-4xl font-normal mb-6">Feedback.</h2>
             <p className="text-sm opacity-60 leading-relaxed">
               Feedback and recommendations from my Capstone adviser and internship supervisor on system architecture,

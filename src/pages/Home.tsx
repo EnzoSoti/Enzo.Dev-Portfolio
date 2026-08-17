@@ -14,6 +14,8 @@ import { ScrollProgress } from '../components/common/ScrollProgress';
 import { BackToTop } from '../components/common/BackToTop';
 import { CustomCursor } from '../components/common/CustomCursor';
 import { ImageModal } from '../components/common/ImageModal';
+import { CommandPalette } from '../components/common/CommandPalette';
+import { ProjectModal } from '../components/projects/ProjectModal';
 import { Hero } from '../components/hero/Hero';
 import { About } from '../components/about/About';
 import { Experience as ExperienceSection } from '../components/experience/Experience';
@@ -33,6 +35,8 @@ export const Home: React.FC = () => {
 
   const [activeSection, setActiveSection] = useState<string>('');
   const [modalImage, setModalImage] = useState<{ src: string; alt: string } | null>(null);
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
+  const [selectedCaseStudyProject, setSelectedCaseStudyProject] = useState<Project | null>(null);
 
   // Fetch portfolio data
   useEffect(() => {
@@ -95,10 +99,13 @@ export const Home: React.FC = () => {
     };
   }, []);
 
-  // Admin shortcut: Ctrl + Alt + A
+  // Global Shortcuts: Cmd+K / Ctrl+K and Ctrl+Alt+A
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'a') {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsCommandPaletteOpen((prev) => !prev);
+      } else if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'a') {
         e.preventDefault();
         navigate('/admin');
       }
@@ -124,13 +131,21 @@ export const Home: React.FC = () => {
     <div className="bg-[#E5E1DA] dark:bg-[#080706] text-ink dark:text-cream min-h-screen transition-colors duration-300 font-mono relative selection:bg-accent selection:text-white">
       <ScrollProgress />
       <CustomCursor />
-      <Navbar activeSection={activeSection} onNavigateSection={handleNavigateSection} />
+      <Navbar
+        activeSection={activeSection}
+        onNavigateSection={handleNavigateSection}
+        onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
+      />
 
       <main>
         <Hero config={config} />
         <About config={config} onImageClick={handleOpenImageModal} />
         <ExperienceSection experiences={experiences} onImageClick={handleOpenImageModal} />
-        <Projects projects={projects} onImageClick={handleOpenImageModal} />
+        <Projects
+          projects={projects}
+          onImageClick={handleOpenImageModal}
+          onSelectProject={(p) => setSelectedCaseStudyProject(p)}
+        />
         <Testimonials />
         <Gallery galleryItems={gallery} onImageClick={handleOpenImageModal} />
         <Contact config={config} />
@@ -138,10 +153,25 @@ export const Home: React.FC = () => {
 
       <Footer />
       <BackToTop />
+      
+      {/* Lightbox Image Modal */}
       <ImageModal
         src={modalImage?.src || null}
         alt={modalImage?.alt}
         onClose={() => setModalImage(null)}
+      />
+
+      {/* Interactive Case Study Modal */}
+      <ProjectModal
+        project={selectedCaseStudyProject}
+        onClose={() => setSelectedCaseStudyProject(null)}
+      />
+
+      {/* Global Command Palette */}
+      <CommandPalette
+        isOpen={isCommandPaletteOpen}
+        onClose={() => setIsCommandPaletteOpen(false)}
+        onNavigateSection={handleNavigateSection}
       />
     </div>
   );

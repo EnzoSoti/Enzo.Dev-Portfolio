@@ -7,6 +7,8 @@ interface LogEntry {
   type: 'accent' | 'success' | 'error' | 'info';
 }
 
+type EndpointOption = 'GET /api/ping' | 'GET /api/projects' | 'GET /api/github-stats';
+
 export const PacketSimulator: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const nodeClientRef = useRef<HTMLDivElement>(null);
@@ -21,8 +23,9 @@ export const PacketSimulator: React.FC = () => {
   const [pathApiD, setPathApiD] = useState('');
   const [pathDbD, setPathDbD] = useState('');
   const [activeNode, setActiveNode] = useState<string | null>(null);
+  const [selectedEndpoint, setSelectedEndpoint] = useState<EndpointOption>('GET /api/projects');
   const [logs, setLogs] = useState<LogEntry[]>([
-    { id: '1', text: 'Click "Simulate Request" to query the server...', type: 'accent' },
+    { id: '1', text: 'Select an endpoint & click "Simulate Request" to trace the pipeline...', type: 'accent' },
   ]);
   const [isSimulating, setIsSimulating] = useState(false);
 
@@ -117,50 +120,54 @@ export const PacketSimulator: React.FC = () => {
 
     // 1. Client Trigger
     setActiveNode('client');
-    addLog('Client initiating GET /api/ping request...', 'info');
-    await animatePacket(packetClientApiRef.current, clientX, clientY, apiX, apiY, 700);
+    addLog(`Client (React) dispatching ${selectedEndpoint}...`, 'info');
+    await animatePacket(packetClientApiRef.current, clientX, clientY, apiX, apiY, 650);
     setActiveNode(null);
 
     // 2. Express API receive
     setActiveNode('api');
-    addLog('Express Server (PORT 5000): GET /api/ping received.', 'accent');
-    addLog('Express Server: Authenticating database context...', 'accent');
+    addLog(`Express Server (PORT 5000): Ingress request matched for ${selectedEndpoint}.`, 'accent');
+    addLog('Express Server: Validating headers, rate limiter & CORS policy...', 'accent');
     await new Promise((r) => setTimeout(r, 400));
 
     // 3. API to Database
-    await animatePacket(packetApiDbRef.current, apiX, apiY, dbX, dbY, 700);
+    await animatePacket(packetApiDbRef.current, apiX, apiY, dbX, dbY, 650);
     setActiveNode(null);
 
     // 4. Database Querying
     setActiveNode('db');
-    addLog('Firebase Firestore: Querying cached document cache/github-stats...', 'info');
+    let collectionName = 'projects';
+    if (selectedEndpoint.includes('ping')) collectionName = 'health/ping';
+    if (selectedEndpoint.includes('github-stats')) collectionName = 'cache/github-stats';
+
+    addLog(`Firebase Firestore: Querying collection '${collectionName}'...`, 'info');
 
     const result = await api.pingServer();
-    await new Promise((r) => setTimeout(r, 500));
+    await new Promise((r) => setTimeout(r, 450));
 
     if (result.dbConnection === 'connected') {
-      addLog(`Firebase Firestore: Connection Active. Verified document in ${result.latency}ms.`, 'success');
+      addLog(`Firebase Firestore: Indexed query resolved in ${result.latency}ms.`, 'success');
     } else {
-      addLog('Firebase Firestore: Connection Active. Verified document in 45ms (Simulation).', 'success');
+      addLog('Firebase Firestore: Snapshot resolved in 38ms (Mock/Cache Mode).', 'success');
     }
 
     // 5. Database returns to API
-    await animatePacket(packetDbApiRef.current, dbX, dbY, apiX, apiY, 700);
+    await animatePacket(packetDbApiRef.current, dbX, dbY, apiX, apiY, 650);
     setActiveNode(null);
 
     // 6. API response formulation
     setActiveNode('api');
-    addLog('Express Server: Document status mapped. Sending JSON payload back.', 'accent');
-    await new Promise((r) => setTimeout(r, 400));
+    addLog('Express Server: Serializing payload (Content-Type: application/json)...', 'accent');
+    await new Promise((r) => setTimeout(r, 350));
 
     // 7. API return to Client
-    await animatePacket(packetApiClientRef.current, apiX, apiY, clientX, clientY, 700);
+    await animatePacket(packetApiClientRef.current, apiX, apiY, clientX, clientY, 650);
     setActiveNode(null);
 
     // 8. Client completed
     setActiveNode('client');
-    addLog('Client: Payload received successfully. Response status: 200 OK.', 'success');
-    addLog('Visual request sequence complete.', 'success');
+    addLog(`Client (React): 200 OK received. Virtual DOM synced in ~1ms.`, 'success');
+    addLog('Data pipeline execution completed successfully.', 'success');
 
     await new Promise((r) => setTimeout(r, 800));
     setActiveNode(null);
@@ -169,10 +176,30 @@ export const PacketSimulator: React.FC = () => {
 
   return (
     <div className="mt-12 pt-12 border-t border-ink/10 dark:border-cream/10">
-      <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4 font-semibold">Interactive Data Flow</p>
-      <p className="text-xs opacity-60 leading-relaxed mb-6">
-        Simulate how the React frontend interfaces with the Express API backend and retrieves cached data from Firebase.
-      </p>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+        <div>
+          <p className="text-xs tracking-[0.3em] uppercase text-accent font-semibold">Interactive Data Flow</p>
+          <p className="text-xs opacity-60 mt-1">Trace real-time request-response cycles through the architecture.</p>
+        </div>
+
+        {/* Endpoint Selector Pills */}
+        <div className="flex flex-wrap gap-1.5 text-[10px]">
+          {(['GET /api/projects', 'GET /api/ping', 'GET /api/github-stats'] as EndpointOption[]).map((ep) => (
+            <button
+              key={ep}
+              disabled={isSimulating}
+              onClick={() => setSelectedEndpoint(ep)}
+              className={`px-2.5 py-1 rounded transition-all font-mono ${
+                selectedEndpoint === ep
+                  ? 'bg-accent text-white font-medium'
+                  : 'bg-ink/5 dark:bg-cream/5 opacity-60 hover:opacity-100'
+              }`}
+            >
+              {ep.replace('GET /api/', '')}
+            </button>
+          ))}
+        </div>
+      </div>
 
       {/* Visual Node Diagram */}
       <div
@@ -299,7 +326,7 @@ export const PacketSimulator: React.FC = () => {
         disabled={isSimulating}
         className="w-full py-2.5 bg-ink text-cream dark:bg-cream dark:text-ink text-xs tracking-widest uppercase hover:opacity-90 hover:bg-accent hover:text-cream dark:hover:bg-accent dark:hover:text-cream transition-colors border border-transparent disabled:opacity-50"
       >
-        {isSimulating ? 'Simulating...' : 'Simulate Request'}
+        {isSimulating ? `Simulating ${selectedEndpoint}...` : `Simulate ${selectedEndpoint}`}
       </button>
     </div>
   );

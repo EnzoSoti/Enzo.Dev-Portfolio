@@ -5,10 +5,15 @@ import { useTheme } from '../../context/ThemeContext';
 interface NavbarProps {
   activeSection?: string;
   onNavigateSection?: (sectionId: string) => void;
+  onOpenCommandPalette?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigateSection }) => {
-  const { theme, toggleTheme } = useTheme();
+export const Navbar: React.FC<NavbarProps> = ({
+  activeSection,
+  onNavigateSection,
+  onOpenCommandPalette,
+}) => {
+  const { toggleTheme } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -56,7 +61,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigateSection
           enzo.daniela
         </a>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 sm:gap-6">
           {navLinks.map((link) => (
             <a
               key={link.sectionId}
@@ -72,6 +77,19 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigateSection
             </a>
           ))}
 
+          {/* Command Palette Button */}
+          {onOpenCommandPalette && (
+            <button
+              onClick={onOpenCommandPalette}
+              title="Search & Commands (Cmd+K / Ctrl+K)"
+              className="flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono border border-ink/20 dark:border-cream/20 rounded-md opacity-70 hover:opacity-100 hover:border-accent transition-all duration-200"
+            >
+              <span className="opacity-60 text-[10px]">⌘</span>
+              <span className="hidden sm:inline text-[10px]">K</span>
+            </button>
+          )}
+
+          {/* Theme Toggle */}
           <button
             id="themeToggle"
             onClick={toggleTheme}
