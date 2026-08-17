@@ -92,7 +92,7 @@ export const DEFAULT_EXPERIENCES: Experience[] = [
     role: 'IT Developer Programmer (Full-time)',
     company: 'Great Sierra Development Corporation',
     period: 'Jul 2026 — Present',
-    logoUrl: '',
+    logoUrl: '/image/gsdc.jpg',
     bullets: JSON.stringify([
       'Design, develop, and maintain responsive web applications using React, TypeScript, JavaScript, HTML, CSS, and SQL.',
       'Build user-friendly interfaces, develop scalable front-end features, and collaborate with stakeholders to deliver solutions meeting business requirements.',

@@ -183,7 +183,7 @@ const DEFAULT_EXPERIENCES = [
             "Create automation tools using Python, Google Apps Script, and Google Sheets to streamline workflows, improve data accuracy, and enhance operational efficiency.",
             "Write and optimize SQL queries, troubleshoot system and application issues, document technical processes, and continuously identify opportunities to improve existing systems."
         ]),
-        logoUrl: "",
+        logoUrl: "image/gsdc.jpg",
         sortOrder: 1
     },
     {
