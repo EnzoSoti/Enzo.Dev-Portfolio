@@ -4,21 +4,34 @@ export const DEFAULT_CONFIG: PortfolioConfig = {
   heroLabel: 'Portfolio — 2026',
   heroName1: 'Enzo',
   heroName2: 'Daniela.',
-  heroTagline: 'IT Graduate & Web Developer based in Caloocan City, Philippines. Building systems with Node.js, Express, MySQL, Supabase & Docker.',
-  aboutTitle: 'Backend-first developer who actually cares about how the data moves.',
-  aboutText1: 'BS Information Technology graduate with hands-on experience in web development through internship, academic, and personal projects. Focused on building robust server-side logic, RESTful APIs, and database operations.',
-  aboutText2: 'Comfortable working on both solo and team-based projects. Uses AI-assisted tools like Claude and GitHub Copilot to accelerate development and support frontend implementation.',
-  badgeText: 'BSIT Graduate',
+  heroTagline: 'IT Developer Programmer at Great Sierra Development Corporation & Web Developer based in Caloocan / Quezon City, Philippines. Building systems with React, TypeScript, Node.js, Express, SQL & Python.',
+  aboutTitle: 'IT Developer Programmer who builds scalable web apps and robust systems.',
+  aboutText1: 'IT Developer Programmer at Great Sierra Development Corporation with hands-on experience in web development, API architecture, and database design. Focused on building robust server-side logic, responsive React & TypeScript interfaces, and automation workflows.',
+  aboutText2: 'Comfortable working on both solo and team-based enterprise projects. Uses modern toolchains and AI-assisted workflows like Claude and GitHub Copilot to accelerate development and optimize operational efficiency.',
+  badgeText: 'IT Developer',
   school: 'STI College Fairview',
   course: 'BS Information Technology',
   graduated: 'July 17, 2026',
-  location: 'Caloocan City, PH',
-  contactText: "I am currently looking for full-time roles in web development. Feel free to reach out if you think we'd be a good fit!",
+  location: 'Caloocan City / QC, PH',
+  contactText: "Feel free to reach out for collaborations, software development inquiries, or system architecture discussions!",
   email: 'parane.enzo@gmail.com',
   profileImg: '/image/gradpic.jpg',
 };
 
 export const DEFAULT_PROJECTS: Project[] = [
+  {
+    id: 'proj-sotbt',
+    title: 'FinTech Pro — Budget & Salary Tracker',
+    description: 'Minimalist FinTech salary cut-off and daily budget tracker PWA with real-time analytics, offline sync, and expense metrics.',
+    imageUrl: '',
+    liveUrl: 'https://sotbt.vercel.app/',
+    githubUrl: 'https://github.com/EnzoSoti',
+    tags: 'React, TypeScript, Tailwind, PWA, FinTech',
+    category: 'react',
+    badge: 'Latest',
+    sortOrder: 1,
+    featured: true,
+  },
   {
     id: 'proj-1',
     title: 'Gym Management System',
@@ -29,8 +42,8 @@ export const DEFAULT_PROJECTS: Project[] = [
     tags: 'Express.js, MySQL, Firebase, Node.js',
     category: 'node database',
     badge: 'Capstone',
-    sortOrder: 1,
-    featured: true,
+    sortOrder: 2,
+    featured: false,
   },
   {
     id: 'proj-2',
@@ -42,38 +55,52 @@ export const DEFAULT_PROJECTS: Project[] = [
     tags: 'JavaScript, CSS3, HTML5',
     category: 'vanilla',
     badge: '',
-    sortOrder: 2,
+    sortOrder: 3,
     featured: false,
   },
   {
     id: 'proj-3',
     title: 'Attendance System',
-    description: 'QR-based logging, 95% tracking accuracy.',
+    description: 'QR-based logging, 95% tracking accuracy built for ASEAN Summit deployment.',
     imageUrl: '/image/Screenshot 2026-05-13 081804.png',
     liveUrl: 'https://attendance-tracker-asean.vercel.app/',
     githubUrl: '',
     tags: 'React, Node.js, Supabase',
     category: 'react node database',
     badge: 'IBP',
-    sortOrder: 3,
+    sortOrder: 4,
     featured: false,
   },
   {
     id: 'proj-4',
     title: 'Ticketing System',
-    description: 'Facility issue management & workflows.',
+    description: 'Facility issue management & automated operational workflows.',
     imageUrl: '',
     liveUrl: '',
     githubUrl: '',
     tags: 'TypeScript, React, Tailwind',
     category: 'react',
     badge: 'IBP',
-    sortOrder: 4,
+    sortOrder: 5,
     featured: false,
   },
 ];
 
 export const DEFAULT_EXPERIENCES: Experience[] = [
+  {
+    id: 'exp-gsdc',
+    role: 'IT Developer Programmer (Full-time)',
+    company: 'Great Sierra Development Corporation',
+    period: 'Jul 2026 — Present',
+    logoUrl: '',
+    bullets: JSON.stringify([
+      'Design, develop, and maintain responsive web applications using React, TypeScript, JavaScript, HTML, CSS, and SQL.',
+      'Build user-friendly interfaces, develop scalable front-end features, and collaborate with stakeholders to deliver solutions meeting business requirements.',
+      'Create automation tools using Python, Google Apps Script, and Google Sheets to streamline workflows, improve data accuracy, and enhance operational efficiency.',
+      'Write and optimize SQL queries, troubleshoot system and application issues, document technical processes, and continuously identify opportunities to improve existing systems.',
+    ]),
+    sortOrder: 1,
+  },
   {
     id: 'exp-1',
     role: 'Web Developer Intern | IT Support',
@@ -87,7 +114,7 @@ export const DEFAULT_EXPERIENCES: Experience[] = [
       'Streamlined employee and administrative workflows',
       'Provided technical support and system maintenance',
     ]),
-    sortOrder: 1,
+    sortOrder: 2,
     images: [
       {
         url: '/image/ibp pic.jpg',
@@ -111,7 +138,7 @@ export const DEFAULT_EXPERIENCES: Experience[] = [
       'Developed and structured 20+ backend route modules implementing RESTful APIs for membership management, ecommerce, and payment processing.',
       'Implemented secure equipment tracking, reservations, and customer inquiries using Node.js & Express.js.',
     ]),
-    sortOrder: 2,
+    sortOrder: 3,
     images: [
       {
         url: '/image/capstone pic.jpg',
@@ -135,7 +162,7 @@ export const DEFAULT_EXPERIENCES: Experience[] = [
       'Graduated on July 17, 2026, with an emphasis on web development, database management systems, and systems integration.',
       'Completed a 4-year BSIT curriculum focusing on practical application development and software design methodologies.',
     ]),
-    sortOrder: 3,
+    sortOrder: 4,
   },
 ];
 
@@ -191,7 +218,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
 ];
 
 export const DEFAULT_GITHUB_STATS: GithubStats = {
-  repos: '12',
-  stars: '3',
-  activity: 'Pushed to Enzo.Dev-Portfolio: "Migrate to React architecture"',
+  repos: '14',
+  stars: '5',
+  activity: 'Pushed to FinTech Pro & Enzo.Dev-Portfolio: "Update React & TypeScript systems"',
 };

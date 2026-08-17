@@ -81,17 +81,17 @@ const DEFAULT_CONFIG = {
     heroLabel: "Portfolio — 2026",
     heroName1: "Enzo",
     heroName2: "Daniela.",
-    heroTagline: "IT Graduate & Web Developer based in Caloocan City, Philippines. Building systems with Node.js, Express, MySQL, Supabase & Docker.",
-    aboutTitle: "Backend-first developer who actually cares about how the data moves.",
-    aboutText1: "BS Information Technology graduate with hands-on experience in web development through internship, academic, and personal projects. Focused on building robust server-side logic, RESTful APIs, and database operations.",
-    aboutText2: "Comfortable working on both solo and team-based projects. Uses AI-assisted tools like Claude and GitHub Copilot to accelerate development and support frontend implementation.",
+    heroTagline: "IT Developer Programmer at Great Sierra Development Corporation & Web Developer based in Caloocan / Quezon City, Philippines. Building systems with React, TypeScript, Node.js, Express, SQL & Python.",
+    aboutTitle: "IT Developer Programmer who builds scalable web apps and robust systems.",
+    aboutText1: "IT Developer Programmer at Great Sierra Development Corporation with hands-on experience in web development, API architecture, and database design. Focused on building robust server-side logic, responsive React & TypeScript interfaces, and automation workflows.",
+    aboutText2: "Comfortable working on both solo and team-based enterprise projects. Uses modern toolchains and AI-assisted workflows like Claude and GitHub Copilot to accelerate development and optimize operational efficiency.",
     profileImg: DEFAULT_PROFILE_IMG,
-    badgeText: "BSIT Graduate",
+    badgeText: "IT Developer",
     school: "STI College Fairview",
     course: "BS Information Technology",
     graduated: "July 17, 2026",
-    location: "Caloocan City, PH",
-    contactText: "I am currently looking for full-time roles in web development. Feel free to reach out if you think we'd be a good fit!",
+    location: "Caloocan City / QC, PH",
+    contactText: "Feel free to reach out for collaborations, software development inquiries, or system architecture discussions!",
     email: "parane.enzo@gmail.com"
 };
 
@@ -115,6 +115,17 @@ function resolveProfileImageForResponse(profileImg) {
 
 const DEFAULT_PROJECTS = [
     {
+        title: "FinTech Pro — Budget & Salary Tracker",
+        description: "Minimalist FinTech salary cut-off and daily budget tracker PWA with real-time analytics, offline sync, and expense metrics.",
+        imageUrl: "",
+        liveUrl: "https://sotbt.vercel.app/",
+        tags: "React,TypeScript,Tailwind,PWA,FinTech",
+        category: "react",
+        badge: "Latest",
+        featured: true,
+        sortOrder: 1
+    },
+    {
         title: "Gym Management System",
         description: "Full-stack gym management with POS, inventory tracking, and member check-ins.",
         imageUrl: "image/landing.png",
@@ -122,8 +133,8 @@ const DEFAULT_PROJECTS = [
         tags: "Express.js,MySQL,Firebase,Node.js",
         category: "node database",
         badge: "Capstone",
-        featured: true,
-        sortOrder: 1
+        featured: false,
+        sortOrder: 2
     },
     {
         title: "Grade Calculator",
@@ -134,33 +145,47 @@ const DEFAULT_PROJECTS = [
         category: "vanilla",
         badge: "",
         featured: false,
-        sortOrder: 2
+        sortOrder: 3
     },
     {
         title: "Attendance System",
-        description: "QR-based logging, 95% tracking accuracy.",
+        description: "QR-based logging, 95% tracking accuracy built for ASEAN Summit deployment.",
         imageUrl: "image/Screenshot 2026-05-13 081804.png",
         liveUrl: "https://attendance-tracker-asean.vercel.app/",
         tags: "React,Node.js,Supabase",
         category: "react node database",
         badge: "IBP",
         featured: false,
-        sortOrder: 3
+        sortOrder: 4
     },
     {
         title: "Ticketing System",
-        description: "Facility issue management & workflows.",
+        description: "Facility issue management & automated operational workflows.",
         imageUrl: "",
         liveUrl: "",
         tags: "TypeScript,React,Tailwind",
         category: "react",
         badge: "IBP",
         featured: false,
-        sortOrder: 4
+        sortOrder: 5
     }
 ];
 
 const DEFAULT_EXPERIENCES = [
+    {
+        role: "IT Developer Programmer (Full-time)",
+        company: "Great Sierra Development Corporation",
+        period: "Jul 2026 — Present",
+        description: "",
+        bullets: JSON.stringify([
+            "Design, develop, and maintain responsive web applications using React, TypeScript, JavaScript, HTML, CSS, and SQL.",
+            "Build user-friendly interfaces, develop scalable front-end features, and collaborate with stakeholders to deliver solutions meeting business requirements.",
+            "Create automation tools using Python, Google Apps Script, and Google Sheets to streamline workflows, improve data accuracy, and enhance operational efficiency.",
+            "Write and optimize SQL queries, troubleshoot system and application issues, document technical processes, and continuously identify opportunities to improve existing systems."
+        ]),
+        logoUrl: "",
+        sortOrder: 1
+    },
     {
         role: "Web Developer Intern | IT Support",
         company: "Integrated Bar of the Philippines (IBP)",
@@ -174,7 +199,7 @@ const DEFAULT_EXPERIENCES = [
             "Provided technical support and system maintenance"
         ]),
         logoUrl: "image/ibp logo.png",
-        sortOrder: 1
+        sortOrder: 2
     },
     {
         role: "Backend Developer & Team Lead",
@@ -186,7 +211,7 @@ const DEFAULT_EXPERIENCES = [
             "Implemented secure equipment tracking, reservations, and customer inquiries using Node.js & Express.js."
         ]),
         logoUrl: "",
-        sortOrder: 2
+        sortOrder: 3
     },
     {
         role: "Bachelor of Science in Information Technology (BSIT)",
@@ -198,7 +223,7 @@ const DEFAULT_EXPERIENCES = [
             "Completed a 4-year BSIT curriculum focusing on practical application development and software design methodologies."
         ]),
         logoUrl: "image/STI.png",
-        sortOrder: 3
+        sortOrder: 4
     }
 ];
 

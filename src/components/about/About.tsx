@@ -23,9 +23,9 @@ export const About: React.FC<AboutProps> = ({ config, onImageClick }) => {
   }, []);
 
   const techStack = {
-    backend: ['Node.js', 'Express.js', 'Java', 'MySQL', 'Firebase', 'Supabase'],
-    frontend: ['JavaScript', 'TypeScript', 'HTML/CSS', 'Tailwind', 'React'],
-    tools: ['Docker', 'Git/GitHub', 'Claude', 'GitHub Copilot', 'Antigravity'],
+    backend: ['Node.js', 'Express.js', 'Python', 'SQL', 'MySQL', 'Firebase', 'Supabase'],
+    frontend: ['React', 'TypeScript', 'JavaScript', 'Tailwind', 'HTML/CSS'],
+    tools: ['Docker', 'Git/GitHub', 'Google Apps Script', 'Claude', 'GitHub Copilot', 'Antigravity'],
   };
 
   const renderTechPill = (tech: string) => {
