@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background: #E5E1DA;
+  }
+
+  html.dark {
+    background: #080706;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Section Card System */
+.section-card {
+  min-height: 100vh;
+  background: #F7F5F0;
+  border-radius: 1.25rem;
+  margin: 0 0.5rem 0.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+html.dark .section-card {
+  background: #0F0E0C;
+}
+
+.section-card--hero {
+  margin-top: 0;
+  border-radius: 0 0 1.25rem 1.25rem;
+}
+
+.section-card--footer {
+  min-height: auto;
+  background: #F7F5F0;
+  border-radius: 1.25rem;
+  margin: 0 0.5rem 0.5rem;
+  overflow: hidden;
+}
+
+html.dark .section-card--footer {
+  background: #0F0E0C;
+}
+
+@media (min-width: 768px) {
+  .section-card {
+    border-radius: 1.5rem;
+    margin: 0 0.75rem 0.75rem;
+  }
+  .section-card--hero {
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
+  .section-card--footer {
+    border-radius: 1.5rem;
+    margin: 0 0.75rem 0.75rem;
+  }
+}
+
+/* Hide default cursor on desktop for custom fluid cursor */
+@media (min-width: 768px) {
+  html, body, a, button, input, textarea, .previewable-img, .filter-btn, .cursor-zoom-in, .cursor-zoom-out {
+    cursor: none !important;
+  }
+}
+
+/* 3D tilt smooth transform */
+.project-card {
+  transition: transform 0.15s ease-out, border-color 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.04);
+}
+
+.project-img {
+  transition: transform 0.4s ease;
+}
+
+/* View Transitions Theme Toggle */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+.transitioning,
+.transitioning * {
+  transition: none !important;
+}
+
+/* Stagger Animation Delays */
+.stagger-1 { animation-delay: 0.1s; opacity: 0; }
+.stagger-2 { animation-delay: 0.2s; opacity: 0; }
+.stagger-3 { animation-delay: 0.3s; opacity: 0; }
+.stagger-4 { animation-delay: 0.4s; opacity: 0; }
+.stagger-5 { animation-delay: 0.5s; opacity: 0; }
+
+/* Admin Glass & Grid styling */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(24px);
+}
+
+.login-glow {
+  box-shadow: 0 0 80px rgba(200, 82, 42, 0.08), 0 0 2px rgba(200, 82, 42, 0.15);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(200, 82, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 82, 42, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Gallery Track */
+.gallery-track {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-slide {
+  scroll-snap-align: start;
+}
+
+/* Shake Animation for Login Error */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
